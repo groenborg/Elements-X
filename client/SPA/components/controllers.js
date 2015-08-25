@@ -18,43 +18,43 @@
         $scope.drinks = [
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             },
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             },
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             },
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             },
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             },
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             },
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             },
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             },
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             },
             {
                 name: "beer",
-                price: '4,45'
+                price: '4.45'
             }
         ];
 
@@ -65,9 +65,15 @@
         };
 
         $scope.addToBasket = function (item, price) {
+            $scope.basket.summarizedPrice = parseFloat($scope.basket.summarizedPrice);
+            $scope.basket.summarizedPrice += parseFloat(price);
+            $scope.basket.summarizedPrice = $scope.basket.summarizedPrice.toFixed(2)
 
+            $scope.basket.items.push(item);
         };
 
+
+        // items must be listed xNum when the same items is repeated
 
         $scope.clearBasket = function () {
             $scope.basket = {

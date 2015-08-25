@@ -6,53 +6,56 @@
         <h1>Buy here</h1>
         <hr/>
 
+        <!-- Beverage section -->
         <div class="col-md-8">
             <div class="list-group">
                 <!-- beverage picker -->
-                <button type="button" class="list-group-item" ng-repeat="drink in drinks">
+                <button type="button" class="list-group-item"
+                        ng-repeat="drink in drinks"
+                        ng-click="addToBasket(drink.name, drink.price)"
+                        >
                     <span class="pull-left lead">{{drink.name}}</span>
                     <span class="pull-right lead">{{drink.price + " kr"}}</span>
                 </button>
             </div>
-
-            <!--
-            <div ng-repeat="drink in drinks">
-                <div class="row">
-                    <div class="col-md-5">
-
-                        <p class="lead">{{drink.name}}</p>
-                    </div>
-                    <div class="col-md-3">
-
-                        <span class="lead">{{drink.price + "kr"}}</span>
-                    </div>
-                    <div class="col-md-4">
-
-                        <button class="btn btn-primary btn-lg btn-group-justified">Buy</button>
-                    </div>
-                </div>
-            </div>
-            -->
-
         </div>
+
+        <!-- Basket section -->
         <div class="col-md-4">
 
-            <!-- Basket -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p class="lead"> Total price: </p>
+                    <p class="lead"> Total price: {{basket.summarizedPrice}}</p>
 
-                    <p class="lead"> Total items: </p>
+                    <p class="lead"> Total items: {{basket.items.length}}</p>
 
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             Basket
                         </div>
                         <div class="panel-body">
-
-                            hello
+                            <p class="list-group-item-success" ng-repeat="item in basket.items track by $index">
+                                {{item}}
+                            </p>
                         </div>
                     </div>
+
+                    <div class="btn-group btn-group-justified">
+                        <!-- buy items -->
+                        <div class="btn-group">
+                            <button class=" btn btn-success btn-lg btn-group-justified">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+                        <!-- Clear list -->
+                        <div class="btn-group">
+                            <button class=" btn btn-warning btn-lg btn-group-justified">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
