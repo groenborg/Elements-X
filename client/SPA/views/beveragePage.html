@@ -1,0 +1,63 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-9">
+
+            <!-- repeat this div -->
+            <!--
+                        <div class="list-group">
+                            <button type="button" class="list-group-item" ng-repeat="drink in drinks">
+                                <span class="pull-left">{{drink.name}}</span>
+                                <span class="pull-right">{{drink.price}}</span>
+                            </button>
+                        </div>
+             -->
+            <h1>Buy here</h1>
+            <hr/>
+            <div ng-repeat="drink in drinks">
+                <div class="row">
+                    <div class="col-md-5">
+                        <!-- product type -->
+                        <p class="lead">{{drink.name}}</p>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- pricing -->
+                        <span class="lead">{{drink.price + "kr"}}</span>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- buy button -->
+                        <button class="btn btn-primary btn-lg btn-group-justified">Buy</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div ng-repeat="drink in drinks" class="media">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="media-left">
+
+                            <img ng-click="alert('')" src="../../images/beer.jpg" alt=""
+                                 class=" media-object img-circle"
+                                 style="max-width: 40px"/>
+
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{drink.name}}</h4>
+
+                            <p class="lead">{{drink.price}}</p>
+                        </div>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+
+    </div>
+</div>

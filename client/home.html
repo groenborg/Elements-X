@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="ERPApp" ng-controller="HomePageCtrl">
+<head>
+    <meta charset="UTF-8">
+    <title>First webpage</title>
+
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
+
+    <!-- angular source file must be imported before components-->
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
+    <script src="SPA/components/directives.js"></script>
+    <script src="SPA/components/controllers.js"></script>
+    <script src="SPA/app.js"></script>
+
+</head>
+<body>
+
+<div navigation></div>
+
+<div ng-view></div>
+
+<div footer></div>
+</body>
+</html>

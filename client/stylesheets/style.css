@@ -1,0 +1,21 @@
+.kitchen-block {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+}
+
+/* Color for the kitchens */
+.kitchen-one {
+    /*  */
+    background-color: #5bc0de;
+}
+
+.kitchen-two {
+    /*  */
+    background-color: #777;
+}
+
+.kitchen-three {
+    /*  */
+    background-color: #5cb85c;
+}
