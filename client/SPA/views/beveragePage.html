@@ -34,7 +34,8 @@
                             Basket
                         </div>
                         <div class="panel-body">
-                            <p class="list-group-item-success" ng-repeat="item in basket.items track by $index">
+                            <p ng-show="basket.items[0] == undefined"> Empty basket</p>
+                            <p ng-repeat="item in basket.items track by $index">
                                 {{item}}
                             </p>
                         </div>
@@ -50,7 +51,7 @@
 
                         <!-- Clear list -->
                         <div class="btn-group">
-                            <button class=" btn btn-warning btn-lg btn-group-justified">
+                            <button class=" btn btn-warning btn-lg btn-group-justified" ng-click="clearBasket()">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
                         </div>

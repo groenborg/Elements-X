@@ -57,12 +57,12 @@
                 price: '4.45'
             }
         ];
-
-
         $scope.basket = {
             summarizedPrice: 0,
             items: []
         };
+
+
 
         $scope.addToBasket = function (item, price) {
             $scope.basket.summarizedPrice = parseFloat($scope.basket.summarizedPrice);
@@ -70,6 +70,7 @@
             $scope.basket.summarizedPrice = $scope.basket.summarizedPrice.toFixed(2)
 
             $scope.basket.items.push(item);
+
         };
 
 
