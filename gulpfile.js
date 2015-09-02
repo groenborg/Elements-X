@@ -11,12 +11,12 @@ gulp.task('mocha', function () {
             reporter: 'spec',           // console output format
             ignoreLeaks: false,         // Leaks
             bail: false,                // bail on first test fail
-            timeout: 4000               // timeout for test cases
+            timeout: 10000               // timeout for test cases
         }))
-        .on('error', gutil.log)
-        .on('close', gutil.log)
-        .on('end', gutil.log)
-        .on('data', gutil.log);
+        .on('error', gutil.log);
+        //.on('close', gutil.log)
+        //.on('end', gutil.log)
+        //.on('data', gutil.log);
 
 });
 
@@ -28,7 +28,8 @@ gulp.task('data', function () {
 });
 
 gulp.task('watch-mocha', function () {
-    gulp.watch(['server/model/**'], ['mocha']);
+    gulp.watch(['server/model/*.js'], ['mocha']);
+    gulp.watch(['server/source/*.js'], ['mocha']);
     gulp.watch(['test/**/*.js'], ['mocha']);
 
 });

@@ -8,8 +8,8 @@ var purchase_schema = new db.Schema({
 });
 
 
-var person = new db.Schema({
-    person_is: {type: Number, unique: true, required: true},
+var resident = new db.Schema({
+    resident_id: {type: Number, unique: true, required: true},
     first_name: String,
     last_name: String,
     room: Number,
@@ -19,11 +19,11 @@ var person = new db.Schema({
 });
 
 
-var Person = db.model('persons', person);
+var Resident = db.model('residents', resident);
 var Purchase = db.model('purchase', purchase_schema);
 
 
 module.exports = {
-    Person: Person,
+    Resident: Resident,
     Purchase: Purchase
 };
