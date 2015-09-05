@@ -4,11 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var singlePageRoute = require('./server/routes/index');
-var users = require('./server/routes/users');
-
 var app = express();
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -25,10 +23,6 @@ app.use(express.static(path.join(__dirname, 'client/SPA')));
 
 
 app.use('/', singlePageRoute);
-app.use('/users', users);
-
-
-
 
 
 app.use(function (req, res, next) {
