@@ -18,6 +18,11 @@ var resident = new db.Schema({
     purchase_history: [purchase_schema]
 });
 
+var sequence = new db.Schema({
+    _id: String,
+    resident_sequence_value: Number
+});
+
 
 var Resident = db.model('residents', resident);
 var Purchase = db.model('purchase', purchase_schema);
