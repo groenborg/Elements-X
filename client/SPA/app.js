@@ -2,8 +2,9 @@
 
     var app = angular.module('ERPApp', [
         'ngRoute',
-        'ERPApp.controllers',
-        'ERPApp.directives'
+        'EXApp.controllers',
+        'EXApp.directives',
+        'EXApp.factories'
     ]);
 
     app.config(function ($routeProvider) {
@@ -13,6 +14,9 @@
         }).when('/buy', {
             templateUrl: 'views/beveragePage.html',
             controller: 'BuyCtrl'
+        }).when('/residents', {
+            templateUrl: 'views/residentPickerPage.html',
+            controller: 'ResidentPickerCtrl'
         }).otherwise({
             templateUrl: 'views/frontPage.html'
         });

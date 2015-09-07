@@ -3,7 +3,7 @@
 
 (function () {
 
-    var app = angular.module('ERPApp.controllers', []);
+    var app = angular.module('EX.controllers', []);
 
     app.controller('HomePageCtrl', function ($scope) {
 
@@ -63,7 +63,6 @@
         };
 
 
-
         $scope.addToBasket = function (item, price) {
             $scope.basket.summarizedPrice = parseFloat($scope.basket.summarizedPrice);
             $scope.basket.summarizedPrice += parseFloat(price);
@@ -84,6 +83,12 @@
         }
 
     });
+
+    app.controller('ResidentPickerCtrl', ['$scope', function ($scope) {
+        $scope. person = "name";
+
+
+    }]);
 
 
 })();

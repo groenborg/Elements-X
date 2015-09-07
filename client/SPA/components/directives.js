@@ -2,7 +2,7 @@
 
 (function () {
 
-    var app = angular.module('ERPApp.directives', []);
+    var app = angular.module('EX.directives', []);
 
     app.directive('navigation', function () {
         return {
