@@ -6,12 +6,14 @@ var purchaseSchema = new db.Schema({
     total_price: Number,
     items_count: Number,
     timestamp: {type: Date, default: Date.now()}
+
 });
 
 var balanceHistorySchema = new db.Schema({
     balance_before: Number,
     insert_amount: Number,
     timestamp: {type: Date, default: Date.now()}
+
 });
 
 var resident = new db.Schema({
@@ -21,14 +23,33 @@ var resident = new db.Schema({
     room_number: Number,
     kitchen_number: Number,
     current_balance: Number,
-    deposit: Number,                // The deposited amount when you open an account
-    active: Boolean,                 // Does the resident still live here - move resident to history
+    deposit: Number,                            // The deposited amount when you open an account
+    active: Boolean,                            // Does the resident still live here - move resident to history
     purchase_history: [purchaseSchema],
     balance_history: [balanceHistorySchema]
 
 });
 
 
+// not nested for security reasons - for later review
+var transaction = new db.Schema({
+    resident_id: {type: Number, required: true},
+    type: String,
+    total_price: Number,
+    amount: Number,
+    timestamp: {type: Date, default: Date.now()}
+
+});
+
+var assortment = new db.Schema({
+    name: {type: String, unique: true, required: true},
+    supply: Number,
+    price: Number,
+    description: String
+
+});
+
+//sequence for unique ID generation
 var sequence = new db.Schema({
     _id: String,
     resident_sequence_value: {type: Number, Default: 100}
@@ -42,9 +63,12 @@ sequence.statics.findAndModify = function (query, sort, doc, options, callback) 
 
 var Resident = db.model('residents', resident);
 var Sequence = db.model('sequence', sequence);
-
+var Assortment = db.model('assortment', assortment);
+var Transaction = db.model('transactions', transaction);
 
 module.exports = {
     Resident: Resident,
-    Sequence: Sequence
+    Sequence: Sequence,
+    Assortment: Assortment,
+    Transaction: Transaction
 };
