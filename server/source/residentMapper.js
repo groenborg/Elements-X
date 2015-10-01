@@ -16,7 +16,7 @@ var getOneResident = function (residentID, callback) {
         if (err) return callback(err);
         if (resident == null) return callback();
         return callback(undefined, resident);
-    })
+    });
 };
 
 /* findOneAndUpdate({query},{update},callback);*/

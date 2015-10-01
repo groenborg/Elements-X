@@ -9,7 +9,7 @@ var mocha = require('gulp-mocha');
 var gutil = require('gulp-util');
 
 gulp.task('mocha', function () {
-    return gulp.src(['test/**/*.js'], {read: true})
+    return gulp.src(['test/**/assortment-test.js'], {read: true})
         .pipe(mocha({
             reporter: 'spec',           // console output format
             ignoreLeaks: false,         // Leaks
@@ -22,6 +22,7 @@ gulp.task('mocha', function () {
     //.on('data', gutil.log);
 
 });
+
 
 gulp.task('lint', function () {
     return gulp.src('test/**/*.js')
