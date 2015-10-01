@@ -49,7 +49,7 @@ describe('resident residentMapper tests', function () {
         it('should have all properties', function (done) {
             residentMapper.getAllResidents(function (err, residents) {
                 if (err) throw err;
-                residents[0].should.have.properties(['resident_id', 'first_name', 'last_name', 'room', 'balance']);
+                residents[0].should.have.properties(['resident_id', 'first_name', 'last_name', 'room_number', 'current_balance']);
                 done();
             });
         });
@@ -83,20 +83,21 @@ describe('resident residentMapper tests', function () {
             resident_id: 1,
             first_name: "UiKksdjsDJ",
             last_name: "jdujHD",
-            room: 2021,
-            kitchen: 2,
-            balance: 1.345
+            room_number: 2021,
+            kitchen_number: 2,
+            current_balance: 1.345
         };
 
 
         it('should updated the resident with name', function (done) {
             residentMapper.updateResident(updateObject, function (err, data) {
                 if (err) throw err;
+
                 data.first_name.should.equal(updateObject.first_name);
                 data.last_name.should.equal(updateObject.last_name);
-                data.room.should.equal(updateObject.room);
-                data.kitchen.should.equal(updateObject.kitchen);
-                data.balance.should.equal(updateObject.balance);
+                data.room_number.should.equal(updateObject.room_number);
+                data.kitchen_number.should.equal(updateObject.kitchen_number);
+                data.current_balance.should.equal(updateObject.current_balance);
                 done();
             });
         });
@@ -124,9 +125,37 @@ describe('resident residentMapper tests', function () {
                 done();
             });
         });
-
     });
 
+
+    describe('create a new resident', function () {
+
+        var newResident = {
+            "resident_id": 0,
+            "first_name": "Pede",
+            "last_name": "B",
+            "room_number": 3031,
+            "kitchen_number": 3,
+            "current_balance": 100.22,
+            "deposit": 2,
+            "active": true
+        };
+
+
+        // DUMMY DATA NOT INSERTED WITH ID_SEQUENCE -- MUST BE FIXED in Later version
+        it('should be created and returned with unique ID', function (done) {
+            residentMapper.createResident(newResident, function (err, resident) {
+                if (err) throw err;
+                resident.resident_id.should.not.equal(0);
+                resident.first_name.should.equal("Pede");
+                resident.active.should.equal(true);
+                done();
+            });
+
+
+        });
+
+    });
 
 });
 

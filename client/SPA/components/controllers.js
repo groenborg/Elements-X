@@ -17,43 +17,43 @@
     app.controller('BuyCtrl', function ($scope) {
         $scope.drinks = [
             {
-                name: "beer",
+                name: "Guld",
                 price: '4.45'
             },
             {
-                name: "beer",
+                name: "Classic",
                 price: '4.45'
             },
             {
-                name: "beer",
+                name: "Cider",
                 price: '4.45'
             },
             {
-                name: "beer",
+                name: "Export",
                 price: '4.45'
             },
             {
-                name: "beer",
+                name: "Red",
                 price: '4.45'
             },
             {
-                name: "beer",
+                name: "Nestea",
                 price: '4.45'
             },
             {
-                name: "beer",
+                name: "Cola",
                 price: '4.45'
             },
             {
-                name: "beer",
+                name: "7Up",
                 price: '4.45'
             },
             {
-                name: "beer",
+                name: "Squash",
                 price: '4.45'
             },
             {
-                name: "beer",
+                name: "Minto",
                 price: '4.45'
             }
         ];
@@ -66,7 +66,7 @@
         $scope.addToBasket = function (item, price) {
             $scope.basket.summarizedPrice = parseFloat($scope.basket.summarizedPrice);
             $scope.basket.summarizedPrice += parseFloat(price);
-            $scope.basket.summarizedPrice = $scope.basket.summarizedPrice.toFixed(2)
+            $scope.basket.summarizedPrice = $scope.basket.summarizedPrice.toFixed(2);
 
             $scope.basket.items.push(item);
 
@@ -85,7 +85,28 @@
     });
 
     app.controller('ResidentPickerCtrl', ['$scope', function ($scope) {
-        $scope. person = "name";
+        $scope.persons = [
+            {
+                name: "torben",
+                balance: 34
+            }, {
+                name: "Simon",
+                balance: 788
+            }, {
+                name: "Anine",
+                balance: 1
+            }, {
+                name: "jens",
+                balance: 23555
+            }, {
+                name: "Ole",
+                balance: 34567
+            }, {
+                name: "Jørgen",
+                balance: 0
+            }
+
+        ];
 
 
     }]);

@@ -3,335 +3,347 @@
     "resident_id": 0,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.728Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.728Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 1,
-    "first_name": "lars",
+    "first_name": "Olse",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 2,
-    "first_name": "lars",
+    "first_name": "Hej",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 3,
-    "first_name": "lars",
+    "first_name": "Mig",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 4,
-    "first_name": "lars",
+    "first_name": "jksd",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 5,
-    "first_name": "lars",
+    "first_name": "df",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 6,
-    "first_name": "lars",
+    "first_name": "fgh",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 7,
-    "first_name": "lars",
+    "first_name": "fdg",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 8,
-    "first_name": "lars",
+    "first_name": "jhjksd",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 9,
-    "first_name": "lars",
+    "first_name": "fjnklw",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 10,
-    "first_name": "lars",
+    "first_name": "hello",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
   {
     "resident_id": 11,
-    "first_name": "lars",
+    "first_name": "sdsd",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -339,27 +351,28 @@
     "resident_id": 12,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -367,27 +380,28 @@
     "resident_id": 13,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -395,27 +409,28 @@
     "resident_id": 14,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -423,27 +438,28 @@
     "resident_id": 15,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -451,27 +467,28 @@
     "resident_id": 16,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -479,27 +496,28 @@
     "resident_id": 17,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -507,27 +525,28 @@
     "resident_id": 18,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -535,27 +554,28 @@
     "resident_id": 19,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -563,27 +583,28 @@
     "resident_id": 20,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -591,27 +612,28 @@
     "resident_id": 21,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -619,27 +641,28 @@
     "resident_id": 22,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -647,27 +670,28 @@
     "resident_id": 23,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -675,27 +699,28 @@
     "resident_id": 24,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -703,27 +728,28 @@
     "resident_id": 25,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -731,27 +757,28 @@
     "resident_id": 26,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -759,27 +786,28 @@
     "resident_id": 27,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -787,27 +815,28 @@
     "resident_id": 28,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -815,27 +844,28 @@
     "resident_id": 29,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -843,27 +873,28 @@
     "resident_id": 30,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -871,27 +902,28 @@
     "resident_id": 31,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -899,27 +931,28 @@
     "resident_id": 32,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -927,27 +960,28 @@
     "resident_id": 33,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -955,27 +989,28 @@
     "resident_id": 34,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -983,27 +1018,28 @@
     "resident_id": 35,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1011,27 +1047,28 @@
     "resident_id": 36,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1039,27 +1076,28 @@
     "resident_id": 37,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1067,27 +1105,28 @@
     "resident_id": 38,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1095,27 +1134,28 @@
     "resident_id": 39,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1123,27 +1163,28 @@
     "resident_id": 40,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1151,27 +1192,28 @@
     "resident_id": 41,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1179,27 +1221,28 @@
     "resident_id": 42,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1207,27 +1250,28 @@
     "resident_id": 43,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1235,27 +1279,28 @@
     "resident_id": 44,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1263,27 +1308,28 @@
     "resident_id": 45,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1291,27 +1337,28 @@
     "resident_id": 46,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1319,27 +1366,28 @@
     "resident_id": 47,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1347,27 +1395,28 @@
     "resident_id": 48,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1375,27 +1424,28 @@
     "resident_id": 49,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1403,27 +1453,28 @@
     "resident_id": 50,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1431,27 +1482,28 @@
     "resident_id": 51,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
-          "object1",
-          "object2",
-          "object3"
-        ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   },
@@ -1459,27 +1511,1043 @@
     "resident_id": 52,
     "first_name": "lars",
     "last_name": "mortensen",
-    "room": 3031,
-    "kitchen": 3,
-    "balance": 100.22,
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
     "purchase_history": [
       {
-        "items": [
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
-      },
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
       {
-        "items": [
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 53,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
           "object1",
           "object2",
           "object3"
         ],
-        "price": 33,
-        "timestamp": "2015-09-03T20:22:00.729Z"
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 54,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 55,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 56,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 57,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 58,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 59,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 60,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 61,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 62,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 63,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 64,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 65,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 66,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 67,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 68,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 69,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 70,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 71,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 72,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 73,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 74,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 75,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 76,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 77,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 78,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 79,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 80,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 81,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 82,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 83,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 84,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 85,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 86,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 87,
+    "first_name": "lars",
+    "last_name": "mortensen",
+    "room_number": 3031,
+    "kitchen_number": 3,
+    "current_balance": 100.22,
+    "deposit": 2,
+    "active": true,
+    "purchase_history": [
+      {
+        "purchase_items": [
+          "object1",
+          "object2",
+          "object3"
+        ],
+        "total_price": 33,
+        "items_count": 3,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
       }
     ]
   }

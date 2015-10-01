@@ -1,10 +1,10 @@
 (function () {
 
-    var app = angular.module('ERPApp', [
+    var app = angular.module('EXApp', [
         'ngRoute',
-        'EXApp.controllers',
-        'EXApp.directives',
-        'EXApp.factories'
+        'EX.controllers',
+        'EX.directives',
+        'EX.factories'
     ]);
 
     app.config(function ($routeProvider) {

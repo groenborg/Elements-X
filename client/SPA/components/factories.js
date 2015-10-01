@@ -1,6 +1,6 @@
 (function () {
 
-    var app = angular.module('factories', []);
+    var app = angular.module('EX.factories', []);
 
     app.factory('residentRestFactory', ['$http', function ($http) {
 

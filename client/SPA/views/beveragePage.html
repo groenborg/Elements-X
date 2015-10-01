@@ -35,6 +35,7 @@
                         </div>
                         <div class="panel-body">
                             <p ng-show="basket.items[0] == undefined"> Empty basket</p>
+
                             <p ng-repeat="item in basket.items track by $index">
                                 {{item}}
                             </p>

@@ -9,6 +9,8 @@ function setIDAndDate() {
         data[i].resident_id = residentID;
         for (var j = 0; j < data[i].purchase_history.length; ++j) {
             data[i].purchase_history[j].timestamp = new Date();
+            data[i].purchase_history[j].items_count = data[i].purchase_history[j].purchase_items.length;
+            data[i].balance_history[j].timestamp = new Date();
         }
 
         residentID++;
@@ -25,4 +27,6 @@ function setIDAndDate() {
     })
 };
 
+
+setIDAndDate();
 
