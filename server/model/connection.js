@@ -12,14 +12,16 @@ function connectToMongoDB(callback) {
     });
 
     db.connection.on('connected', function () {
-        console.log("Connected to database");
+        if (app.get('env') == 'production')
+            console.log("Connected to database");
     });
 }
 
 
 function closeMongoDB(callback) {
     db.connection.close(callback);
-    console.log("closing database");
+    if (app.get('env') == 'production')
+        console.log("closing database");
 }
 
 

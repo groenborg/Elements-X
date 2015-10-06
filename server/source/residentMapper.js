@@ -1,8 +1,11 @@
 var model = require('../model/models.js');
+var deprecate = require('deprecate');
+
 
 var getAllResidents = function (callback) {
-    model.Resident.find({}, function (err, residents) {
+   // deprecate("getAllResidents is deprecated");
 
+    model.Resident.find({}, function (err, residents) {
         if (err) return callback(err);
         if (residents == null) return callback();
         return callback(undefined, residents)
@@ -10,7 +13,10 @@ var getAllResidents = function (callback) {
     });
 };
 
+
 var getOneResident = function (residentID, callback) {
+  //  deprecate("getOneResident is deprecated");
+
     model.Resident.findOne({resident_id: residentID}, function (err, resident) {
 
         if (err) return callback(err);

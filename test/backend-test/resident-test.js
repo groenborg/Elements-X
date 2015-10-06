@@ -4,7 +4,7 @@ var fixture = require('./fixture.js');
 var should = require('should');
 
 
-xdescribe('resident residentMapper tests', function () {
+describe('residentMapper test suite', function () {
 
 
     /* CONNECT TO DATABASE*/
@@ -23,7 +23,7 @@ xdescribe('resident residentMapper tests', function () {
     });
 
     afterEach('empty resident collection', function (done) {
-      //  fixture.emptyDataBase(done);
+        fixture.emptyDataBase(done);
     });
 
 

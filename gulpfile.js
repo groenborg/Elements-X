@@ -9,7 +9,7 @@ var mocha = require('gulp-mocha');
 var gutil = require('gulp-util');
 
 gulp.task('mocha', function () {
-    return gulp.src(['test/**/assortment-test.js'], {read: true})
+    return gulp.src(['test/**/collectionGet-test.js','test/**/resident-test.js'], {read: true})
         .pipe(mocha({
             reporter: 'spec',           // console output format
             ignoreLeaks: false,         // Leaks
