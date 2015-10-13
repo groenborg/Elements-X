@@ -40,4 +40,6 @@ gulp.task('watch', function () {
 
 });
 
+gulp.task('test',['mocha','data']);
+
 gulp.task('default', ['watch', 'mocha', 'data', 'lint']);
