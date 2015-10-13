@@ -27,8 +27,6 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use(express.static(path.join(__dirname, 'client/SPA')));
 
 
-
-
 app.use('/', singlePageRoute);
 app.use('/api', residentRoute);
 
@@ -39,8 +37,8 @@ app.use(function (req, res, next) {
     next(err);
 });
 
-// error handlers
 
+// error handlers
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);

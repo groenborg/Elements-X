@@ -18,6 +18,7 @@ function createSequence() {
     });
 }
 
+createSequence();
 
 
 function autoIncrement() {
