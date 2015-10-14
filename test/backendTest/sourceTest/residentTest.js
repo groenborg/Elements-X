@@ -1,6 +1,6 @@
-var residentMapper = require('../../server/source/residentMapper.js');
-var connection = require('../../server/model/connection.js');
-var fixture = require('./fixture.js');
+var residentMapper = require('../../../server/source/residentMapper.js');
+var connection = require('../../../server/model/connection.js');
+var fixture = require('./../fixture.js');
 var should = require('should');
 
 

@@ -1,4 +1,4 @@
-var data = require('./../test/backend-test/test-data.json');
+var data = require('././test-data.json');
 var fs = require('fs');
 
 function setIDAndDate() {

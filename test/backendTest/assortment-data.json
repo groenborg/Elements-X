@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Tuborg Guld",
+    "supply": 233,
+    "price": 4.45,
+    "description": "A delicate drink"
+  },
+  {
+    "name": "Carlsberg Classic",
+    "supply": 120,
+    "price": 4.45,
+    "description": "A better drink"
+  },
+  {
+    "name": "Ice Tea",
+    "supply": 23,
+    "price": 4.45,
+    "description": "It makes my heart sing"
+  },
+  {
+    "name": "Coca Cola",
+    "supply": 82,
+    "price": 4.45,
+    "description": "This is the best"
+  },
+  {
+    "name": "Faxe Kondi",
+    "supply": 356,
+    "price": 4.45,
+    "description": "A delicate drink"
+  },
+  {
+    "name": "Minto",
+    "supply": 10,
+    "price": 10,
+    "description": "toothpaste"
+  },
+  {
+    "name": "Shots",
+    "supply": 45,
+    "price": 4.45,
+    "description": "Something different"
+  }
+]

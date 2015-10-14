@@ -1,6 +1,6 @@
-var collectionGetMapper = require("../../server/source/collectionGetMapper.js");
-var connection = require('../../server/model/connection.js');
-var fixture = require('./fixture.js');
+var collectionGetMapper = require("../../../server/source/collectionGetMapper.js");
+var connection = require('../../../server/model/connection.js');
+var fixture = require('./../fixture.js');
 var should = require('should');
 
 

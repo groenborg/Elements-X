@@ -1,7 +1,7 @@
 var request = require('supertest');
-var connection = require('../../server/model/connection.js');
+var connection = require('../../../server/model/connection.js');
 var should = require('should');
-var fixture = require('./fixture.js');
+var fixture = require('./../fixture.js');
 var express = require('express');
 
 var app = express();

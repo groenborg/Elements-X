@@ -31,21 +31,22 @@ var resident = new db.Schema({
 });
 
 
-// not nested for security reasons - for later review
-var transaction = new db.Schema({
-    resident_id: {type: Number, required: true},
-    type: String,
-    total_price: Number,
-    amount: Number,
-    timestamp: {type: Date, default: Date.now()}
-
-});
-
 var assortment = new db.Schema({
     name: {type: String, unique: true, required: true},
     supply: Number,
     price: Number,
     description: String
+
+});
+
+
+// not nested for security reasons - for later review
+var transaction = new db.Schema({
+    resident_id: {type: Number, required: true},
+    assortment_id: String,//{type: Schema.Types.ObjectId, ref: assortment},
+    total_price: Number,
+    amount: Number,
+    timestamp: {type: Date, default: Date.now()}
 
 });
 
