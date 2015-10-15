@@ -7,7 +7,7 @@ var should = require('should');
 describe('residentMapper test suite', function () {
 
 
-    /* CONNECT TO DATABASE*/
+
     before('starting connection', function (done) {
         connection.connectToMongoDB(done);
     });
@@ -17,7 +17,7 @@ describe('residentMapper test suite', function () {
     });
 
 
-    /*FILL THE DOCUMENT STORE*/
+
     beforeEach('fill resident collection', function (done) {
         fixture.fillDatabase(done);
     });

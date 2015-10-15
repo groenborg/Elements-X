@@ -1,7 +1,7 @@
-var db = require('mongoose');
+var mongoose = require('mongoose');
 
 
-var purchaseSchema = new db.Schema({
+var purchaseSchema = new mongoose.Schema({
     purchase_items: [String],
     total_price: Number,
     items_count: Number,
@@ -9,14 +9,14 @@ var purchaseSchema = new db.Schema({
 
 });
 
-var balanceHistorySchema = new db.Schema({
+var balanceHistorySchema = new mongoose.Schema({
     balance_before: Number,
     insert_amount: Number,
     timestamp: {type: Date, default: Date.now()}
 
 });
 
-var resident = new db.Schema({
+var resident = new mongoose.Schema({
     resident_id: {type: Number, unique: true, required: true},
     first_name: String,
     last_name: String,
@@ -31,7 +31,7 @@ var resident = new db.Schema({
 });
 
 
-var assortment = new db.Schema({
+var assortment = new mongoose.Schema({
     name: {type: String, unique: true, required: true},
     supply: Number,
     price: Number,
@@ -41,9 +41,9 @@ var assortment = new db.Schema({
 
 
 // not nested for security reasons - for later review
-var transaction = new db.Schema({
+var transaction = new mongoose.Schema({
     resident_id: {type: Number, required: true},
-    assortment_id: String,//{type: Schema.Types.ObjectId, ref: assortment},
+    assortment_id: {type: mongoose.Schema.Types.ObjectId, ref: "assortments"},
     total_price: Number,
     amount: Number,
     timestamp: {type: Date, default: Date.now()}
@@ -51,7 +51,7 @@ var transaction = new db.Schema({
 });
 
 //sequence for unique ID generation
-var sequence = new db.Schema({
+var sequence = new mongoose.Schema({
     _id: String,
     resident_sequence_value: {type: Number, Default: 100}
 });
@@ -62,10 +62,10 @@ sequence.statics.findAndModify = function (query, sort, doc, options, callback) 
 };
 
 
-var Resident = db.model('residents', resident);
-var Sequence = db.model('sequence', sequence);
-var Assortment = db.model('assortment', assortment);
-var Transaction = db.model('transactions', transaction);
+var Resident = mongoose.model('residents', resident);
+var Sequence = mongoose.model('sequence', sequence);
+var Assortment = mongoose.model('assortments', assortment);
+var Transaction = mongoose.model('transactions', transaction);
 
 module.exports = {
     Resident: Resident,
