@@ -13,9 +13,22 @@ function createAssortment(assortmentItem, callback) {
 
 function updateAssortmentItem(updatedItem, callback) {
 
+    model.Assortment.findOneAndUpdate({name: updatedItem.name}, {
+
+        supply: updatedItem.supply,
+        price: updatedItem.price,
+        description: updatedItem.description
+
+    }, {new: true}, function (err, item) {
+
+        if (err) return callback(err);
+        if (item == null) return callback();
+        return callback(undefined, item);
+    });
 
 }
 
 module.exports = {
-    createAssortment: createAssortment
+    createAssortment: createAssortment,
+    updateAssortmentItem: updateAssortmentItem
 };

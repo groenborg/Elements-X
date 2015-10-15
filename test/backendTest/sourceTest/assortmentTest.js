@@ -2,7 +2,7 @@ var assortmentMapper = require('../../../server/source/assortmentMapper.js');
 var connection = require('../../../server/model/connection.js');
 var fixture = require('./../fixture.js');
 var should = require('should');
-
+var ObjectId = require('mongoose').Types.ObjectId;
 
 describe("Assortment test suite", function () {
 
@@ -43,7 +43,7 @@ describe("Assortment test suite", function () {
 
             assortmentMapper.createAssortment(item, function (err, data) {
                 if (err) {
-                    throw new Error();
+                    throw err;
                 }
                 data.name.should.equal(item.name);
                 data.price.should.equal(item.price);
@@ -69,14 +69,35 @@ describe("Assortment test suite", function () {
     });
 
 
-    describe('Update Assortment tests', function () {
+    xdescribe('Update Assortment tests', function () {
 
+        var updatedItem = {
+            "name": "Tuborg Guld",
+            "supply": 233,
+            "price": 4.45,
+            "description": "not just a drink no more"
+        };
 
         it('should update and return updated object', function (done) {
+            assortmentMapper.updateAssortmentItem(updatedItem, function (err, data) {
+                updatedItem.name.should.equal(data.name);
+                updatedItem.description.should.equal(data.description);
+                updatedItem._id.should.equal(data._id);
+                done();
+            });
 
-            done();
         });
 
+
+        xit('should not update a non existing item', function (done) {
+
+            assortmentMapper.updateAssortmentItem(updatedItem, function (err, data) {
+                if (err) {
+                    done();
+                }
+
+            });
+        });
 
     });
 

@@ -9,13 +9,19 @@ describe('CollectionGetMapper test suite', function () {
 
     before(function (done) {
         connection.connectToMongoDB(function () {
-            fixture.fillDatabase(done);
+            fixture.fillDatabase(function () {
+                fixture.fillAssortment(done)
+            });
+
         });
     });
 
     after(function (done) {
         fixture.emptyDataBase(function () {
-            connection.closeMongoDB(done);
+            fixture.emptyAssortment(function () {
+                connection.closeMongoDB(done);
+            });
+
         });
 
     });
@@ -46,7 +52,7 @@ describe('CollectionGetMapper test suite', function () {
             });
         });
 
-        it('should retrieve Residents', function (done) {
+        it('should retrieve all residents', function (done) {
             collectionGetMapper.getAllElementsFromCollection(Resident, function (err, data) {
                 if (err) throw err;
 
@@ -55,13 +61,24 @@ describe('CollectionGetMapper test suite', function () {
             });
         });
 
-        it('should recieve residents', function (done) {
+        it('should retrieve one residents without error', function (done) {
             collectionGetMapper.getAllElementsFromCollection(Assortment, function (err, data) {
                 if (err) throw err;
 
                 done();
             });
         });
+
+
+        it('should retrieve all assortments items', function (done) {
+            collectionGetMapper.getAllElementsFromCollection(Assortment, function (err, data) {
+                if (err) throw err;
+
+                (data[0].name !== undefined).should.equal(true);
+                done();
+            });
+        });
+
 
     });
 
@@ -79,8 +96,22 @@ describe('CollectionGetMapper test suite', function () {
                 data.first_name.should.equal("fdg");
                 done();
             });
-
         });
+
+
+        it('should return one object from assortment collection', function (done) {
+
+            var collectionName = "Assortment";
+            var name = "Tuborg Guld";
+
+            collectionGetMapper.getOneElementFromCollection(collectionName, {name: name}, function (err, data) {
+                if (err) throw err;
+                data.name.should.equal(name);
+                done();
+            });
+        });
+
+
     });
 
 });
