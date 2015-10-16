@@ -64,7 +64,6 @@ describe('CollectionGetMapper test suite', function () {
             });
         });
 
-
         it('should retrieve all assortments items', function (done) {
             collectionGetMapper.getAllElementsFromCollection(Assortment, function (err, data) {
                 if (err) throw err;
