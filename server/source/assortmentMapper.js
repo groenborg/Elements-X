@@ -1,5 +1,5 @@
 var model = require('../model/models.js');
-
+var ObjectId = require('mongoose').Types.ObjectId;
 
 function createAssortment(assortmentItem, callback) {
     model.Assortment.create(assortmentItem, function (err, data) {

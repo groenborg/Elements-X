@@ -7,6 +7,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 describe("Assortment test suite", function () {
 
 
+
     //Create connection to database
     before(function (done) {
         connection.connectToMongoDB(done);
@@ -54,7 +55,6 @@ describe("Assortment test suite", function () {
 
 
         it('Should not create assortment with same name', function (done) {
-
             // duplicate name
             item.name = "Tuborg Guld";
 
@@ -69,7 +69,7 @@ describe("Assortment test suite", function () {
     });
 
 
-    xdescribe('Update Assortment tests', function () {
+    describe('Update Assortment tests', function () {
 
         var updatedItem = {
             "name": "Tuborg Guld",
@@ -79,26 +79,27 @@ describe("Assortment test suite", function () {
         };
 
         it('should update and return updated object', function (done) {
+
             assortmentMapper.updateAssortmentItem(updatedItem, function (err, data) {
                 updatedItem.name.should.equal(data.name);
                 updatedItem.description.should.equal(data.description);
-                updatedItem._id.should.equal(data._id);
                 done();
             });
 
+
         });
 
+        it('should not update a non existing item', function (done) {
 
-        xit('should not update a non existing item', function (done) {
+            ///Non existing name
+            updatedItem.name = "hej";
 
             assortmentMapper.updateAssortmentItem(updatedItem, function (err, data) {
-                if (err) {
-                    done();
-                }
-
+                if (err) throw err;
+                (data === undefined).should.equal(true);
+                done();
             });
         });
-
     });
 
 });

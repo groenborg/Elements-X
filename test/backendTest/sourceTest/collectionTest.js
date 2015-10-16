@@ -6,13 +6,11 @@ var should = require('should');
 
 describe('CollectionGetMapper test suite', function () {
 
-
     before(function (done) {
         connection.connectToMongoDB(function () {
             fixture.fillDatabase(function () {
-                fixture.fillAssortment(done)
+                fixture.fillAssortment(done);
             });
-
         });
     });
 
@@ -21,13 +19,10 @@ describe('CollectionGetMapper test suite', function () {
             fixture.emptyAssortment(function () {
                 connection.closeMongoDB(done);
             });
-
         });
-
     });
 
     describe('test universal getAll function', function () {
-
 
         var Resident = "Resident";
         var Transaction = "Transaction";
