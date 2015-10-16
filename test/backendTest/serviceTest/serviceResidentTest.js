@@ -7,7 +7,7 @@ var express = require('express');
 var app = express();
 
 
-xdescribe('resident webservice test', function () {
+xdescribe('residentService test suite', function () {
 
 
     before(function (done) {
@@ -23,7 +23,7 @@ xdescribe('resident webservice test', function () {
     });
 
 
-    xdescribe('get all residents test', function () {
+    describe('get all residents test', function () {
 
         it('should return all residents', function (done) {
 
@@ -32,7 +32,6 @@ xdescribe('resident webservice test', function () {
                 .expect(200)
                 .expect('Content-type', /json/)
                 .end(function (err, res) {
-                    console.log("HELLOSOOS");
                     if(err) throw err;
                     res.length.should.be.above(5);
                     done();

@@ -9,11 +9,9 @@ router.get('/getResidents', function (request, response) {
             response.statusMessage = "service unavailable";
             response.send({message: "No residents found"});
             return;
-        }
 
         response.send(data);
     });
 });
-
 
 module.exports = router;
