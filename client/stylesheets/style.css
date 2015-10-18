@@ -1,6 +1,19 @@
 
+.footer{
+    margin-top: 50px;
+    border-top: 1px solid #f3ecee;
+    padding-top: 10px;
+    background-color: #f8f8f8;
+}
 
+.dashboard-nav{
+    background-color: rgb(48,64,81);
+    color: rgb(167,177,196);
+}
 
+.footer-row{
+    text-align: center;
+}
 
 .kitchen-block {
     position: relative;

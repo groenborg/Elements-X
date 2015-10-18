@@ -17,6 +17,12 @@
         }).when('/residents', {
             templateUrl: 'views/residentPickerPage.html',
             controller: 'ResidentPickerCtrl'
+        }).when('/dashboard',{
+          templateUrl:'views/adminDashboard.html',
+            controller:''
+        }).when('/picker',{
+            templateUrl:'views/userResidents.html',
+            controller:''
         }).otherwise({
             templateUrl: 'views/frontPage.html'
         });
