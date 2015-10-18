@@ -22,7 +22,7 @@
             controller:''
         }).when('/picker',{
             templateUrl:'views/userResidents.html',
-            controller:''
+            controller:'UserCardPickerCtrl'
         }).otherwise({
             templateUrl: 'views/frontPage.html'
         });

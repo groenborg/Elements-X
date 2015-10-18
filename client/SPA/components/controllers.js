@@ -111,6 +111,10 @@
 
     }]);
 
+    app.controller('UserCardPickerCtrl', ['$scope', function ($scope) {
+        $scope.name = "hello world";
 
+
+    }]);
 })();
 
