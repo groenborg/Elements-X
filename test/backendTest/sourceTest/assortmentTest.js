@@ -63,9 +63,7 @@ describe("Assortment test suite", function () {
                     done();
                 }
             });
-
         });
-
     });
 
 

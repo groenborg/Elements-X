@@ -3,6 +3,10 @@
     var app = angular.module('EX.factories', []);
 
 
+
+    app.factory('resident',[]);
+
+
     app.factory('residentRestFactory', ['$http', function ($http) {
 
         return {
