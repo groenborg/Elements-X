@@ -17,12 +17,16 @@
         }).when('/residents', {
             templateUrl: 'views/residentPickerPage.html',
             controller: 'ResidentPickerCtrl'
-        }).when('/dashboard',{
-          templateUrl:'views/adminDashboard.html',
-            controller:''
-        }).when('/picker',{
-            templateUrl:'views/userResidents.html',
-            controller:'UserCardPickerCtrl'
+        }).when('/dashboard', {
+            templateUrl: 'views/adminDashboard.html',
+            controller: ''
+        }).when('/picker', {
+            templateUrl: 'views/userResidents.html',
+            controller: 'UserCardPickerCtrl'
+        }).when('/buy/:id', {
+            templateUrl: 'views/beveragePage.html',
+            controller: 'BuyCtrl'
+
         }).otherwise({
             templateUrl: 'views/frontPage.html'
         });

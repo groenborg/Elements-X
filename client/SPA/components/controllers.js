@@ -14,7 +14,7 @@
 
     });
 
-    app.controller('BuyCtrl', function ($scope) {
+    app.controller('BuyCtrl', function ($scope, $routeParams) {
         $scope.drinks = [
             {
                 name: "Guld",
@@ -111,8 +111,23 @@
 
     }]);
 
-    app.controller('UserCardPickerCtrl', ['$scope', function ($scope) {
-        $scope.name = "hello world";
+    app.controller('UserCardPickerCtrl', ['$scope', 'controllerFactory', 'storageFactory', function ($scope, controllerFactory, storageFactory) {
+        $scope.kitchenResidents = [];
+        $scope.error = null;
+
+        if (!controllerFactory.isLoaded()) {
+            controllerFactory.updateKitchenData(function (err) {
+                if (err) {
+                    $scope.err = "no residents found - error"
+                } else {
+                    $scope.kitchenResidents = storageFactory.getKitchen("three");
+                }
+            });
+        } else {
+            $scope.kitchenResidents = storageFactory.getKitchen("three");
+        }
+
+        //get number based on kitchenPage
 
 
     }]);

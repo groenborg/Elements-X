@@ -6,6 +6,10 @@
     background-color: #f8f8f8;
 }
 
+.resident-picker-nav{
+    line-height: 50px;
+}
+
 .dashboard-nav{
     background-color: rgb(48,64,81);
     color: rgb(167,177,196);

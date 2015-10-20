@@ -150,7 +150,7 @@ describe('residentMapper test suite', function () {
 
         it('should return three groups', function (done) {
             residentMapper.getKitchenGroups(function (err, data) {
-                if(err) throw err;
+                if (err) throw err;
                 data.length.should.equal(3);
                 done();
             });
