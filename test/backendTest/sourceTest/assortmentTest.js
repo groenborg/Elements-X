@@ -57,7 +57,7 @@ describe("Assortment test suite", function () {
         it('Should not create assortment with same name', function (done) {
             // duplicate name
             item.name = "Tuborg Guld";
-
+            
             assortmentMapper.createAssortment(item, function (err, data) {
                 if (err) {
                     done();

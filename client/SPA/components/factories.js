@@ -69,6 +69,9 @@
                             break;
                     }
                 }
+            },
+            getResident: function (kitchenNumber, resident_id) {
+                throw new DOMException("Not yet implememnted");
             }
         }
     }]);
