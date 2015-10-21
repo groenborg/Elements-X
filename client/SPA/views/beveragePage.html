@@ -1,11 +1,8 @@
 <div class="container">
 
     <div class="row">
-
-        <!-- Heading -->
-        <h1>Buy here</h1>
+        <h1>Currently Shopping - <u>{{shopper.first_name}} {{shopper.last_name}}</u></h1>
         <hr/>
-
         <!-- Beverage section -->
         <div class="col-md-8">
             <div class="list-group">
@@ -25,6 +22,8 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
+                    <p class="lead">Balance: {{shopper.current_balance}}</p>
+
                     <p class="lead"> Total price: {{basket.summarizedPrice}}</p>
 
                     <p class="lead"> Total items: {{basket.items.length}}</p>

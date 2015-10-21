@@ -23,7 +23,7 @@
         }).when('/picker', {
             templateUrl: 'views/userResidents.html',
             controller: 'UserCardPickerCtrl'
-        }).when('/buy/:id', {
+        }).when('/buy/:kitchenNumber/:residentId', {
             templateUrl: 'views/beveragePage.html',
             controller: 'BuyCtrl'
 

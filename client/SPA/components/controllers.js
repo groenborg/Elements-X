@@ -14,7 +14,7 @@
 
     });
 
-    app.controller('BuyCtrl', function ($scope, $routeParams) {
+    app.controller('BuyCtrl', function ($scope, $routeParams, storageFactory) {
         $scope.drinks = [
             {
                 name: "Guld",
@@ -61,6 +61,8 @@
             summarizedPrice: 0,
             items: []
         };
+        
+        $scope.shopper = storageFactory.getResident($routeParams.kitchenNumber, $routeParams.residentId);
 
 
         $scope.addToBasket = function (item, price) {
@@ -126,9 +128,6 @@
         } else {
             $scope.kitchenResidents = storageFactory.getKitchen("three");
         }
-
-        //get number based on kitchenPage
-
 
     }]);
 })();
