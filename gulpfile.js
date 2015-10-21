@@ -9,7 +9,7 @@ var mocha = require('gulp-mocha');
 var gutil = require('gulp-util');
 
 gulp.task('mocha', function () {
-    return gulp.src(['test/**/sourceTest/*.js'], {read: true})
+    return gulp.src(['test/**/**/*.js'], {read: true})
         .pipe(mocha({
             reporter: 'spec',           // console output format
             ignoreLeaks: false,         // Leaks
@@ -24,7 +24,7 @@ gulp.task('mocha', function () {
 });
 
 gulp.task('sourceTest', function () {
-    return gulp.src(['test/**/**/*.js'], {read: true})
+    return gulp.src(['test/**/sourceTest/*.js'], {read: true})
         .pipe(mocha({
             reporter: 'spec',
             ignoreLeaks: false,
@@ -33,6 +33,15 @@ gulp.task('sourceTest', function () {
         }));
 });
 
+gulp.task('serviceTest',function () {
+    return gulp.src(['test/**/serviceTest/*.js'],{read:true})
+        .pipe(mocha({
+          reporter:'spec',
+          ignoreLeaks:false,
+          bail:false,
+          timeout: 700
+        }));
+});
 
 gulp.task('lint', function () {
     return gulp.src('test/**/*.js')
@@ -42,12 +51,10 @@ gulp.task('lint', function () {
 
 gulp.task('data', function () {
     return gulp.src('server/model/connection.js')
-
 });
 
 gulp.task('watch', function () {
     gulp.watch(['server/source/*.js', 'test/**/*.js', 'server/model/*.js'], ['mocha', 'lint']);
-
 });
 
 gulp.task('test', ['sourceTest']);

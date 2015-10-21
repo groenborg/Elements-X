@@ -1,0 +1,36 @@
+<div class="container">
+
+    <p class="lead">{{error}}</p>
+    <hr/>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="col-md-3" ng-repeat="resident in kitchenResidents"> <!-- ng-repeat here -->
+                <div class="list-group">
+                    <a href="#/buy/{{resident.resident_id}}" class="list-group-item">
+                        <blockquote>{{resident.first_name}}</blockquote>
+                        <p class="lead text-center"> {{resident.current_balance}}kr</p>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="list-group-item-text">Kitchen {{resident.kitchen_number}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="list-group-item-text pull-right">Room {{resident.room_number}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#" class="btn btn-primary btn-lg resident-picker-nav">kitchen 1</a></li>
+                <li><a href="#" class="btn btn-primary btn-lg resident-picker-nav">Kitchen 2</a></li>
+                <li><a href="#" class="btn btn-primary btn-lg resident-picker-nav">Kitchen 3</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+</div>

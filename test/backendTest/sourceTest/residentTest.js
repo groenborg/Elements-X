@@ -2,12 +2,10 @@ var residentMapper = require('../../../server/source/residentMapper.js');
 var connection = require('../../../server/model/connection.js');
 var fixture = require('./../fixture.js');
 var should = require('should');
-
+var util = require('util');
 
 describe('residentMapper test suite', function () {
 
-
-    /* CONNECT TO DATABASE*/
     before('starting connection', function (done) {
         connection.connectToMongoDB(done);
     });
@@ -16,8 +14,6 @@ describe('residentMapper test suite', function () {
         connection.closeMongoDB(done);
     });
 
-
-    /*FILL THE DOCUMENT STORE*/
     beforeEach('fill resident collection', function (done) {
         fixture.fillDatabase(done);
     });
@@ -25,9 +21,6 @@ describe('residentMapper test suite', function () {
     afterEach('empty resident collection', function (done) {
         fixture.emptyDataBase(done);
     });
-
-
-    /*TEST CASES*/
 
     describe('get all residents from database', function () {
 
@@ -76,7 +69,6 @@ describe('residentMapper test suite', function () {
         });
     });
 
-
     describe('update a resident with new information', function () {
 
         var updateObject = {
@@ -87,7 +79,6 @@ describe('residentMapper test suite', function () {
             kitchen_number: 2,
             current_balance: 1.345
         };
-
 
         it('should updated the resident with name', function (done) {
             residentMapper.updateResident(updateObject, function (err, data) {
@@ -109,8 +100,6 @@ describe('residentMapper test suite', function () {
                 done();
             });
         });
-
-
     });
 
     describe('delete a resident from the database', function () {
@@ -141,7 +130,6 @@ describe('residentMapper test suite', function () {
             "active": true
         };
 
-
         // DUMMY DATA NOT INSERTED WITH ID_SEQUENCE -- MUST BE FIXED in Later version
         it('should be created and returned with unique ID', function (done) {
             residentMapper.createResident(newResident, function (err, resident) {
@@ -155,6 +143,18 @@ describe('residentMapper test suite', function () {
 
         });
 
+    });
+
+
+    describe('Get residents grouped by kitchens', function () {
+
+        it('should return three groups', function (done) {
+            residentMapper.getKitchenGroups(function (err, data) {
+                if (err) throw err;
+                data.length.should.equal(3);
+                done();
+            });
+        });
     });
 
 });

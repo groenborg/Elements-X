@@ -1,9 +1,9 @@
 var model = require('../model/models.js');
 var deprecate = require('deprecate');
-
+var util = require('util')
 
 var getAllResidents = function (callback) {
-   // deprecate("getAllResidents is deprecated");
+    deprecate("getAllResidents is deprecated");
 
     model.Resident.find({}, function (err, residents) {
         if (err) return callback(err);
@@ -15,7 +15,7 @@ var getAllResidents = function (callback) {
 
 
 var getOneResident = function (residentID, callback) {
-  //  deprecate("getOneResident is deprecated");
+    deprecate("getOneResident is deprecated");
 
     model.Resident.findOne({resident_id: residentID}, function (err, resident) {
 
@@ -23,6 +23,45 @@ var getOneResident = function (residentID, callback) {
         if (resident == null) return callback();
         return callback(undefined, resident);
     });
+};
+/*
+ resident_id: {type: Number, unique: true, required: true},
+ first_name: String,
+ last_name: String,
+ room_number: Number,
+ kitchen_number: Number,
+ current_balance: Number,
+ deposit: Number,                            // The deposited amount when you open an account
+ active: Boolean,                            // Does the resident still live here - move resident to history
+ purchase_history: [purchaseSchema],
+ balance_history: [balanceHistorySchema]
+ */
+var getKitchenGroups = function (callback) {
+
+    model.Resident.aggregate(
+        [
+            {
+                $group: {
+                    _id: '$kitchen_number', residents: {
+                        $push: {
+                            resident_id: "$resident_id",
+                            first_name: "$first_name",
+                            last_name: "$last_name",
+                            room_number: "$room_number",
+                            kitchen_number: "$kitchen_number",
+                            current_balance: "$current_balance",
+                            deposit: "$deposit",
+                            active: "$active"
+                        }
+                    }
+                }
+            }
+        ], function (err, data) {
+            if (err) return callback(err);
+            if (data == null) return callback();
+            return callback(undefined, data);
+        });
+
 };
 
 /* findOneAndUpdate({query},{update},callback);*/
@@ -82,6 +121,6 @@ module.exports = {
     getOneResident: getOneResident,
     updateResident: updateResident,
     deleteResident: deleteResident,
-    createResident: createResident
-
+    createResident: createResident,
+    getKitchenGroups: getKitchenGroups
 };
