@@ -12,7 +12,7 @@
                         ng-click="addToBasket(drink.name, drink.price)"
                         >
                     <span class="pull-left lead">{{drink.name}}</span>
-                    <span class="pull-right lead">{{drink.price + " kr"}}</span>
+                    <span class="pull-right lead">{{drink.price + " dkr"}}</span>
                 </button>
             </div>
         </div>
@@ -22,9 +22,9 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p class="lead">Balance: {{shopper.current_balance}}</p>
+                    <p class="lead">Balance: {{shopper.current_balance}} dkr</p>
 
-                    <p class="lead"> Total price: {{basket.summarizedPrice}}</p>
+                    <p class="lead"> Total price: {{basket.summarizedPrice}} dkr</p>
 
                     <p class="lead"> Total items: {{basket.items.length}}</p>
 

@@ -61,7 +61,7 @@
             summarizedPrice: 0,
             items: []
         };
-        
+
         $scope.shopper = storageFactory.getResident($routeParams.kitchenNumber, $routeParams.residentId);
 
 
