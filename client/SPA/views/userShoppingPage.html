@@ -24,18 +24,18 @@
                 <div class="panel-body">
                     <p class="lead">Balance: {{shopper.current_balance}} dkr</p>
 
-                    <p class="lead"> Total price: {{basket.summarizedPrice}} dkr</p>
+                    <p class="lead"> Total price: {{basket.total_price}} dkr</p>
 
-                    <p class="lead"> Total items: {{basket.items.length}}</p>
+                    <p class="lead"> Total items: {{basket.purchase_items.length}}</p>
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             Basket
                         </div>
                         <div class="panel-body">
-                            <p ng-show="basket.items[0] == undefined"> Empty basket</p>
+                            <p ng-show="basket.purchase_items[0] == undefined"> Empty basket</p>
 
-                            <p ng-repeat="item in basket.items track by $index">
+                            <p ng-repeat="item in basket.purchase_items track by $index">
                                 {{item}}
                             </p>
                         </div>

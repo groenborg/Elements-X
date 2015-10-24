@@ -44,18 +44,13 @@ describe('Transaction test suite', function () {
             timestamp: Date.now()
         };
 
-
-
-        it('should return the new purchase', function () {
+        it('purchase history should have a length of two', function (done) {
             transactionMapper.residentPurchaseTransaction(residentId, purchase, function (err, data) {
-                console.log(err);
-                console.log(data);
-
+                if (err) throw err;
+                data.purchase_history.length.should.equal(2);
+                done();
             });
-
         });
-
-
     });
 
 

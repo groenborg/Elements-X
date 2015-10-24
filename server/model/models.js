@@ -5,7 +5,7 @@ var purchaseSchema = new mongoose.Schema({
     purchase_items: [String],
     total_price: Number,
     items_count: Number,
-    timestamp: {type: Date, default: Date.now()}
+    timestamp: {type: Date, default: Date.now}
 }, {
     _id: false
 });
@@ -13,7 +13,7 @@ var purchaseSchema = new mongoose.Schema({
 var balanceHistorySchema = new mongoose.Schema({
     balance_before: Number,
     insert_amount: Number,
-    timestamp: {type: Date, default: Date.now()}
+    timestamp: {type: Date, default: Date.now}
 });
 
 var resident = new mongoose.Schema({

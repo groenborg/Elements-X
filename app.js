@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var singlePageRoute = require('./server/routes/index');
 var residentRoute = require('./server/routes/residentRest');
-var connection = require('./server/model/connection.js');
+var transactionRoute = require('./server/routes/transactions');
+var connection = require('./server/model/connection');
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -30,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'client/SPA')));
 
 app.use('/', singlePageRoute);
 app.use('/api', residentRoute);
-
+app.use('/api', transactionRoute);
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
@@ -52,8 +53,6 @@ if (app.get('env') === 'development') {
 
 
 if (app.get('env') === 'production') {
-
-
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {

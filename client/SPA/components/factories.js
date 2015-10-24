@@ -81,7 +81,7 @@
                 window.localStorage.setItem(key, value)
             },
             clearPreferredKitchen: function () {
-             
+
             }
         }
     }]);
@@ -118,8 +118,20 @@
                 }, function error(response) {
                     callback(response);
                 });
+            },
+            purchaseTransaction: function (purchase, callback) {
+                $http({
+                    method: 'POST',
+                    url: '/api/user/purchase',
+                    data: purchase
+                }).then(function success(response) {
+                    callback(undefined, response);
+                }, function error(response) {
+                    callback(response);
+                });
+
             }
-        };
+        }
     }]);
 
 })();

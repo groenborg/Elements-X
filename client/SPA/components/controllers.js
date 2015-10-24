@@ -58,34 +58,45 @@
             }
         ];
         $scope.basket = {
-            summarizedPrice: 0,
-            items: []
+            purchase_items: [],
+            total_price: 0,
+            items_count: 0
         };
 
         $scope.shopper = $rootScope.shopper;
 
+        var balance = $rootScope.shopper.current_balance;
 
         $scope.addToBasket = function (item, price) {
-            $scope.basket.summarizedPrice = parseFloat($scope.basket.summarizedPrice);
-            $scope.basket.summarizedPrice += parseFloat(price);
-            $scope.basket.summarizedPrice = $scope.basket.summarizedPrice.toFixed(2);
-
-            $scope.basket.items.push(item);
-
+            $scope.basket.total_price = parseFloat($scope.basket.total_price);
+            $scope.basket.total_price += parseFloat(price);
+            $scope.basket.total_price = $scope.basket.total_price.toFixed(2);
+            $scope.shopper.current_balance -= parseFloat(price);
+            $scope.shopper.current_balance = $scope.shopper.current_balance.toFixed(2);
+            $scope.basket.purchase_items.push(item);
         };
 
 
         // items must be listed xNum when the same items is repeated
         $scope.buyItems = function () {
-            
-
+            $scope.basket.items_count = $scope.basket.purchase_items.length;
+            $scope.basket.resident_id = $scope.shopper.resident_id;
+            webserviceFactory.purchaseTransaction($scope.basket, function (err, data) {
+                if (err) {
+                    console.log(err);
+                }
+                balance = $scope.shopper.current_balance;
+                $scope.clearBasket();
+                console.log(data);
+            });
         };
 
         $scope.clearBasket = function () {
             $scope.basket = {
-                summarizedPrice: 0,
-                items: []
-            }
+                total_price: 0,
+                purchase_items: []
+            };
+            $scope.shopper.current_balance = balance;
         }
 
     });
