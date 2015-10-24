@@ -4,6 +4,7 @@
 
 
     app.factory("controllerFactory", ['storageFactory', 'webserviceFactory', function (storageFactory, webserviceFactory) {
+
         return {
 
             updateKitchenData: function (callback) {
@@ -13,29 +14,18 @@
                         return callback(err);
                     }
                     for (var i = 0; i < 3; ++i) {
-                        var id = data.data[i]._id;
+                        var kitchenNumber = data.data[i]._id;
                         var residentList = data.data[i].residents;
-                        console.log(residentList);
-
-                        switch (id) {
-                            case 1:
-                                storageFactory.storeKitchens("one", residentList);
-                                break;
-                            case 2:
-                                storageFactory.storeKitchens("two", residentList);
-                                break;
-                            case 3:
-                                storageFactory.storeKitchens("three", residentList);
-                        }
+                        storageFactory.storeKitchens(kitchenNumber, residentList);
                     }
                     callback(undefined, data);
                 });
             },
             onLoad: function (scope, kitchenNumber) {
 
-                if (storageFactory.getKitchen("one").length == 0 &&
-                    storageFactory.getKitchen("two").length == 0 &&
-                    storageFactory.getKitchen("three").length == 0) {
+                if (storageFactory.getKitchen(1).length == 0 &&
+                    storageFactory.getKitchen(2).length == 0 &&
+                    storageFactory.getKitchen(3).length == 0) {
                     this.updateKitchenData(function (err, data) {
                         if (err) {
                             scope.err = "No residents found"
@@ -61,29 +51,37 @@
             three: []
         };
 
+        var getNumberInString = function (number) {
+            switch (parseInt(number)) {
+                case 1:
+                    return "one";
+                case 2:
+                    return "two";
+                case 3:
+                    return "three";
+            }
+        };
+
         return {
             getKitchen: function (number) {
-                return kitchenGroup[number];
+                return kitchenGroup[getNumberInString(number)];
             },
             storeKitchens: function (kitchenNumber, residents) {
-                switch (kitchenNumber) {
-                    case "one":
-                        kitchenGroup[kitchenNumber] = residents;
-                        break;
-                    case "two":
-                        kitchenGroup[kitchenNumber] = residents;
-                        break;
-                    case "three":
-                        kitchenGroup[kitchenNumber] = residents;
-                        break;
-                }
+                kitchenGroup[getNumberInString(kitchenNumber)] = residents;
             },
             getResident: function (kitchenNumber, residentId) {
-                for (var i = 0; i < kitchenGroup["three"].length; ++i) {
-                    if (kitchenGroup["three"][i].resident_id == residentId) {
-                        return kitchenGroup["three"][i];
+                var number = getNumberInString(kitchenNumber);
+                for (var i = 0; i < kitchenGroup[number].length; ++i) {
+                    if (kitchenGroup[number][i].resident_id == residentId) {
+                        return kitchenGroup[number][i];
                     }
                 }
+            },
+            savePreferredKitchen: function (key, value) {
+                window.localStorage.setItem(key, value)
+            },
+            clearPreferredKitchen: function () {
+             
             }
         }
     }]);

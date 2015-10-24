@@ -20,13 +20,12 @@
         }).when('/dashboard', {
             templateUrl: 'views/adminDashboard.html',
             controller: ''
-        }).when('/picker', {
-            templateUrl: 'views/userResidents.html',
+        }).when('/picker/:kitchenNumber', {
+            templateUrl: 'views/userCardPickerPage.html',
             controller: 'UserCardPickerCtrl'
         }).when('/buy/:kitchenNumber/:residentId', {
             templateUrl: 'views/beveragePage.html',
             controller: 'BuyCtrl'
-
         }).otherwise({
             templateUrl: 'views/frontPage.html'
         });

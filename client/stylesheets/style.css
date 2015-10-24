@@ -1,42 +1,46 @@
 
-.footer{
+.footer {
     margin-top: 50px;
     border-top: 1px solid #f3ecee;
     padding-top: 10px;
     background-color: #f8f8f8;
 }
 
-.resident-picker-nav{
+.resident-picker-nav {
     line-height: 50px;
 }
 
-.dashboard-nav{
-    background-color: rgb(48,64,81);
-    color: rgb(167,177,196);
+.dashboard-nav {
+    background-color: rgb(48, 64, 81);
+    color: rgb(167, 177, 196);
 }
 
-.footer-row{
+.footer-row {
     text-align: center;
 }
 
 .kitchen-block {
     position: relative;
     height: 0;
-    padding-bottom: 100%;
+    padding-bottom: 50%;
+}
+
+.kitchen-block > * {
+    color: #fff;
 }
 
 /* Color for the kitchens */
 .kitchen-one {
     /*  */
-    background-color: #5bc0de;
+    background-color: #70C1B3;
 }
 
 .kitchen-two {
     /*  */
-    background-color: #777;
+    background-color: #247BA0;
 }
 
 .kitchen-three {
     /*  */
-    background-color: #5cb85c;
+    background-color: #50514F;
 }

@@ -113,14 +113,15 @@
 
     }]);
 
-    app.controller('UserCardPickerCtrl', ['$scope', '$rootScope', 'controllerFactory', 'storageFactory', '$location', function ($scope, $rootScope, controllerFactory, storageFactory, $location) {
+    app.controller('UserCardPickerCtrl', ['$scope', '$rootScope', 'controllerFactory', 'storageFactory', '$location', '$routeParams', function ($scope, $rootScope, controllerFactory, storageFactory, $location, $routeParams) {
         $scope.kitchenResidents = [];
         $scope.error = null;
+        $scope.kitchenNumber = $routeParams.kitchenNumber;
 
-        controllerFactory.onLoad($scope, "three");
-
+        controllerFactory.onLoad($scope, $scope.kitchenNumber);
 
         $scope.changeView = function (kitchenNumber, residentId) {
+            console.log(kitchenNumber);
             $rootScope.shopper = storageFactory.getResident(kitchenNumber, residentId);
             $location.path("/buy/" + kitchenNumber + "/" + residentId);
         };
