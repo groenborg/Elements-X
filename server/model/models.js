@@ -37,6 +37,7 @@ var assortment = new mongoose.Schema({
     name: {type: String, unique: true, required: true},
     supply: Number,
     price: Number,
+    item_size: Number,
     description: String
 });
 
