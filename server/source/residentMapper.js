@@ -1,6 +1,5 @@
 var model = require('../model/models.js');
 var deprecate = require('deprecate');
-var util = require('util')
 
 var getAllResidents = function (callback) {
     deprecate("getAllResidents is deprecated");
@@ -24,18 +23,7 @@ var getOneResident = function (residentID, callback) {
         return callback(undefined, resident);
     });
 };
-/*
- resident_id: {type: Number, unique: true, required: true},
- first_name: String,
- last_name: String,
- room_number: Number,
- kitchen_number: Number,
- current_balance: Number,
- deposit: Number,                            // The deposited amount when you open an account
- active: Boolean,                            // Does the resident still live here - move resident to history
- purchase_history: [purchaseSchema],
- balance_history: [balanceHistorySchema]
- */
+
 var getKitchenGroups = function (callback) {
 
     model.Resident.aggregate(
@@ -51,6 +39,8 @@ var getKitchenGroups = function (callback) {
                             kitchen_number: "$kitchen_number",
                             current_balance: "$current_balance",
                             deposit: "$deposit",
+                            phone: "$phone",
+                            email: "$email",
                             active: "$active"
                         }
                     }

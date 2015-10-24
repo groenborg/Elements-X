@@ -14,7 +14,7 @@
 
     });
 
-    app.controller('BuyCtrl', function ($scope, $rootScope, $routeParams, storageFactory) {
+    app.controller('UserShoppingCtrl', function ($scope, $rootScope, $routeParams, webserviceFactory) {
         $scope.drinks = [
             {
                 name: "Guld",
@@ -76,6 +76,10 @@
 
 
         // items must be listed xNum when the same items is repeated
+        $scope.buyItems = function () {
+            
+
+        };
 
         $scope.clearBasket = function () {
             $scope.basket = {

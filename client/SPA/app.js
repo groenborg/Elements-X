@@ -12,8 +12,8 @@
             templateUrl: 'views/kitchenPage.html',
             controller: 'KitchenCtrl'
         }).when('/buy', {
-            templateUrl: 'views/beveragePage.html',
-            controller: 'BuyCtrl'
+            templateUrl: 'views/userShoppingPage.html',
+            controller: 'UserShoppingCtrl'
         }).when('/residents', {
             templateUrl: 'views/residentPickerPage.html',
             controller: 'ResidentPickerCtrl'
@@ -24,8 +24,8 @@
             templateUrl: 'views/userCardPickerPage.html',
             controller: 'UserCardPickerCtrl'
         }).when('/buy/:kitchenNumber/:residentId', {
-            templateUrl: 'views/beveragePage.html',
-            controller: 'BuyCtrl'
+            templateUrl: 'views/userShoppingPage.html',
+            controller: 'UserShoppingCtrl'
         }).otherwise({
             templateUrl: 'views/frontPage.html'
         });

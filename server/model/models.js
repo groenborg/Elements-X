@@ -6,14 +6,14 @@ var purchaseSchema = new mongoose.Schema({
     total_price: Number,
     items_count: Number,
     timestamp: {type: Date, default: Date.now()}
-
+}, {
+    _id: false
 });
 
 var balanceHistorySchema = new mongoose.Schema({
     balance_before: Number,
     insert_amount: Number,
     timestamp: {type: Date, default: Date.now()}
-
 });
 
 var resident = new mongoose.Schema({
@@ -24,6 +24,8 @@ var resident = new mongoose.Schema({
     kitchen_number: Number,
     current_balance: Number,
     deposit: Number,                            // The deposited amount when you open an account
+    phone: String,
+    email: String,
     active: Boolean,                            // Does the resident still live here - move resident to history
     purchase_history: [purchaseSchema],
     balance_history: [balanceHistorySchema]
