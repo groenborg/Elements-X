@@ -6,7 +6,8 @@
         <div class="col-md-10">
             <div class="col-md-3" ng-repeat="resident in kitchenResidents"> <!-- ng-repeat here -->
                 <div class="list-group">
-                    <a href="#/buy/{{resident.kitchen_number}}/{{resident.resident_id}}" class="list-group-item">
+                    <a href ng-click="changeView(resident.kitchen_number,resident.resident_id)" class="list-group-item">
+
                         <blockquote>{{resident.first_name}}</blockquote>
                         <p class="lead text-center"> {{resident.current_balance}}kr</p>
                         <hr/>

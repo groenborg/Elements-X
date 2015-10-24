@@ -28,13 +28,26 @@
                                 storageFactory.storeKitchens("three", residentList);
                         }
                     }
-                    callback(undefined);
+                    callback(undefined, data);
                 });
             },
-            isLoaded: function () {
-                return (storageFactory.getKitchen("one").length != 0 &&
-                storageFactory.getKitchen("two").length != 0 &&
-                storageFactory.getKitchen("three").length != 0);
+            onLoad: function (scope, kitchenNumber) {
+
+                if (storageFactory.getKitchen("one").length == 0 &&
+                    storageFactory.getKitchen("two").length == 0 &&
+                    storageFactory.getKitchen("three").length == 0) {
+                    this.updateKitchenData(function (err, data) {
+                        if (err) {
+                            scope.err = "No residents found"
+                        } else {
+                            scope.kitchenResidents = storageFactory.getKitchen(kitchenNumber);
+                        }
+                    });
+
+                } else {
+                    scope.kitchenResidents = storageFactory.getKitchen(kitchenNumber);
+
+                }
             }
         }
 

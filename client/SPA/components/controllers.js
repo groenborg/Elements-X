@@ -14,7 +14,7 @@
 
     });
 
-    app.controller('BuyCtrl', function ($scope, $routeParams, storageFactory) {
+    app.controller('BuyCtrl', function ($scope, $rootScope, $routeParams, storageFactory) {
         $scope.drinks = [
             {
                 name: "Guld",
@@ -62,7 +62,7 @@
             items: []
         };
 
-        $scope.shopper = storageFactory.getResident($routeParams.kitchenNumber, $routeParams.residentId);
+        $scope.shopper = $rootScope.shopper;
 
 
         $scope.addToBasket = function (item, price) {
@@ -113,22 +113,17 @@
 
     }]);
 
-    app.controller('UserCardPickerCtrl', ['$scope', 'controllerFactory', 'storageFactory', function ($scope, controllerFactory, storageFactory) {
+    app.controller('UserCardPickerCtrl', ['$scope', '$rootScope', 'controllerFactory', 'storageFactory', '$location', function ($scope, $rootScope, controllerFactory, storageFactory, $location) {
         $scope.kitchenResidents = [];
         $scope.error = null;
 
-        if (!controllerFactory.isLoaded()) {
-            controllerFactory.updateKitchenData(function (err) {
-                if (err) {
-                    $scope.err = "no residents found - error"
-                } else {
-                    $scope.kitchenResidents = storageFactory.getKitchen("three");
-                }
-            });
-        } else {
-            $scope.kitchenResidents = storageFactory.getKitchen("three");
-        }
+        controllerFactory.onLoad($scope, "three");
+
+
+        $scope.changeView = function (kitchenNumber, residentId) {
+            $rootScope.shopper = storageFactory.getResident(kitchenNumber, residentId);
+            $location.path("/buy/" + kitchenNumber + "/" + residentId);
+        };
 
     }]);
 })();
-
