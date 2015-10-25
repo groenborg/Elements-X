@@ -2,10 +2,12 @@
 
     var app = angular.module('EXApp', [
         'ngRoute',
+        'toastr',
         'chart.js',
         'EX.controllers',
         'EX.directives',
-        'EX.factories'
+        'EX.factories',
+        'EX.services'
 
     ]);
 
@@ -29,7 +31,8 @@
             templateUrl: 'views/userShoppingPage.html',
             controller: 'UserShoppingCtrl'
         }).otherwise({
-            templateUrl: 'views/frontPage.html'
+            templateUrl: 'views/kitchenPage.html',
+            controller: 'KitchenCtrl'
         });
 
     });

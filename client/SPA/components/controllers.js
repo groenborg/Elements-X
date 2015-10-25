@@ -10,10 +10,9 @@
     });
 
     app.controller('KitchenCtrl', function ($scope) {
-
     });
 
-    app.controller('UserShoppingCtrl', function ($scope, $rootScope, $routeParams, webserviceFactory) {
+    app.controller('UserShoppingCtrl', function ($scope, $rootScope, $routeParams, webserviceFactory, notificationService) {
         $scope.drinks = [
             {
                 name: "Guld",
@@ -80,14 +79,18 @@
         $scope.buyItems = function () {
             $scope.basket.items_count = $scope.basket.purchase_items.length;
             $scope.basket.resident_id = $scope.shopper.resident_id;
+
             webserviceFactory.purchaseTransaction($scope.basket, function (err, data) {
                 if (err) {
                     console.log(err);
                 }
                 balance = $scope.shopper.current_balance;
+                notificationService.notifySuccess("you bought " + $scope.basket.items_count +
+                    " for " + $scope.basket.total_price + " dkr", "Purchase Successful " + $scope.shopper.first_name);
                 $scope.clearBasket();
-                console.log(data);
             });
+
+
         };
 
         $scope.clearBasket = function () {
