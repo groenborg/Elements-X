@@ -2,9 +2,11 @@
 
     var app = angular.module('EXApp', [
         'ngRoute',
+        'chart.js',
         'EX.controllers',
         'EX.directives',
         'EX.factories'
+
     ]);
 
     app.config(function ($routeProvider) {
@@ -19,7 +21,7 @@
             controller: 'ResidentPickerCtrl'
         }).when('/dashboard', {
             templateUrl: 'views/adminDashboard.html',
-            controller: ''
+            controller: 'DashboardCtrl'
         }).when('/picker/:kitchenNumber', {
             templateUrl: 'views/userCardPickerPage.html',
             controller: 'UserCardPickerCtrl'

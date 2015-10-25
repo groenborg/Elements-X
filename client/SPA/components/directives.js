@@ -17,5 +17,13 @@
             restrict: 'A',
             templateUrl: '../SPA/directives/footer.html'
         }
-    })
+    });
+
+    app.directive('dashboardSidebar', function () {
+        return {
+            restrict: 'A',
+            templateUrl: '../SPA/directives/dashboardSidebar.html'
+        }
+
+    });
 })();
