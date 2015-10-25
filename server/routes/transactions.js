@@ -6,7 +6,7 @@ var router = express.Router();
 router.post('/user/purchase', function (request, response) {
     var purchase = request.body;
     var residentId = purchase.resident_id;
-    delete purchase.resident_id;
+
 
     //Adds a timestamp in none is set
     if (purchase.timestamp != null) {

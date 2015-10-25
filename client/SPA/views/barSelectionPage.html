@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Bar</h2>
+        </div>
+    </div>
+    <hr/>
+
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Serach box -->
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon" id="basic-addon1">Filter</span>
+                <input class="form-control" type="text" ng-model="searchText"/>
+            </div>
+            <p></p>
+            <!-- resident tables -->
+            <table class="table table-hover">
+                <tr>
+                    <th>First Name</th>
+                    <th>Kitchen</th>
+                    <th>Room</th>
+                    <th>Balance</th>
+                </tr>
+                <tr ng-repeat="resident in kitchenOne | filter:searchText" class="bar-table">
+                    <td style="line-height: 50px;">{{resident.first_name}} {{resident.last_name}}</td>
+                    <td style="line-height: 50px;">{{resident.kitchen_number}}</td>
+                    <td style="line-height: 50px;">{{resident.room_number}}</td>
+                    <td style="line-height: 50px;">{{resident.current_balance}}</td>
+                </tr>
+                <tr ng-repeat="resident in kitchenTwo | filter:searchText" class="bar-table">
+                    <td style="line-height: 50px;">{{resident.first_name}} {{resident.last_name}}</td>
+                    <td style="line-height: 50px;">{{resident.kitchen_number}}</td>
+                    <td style="line-height: 50px;">{{resident.room_number}}</td>
+                    <td style="line-height: 50px;">{{resident.current_balance}}</td>
+                </tr>
+                <tr ng-repeat="resident in kitchenThree | filter:searchText" class="bar-table">
+                    <td style="line-height: 50px;">{{resident.first_name}} {{resident.last_name}}</td>
+                    <td style="line-height: 50px;">{{resident.kitchen_number}}</td>
+                    <td style="line-height: 50px;">{{resident.room_number}}</td>
+                    <td style="line-height: 50px;">{{resident.current_balance}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Last used customers -->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Frequent Users
+                </div>
+                <div class="panel-body">
+                    to be implemented
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

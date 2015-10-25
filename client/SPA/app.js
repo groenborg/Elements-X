@@ -19,8 +19,8 @@
             templateUrl: 'views/userShoppingPage.html',
             controller: 'UserShoppingCtrl'
         }).when('/residents', {
-            templateUrl: 'views/residentPickerPage.html',
-            controller: 'ResidentPickerCtrl'
+            templateUrl: 'views/barSelectionPage.html',
+            controller: 'BarSelectionCtrl'
         }).when('/dashboard', {
             templateUrl: 'views/adminDashboard.html',
             controller: 'DashboardCtrl'

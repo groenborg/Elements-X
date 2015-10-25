@@ -103,29 +103,16 @@
 
     });
 
-    app.controller('ResidentPickerCtrl', ['$scope', function ($scope) {
-        $scope.persons = [
-            {
-                name: "torben",
-                balance: 34
-            }, {
-                name: "Simon",
-                balance: 788
-            }, {
-                name: "Anine",
-                balance: 1
-            }, {
-                name: "jens",
-                balance: 23555
-            }, {
-                name: "Ole",
-                balance: 34567
-            }, {
-                name: "Jørgen",
-                balance: 0
-            }
+    app.controller('BarSelectionCtrl', ['$scope', 'controllerFactory', 'storageFactory', function ($scope, controllerFactory, storageFactory) {
+        $scope.kitchenOne = storageFactory.getKitchen(1);
+        $scope.kitchenTwo = storageFactory.getKitchen(2);
+        $scope.kitchenThree = storageFactory.getKitchen(3);
 
-        ];
+        controllerFactory.updateKitchenData(function (err, data) {
+            $scope.kitchenOne = storageFactory.getKitchen(1);
+            $scope.kitchenTwo = storageFactory.getKitchen(2);
+            $scope.kitchenThree = storageFactory.getKitchen(3);
+        });
 
 
     }]);
