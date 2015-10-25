@@ -14,6 +14,14 @@
                 return;
             }
             toastr.success(message);
+        };
+
+        this.notifyClear = function (message, title) {
+            if (title) {
+                toastr.warning(message, title);
+                return;
+            }
+            toastr.warning(message);
         }
 
     });
