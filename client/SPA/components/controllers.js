@@ -79,7 +79,7 @@
         $scope.buyItems = function () {
             $scope.basket.items_count = $scope.basket.purchase_items.length;
             $scope.basket.resident_id = $scope.shopper.resident_id;
-
+            $scope.basket.current_balance = $scope.shopper.current_balance;
             webserviceFactory.purchaseTransaction($scope.basket, function (err, data) {
                 if (err) {
                     console.log(err);

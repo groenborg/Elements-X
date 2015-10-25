@@ -38,6 +38,7 @@ describe('Transaction test suite', function () {
         var residentId = 27;
 
         var purchase = {
+            current_balance:20,
             purchase_items: ['beer', 'beer'],
             total_price: 23,
             items_count: 2,
