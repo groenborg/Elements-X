@@ -14,6 +14,8 @@ var balanceHistorySchema = new mongoose.Schema({
     balance_before: Number,
     insert_amount: Number,
     timestamp: {type: Date, default: Date.now}
+},{
+  _id: false
 });
 
 var resident = new mongoose.Schema({
@@ -49,7 +51,6 @@ var transaction = new mongoose.Schema({
     total_price: Number,
     amount: Number,
     timestamp: {type: Date, default: Date.now()}
-
 });
 
 //sequence for unique ID generation
