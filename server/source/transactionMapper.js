@@ -18,4 +18,19 @@ var residentPurchaseTransaction = function (residentId, purchase, callback) {
 };
 
 
+var residentBalanceRefillTransaction = function (residentId, balance, callback) {
+
+
+    model.Resident.findOneAndUpdate({resident_id: residentId}, {
+
+        $push: {balance_history: balance}
+    }, {new: true}, function (err, data) {
+        if (err) return callback(err);
+        if (data == null) return callback();
+        return callback(undefined, data);
+    });
+};
+
+
+exports.residentBalanceRefillTransaction = residentBalanceRefillTransaction;
 exports.residentPurchaseTransaction = residentPurchaseTransaction;

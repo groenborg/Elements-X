@@ -35,7 +35,9 @@ describe("Assortment test suite", function () {
         var item = {
             name: "New Item",
             supply: 345,
-            price: 4.45,
+            one_price: 4.45,
+            two_price:5.2,
+            three_price: 6,
             description: "A  drink"
         };
 
@@ -47,7 +49,7 @@ describe("Assortment test suite", function () {
                     throw err;
                 }
                 data.name.should.equal(item.name);
-                data.price.should.equal(item.price);
+                data.one_price.should.equal(item.one_price);
                 done();
             });
 
@@ -72,25 +74,24 @@ describe("Assortment test suite", function () {
         var updatedItem = {
             "name": "Tuborg Guld",
             "supply": 233,
-            "price": 4.45,
+            "one_price": 4.45,
             "description": "not just a drink no more"
         };
 
         it('should update and return updated object', function (done) {
 
             assortmentMapper.updateAssortmentItem(updatedItem, function (err, data) {
+                if(err) throw err;
                 updatedItem.name.should.equal(data.name);
                 updatedItem.description.should.equal(data.description);
+                updatedItem.one_price.should.equal(data.one_price);
                 done();
             });
-
-
         });
 
         it('should not update a non existing item', function (done) {
 
-            ///Non existing name
-            updatedItem.name = "hej";
+            updatedItem.name = "invald name";
 
             assortmentMapper.updateAssortmentItem(updatedItem, function (err, data) {
                 if (err) throw err;
@@ -98,6 +99,10 @@ describe("Assortment test suite", function () {
                 done();
             });
         });
+
+
+
+
     });
 
 });

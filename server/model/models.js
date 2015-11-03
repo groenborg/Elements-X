@@ -14,8 +14,8 @@ var balanceHistorySchema = new mongoose.Schema({
     balance_before: Number,
     insert_amount: Number,
     timestamp: {type: Date, default: Date.now}
-},{
-  _id: false
+}, {
+    _id: false
 });
 
 var resident = new mongoose.Schema({
@@ -38,7 +38,9 @@ var resident = new mongoose.Schema({
 var assortment = new mongoose.Schema({
     name: {type: String, unique: true, required: true},
     supply: Number,
-    price: Number,
+    one_price: Number,
+    two_price: Number,
+    three_price: Number,
     item_size: Number,
     description: String
 });
