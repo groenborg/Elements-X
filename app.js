@@ -4,9 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 var singlePageRoute = require('./server/routes/index');
 var residentRoute = require('./server/routes/residentRest');
 var transactionRoute = require('./server/routes/transactions');
+var assortmentRoute = require('./server/routes/assortmentService');
+
 var connection = require('./server/model/connection');
 var app = express();
 
@@ -32,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'client/SPA')));
 app.use('/', singlePageRoute);
 app.use('/api', residentRoute);
 app.use('/api', transactionRoute);
+app.use ('/api',assortmentRoute);
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

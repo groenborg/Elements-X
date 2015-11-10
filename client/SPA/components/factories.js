@@ -89,16 +89,6 @@
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
-            getOneResident: function (ID, callback) {
-                $http({
-                    method: 'GET',
-                    url: 'api/url' + ID
-                }).then(function success() {
-
-                }, function error() {
-
-                });
-            },
             getAllResidents: function (callback) {
                 $http({
                     method: 'GET',
@@ -129,7 +119,16 @@
                 }, function error(response) {
                     callback(response);
                 });
-
+            },
+            getAllAssortmentItems: function (callback) {
+                $http({
+                    method: 'GET',
+                    url: '/api/assortment/all'
+                }).then(function success(data) {
+                    callback(undefined, data)
+                }, function error(data) {
+                    callback(data)
+                });
             }
         }
     }]);

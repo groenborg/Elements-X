@@ -22,7 +22,6 @@ describe('Transaction test suite', function () {
         fixture.emptyDataBase(done);
     });
 
-
     describe('resident Purchase test', function () {
 
         var residentId = 27;

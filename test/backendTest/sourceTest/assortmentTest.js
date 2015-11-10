@@ -92,16 +92,12 @@ describe("Assortment test suite", function () {
         it('should not update a non existing item', function (done) {
 
             updatedItem.name = "invald name";
-
             assortmentMapper.updateAssortmentItem(updatedItem, function (err, data) {
                 if (err) throw err;
                 (data === undefined).should.equal(true);
                 done();
             });
         });
-
-
-
 
     });
 
