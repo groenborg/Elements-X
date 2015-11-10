@@ -23,22 +23,12 @@ describe('Transaction test suite', function () {
     });
 
 
-    /*
-     var purchaseSchema = new mongoose.Schema({
-     purchase_items: [String],
-     total_price: Number,
-     items_count: Number,
-     timestamp: {type: Date, default: Date.now()}
-
-     });
-     */
-
-    describe('residentPurchase test', function () {
+    describe('resident Purchase test', function () {
 
         var residentId = 27;
 
         var purchase = {
-            current_balance:20,
+            current_balance: 20,
             purchase_items: ['beer', 'beer'],
             total_price: 23,
             items_count: 2,
@@ -52,6 +42,31 @@ describe('Transaction test suite', function () {
                 done();
             });
         });
+
+    });
+
+
+    /*
+     * var balanceHistorySchema = new mongoose.Schema({
+     balance_before: Number,
+     insert_amount: Number,
+     timestamp: {type: Date, default: Date.now}
+     }, {
+     _id: false
+     });
+     *
+     * */
+
+    describe('resident Refill Balance test', function () {
+
+
+        var balanceHistoryItem = {
+            insert_amount: 100,
+
+
+        }
+
+
     });
 
 

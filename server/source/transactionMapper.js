@@ -1,11 +1,14 @@
 var model = require('../model/models.js');
+var collectionMapper = require('../source/collectionGetMapper');
+
 
 var residentPurchaseTransaction = function (residentId, purchase, callback) {
 
-
+    console.log(purchase);
     var balance = purchase.current_balance;
     delete purchase.resident_id;
     delete purchase.current_balance;
+
 
     model.Resident.findOneAndUpdate({resident_id: residentId}, {
         current_balance: balance,
@@ -18,16 +21,28 @@ var residentPurchaseTransaction = function (residentId, purchase, callback) {
 };
 
 
-var residentBalanceRefillTransaction = function (residentId, balance, callback) {
+var residentBalanceRefillTransaction = function (residentId, balanceRefillItem, callback) {
 
-
-    model.Resident.findOneAndUpdate({resident_id: residentId}, {
-
-        $push: {balance_history: balance}
-    }, {new: true}, function (err, data) {
+    collectionMapper.getOneElementFromCollection('Resident', {resident_id: residentId}, function (err, data) {
         if (err) return callback(err);
-        if (data == null) return callback();
-        return callback(undefined, data);
+        if (data.current_balance == null || data.current_balance == undefined) return callback();
+
+        var newCurrentBalance = data.current_balance + balanceRefillItem.insert_amount;
+        var newBalance = {
+            balance_before: data.current_balance,
+            insert_amount: balanceRefillItem.insert_amount,
+            timestamp: Date.now()
+        };
+
+        model.Resident.findOneAndUpdate({resident_id: residentId}, {
+            current_balance: newCurrentBalance,
+            $push: {balance_history: newBalance}
+
+        }, {new: true}, function (err, data) {
+            if (err) return callback(err);
+            if (data == null) return callback();
+            return callback(undefined, data);
+        });
     });
 };
 
