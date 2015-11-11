@@ -9,7 +9,6 @@
             restrict: 'A',
             templateUrl: '../SPA/directives/navigation.html'
         }
-
     });
 
     app.directive('footer', function () {
@@ -24,6 +23,24 @@
             restrict: 'A',
             templateUrl: '../SPA/directives/dashboardSidebar.html'
         }
-
     });
+
+
+    app.directive('createResidentForm', function () {
+        return {
+            restrict: 'EA',
+            templateUrl: "../SPA/directives/adminCreateResidentForm.html",
+            scope: {
+                data: '@'
+            },
+            controller: function ($scope) {
+                $scope.name = "hello world"
+            },
+            link: function ($scope, element, attrs) {
+
+            }
+        }
+    });
+
+
 })();
