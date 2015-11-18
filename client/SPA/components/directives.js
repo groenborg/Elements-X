@@ -43,4 +43,20 @@
     });
 
 
+    app.directive('createAssortmentForm', function () {
+        return {
+            restrict: 'EA',
+            templateUrl: "../SPA/directives/adminCreateAssortmentForm.html",
+            scope: {
+                data: '@'
+            },
+            controller: function ($scope) {
+                $scope.name = "hello world"
+            },
+            link: function ($scope, element, attrs) {
+
+            }
+        }
+    });
+
 })();
