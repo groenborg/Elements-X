@@ -1,5 +1,6 @@
-<div class="col-md-10 main">
+<!-- Shares scope with DashboardCtrl -->
 
+<div class="col-md-10 main">
     <!-- Welcome section -->
     <div class="row">
         <div class="col-md-12">
@@ -11,7 +12,7 @@
 
     <!-- inventory overview section -->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Inventory Overview</h3>
@@ -23,11 +24,30 @@
                                 chart-data="data" chart-labels="labels">
                         </canvas>
                     </div>
-
-
                 </div>
             </div>
         </div>
+
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Actions
+                </div>
+                <div class="panel-body">
+
+                    <label for="">Create new resident</label>
+                    <button class=" btn btn-success btn-lg btn-group-justified" ng-click="showForm('resident')">
+                        New Resident
+                    </button>
+                    <br>
+                    <label for="">Create new Assortment item</label>
+                    <button class=" btn btn-success btn-lg btn-group-justified" ng-click="showForm('assortment')">
+                        New Assortment Item
+                    </button>
+                </div>
+            </div>
+        </div>
+
 
         <!-- User activity -->
         <div class="col-md-6">
@@ -36,7 +56,7 @@
                     <h3 class="panel-title">Latest activity</h3>
                 </div>
                 <div class="panel-body">
-
+                    <button class="btn btn-default" type="submit">Button</button>
                     some activity
                 </div>
             </div>

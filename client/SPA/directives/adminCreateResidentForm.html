@@ -1,5 +1,6 @@
-<div class="col-md-10 main">
+<!-- Shares scope with DashboardCtrl -->
 
+<div class="col-md-10 main">
     <!-- Welcome section -->
     <div class="row">
         <div class="col-md-12">
@@ -11,46 +12,52 @@
 
     <div class="row">
         <div class=" col-md-offset-1 col-md-6">
+
             <!-- Create resident form elements -->
             <div class="form-group form-group-lg">
-                <label for="name">First Name</label>
-                <input id="name" type="text" class="form-control" placeholder="First Name">
+                <label for="first-name">First Name</label>
+                <input id="first-name" type="text" class="form-control" placeholder="First Name">
             </div>
             <div class="form-group form-group-lg">
-                <label for="name">Last Name</label>
-                <input type="text" class="form-control" placeholder="Last Name" aria-describedby="sizing-addon1">
-            </div>
-
-            <div class="form-group form-group-lg">
-                <label for="name">phone</label>
-                <input type="text" class="form-control" placeholder="12345678" aria-describedby="sizing-addon1">
+                <label for="last-name">Last Name</label>
+                <input id="last-name" type="text" class="form-control" placeholder="Last Name">
             </div>
 
             <div class="form-group form-group-lg">
-                <label for="name">email</label>
-                <input type="email" class="form-control" placeholder="vkr@awesome.dk" aria-describedby="sizing-addon1">
+                <label for="phone">phone</label>
+                <input id="phone" type="text" class="form-control" placeholder="12345678"
+                       aria-describedby="sizing-addon1">
             </div>
 
             <div class="form-group form-group-lg">
-                <label for="name">kitchen number</label>
-                <input type="number" class="form-control" placeholder="e.g. 1" aria-describedby="sizing-addon1">
+                <label for="email">email</label>
+                <input id="email" type="email" class="form-control" placeholder="vkr@awesome.dk"
+                       aria-describedby="sizing-addon1">
             </div>
 
             <div class="form-group form-group-lg">
-                <label for="name">Room number</label>
-                <input type="number" class="form-control" placeholder="format: 3032" aria-describedby="sizing-addon1">
+                <label for="kitchen-number">kitchen number</label>
+                <input id="kitchen-number" type="number" class="form-control" placeholder="e.g. 1"
+                       aria-describedby="sizing-addon1">
             </div>
 
             <div class="form-group form-group-lg">
-                <label for="name">start balance</label>
-                <input type="number" class="form-control" ng-value="100" aria-describedby="sizing-addon1">
+                <label for="room-number">Room number</label>
+                <input id="room-number" type="number" class="form-control" placeholder="format: 3032"
+                       aria-describedby="sizing-addon1">
+            </div>
+
+            <div class="form-group form-group-lg">
+                <label for="start-balance">start balance</label>
+                <input id="start-balance" type="number" class="form-control" ng-value="100"
+                       aria-describedby="sizing-addon1">
             </div>
             <hr>
             <!-- Button section -->
             <button type="button" class="btn btn-primary btn-lg">Add new Resident</button>
             <button type="button" class="btn btn-warning btn-lg">Clear</button>
         </div>
-        
+
         <!-- Recently added items -->
         <div class="col-md-5">
             <div class="panel panel-default">
@@ -61,10 +68,7 @@
 
                 </div>
             </div>
-            <a ng-href="" class="btn btn-danger btn-lg">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                Back
-            </a>
+            <button ng-click="showForm('main')" type="button" class="btn btn-danger btn-lg">Back</button>
         </div>
     </div>
 </div>

@@ -9,22 +9,21 @@
         </div>
     </div>
     <div class="row">
-
-        <div class="form-group">
-            <div class=" col-md-offset-1 col-md-6">
-
+        <div class=" col-md-offset-1 col-md-6">
+            <div class="form-group">
                 <div class="form-group form-group-lg">
                     <label for="assortment-name">Name</label>
                     <input id="assortment-name" type="text" class="form-control" placeholder="Assortment Name">
                 </div>
                 <div class="form-group form-group-lg">
                     <label for="supply">Supply</label>
-                    <input id="supply" type="number" class="form-control" placeholder="supply e.g. 2">
+                    <input id="supply" type="number" class="form-control" placeholder="Crates in storage">
                 </div>
                 <div class="form-group form-group-lg">
                     <label for="size">unit amount</label>
                     <input id="size" type="number" class="form-control" placeholder="unit amount">
-                    <p><span class="label label-info"> Info </span>units in a single package</p>
+
+                    <p><span class="label label-info"> Info </span>units in a crate</p>
                 </div>
                 <div class="form-group form-group-lg">
                     <label for="price-one">Kitchen 1 price</label>
@@ -38,13 +37,24 @@
                     <label for="price-three">Kitchen 3 price</label>
                     <input id="price-three" type="number" class="form-control" placeholder="kitchen 3 price">
                 </div>
-
+                <hr>
+                <!-- Button section -->
+                <button type="button" class="btn btn-primary btn-lg">Add new Resident</button>
+                <button type="button" class="btn btn-warning btn-lg">Clear</button>
             </div>
+            <!-- Recently added section -->
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Items section
+                </div>
+                <div class="panel-body">
 
-
+                </div>
+            </div>
+            <button ng-click="showForm('main')" type="button" class="btn btn-danger btn-lg">Back</button>
         </div>
 
     </div>
-
-
 </div>
