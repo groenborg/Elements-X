@@ -24,15 +24,18 @@
         }).when('/dashboard', {
             templateUrl: 'views/adminDashboard.html',
             controller: 'DashboardCtrl'
+        }).when('/dashboard/kitchen/:kitchenNumber', {
+            templateUrl: "views/adminDashboardKitchen.html",
+            controller: "DashBoardKitchenCtrl"
+        }).when('/inventory',{
+            templateUrl:"views/adminInventory.html",
+            controller:"InventoryCtrl"
         }).when('/picker/:kitchenNumber', {
             templateUrl: 'views/userCardPickerPage.html',
             controller: 'UserCardPickerCtrl'
         }).when('/buy/:kitchenNumber/:residentId', {
             templateUrl: 'views/userShoppingPage.html',
             controller: 'UserShoppingCtrl'
-        }).when('/dashboard/kitchen/:kitchenNumber', {
-            templateUrl:"views/adminDashboardKitchen.html",
-            controller:"DashBoardKitchenCtrl"
         }).otherwise({
             templateUrl: 'views/kitchenPage.html',
             controller: 'KitchenCtrl'

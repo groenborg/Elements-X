@@ -16,8 +16,25 @@
 
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="filterModel">Filter</label>
+                            <input id="filterModel" type="text" class="form-control input-lg" placeholder="filter residents" ng-model="search">
+                        </div>
+                    </form>
 
+                </div>
+                <div class="col-md-8">
+                    <p class="lead"> total residents: <var> {{kitchenResidents.length}}</var></p>
+
+                    <p class="lead"> summarized balance: <var>{{summarizedBalance()}}</var></p>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
                     <table class="table table-responsive table-hover">
                         <!-- determines width on child columns -->
                         <tr>
@@ -30,7 +47,7 @@
                             <th class="col-md-3"></th>
                             <th></th>
                         </tr>
-                        <tr ng-repeat="resident in kitchenResidents">
+                        <tr ng-repeat="resident in kitchenResidents | filter:search">
                             <td>{{resident.resident_id}}</td>
                             <td>{{resident.first_name}} {{resident.last_name}}</td>
                             <td>{{resident.room_number}}</td>

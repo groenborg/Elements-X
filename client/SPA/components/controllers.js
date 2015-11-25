@@ -177,11 +177,19 @@
         controllerFactory.onLoad($scope, $scope.kitchenNumber);
         $scope.deposit = function (resident) {
             console.log(resident);
+        };
+
+        $scope.summarizedBalance = function () {
+            var sum = 0;
+            for (var i = 0; i < $scope.kitchenResidents.length; ++i)
+                sum += $scope.kitchenResidents[i].current_balance;
+            return sum.toFixed(2);
         }
+
     }]);
 
     app.controller('InventoryCtrl', ["$scope", function ($scope) {
-        
+
 
     }]);
 
