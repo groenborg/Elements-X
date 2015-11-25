@@ -18,12 +18,13 @@
                     <h3 class="panel-title">Inventory Overview</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="col-md-6">
+
                         <p>Overview over inventory</p>
-                        <canvas id="bar" class="chart chart-bar"
-                                chart-data="data" chart-labels="labels">
+                        <canvas id="bar" class="chart chart-bar" height="100px"
+                                chart-data="storeChart.data" chart-labels="storeChart.labels" chart-options="storeChart.options"
+                                chart-colours="storeChart.colours">
                         </canvas>
-                    </div>
+
                 </div>
             </div>
         </div>

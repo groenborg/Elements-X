@@ -1,0 +1,65 @@
+<!-- Shares scope with DashboardCtrl -->
+<div class="container-fluid dashboard-body">
+
+    <div class="row">
+
+        <div dashboard-sidebar></div>
+
+        <div class="col-md-10 main">
+            <!-- Welcome section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="lead"> Kitchen {{kitchenNumber}}</p>
+                    <hr/>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <table class="table table-responsive table-hover">
+                        <!-- determines width on child columns -->
+                        <tr>
+                            <th class="col-md-1">#ID</th>
+                            <th class="col-md-2">name</th>
+                            <th class="col-md-1">room number</th>
+                            <th class="col-md-1">kitchen number</th>
+                            <th class="col-md-1">current balance</th>
+                            <th class="col-md-1">deposit</th>
+                            <th class="col-md-3"></th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="resident in kitchenResidents">
+                            <td>{{resident.resident_id}}</td>
+                            <td>{{resident.first_name}} {{resident.last_name}}</td>
+                            <td>{{resident.room_number}}</td>
+                            <td>{{resident.kitchen_number}}</td>
+                            <td>{{resident.current_balance}}</td>
+                            <td>{{resident.deposit}}</td>
+                            <td>
+                                <!-- Inline refill form -->
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <input type="number" class="form-control" placeholder="amount">
+                                    </div>
+                                    <button ng-click="" type="submit" class="btn btn-success">Deposit</button>
+                                </div>
+                            </td>
+                            <td>
+                                <button ng-click="deposit(resident)" type="submit" class="btn btn-warning">Edit</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div><!--/.container-->
+
+
+

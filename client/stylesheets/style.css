@@ -77,6 +77,14 @@
     background-color: #fff;
 }
 
-
+a {
+    color: #475B5A;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    color: #2E2F2F;
+    text-decoration: underline;
+}
 
 

@@ -30,6 +30,9 @@
         }).when('/buy/:kitchenNumber/:residentId', {
             templateUrl: 'views/userShoppingPage.html',
             controller: 'UserShoppingCtrl'
+        }).when('/dashboard/kitchen/:kitchenNumber', {
+            templateUrl:"views/adminDashboardKitchen.html",
+            controller:"DashBoardKitchenCtrl"
         }).otherwise({
             templateUrl: 'views/kitchenPage.html',
             controller: 'KitchenCtrl'

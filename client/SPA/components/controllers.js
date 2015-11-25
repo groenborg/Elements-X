@@ -10,6 +10,8 @@
     });
 
     app.controller('KitchenCtrl', function ($scope) {
+
+
     });
 
     app.controller('UserShoppingCtrl', function ($scope, $rootScope, $routeParams, webserviceFactory, notificationService) {
@@ -133,17 +135,28 @@
     }]);
 
     app.controller('DashboardCtrl', ['$scope', function ($scope) {
-        $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-        $scope.series = ['Series A', 'Series B'];
 
+        $scope.storeChart = {
+            labels: ["Beer", "minto", "nestea", "cola", "fanta", "classic", "guld"],
+            data: [
+                [65, 59, 80, 81, 56, 55, 40]
+            ],
+            options: {
+                scaleShowGridLines: false
+            },
+            colours: [{
+                fillColor: 'rgb(76,76,76)',
+                strokeColor: 'rgb(76,76,76)',
+                highlightFill: 'rgb(76,76,76)',
+                highlightStroke: 'rgb(76,76,76)'
+            }]
+        };
         $scope.activeForms = {
             resident: false,
             assortment: false,
             main: true
 
         };
-
-        $scope.hello = "argh";
 
         $scope.showForm = function (formKey) {
             for (var prop in $scope.activeForms) {
@@ -153,10 +166,22 @@
             }
         };
 
-        $scope.data = [
-            [65, 59, 80, 81, 56, 55, 40],
-            [28, 48, 40, 19, 86, 27, 90]
-        ];
+    }]);
+
+    app.controller('DashBoardKitchenCtrl', ["$scope", "$routeParams", "storageFactory", "controllerFactory", function ($scope, $routeParams, storageFactory, controllerFactory) {
+        //Load in necessary data
+        $scope.kitchenNumber = $routeParams.kitchenNumber;
+
+        //Controller from here
+
+        controllerFactory.onLoad($scope, $scope.kitchenNumber);
+        $scope.deposit = function (resident) {
+            console.log(resident);
+        }
+    }]);
+
+    app.controller('InventoryCtrl', ["$scope", function ($scope) {
+        
 
     }]);
 
