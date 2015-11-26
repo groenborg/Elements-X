@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -9,7 +10,10 @@ var singlePageRoute = require('./server/routes/index');
 var residentRoute = require('./server/routes/residentRest');
 var transactionRoute = require('./server/routes/transactions');
 var assortmentRoute = require('./server/routes/assortmentService');
+var serverRoute = require('./server/routes/serverMaintenanceService');
 
+
+//var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
 var connection = require('./server/model/connection');
 var app = express();
 
@@ -24,7 +28,7 @@ connection.connectToMongoDB(function (err, data) {
 
 });
 
-app.use(logger('dev'));
+app.use(logger('common'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -35,7 +39,8 @@ app.use(express.static(path.join(__dirname, 'client/SPA')));
 app.use('/', singlePageRoute);
 app.use('/api', residentRoute);
 app.use('/api', transactionRoute);
-app.use ('/api',assortmentRoute);
+app.use ('/api', assortmentRoute);
+app.use('/server', serverRoute);
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
