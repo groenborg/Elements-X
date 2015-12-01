@@ -86,6 +86,22 @@
         }
     }]);
 
+    app.factory('adminFactory', ['webserviceFactory', function (webserviceFactory) {
+        return {
+
+            onLoadTransactions: function (errorProperty, dataProperty, scope, callback) {
+                webserviceFactory.getAllAssortmentItems(function (err, data) {
+                    if (err) {
+                        return scope[errorProperty] = {error: "An error occured"};
+                    }
+                    scope[dataProperty] = data.data;
+                    if (callback) return callback();
+                });
+            }
+        }
+    }]);
+
+
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
@@ -94,7 +110,7 @@
                     method: 'GET',
                     url: 'api/getResidents'
                 }).then(function success(response) {
-                    callback(response);
+                    callback(undefined, response);
                 }, function error(response) {
                     callback(response);
                 });

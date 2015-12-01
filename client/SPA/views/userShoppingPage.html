@@ -9,10 +9,15 @@
                 <!-- beverage picker -->
                 <button type="button" class="list-group-item"
                         ng-repeat="drink in drinks"
-                        ng-click="addToBasket(drink.name, drink.price)"
+                        ng-click="addToBasket(drink.name, drink.one_price)"
                         >
                     <span class="pull-left lead">{{drink.name}}</span>
-                    <span class="pull-right lead">{{drink.price + " dkr"}}</span>
+
+                    <span ng-show="shopper.kitchen_number == 1" class="pull-right lead">{{drink.one_price + " dkr"}}</span>
+                    <span ng-show="shopper.kitchen_number == 2" class="pull-right lead">{{drink.two_price + " dkr"}}</span>
+                    <span ng-show="shopper.kitchen_number == 3" class="pull-right lead">{{drink.three_price + " dkr"}}</span>
+
+
                 </button>
             </div>
         </div>

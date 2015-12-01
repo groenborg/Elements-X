@@ -1,3 +1,4 @@
+/* the footer will need a height if it fails to stick */
 
 .footer {
     margin-top: 50px;
@@ -81,6 +82,7 @@ a {
     color: #475B5A;
     text-decoration: none;
 }
+
 a:hover,
 a:focus {
     color: #2E2F2F;
