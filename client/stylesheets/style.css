@@ -7,8 +7,13 @@
     background-color: #f8f8f8;
 }
 
-.resident-picker-nav {
+.table > tbody > tr > td{
     line-height: 50px;
+
+}
+
+.resident-picker-nav {
+    line-height: 40px;
 }
 
 .dashboard-nav {

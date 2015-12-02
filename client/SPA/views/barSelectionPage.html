@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2>Bar</h2>
+            <p class="lead">Welcome to the bar</p>
         </div>
     </div>
     <hr/>
@@ -9,37 +9,44 @@
     <div class="row">
         <div class="col-md-8">
             <!-- Serach box -->
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon" id="basic-addon1">Filter</span>
-                <input class="form-control" type="text" ng-model="searchText"/>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon" id="basic-addon1">Filter</span>
+                        <input class="form-control" type="text" ng-model="searchText" placeholder="search residents"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="btn-group btn-group-lg" role="group" aria-label="">
+                        <button ng-click="changeKitchen('one')" type="button" class="btn btn-primary">Kitchen 1</button>
+                        <button ng-click="changeKitchen('two')" type="button" class="btn btn-primary">Kitchen 2</button>
+                        <button ng-click="changeKitchen('three')" type="button" class="btn btn-primary">Kitchen 3</button>
+                    </div>
+                </div>
             </div>
-            <p></p>
+            <div style="padding-bottom: 60px;">
+                <!-- Spacing -->
+            </div>
+
+            <!-- Error warning -->
+            <div class="alert alert-danger" role="alert" ng-show="err.error">
+                {{err.message}}
+            </div>
             <!-- resident tables -->
-            <table class="table table-hover">
+            <table class="table table-hover" ng-hide="err.error">
                 <tr>
                     <th>First Name</th>
                     <th>Kitchen</th>
                     <th>Room</th>
                     <th>Balance</th>
                 </tr>
-                <tr ng-repeat="resident in kitchenOne | filter:searchText" class="bar-table">
-                    <td style="line-height: 50px;">{{resident.first_name}} {{resident.last_name}}</td>
-                    <td style="line-height: 50px;">{{resident.kitchen_number}}</td>
-                    <td style="line-height: 50px;">{{resident.room_number}}</td>
-                    <td style="line-height: 50px;">{{resident.current_balance}}</td>
+                <tr ng-repeat="resident in selectedKitchen | filter:searchText" class="bar-table">
+                    <td>{{resident.first_name}} {{resident.last_name}}</td>
+                    <td>{{resident.kitchen_number}}</td>
+                    <td>{{resident.room_number}}</td>
+                    <td>{{resident.current_balance}}</td>
                 </tr>
-                <tr ng-repeat="resident in kitchenTwo | filter:searchText" class="bar-table">
-                    <td style="line-height: 50px;">{{resident.first_name}} {{resident.last_name}}</td>
-                    <td style="line-height: 50px;">{{resident.kitchen_number}}</td>
-                    <td style="line-height: 50px;">{{resident.room_number}}</td>
-                    <td style="line-height: 50px;">{{resident.current_balance}}</td>
-                </tr>
-                <tr ng-repeat="resident in kitchenThree | filter:searchText" class="bar-table">
-                    <td style="line-height: 50px;">{{resident.first_name}} {{resident.last_name}}</td>
-                    <td style="line-height: 50px;">{{resident.kitchen_number}}</td>
-                    <td style="line-height: 50px;">{{resident.room_number}}</td>
-                    <td style="line-height: 50px;">{{resident.current_balance}}</td>
-                </tr>
+
             </table>
         </div>
 

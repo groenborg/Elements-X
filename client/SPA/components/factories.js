@@ -23,9 +23,7 @@
             },
             onLoad: function (scope, kitchenNumber) {
 
-                if (storageFactory.getKitchen(1).length == 0 &&
-                    storageFactory.getKitchen(2).length == 0 &&
-                    storageFactory.getKitchen(3).length == 0) {
+                if (storageFactory.isKitchensStored()) {
                     this.updateKitchenData(function (err, data) {
                         if (err) {
                             scope.err = "No residents found"
@@ -36,7 +34,22 @@
 
                 } else {
                     scope.kitchenResidents = storageFactory.getKitchen(kitchenNumber);
-
+                }
+            },
+            onLoadKitchens: function (one, two, three, scope, callback) {
+                if (storageFactory.isKitchensStored()) {
+                    scope[one] = storageFactory.getKitchen(1);
+                    scope[two] = storageFactory.getKitchen(2);
+                    scope[three] = storageFactory.getKitchen(3);
+                    callback();
+                } else {
+                    this.updateKitchenData(function (err) {
+                        if (err) return callback(err);
+                        scope[one] = storageFactory.getKitchen(1);
+                        scope[two] = storageFactory.getKitchen(2);
+                        scope[three] = storageFactory.getKitchen(3);
+                        callback()
+                    });
                 }
             }
         }
@@ -76,6 +89,11 @@
                         return kitchenGroup[number][i];
                     }
                 }
+            },
+            isKitchensStored: function () {
+                return kitchenGroup.one.length != 0 &&
+                    kitchenGroup.two.length != 0 &&
+                    kitchenGroup.three.length != 0;
             },
             savePreferredKitchen: function (key, value) {
                 window.localStorage.setItem(key, value)

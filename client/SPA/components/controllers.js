@@ -69,16 +69,33 @@
     });
 
     app.controller('BarSelectionCtrl', ['$scope', 'controllerFactory', 'storageFactory', function ($scope, controllerFactory, storageFactory) {
-        $scope.kitchenOne = storageFactory.getKitchen(1);
-        $scope.kitchenTwo = storageFactory.getKitchen(2);
-        $scope.kitchenThree = storageFactory.getKitchen(3);
+        //Declarative object
+        $scope.selectedKitchen = [];
+        $scope.kitchens = {
+            one: [],
+            two: [],
+            three: []
+        };
 
-        controllerFactory.updateKitchenData(function (err, data) {
-            $scope.kitchenOne = storageFactory.getKitchen(1);
-            $scope.kitchenTwo = storageFactory.getKitchen(2);
-            $scope.kitchenThree = storageFactory.getKitchen(3);
+        //Hides elements on error
+        $scope.err = {
+            error: false,
+            message: "No available data for residents - contact system administrator"
+        };
+
+        //On Load data
+        controllerFactory.onLoadKitchens("one", "two", "three", $scope.kitchens, function (err) {
+            if (err) {
+                err.error = true;
+            } else {
+                $scope.selectedKitchen = $scope.kitchens.one;
+            }
         });
 
+
+        $scope.changeKitchen = function (number) {
+            $scope.selectedKitchen = $scope.kitchens[number];
+        }
 
     }]);
 
@@ -148,13 +165,12 @@
         $scope.kitchenNumber = $routeParams.kitchenNumber;
 
         //Controller from here
-
         controllerFactory.onLoad($scope, $scope.kitchenNumber);
+
+
         $scope.deposit = function (resident) {
             console.log(resident);
         };
-
-        console.log($scope.kitchenResidents);
 
         $scope.summarizedBalance = function () {
             var sum = 0;
@@ -171,9 +187,6 @@
 
         //OnLoad
         adminFactory.onLoadTransactions('error', 'assortmentItems', $scope);
-
-
-        console.log($scope.assortmentItems);
 
 
     }]);
