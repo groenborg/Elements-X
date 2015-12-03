@@ -24,6 +24,8 @@
             onLoad: function (scope, kitchenNumber) {
 
                 if (storageFactory.isKitchensStored()) {
+                    scope.kitchenResidents = storageFactory.getKitchen(kitchenNumber);
+                } else {
                     this.updateKitchenData(function (err, data) {
                         if (err) {
                             scope.err = "No residents found"
@@ -31,9 +33,6 @@
                             scope.kitchenResidents = storageFactory.getKitchen(kitchenNumber);
                         }
                     });
-
-                } else {
-                    scope.kitchenResidents = storageFactory.getKitchen(kitchenNumber);
                 }
             },
             onLoadKitchens: function (one, two, three, scope, callback) {

@@ -22,40 +22,51 @@
             total_price: 0,
             items_count: 0
         };
+
         $scope.shopper = $rootScope.shopper;
 
         //On load functions
         adminFactory.onLoadTransactions('error', 'drinks', $scope);
-
-
         var balance = $rootScope.shopper.current_balance;
 
-
         $scope.addToBasket = function (item, price) {
-            $scope.basket.total_price = parseFloat($scope.basket.total_price);
-            $scope.basket.total_price += parseFloat(price);
-            $scope.basket.total_price = $scope.basket.total_price.toFixed(2);
-            $scope.shopper.current_balance -= parseFloat(price);
-            $scope.shopper.current_balance = parseFloat($scope.shopper.current_balance.toFixed(2));
-            $scope.basket.purchase_items.push(item);
+            if ($scope.shopper.current_balance < 0 && $scope.basket.purchase_items.length == 0) {
+                notificationService.notify('','balance too low','warning');
+                return;
+            }
+
+            if (($scope.shopper.current_balance - parseFloat(price)) > -100) {
+                $scope.basket.total_price += parseFloat(price);
+                $scope.basket.total_price = parseFloat($scope.basket.total_price.toFixed(2));
+                $scope.shopper.current_balance -= parseFloat(price);
+                $scope.shopper.current_balance = parseFloat($scope.shopper.current_balance.toFixed(2));
+                $scope.basket.purchase_items.push(item);
+            } else {
+                notificationService.notifyClear('purchase limit reached!', 'Balance too low', "warning");
+            }
         };
 
 
         // items must be listed xNum when the same items is repeated
         $scope.buyItems = function () {
+            if ($scope.basket.purchase_items.length == 0) {
+                notificationService.notify('', 'Basket is empty', 'info');
+                return;
+            }
+
             $scope.basket.items_count = $scope.basket.purchase_items.length;
             $scope.basket.resident_id = $scope.shopper.resident_id;
             $scope.basket.current_balance = $scope.shopper.current_balance;
             webserviceFactory.purchaseTransaction($scope.basket, function (err, data) {
                 if (err) {
+                    notificationService.notify('transaction terminated', 'Transaction canceled', "error");
+                } else {
+                    balance = $scope.shopper.current_balance;
+                    notificationService.notifyTransactionSuccess($scope.basket.items_count,
+                        $scope.basket.total_price, $scope.shopper.first_name);
+                    $scope.clearBasket();
                 }
-                balance = $scope.shopper.current_balance;
-                notificationService.notifySuccess("you bought " + $scope.basket.items_count +
-                    " for " + $scope.basket.total_price + " dkr", "Purchase Successful " + $scope.shopper.first_name);
-                $scope.clearBasket();
             });
-
-
         };
 
         $scope.clearBasket = function () {
@@ -64,6 +75,10 @@
                 purchase_items: []
             };
             $scope.shopper.current_balance = balance;
+        };
+
+        $scope.balanceOk = function () {
+            return false;
         }
 
     });
@@ -105,6 +120,7 @@
         $scope.kitchenNumber = $routeParams.kitchenNumber;
 
         controllerFactory.onLoad($scope, $scope.kitchenNumber);
+
 
         $scope.changeView = function (kitchenNumber, residentId) {
             $rootScope.shopper = storageFactory.getResident(kitchenNumber, residentId);
