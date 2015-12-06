@@ -4,7 +4,6 @@ var collectionMapper = require('../source/collectionGetMapper');
 
 var residentPurchaseTransaction = function (residentId, purchase, callback) {
 
-    console.log(purchase);
     var balance = purchase.current_balance;
     delete purchase.resident_id;
     delete purchase.current_balance;

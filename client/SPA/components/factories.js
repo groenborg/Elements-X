@@ -50,6 +50,16 @@
                         callback()
                     });
                 }
+            },
+            onLoadAssortment: function (keyProperty, scope, callback) {
+                webserviceFactory.getAllAssortmentItems(function (err, data) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    console.log(data);
+                    scope[keyProperty] = data.data;
+                    return callback(undefined, data)
+                });
             }
         }
 
@@ -118,7 +128,6 @@
         }
     }]);
 
-
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
@@ -148,8 +157,10 @@
                     url: '/api/user/purchase',
                     data: purchase
                 }).then(function success(response) {
+                    console.log(response);
                     callback(undefined, response);
                 }, function error(response) {
+                    console.log(response);
                     callback(response);
                 });
             },

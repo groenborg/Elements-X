@@ -16,22 +16,23 @@
 
     app.controller('UserShoppingCtrl', function ($scope, $rootScope, $routeParams, webserviceFactory, notificationService, adminFactory) {
         //Declarative variables
-        $scope.drinks = [];
+        $scope.assortmentItems = [];
         $scope.basket = {
             purchase_items: [],
             total_price: 0,
             items_count: 0
         };
-
         $scope.shopper = $rootScope.shopper;
 
         //On load functions
-        adminFactory.onLoadTransactions('error', 'drinks', $scope);
+        adminFactory.onLoadTransactions('error', 'assortmentItems', $scope);
         var balance = $rootScope.shopper.current_balance;
+        var msgService = notificationService;
+
 
         $scope.addToBasket = function (item, price) {
             if ($scope.shopper.current_balance < 0 && $scope.basket.purchase_items.length == 0) {
-                notificationService.notify('','balance too low','warning');
+                msgService.notify('', 'balance too low', 'warning');
                 return;
             }
 
@@ -42,7 +43,7 @@
                 $scope.shopper.current_balance = parseFloat($scope.shopper.current_balance.toFixed(2));
                 $scope.basket.purchase_items.push(item);
             } else {
-                notificationService.notifyClear('purchase limit reached!', 'Balance too low', "warning");
+                msgService.notifyClear('purchase limit reached!', 'Balance too low', "warning");
             }
         };
 
@@ -50,7 +51,7 @@
         // items must be listed xNum when the same items is repeated
         $scope.buyItems = function () {
             if ($scope.basket.purchase_items.length == 0) {
-                notificationService.notify('', 'Basket is empty', 'info');
+                msgService.notify('', 'Basket is empty', 'info');
                 return;
             }
 
@@ -59,15 +60,15 @@
             $scope.basket.current_balance = $scope.shopper.current_balance;
             webserviceFactory.purchaseTransaction($scope.basket, function (err, data) {
                 if (err) {
-                    notificationService.notify('transaction terminated', 'Transaction canceled', "error");
+                    msgService.notify('transaction terminated', 'Transaction canceled', "error");
                 } else {
                     balance = $scope.shopper.current_balance;
-                    notificationService.notifyTransactionSuccess($scope.basket.items_count,
-                        $scope.basket.total_price, $scope.shopper.first_name);
+                    msgService.notifyTransactionSuccess($scope.basket.items_count, $scope.basket.total_price, $scope.shopper.first_name);
                     $scope.clearBasket();
                 }
             });
         };
+
 
         $scope.clearBasket = function () {
             $scope.basket = {
@@ -83,18 +84,22 @@
 
     });
 
-    app.controller('BarSelectionCtrl', ['$scope', 'controllerFactory', 'storageFactory', function ($scope, controllerFactory, storageFactory) {
+    app.controller('BarSelectionCtrl', ['$scope', '$rootScope', '$location', 'controllerFactory', 'storageFactory', 'purchaseService', 'notificationService', function ($scope, $rootScope, $location, controllerFactory, storageFactory, purchaseService, notificationService) {
         //Declarative object
         $scope.selectedKitchen = [];
+        $scope.assortmentItems = [];
         $scope.kitchens = {
             one: [],
             two: [],
             three: []
         };
 
+        var msgService = notificationService;
+
         //Hides elements on error
         $scope.err = {
             error: false,
+            aError: false,
             message: "No available data for residents - contact system administrator"
         };
 
@@ -106,6 +111,32 @@
                 $scope.selectedKitchen = $scope.kitchens.one;
             }
         });
+        controllerFactory.onLoadAssortment('assortmentItems', $scope, function (err, data) {
+            if (err) {
+                $scope.err.aError = true;
+            }
+        });
+
+
+        $scope.quickBuy = function (resident, item, price) {
+            if (resident.current_balance - price < -100) {
+                msgService.notify('The balance is too low', 'Purchase not available', 'warning');
+                return;
+            }
+
+            new purchaseService().quickBuy(resident, item, price, function (err, data) {
+                if (err) {
+                    msgService.notify('error in transaction', 'purchase canceled', 'warning');
+                } else {
+                    msgService.notifyTransactionSuccess(1, price, resident.first_name)
+                }
+            });
+        };
+
+        $scope.changeView = function (kitchenNumber, residentId) {
+            $rootScope.shopper = storageFactory.getResident(kitchenNumber, residentId);
+            $location.path("/buy/" + kitchenNumber + "/" + residentId);
+        };
 
 
         $scope.changeKitchen = function (number) {

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <p class="lead">Welcome to the bar</p>
+            <h2>VKR Bar</h2>
         </div>
     </div>
     <hr/>
@@ -20,7 +20,8 @@
                     <div class="btn-group btn-group-lg" role="group" aria-label="">
                         <button ng-click="changeKitchen('one')" type="button" class="btn btn-primary">Kitchen 1</button>
                         <button ng-click="changeKitchen('two')" type="button" class="btn btn-primary">Kitchen 2</button>
-                        <button ng-click= "changeKitchen('three')" type="button" class="btn btn-primary">Kitchen 3</button>
+                        <button ng-click="changeKitchen('three')" type="button" class="btn btn-primary">Kitchen 3
+                        </button>
                     </div>
                 </div>
             </div>
@@ -36,17 +37,27 @@
             <table class="table table-hover" ng-hide="err.error">
                 <tr>
                     <th>First Name</th>
-                    <th>Kitchen</th>
                     <th>Room</th>
                     <th>Balance</th>
+                    <th>Quick Buy</th>
                 </tr>
                 <tr ng-repeat="resident in selectedKitchen | filter:searchText" class="bar-table">
-                    <td>{{resident.first_name}} {{resident.last_name}}</td>
-                    <td>{{resident.kitchen_number}}</td>
-                    <td>{{resident.room_number}}</td>
-                    <td>{{resident.current_balance}}</td>
+                    <td ng-click="changeView(resident.kitchen_number, resident.resident_id)">
+                        {{resident.first_name}} {{resident.last_name}}
+                    </td>
+                    <td ng-click="changeView(resident.kitchen_number, resident.resident_id)">
+                        {{resident.room_number}}
+                    </td>
+                    <td ng-class="{'bg-danger':resident.current_balance < -50, 'bg-warning':resident.current_balance < 0}"
+                        ng-click="changeView(resident.kitchen_number, resident.resident_id)">
+                        {{resident.current_balance}}
+                    </td>
+                    <td>
+                        <button ng-click="quickBuy(resident, assortmentItems[0].name, assortmentItems[0].one_price)"
+                                type="submit" class="btn btn-warning">{{assortmentItems[0].name}} x1
+                        </button>
+                    </td>
                 </tr>
-
             </table>
         </div>
 
