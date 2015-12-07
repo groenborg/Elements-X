@@ -25,42 +25,53 @@
                     </div>
                 </div>
             </div>
-            <div style="padding-bottom: 60px;">
-                <!-- Spacing -->
-            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="padding-bottom: 60px;">
+                        <!-- Spacing -->
+                    </div>
 
-            <!-- Error warning -->
-            <div class="alert alert-danger" role="alert" ng-show="err.error">
-                {{err.message}}
+                    <!-- Error warning -->
+                    <div class="alert alert-danger" role="alert" ng-show="err.error">
+                        {{err.message}}
+                    </div>
+                    <!-- resident tables -->
+                    <table class="table table-hover table-responsive" ng-hide="err.error">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Room</th>
+                            <th>Balance</th>
+                            <th>Quick Buy</th>
+                        </tr>
+                        <tr ng-repeat="resident in selectedKitchen | orderBy:'room_number' | filter:searchText"
+                            class="bar-table">
+                            <td ng-click="changeView(resident.kitchen_number, resident.resident_id)">
+                                {{resident.first_name}} {{resident.last_name}}
+                            </td>
+                            <td ng-click="changeView(resident.kitchen_number, resident.resident_id)">
+                                {{resident.room_number}}
+                            </td>
+                            <td ng-class="{'bg-danger':resident.current_balance < -50, 'bg-warning':resident.current_balance < 0}"
+                                ng-click="changeView(resident.kitchen_number, resident.resident_id)">
+                                {{resident.current_balance}}
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <button ng-click="quickBuy(resident)" ng-hide="resident.quickBuy.authorize"
+                                                type="submit" class="btn btn-warning">{{assortmentItems[0].name}} x1
+                                        </button>
+                                        <button ng-click="quickBuy(resident)" ng-show="resident.quickBuy.authorize"
+                                                type="submit" class="btn btn-success"> Confirm purchase ?
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <!-- resident tables -->
-            <table class="table table-hover" ng-hide="err.error">
-                <tr>
-                    <th>First Name</th>
-                    <th>Room</th>
-                    <th>Balance</th>
-                    <th>Quick Buy</th>
-                </tr>
-                <tr ng-repeat="resident in selectedKitchen | filter:searchText" class="bar-table">
-                    <td ng-click="changeView(resident.kitchen_number, resident.resident_id)">
-                        {{resident.first_name}} {{resident.last_name}}
-                    </td>
-                    <td ng-click="changeView(resident.kitchen_number, resident.resident_id)">
-                        {{resident.room_number}}
-                    </td>
-                    <td ng-class="{'bg-danger':resident.current_balance < -50, 'bg-warning':resident.current_balance < 0}"
-                        ng-click="changeView(resident.kitchen_number, resident.resident_id)">
-                        {{resident.current_balance}}
-                    </td>
-                    <td>
-                        <button ng-click="quickBuy(resident, assortmentItems[0].name, assortmentItems[0].one_price)"
-                                type="submit" class="btn btn-warning">{{assortmentItems[0].name}} x1
-                        </button>
-                    </td>
-                </tr>
-            </table>
         </div>
-
         <!-- Last used customers -->
         <div class="col-md-4">
             <div class="panel panel-default">

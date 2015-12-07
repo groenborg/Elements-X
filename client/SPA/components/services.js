@@ -20,9 +20,7 @@
 
 
             this.quickBuy = function (resident, item, price, callback) {
-
                 var balance = resident.current_balance;
-
                 resident.current_balance -= parseFloat(price);
                 resident.current_balance = parseFloat(resident.current_balance.toFixed(2));
 
@@ -32,9 +30,7 @@
                 purchaseObj.items_count = purchaseObj.purchase_items.length;
                 purchaseObj.resident_id = resident.resident_id;
                 purchaseObj.current_balance = resident.current_balance;
-
-                console.log(purchaseObj);
-
+                
                 webserviceFactory.purchaseTransaction(purchaseObj, function (err, data) {
                     if (err) {
                         //Resets the balance if an error occurs

@@ -95,6 +95,8 @@
         };
 
         var msgService = notificationService;
+        var currentQuickBy = null;
+
 
         //Hides elements on error
         $scope.err = {
@@ -118,19 +120,37 @@
         });
 
 
-        $scope.quickBuy = function (resident, item, price) {
+        $scope.quickBuy = function (resident) {
+            var item = $scope.assortmentItems[0].name;
+            var price = $scope.assortmentItems[0].one_price;
+
             if (resident.current_balance - price < -100) {
                 msgService.notify('The balance is too low', 'Purchase not available', 'warning');
                 return;
             }
 
-            new purchaseService().quickBuy(resident, item, price, function (err, data) {
-                if (err) {
-                    msgService.notify('error in transaction', 'purchase canceled', 'warning');
-                } else {
-                    msgService.notifyTransactionSuccess(1, price, resident.first_name)
+            if (resident.quickBuy === undefined) {
+                if (currentQuickBy == null) currentQuickBy = resident;
+
+                if (currentQuickBy.resident_id != resident.resident_id) {
+                    currentQuickBy.quickBuy = undefined;
+                    currentQuickBy = resident;
                 }
-            });
+                resident.quickBuy = {
+                    transaction: new purchaseService(),
+                    authorize: true
+                };
+            } else {
+                resident.quickBuy.transaction.quickBuy(resident, item, price, function (err, data) {
+                    if (err) {
+                        msgService.notify('error in transaction', 'purchase canceled', 'warning');
+                    } else {
+                        msgService.notifyTransactionSuccess(1, price, resident.first_name)
+                    }
+                    resident.quickBuy = undefined;
+                });
+
+            }
         };
 
         $scope.changeView = function (kitchenNumber, residentId) {
