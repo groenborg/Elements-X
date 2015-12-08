@@ -1,13 +1,35 @@
 /* the footer will need a height if it fails to stick */
+body {
+    background-color: rgb(242, 242, 242);
+}
 
 .footer {
     margin-top: 50px;
-    border-top: 1px solid #f3ecee;
+    border-top: 3px solid rgb(117, 176, 212);
     padding-top: 10px;
-    background-color: #f8f8f8;
+    background-color: rgb(60, 69, 80);
 }
 
-.table > tbody > tr > td{
+.footer-row {
+    text-align: center;
+}
+
+.footer-row > p, a {
+    color: #fff;
+}
+
+.footer-row > p > a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.kitchen-block {
+    position: relative;
+    height: 0;
+    padding-bottom: 50%;
+}
+
+.table > tbody > tr > td {
     line-height: 50px;
     cursor: pointer;
 }
@@ -19,16 +41,6 @@
 .dashboard-nav {
     background-color: rgb(48, 64, 81);
     color: rgb(167, 177, 196);
-}
-
-.footer-row {
-    text-align: center;
-}
-
-.kitchen-block {
-    position: relative;
-    height: 0;
-    padding-bottom: 50%;
 }
 
 .kitchen-block > * {
@@ -52,13 +64,13 @@
 }
 
 .dashboard-body {
-    background-color: #f5f5f5;
+    background-color: rgb(242, 242, 242);
     padding-top: -20px;
 }
 
 /* Sidebar navigation */
 .nav-sidebar {
-    background-color: #f5f5f5;
+    background-color: rgb(242, 242, 242);
     margin-right: -15px;
     margin-bottom: 20px;
     margin-left: -15px;
@@ -67,6 +79,12 @@
 .nav-sidebar > li > a {
     padding-right: 20px;
     padding-left: 20px;
+    color: #475B5A;
+    text-decoration: none;
+}
+
+.nav-sidebar > li > a:hover, a:focus {
+    color: #2E2F2F;
 }
 
 .nav-sidebar > .active > a {
@@ -79,19 +97,7 @@
  */
 
 .main {
-
     background-color: #fff;
-}
-
-a {
-    color: #475B5A;
-    text-decoration: none;
-}
-
-a:hover,
-a:focus {
-    color: #2E2F2F;
-    text-decoration: underline;
 }
 
 

@@ -13,7 +13,7 @@
 
     app.config(function ($routeProvider) {
         $routeProvider.when('/kitchen', {
-            templateUrl: 'views/kitchenPage.html',
+            templateUrl: 'views/userKitchenSelectionPage.html',
             controller: 'KitchenCtrl'
         }).when('/buy', {
             templateUrl: 'views/userShoppingPage.html',
@@ -31,13 +31,13 @@
             templateUrl:"views/adminInventory.html",
             controller:"InventoryCtrl"
         }).when('/picker/:kitchenNumber', {
-            templateUrl: 'views/userCardPickerPage.html',
+            templateUrl: 'views/userSelectionPage.html',
             controller: 'UserCardPickerCtrl'
         }).when('/buy/:kitchenNumber/:residentId', {
             templateUrl: 'views/userShoppingPage.html',
             controller: 'UserShoppingCtrl'
         }).otherwise({
-            templateUrl: 'views/kitchenPage.html',
+            templateUrl: 'views/userKitchenSelectionPage.html',
             controller: 'KitchenCtrl'
         });
 
