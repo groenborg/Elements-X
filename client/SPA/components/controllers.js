@@ -93,10 +93,10 @@
             two: [],
             three: []
         };
+        $scope.currentBuyer = undefined;
 
         var msgService = notificationService;
         var currentQuickBy = null;
-
 
         //Hides elements on error
         $scope.err = {
@@ -104,6 +104,7 @@
             aError: false,
             message: "No available data for residents - contact system administrator"
         };
+
 
         //On Load data
         controllerFactory.onLoadKitchens("one", "two", "three", $scope.kitchens, function (err) {
@@ -153,9 +154,8 @@
             }
         };
 
-        $scope.changeView = function (kitchenNumber, residentId) {
-            $rootScope.shopper = storageFactory.getResident(kitchenNumber, residentId);
-            $location.path("/buy/" + kitchenNumber + "/" + residentId);
+        $scope.setCurrentBuyer = function (resident) {
+            $scope.currentBuyer = resident;
         };
 
 

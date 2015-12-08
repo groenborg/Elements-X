@@ -7,34 +7,39 @@
     <hr/>
 
     <div class="row">
+
         <div class="col-md-8">
-            <!-- Serach box -->
             <div class="row">
+
+                <!-- Search -->
                 <div class="col-md-6">
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon" id="basic-addon1">Filter</span>
                         <input class="form-control" type="text" ng-model="searchText" placeholder="search residents"/>
                     </div>
                 </div>
+
+                <!-- Kitchen selection -->
                 <div class="col-md-6">
                     <div class="btn-group btn-group-lg" role="group" aria-label="">
-                        <button ng-click="changeKitchen('one')" type="button" class="btn btn-primary">Kitchen 1</button>
-                        <button ng-click="changeKitchen('two')" type="button" class="btn btn-primary">Kitchen 2</button>
-                        <button ng-click="changeKitchen('three')" type="button" class="btn btn-primary">Kitchen 3
+                        <button ng-click="changeKitchen('one')" type="button" class="btn btn-info">Kitchen 1</button>
+                        <button ng-click="changeKitchen('two')" type="button" class="btn btn-info">Kitchen 2</button>
+                        <button ng-click="changeKitchen('three')" type="button" class="btn btn-info">Kitchen 3
                         </button>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <!-- Spacing -->
                     <div style="padding-bottom: 60px;">
-                        <!-- Spacing -->
                     </div>
 
                     <!-- Error warning -->
                     <div class="alert alert-danger" role="alert" ng-show="err.error">
                         {{err.message}}
                     </div>
+
                     <!-- resident tables -->
                     <table class="table table-hover table-responsive" ng-hide="err.error">
                         <tr>
@@ -45,16 +50,12 @@
                         </tr>
                         <tr ng-repeat="resident in selectedKitchen | orderBy:'room_number' | filter:searchText"
                             class="bar-table">
-                            <td ng-click="changeView(resident.kitchen_number, resident.resident_id)">
-                                {{resident.first_name}} {{resident.last_name}}
-                            </td>
-                            <td ng-click="changeView(resident.kitchen_number, resident.resident_id)">
-                                {{resident.room_number}}
-                            </td>
+                            <td ng-click="setCurrentBuyer(resident)"> {{resident.last_name}}</td>
+                            <td ng-click="setCurrentBuyer(resident)">{{resident.room_number}}</td>
                             <td ng-class="{'bg-danger':resident.current_balance < -50, 'bg-warning':resident.current_balance < 0}"
-                                ng-click="changeView(resident.kitchen_number, resident.resident_id)">
-                                {{resident.current_balance}}
+                                ng-click="setCurrentBuyer(resident)">{{resident.current_balance}}
                             </td>
+
                             <td>
                                 <div class="row">
                                     <div class="col-xs-2">
@@ -69,33 +70,50 @@
                             </td>
                         </tr>
                     </table>
+
                 </div>
             </div>
         </div>
+
         <!-- Last used customers -->
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Resident
+                    Purchase section
                 </div>
                 <div class="panel-body">
-                    <div>
-                        <p>Selected resident: {{}}</p>
 
-                        <p>drinks tonight: {{}}</p>
+                    <!-- Info box -->
+                    <div class="alert alert-info" role="alert" ng-hide="currentBuyer">
+                        click on a customer in the table to start purchase
+                    </div>
+
+                    <div ng-show="currentBuyer">
+                        <p>Selected resident: {{currentBuyer.first_name}}</p>
+
+                        <p>balance: {{currentBuyer.current_balance}}</p>
 
                         <div class="row">
-                            <div class="col-xs-12" style="padding-top: 9px">
-                                <form class="form-inline">
-                                    <input type="number" class="form-control" placeholder="amount">
-                                    <button ng-click="" type="submit" class="btn btn-success">Deposit</button>
-                                </form>
+                            <div class="col-md-12">
+                                <div class="list-group">
+                                    <button ng-repeat="item in assortmentItems" type="button" class="list-group-item">
+                                        <span class="pull-left">{{item.name}}</span>
+                                        <span class="pull-right">{{item.one_price + " dkr"}}</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <hr>
-                        <button ng-click=""
-                                type="submit" class="btn btn-warning"> Edit
+
+                        <button ng-click="" type="submit" class="btn btn-warning">
+                            Make purchase
                         </button>
+                        <hr>
+                        <form class="form-inline">
+                            <input type="number" class="form-control" placeholder="amount">
+                            <button ng-click="" type="submit" class="btn btn-success">
+                                Deposit
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
