@@ -124,7 +124,7 @@
 
         //Controller functions
         $scope.addItem = function (item, price) {
-            if ($scope.currentBuyer.current_balance - parseFloat(price) < -100) {
+            if ($scope.currentBuyer.current_balance - ($scope.currentTransactionBasket.total_price + parseFloat(price)) < -100) {
                 msgService.notify('The balance is too low', 'Purchase not available', 'warning');
                 return;
             }
@@ -132,7 +132,35 @@
         };
 
         $scope.buy = function () {
-            currentTransaction.buy();
+
+
+            if ($scope.currentTransactionBasket.total_price == 0) {
+                msgService.notify('invalid action', 'Basket is empty', 'warning');
+                return;
+            }
+            currentTransaction.buy(function (err, data) {
+                if (err) {
+
+                    msgService.notify('error in transaction', 'purchase canceled', 'danger');
+                } else {
+                    msgService.notifyTransactionSuccess($scope.currentTransactionBasket.purchase_items.length,
+                        $scope.currentTransactionBasket.total_price, $scope.currentBuyer.first_name);
+                    $scope.currentBuyer = null;
+                    $scope.currentTransactionBasket = {};
+                    currentTransaction = null;
+                }
+            });
+
+        };
+
+        $scope.clearBasket = function () {
+
+            if ($scope.currentTransactionBasket.purchase_items.length == 0) {
+                msgService.notify('', 'Basket already empty', 'warning');
+                return;
+            }
+            msgService.notify('', 'Basket cleared', 'info');
+            currentTransaction.clearBasket();
         };
 
         $scope.quickBuy = function (resident) {
@@ -171,15 +199,11 @@
         $scope.setCurrentBuyer = function (resident) {
 
             if ($scope.currentBuyer == resident) {
-                currentTransaction.clearBasket();
                 $scope.currentBuyer = null;
                 $scope.currentTransactionBasket = {};
                 currentTransaction = null;
             } else {
                 //first click
-                if ($scope.currentBuyer) {
-                    currentTransaction.clearBasket();
-                }
                 $scope.currentBuyer = resident;
                 currentTransaction = new purchaseService(resident, $scope.currentTransactionBasket);
             }

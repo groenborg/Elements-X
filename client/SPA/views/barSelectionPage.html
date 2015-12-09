@@ -95,7 +95,8 @@
                     <div ng-show="currentBuyer">
                         <p>Selected resident: {{currentBuyer.first_name}}</p>
 
-                        <p>balance: {{currentBuyer.current_balance}}</p>
+                        <p>balance: {{(currentBuyer.current_balance -
+                            currentTransactionBasket.total_price).toFixed(2)}}</p>
 
                         <p>Total items: <span
                                 class="label label-default">{{currentTransactionBasket.items_count}}</span>
@@ -116,10 +117,10 @@
                             </div>
                         </div>
 
-                        <button ng-click="" type="submit" class="btn btn-warning">
+                        <button ng-click="buy()" type="submit" class="btn btn-success">
                             Make purchase
                         </button>
-                        <button ng-click="" type="submit" class="btn btn-warning">
+                        <button ng-click="clearBasket()" type="submit" class="btn btn-warning">
                             Clear
                         </button>
                         <hr>
@@ -139,7 +140,7 @@
                     Basket
                 </div>
                 <div class="panel-body">
-                    <span ng-repeat="item in currentTransactionBasket.purchase_items track by $index">{{item}} </span>
+                    <p ng-repeat="item in currentTransactionBasket.purchase_items track by $index">{{item}} </p>
                 </div>
             </div>
         </div>
