@@ -84,7 +84,7 @@
 
     });
 
-    app.controller('BarSelectionCtrl', ['$scope', '$rootScope', '$location', 'controllerFactory', 'storageFactory', 'purchaseService', 'notificationService', function ($scope, $rootScope, $location, controllerFactory, storageFactory, purchaseService, notificationService) {
+    app.controller('BarSelectionCtrl', ['$scope', 'adminFactory', 'controllerFactory', 'storageFactory', 'purchaseService', 'notificationService', function ($scope, adminFactory, controllerFactory, storageFactory, purchaseService, notificationService) {
         //Declarative object
         $scope.selectedKitchen = [];
         $scope.assortmentItems = [];
@@ -96,6 +96,8 @@
 
         $scope.currentBuyer = null;
         $scope.currentTransactionBasket = {};
+        $scope.refillValue = "";
+
         var currentTransaction = null;
         var msgService = notificationService;
         var currentQuickBy = null;
@@ -141,7 +143,7 @@
             currentTransaction.buy(function (err, data) {
                 if (err) {
 
-                    msgService.notify('error in transaction', 'purchase canceled', 'danger');
+                    msgService.notify('error in transaction', 'purchase canceled', 'error');
                 } else {
                     msgService.notifyTransactionSuccess($scope.currentTransactionBasket.purchase_items.length,
                         $scope.currentTransactionBasket.total_price, $scope.currentBuyer.first_name);
@@ -152,6 +154,30 @@
             });
 
         };
+
+        $scope.refill = function () {
+            var amount = parseFloat($scope.refillValue);
+            if (!isNaN(amount) && amount > 0) {
+                adminFactory.refillTransaction({
+                    resident_id: $scope.currentBuyer.resident_id,
+                    insert_amount: amount
+                }, function (err, data) {
+                    if (err) {
+                        msgService.notify('error in transaction', 'refill canceled', 'error');
+                        $scope.refillValue = "";
+                    } else {
+                        //set customer balance
+                        $scope.currentBuyer.current_balance = data.data.current_balance;
+                        //empty balance from  model
+                        $scope.refillValue = "";
+                        msgService.notify($scope.currentBuyer.first_name + ' added ' + amount + ' to account', 'Transaction success', 'success')
+                    }
+                });
+            } else {
+                msgService.notify('not a valid refill value', 'refill canceled', 'warning');
+            }
+        };
+
 
         $scope.clearBasket = function () {
 

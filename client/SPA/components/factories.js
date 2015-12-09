@@ -124,6 +124,9 @@
                     scope[dataProperty] = data.data;
                     if (callback) return callback();
                 });
+            },
+            refillTransaction: function (refill, callback) {
+                webserviceFactory.refillTransaction(refill, callback);
             }
         }
     }]);
@@ -162,6 +165,18 @@
                 }, function error(response) {
                     console.log(response);
                     callback(response);
+                });
+            },
+
+            refillTransaction: function (refill, callback) {
+                $http({
+                    method: 'POST',
+                    url: '/api/user/refill',
+                    data: refill
+                }).then(function success(data) {
+                    callback(undefined, data);
+                }, function error(data) {
+                    callback(data);
                 });
             },
             getAllAssortmentItems: function (callback) {

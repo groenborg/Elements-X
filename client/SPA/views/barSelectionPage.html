@@ -93,9 +93,11 @@
                     </div>
 
                     <div ng-show="currentBuyer">
-                        <p>Selected resident: {{currentBuyer.first_name}}</p>
+                        <p><b>Selected resident:</b> {{currentBuyer.first_name}}
+                            {{currentBuyer.last_name}} -
+                            {{currentBuyer.room_number}}</p>
 
-                        <p>balance: {{(currentBuyer.current_balance -
+                        <p><b>balance:</b> {{(currentBuyer.current_balance -
                             currentTransactionBasket.total_price).toFixed(2)}}</p>
 
                         <p>Total items: <span
@@ -126,8 +128,9 @@
                         <hr>
                         <form class="form-inline">
                             <label for="">Refill</label>
-                            <input type="number" class="form-control" placeholder="Add to balance">
-                            <button ng-click="" type="submit" class="btn btn-success">
+                            <input ng-model="refillValue" type="number" class="form-control"
+                                   placeholder="Add to balance">
+                            <button ng-click="refill()" type="submit" class="btn btn-success">
                                 Deposit
                             </button>
                         </form>

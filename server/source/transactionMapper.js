@@ -20,11 +20,13 @@ var residentPurchaseTransaction = function (residentId, purchase, callback) {
 };
 
 
+
+
 var residentBalanceRefillTransaction = function (residentId, balanceRefillItem, callback) {
 
     collectionMapper.getOneElementFromCollection('Resident', {resident_id: residentId}, function (err, data) {
         if (err) return callback(err);
-        if (data.current_balance == null || data.current_balance == undefined) return callback();
+        if (!data.current_balance) return callback();
 
         var newCurrentBalance = data.current_balance + balanceRefillItem.insert_amount;
         var newBalance = {
