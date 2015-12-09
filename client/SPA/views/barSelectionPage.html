@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2>VKR Bar</h2>
+            <p class="lead">VKR Bar</p>
+            <hr/>
         </div>
-    </div>
-    <hr/>
 
+    </div>
     <div class="row">
 
         <div class="col-md-8">
@@ -43,14 +43,16 @@
                     <!-- resident tables -->
                     <table class="table table-hover table-responsive" ng-hide="err.error">
                         <tr>
-                            <th>First Name</th>
+                            <th>Full Name</th>
                             <th>Room</th>
                             <th>Balance</th>
                             <th>Quick Buy</th>
                         </tr>
                         <tr ng-repeat="resident in selectedKitchen | orderBy:'room_number' | filter:searchText"
                             class="bar-table">
-                            <td ng-click="setCurrentBuyer(resident)"> {{resident.last_name}}</td>
+                            <td ng-click="setCurrentBuyer(resident)">
+                                {{resident.first_name}} {{resident.last_name}}
+                            </td>
                             <td ng-click="setCurrentBuyer(resident)">{{resident.room_number}}</td>
                             <td ng-class="{'bg-danger':resident.current_balance < -50, 'bg-warning':resident.current_balance < 0}"
                                 ng-click="setCurrentBuyer(resident)">{{resident.current_balance}}
@@ -60,9 +62,11 @@
                                 <div class="row">
                                     <div class="col-xs-2">
                                         <button ng-click="quickBuy(resident)" ng-hide="resident.quickBuy.authorize"
+                                                ng-disabled="currentBuyer == resident"
                                                 type="submit" class="btn btn-warning">{{assortmentItems[0].name}} x1
                                         </button>
                                         <button ng-click="quickBuy(resident)" ng-show="resident.quickBuy.authorize"
+                                                ng-disabled="currentBuyer == resident"
                                                 type="submit" class="btn btn-success"> Confirm purchase ?
                                         </button>
                                     </div>
@@ -93,10 +97,18 @@
 
                         <p>balance: {{currentBuyer.current_balance}}</p>
 
+                        <p>Total items: <span
+                                class="label label-default">{{currentTransactionBasket.items_count}}</span>
+                            Total price: <span
+                                    class="label label-default">{{currentTransactionBasket.total_price}}</span>
+                        </p>
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="list-group">
-                                    <button ng-repeat="item in assortmentItems" type="button" class="list-group-item">
+                                    <button ng-repeat="item in assortmentItems"
+                                            ng-click="addItem(item.name,item.one_price)"
+                                            type="button" class="list-group-item">
                                         <span class="pull-left">{{item.name}}</span>
                                         <span class="pull-right">{{item.one_price + " dkr"}}</span>
                                     </button>
@@ -107,14 +119,27 @@
                         <button ng-click="" type="submit" class="btn btn-warning">
                             Make purchase
                         </button>
+                        <button ng-click="" type="submit" class="btn btn-warning">
+                            Clear
+                        </button>
                         <hr>
                         <form class="form-inline">
-                            <input type="number" class="form-control" placeholder="amount">
+                            <label for="">Refill</label>
+                            <input type="number" class="form-control" placeholder="Add to balance">
                             <button ng-click="" type="submit" class="btn btn-success">
                                 Deposit
                             </button>
                         </form>
                     </div>
+                </div>
+            </div>
+            <!-- Basket section -->
+            <div ng-show="currentBuyer" class="panel panel-default">
+                <div class="panel-heading">
+                    Basket
+                </div>
+                <div class="panel-body">
+                    <span ng-repeat="item in currentTransactionBasket.purchase_items track by $index">{{item}} </span>
                 </div>
             </div>
         </div>

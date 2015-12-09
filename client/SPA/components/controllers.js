@@ -93,8 +93,10 @@
             two: [],
             three: []
         };
-        $scope.currentBuyer = undefined;
 
+        $scope.currentBuyer = null;
+        $scope.currentTransactionBasket = {};
+        var currentTransaction = null;
         var msgService = notificationService;
         var currentQuickBy = null;
 
@@ -120,6 +122,18 @@
             }
         });
 
+        //Controller functions
+        $scope.addItem = function (item, price) {
+            if ($scope.currentBuyer.current_balance - parseFloat(price) < -100) {
+                msgService.notify('The balance is too low', 'Purchase not available', 'warning');
+                return;
+            }
+            currentTransaction.addToBasket(item, price);
+        };
+
+        $scope.buy = function () {
+            currentTransaction.buy();
+        };
 
         $scope.quickBuy = function (resident) {
             var item = $scope.assortmentItems[0].name;
@@ -138,11 +152,11 @@
                     currentQuickBy = resident;
                 }
                 resident.quickBuy = {
-                    transaction: new purchaseService(),
+                    transaction: new purchaseService(resident, {}),
                     authorize: true
                 };
             } else {
-                resident.quickBuy.transaction.quickBuy(resident, item, price, function (err, data) {
+                resident.quickBuy.transaction.quickBuy(item, price, function (err, data) {
                     if (err) {
                         msgService.notify('error in transaction', 'purchase canceled', 'warning');
                     } else {
@@ -155,9 +169,21 @@
         };
 
         $scope.setCurrentBuyer = function (resident) {
-            $scope.currentBuyer = resident;
-        };
 
+            if ($scope.currentBuyer == resident) {
+                currentTransaction.clearBasket();
+                $scope.currentBuyer = null;
+                $scope.currentTransactionBasket = {};
+                currentTransaction = null;
+            } else {
+                //first click
+                if ($scope.currentBuyer) {
+                    currentTransaction.clearBasket();
+                }
+                $scope.currentBuyer = resident;
+                currentTransaction = new purchaseService(resident, $scope.currentTransactionBasket);
+            }
+        };
 
         $scope.changeKitchen = function (number) {
             $scope.selectedKitchen = $scope.kitchens[number];
