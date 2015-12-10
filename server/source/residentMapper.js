@@ -22,8 +22,12 @@ var getOneResident = function (residentID, callback) {
     });
 };
 
-var getKitchenGroups = function (callback) {
 
+/*
+ * function
+ * Retrieves all residents grouped by kitchen
+ * */
+var getKitchenGroups = function (callback) {
     model.Resident.aggregate(
         [
             {

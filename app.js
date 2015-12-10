@@ -7,11 +7,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var singlePageRoute = require('./server/routes/index');
-var residentRoute = require('./server/routes/residentRest');
-var transactionRoute = require('./server/routes/transactions');
+var residentRoute = require('./server/routes/residentService');
+var transactionRoute = require('./server/routes/transactionService');
 var assortmentRoute = require('./server/routes/assortmentService');
 var serverRoute = require('./server/routes/serverMaintenanceService');
-
+var residentAdminRoute = require('./server/routes/residentAdminService');
 
 //var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
 var connection = require('./server/model/connection');
@@ -39,8 +39,10 @@ app.use(express.static(path.join(__dirname, 'client/SPA')));
 app.use('/', singlePageRoute);
 app.use('/api', residentRoute);
 app.use('/api', transactionRoute);
-app.use ('/api', assortmentRoute);
+app.use('/api', assortmentRoute);
+app.use('/api', residentAdminRoute);
 app.use('/server', serverRoute);
+
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

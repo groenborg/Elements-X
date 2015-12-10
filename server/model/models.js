@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 
-
+/*
+ * Purchase schema
+ * Document model for a resident purchase
+ * No ID - must be reinstated for cancel last purchase
+ * */
 var purchaseSchema = new mongoose.Schema({
     purchase_items: [String],
     total_price: Number,
@@ -10,12 +14,25 @@ var purchaseSchema = new mongoose.Schema({
     _id: false
 });
 
+/*
+ * Balance Schema
+ * Document model for a balance refill
+ * With ID
+ * */
 var balanceHistorySchema = new mongoose.Schema({
     balance_before: Number,
     insert_amount: Number,
     timestamp: {type: Date, default: Date.now}
 });
 
+/*
+ * Resident schema
+ * Document model for a resident in the system
+ * access_level: 0 = default
+ * access_level: 1 = bartender
+ * access_level: 2 = admin
+ * access_level: 3 = Super admin, access to logs and transactions
+ * */
 var resident = new mongoose.Schema({
     resident_id: {type: Number, unique: true, required: true},
     first_name: String,
@@ -29,12 +46,17 @@ var resident = new mongoose.Schema({
     email: String,
     access_level: Number,                           // Does the resident still live here - move resident to history
     password: String,
-    achivements:[String],
+    achievements: [String],
     purchase_history: [purchaseSchema],
     balance_history: [balanceHistorySchema]
 });
 
-
+/*
+ * Assortment Schema
+ * Document model for purchase items in the bar
+ * Supply: amount stored in warehouse
+ * item size: units in a box e.g. 24 in a beer box
+ * */
 var assortment = new mongoose.Schema({
     name: {type: String, unique: true, required: true},
     supply: Number,

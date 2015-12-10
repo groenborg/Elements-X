@@ -20,10 +20,7 @@ var residentPurchaseTransaction = function (residentId, purchase, callback) {
 };
 
 
-
-
 var residentBalanceRefillTransaction = function (residentId, balanceRefillItem, callback) {
-
     collectionMapper.getOneElementFromCollection('Resident', {resident_id: residentId}, function (err, data) {
         if (err) return callback(err);
         if (!data.current_balance) return callback();
@@ -47,6 +44,20 @@ var residentBalanceRefillTransaction = function (residentId, balanceRefillItem, 
     });
 };
 
+/*
+ *
+ * resident_id: {type: Number, required: true},
+ * assortment_id: {type: mongoose.Schema.Types.ObjectId, ref: "assortments"},
+ * total_price: Number,
+ * amount: Number,
+ * timestamp: {type: Date, default: Date.now()}
+ * */
 
+var buyFromWarehouse = function () {
+
+};
+
+
+exports.buyFromWarehouse = buyFromWarehouse;
 exports.residentBalanceRefillTransaction = residentBalanceRefillTransaction;
 exports.residentPurchaseTransaction = residentPurchaseTransaction;

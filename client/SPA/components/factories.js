@@ -52,14 +52,19 @@
                 }
             },
             onLoadAssortment: function (keyProperty, scope, callback) {
-                webserviceFactory.getAllAssortmentItems(function (err, data) {
-                    if (err) {
-                        return callback(err);
-                    }
-                    console.log(data);
-                    scope[keyProperty] = data.data;
-                    return callback(undefined, data)
-                });
+                if (storageFactory.getAssortmentItems().length != 0) {
+                    scope[keyProperty] = storageFactory.getAssortmentItems();
+                } else {
+
+                    webserviceFactory.getAllAssortmentItems(function (err, data) {
+                        if (err) {
+                            return callback(err);
+                        }
+                        scope[keyProperty] = data.data;
+                        storageFactory.storeAssortmentItems(data.data);
+                        return callback(undefined, data)
+                    });
+                }
             }
         }
 
@@ -72,6 +77,8 @@
             two: [],
             three: []
         };
+
+        var assortmentItems = [];
 
         var getNumberInString = function (number) {
             switch (parseInt(number)) {
@@ -104,16 +111,17 @@
                     kitchenGroup.two.length != 0 &&
                     kitchenGroup.three.length != 0;
             },
-            savePreferredKitchen: function (key, value) {
-                window.localStorage.setItem(key, value)
+            getAssortmentItems: function () {
+                return assortmentItems;
             },
-            clearPreferredKitchen: function () {
-
+            storeAssortmentItems: function (assortmentItemObj) {
+                assortmentItems = assortmentItemObj;
             }
+
         }
     }]);
 
-    app.factory('adminFactory', ['webserviceFactory', function (webserviceFactory) {
+    app.factory('adminFactory', ['webserviceFactory', 'storageFactory', function (webserviceFactory, storageFactory) {
         return {
 
             onLoadTransactions: function (errorProperty, dataProperty, scope, callback) {
