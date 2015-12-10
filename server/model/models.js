@@ -25,9 +25,11 @@ var resident = new mongoose.Schema({
     current_balance: Number,
     deposit: Number,                            // The deposited amount when you open an account
     phone: String,
+    active: Boolean,
     email: String,
-    active: Boolean,                            // Does the resident still live here - move resident to history
-    code: String,
+    access_level: Number,                           // Does the resident still live here - move resident to history
+    password: String,
+    achivements:[String],
     purchase_history: [purchaseSchema],
     balance_history: [balanceHistorySchema]
 });
@@ -36,12 +38,12 @@ var resident = new mongoose.Schema({
 var assortment = new mongoose.Schema({
     name: {type: String, unique: true, required: true},
     supply: Number,
+    item_size: Number,
+    description: String,
     one_price: Number,
     two_price: Number,
     three_price: Number,
-    bar_price: Number,
-    item_size: Number,
-    description: String
+    bar_price: Number
 });
 
 
