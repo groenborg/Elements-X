@@ -135,6 +135,9 @@
             },
             refillTransaction: function (refill, callback) {
                 webserviceFactory.refillTransaction(refill, callback);
+            },
+            createResident: function (residentDTO, callback) {
+                webserviceFactory.createResidentRequest(residentDTO, callback);
             }
         }
     }]);
@@ -168,10 +171,8 @@
                     url: '/api/user/purchase',
                     data: purchase
                 }).then(function success(response) {
-                    console.log(response);
                     callback(undefined, response);
                 }, function error(response) {
-                    console.log(response);
                     callback(response);
                 });
             },
@@ -195,6 +196,17 @@
                     callback(undefined, data)
                 }, function error(data) {
                     callback(data)
+                });
+            },
+            createResidentRequest: function (newResident, callback) {
+                $http({
+                    method: 'POST',
+                    url: '/api/admin/createResident',
+                    data: newResident
+                }).then(function success(data) {
+                    callback(undefined, data);
+                }, function error(data) {
+                    callback(data);
                 });
             }
         }

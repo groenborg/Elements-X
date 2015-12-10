@@ -11,64 +11,107 @@
 
 
     <div class="row">
-        <div class=" col-md-offset-1 col-md-6">
+        <div class="col-md-4">
 
             <!-- Create resident form elements -->
-            <div class="form-group form-group-lg">
-                <label for="first-name">First Name</label>
-                <input id="first-name" type="text" class="form-control" placeholder="First Name">
+            <div class="form-group form-group">
+                <label>First Name</label>
+                <input ng-model="resident.first_name" type="text" class="form-control" placeholder="First Name">
             </div>
-            <div class="form-group form-group-lg">
-                <label for="last-name">Last Name</label>
-                <input id="last-name" type="text" class="form-control" placeholder="Last Name">
-            </div>
-
-            <div class="form-group form-group-lg">
-                <label for="phone">phone</label>
-                <input id="phone" type="text" class="form-control" placeholder="12345678"
-                       aria-describedby="sizing-addon1">
+            <div class="form-group form-group">
+                <label>Last Name</label>
+                <input ng-model="resident.last_name" type="text" class="form-control" placeholder="Last Name">
             </div>
 
-            <div class="form-group form-group-lg">
+            <div class="form-group form-group">
+                <label>Phone Number</label>
+                <input ng-model="resident.phone" type="text" class="form-control" placeholder="12345678"
+                       aria-describedby="tpl">
+            </div>
+
+            <div class="form-group form-group">
                 <label for="email">email</label>
-                <input id="email" type="email" class="form-control" placeholder="vkr@awesome.dk"
-                       aria-describedby="sizing-addon1">
+                <input ng-model="resident.email" id="email" type="email" class="form-control"
+                       placeholder="vkr@awesome.dk"
+                       aria-describedby="email">
             </div>
+            <div class="form-group form-group">
+                <label for="password">Password</label>
+                <input ng-model="resident.password" id="password" type="text" class="form-control"
+                       placeholder="********"
+                       aria-describedby="password">
+            </div>
+        </div>
 
-            <div class="form-group form-group-lg">
+        <!-- Second section -->
+        <div class="col-md-4">
+
+            <div class="form-group form-group">
                 <label for="kitchen-number">kitchen number</label>
-                <input id="kitchen-number" type="number" class="form-control" placeholder="e.g. 1"
-                       aria-describedby="sizing-addon1">
+                <input ng-model="resident.kitchen_number" id="kitchen-number" type="number" class="form-control"
+                       placeholder="e.g. 1"
+                       aria-describedby="kitchen-number">
+            </div>
+            <div class="form-group form-group">
+                <label>Room number</label>
+                <input ng-model="resident.room_number" id="room-number" type="number" class="form-control"
+                       placeholder="format: 3032"
+                       aria-describedby="room-number">
             </div>
 
-            <div class="form-group form-group-lg">
-                <label for="room-number">Room number</label>
-                <input id="room-number" type="number" class="form-control" placeholder="format: 3032"
-                       aria-describedby="sizing-addon1">
+            <div class="form-group form-group">
+                <label>Deposit</label>
+                <input ng-model="resident.deposit" id="deposit" type="number" class="form-control"
+                       aria-describedby="deposit">
             </div>
 
-            <div class="form-group form-group-lg">
-                <label for="start-balance">start balance</label>
-                <input id="start-balance" type="number" class="form-control" ng-value="100"
-                       aria-describedby="sizing-addon1">
+            <div class="form-group form-group">
+                <label>start balance</label>
+                <input ng-model="resident.current_balance" id="start-balance" type="number" class="form-control"
+                       aria-describedby="start-balance">
             </div>
-            <hr>
-            <!-- Button section -->
-            <button type="button" class="btn btn-primary btn-lg">Add new Resident</button>
-            <button type="button" class="btn btn-warning btn-lg">Clear</button>
+            <div class="form-group form-group">
+                <label for="start-balance">Access Level</label>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" name="level" id="inlineRadio1" ng-value="0" checked> 0
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="level" id="inlineRadio2" ng-value="1" disabled> 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="level" id="inlineRadio3" ng-value="2" disabled> 2
+                </label>
+            </div>
         </div>
 
         <!-- Recently added items -->
-        <div class="col-md-5">
+        <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Newly Added customers
                 </div>
                 <div class="panel-body">
-
+                    <p ng-repeat="(key, val) in resident">
+                        {{key}}: {{val}}
+                    </p>
                 </div>
             </div>
-            <button ng-click="showForm('main')" type="button" class="btn btn-danger btn-lg">Back</button>
+
         </div>
+    </div>
+    <div class="row">
+        <!-- Back button -->
+        <div class="col-md-4">
+            <hr>
+            <button ng-click="showForm('main')" type="button" class="btn btn-danger btn-lg">Back to dashboard</button>
+        </div>
+        <!-- confirm button -->
+        <div class="col-md-4">
+            <hr>
+            <button ng-click="createResident()" type="button" class="btn btn-info btn-lg">Add new Resident</button>
+            <button ng-click="clearForms()" type="button" class="btn btn-warning btn-lg">Clear</button>
+        </div>
+
     </div>
 </div>

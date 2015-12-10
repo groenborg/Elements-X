@@ -31,7 +31,56 @@
             restrict: 'EA',
             templateUrl: "../SPA/directives/adminCreateResidentForm.html",
             scope: false,
-            controller: function ($scope) {
+            controller: function ($scope, adminFactory, notificationService) {
+                //Two way binded model
+                $scope.resident = {
+                    first_name: "",
+                    last_name: "",
+                    room_number: null,
+                    kitchen_number: null,
+                    current_balance: null,
+                    deposit: 100,
+                    phone: "",
+                    email: "",
+                    access_level: 0,
+                    password: "",
+                    active: true
+                };
+
+                var msgService = notificationService;
+
+                $scope.createResident = function () {
+
+                    if ($scope.resident.room_number == null || $scope.resident.kitchen_number == null) {
+                        msgService.notify('', 'Fields are missing', 'warning')
+                    } else {
+                        adminFactory.createResident($scope.resident, function (err, data) {
+                            if (err) {
+                                msgService.notify('error in request', 'Canceled', 'error')
+                            }
+                            msgService.notify('resident successfully created: id = ' + data.data.resident_id, 'Created', 'success');
+                        });
+                    }
+                };
+
+
+                $scope.clearForms = function () {
+                    $scope.resident = {
+                        first_name: "",
+                        last_name: "",
+                        room_number: null,
+                        kitchen_number: null,
+                        current_balance: null,
+                        deposit: 100,
+                        phone: "",
+                        email: "",
+                        access_level: 0,
+                        password: "",
+                        active: true
+                    };
+                    msgService.notify('', 'Cleared', 'info');
+                };
+
 
             },
             link: function ($scope, element, attributes) {

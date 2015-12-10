@@ -12,6 +12,7 @@
 
     <!-- inventory overview section -->
     <div class="row">
+
         <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -19,16 +20,16 @@
                 </div>
                 <div class="panel-body">
 
-                        <p>Overview over inventory</p>
-                        <canvas id="bar" class="chart chart-bar" height="100px"
-                                chart-data="storeChart.data" chart-labels="storeChart.labels" chart-options="storeChart.options"
-                                chart-colours="storeChart.colours">
-                        </canvas>
+                    <p>Overview over inventory</p>
+                    <canvas id="bar" class="chart chart-bar" height="100px"
+                            chart-data="storeChart.data" chart-labels="storeChart.labels"
+                            chart-options="storeChart.options"
+                            chart-colours="storeChart.colours">
+                    </canvas>
 
                 </div>
             </div>
         </div>
-
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -37,18 +38,17 @@
                 <div class="panel-body">
 
                     <label for="">Create new resident</label>
-                    <button class=" btn btn-success btn-lg btn-group-justified" ng-click="showForm('resident')">
+                    <button class=" btn btn-info btn btn-group-justified" ng-click="showForm('resident')">
                         New Resident
                     </button>
                     <br>
                     <label for="">Create new Assortment item</label>
-                    <button class=" btn btn-success btn-lg btn-group-justified" ng-click="showForm('assortment')">
+                    <button class=" btn btn-info btn btn-group-justified" ng-click="showForm('assortment')">
                         New Assortment Item
                     </button>
                 </div>
             </div>
         </div>
-
 
         <!-- User activity -->
         <div class="col-md-6">

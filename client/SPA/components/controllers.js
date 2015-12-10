@@ -259,8 +259,16 @@
     app.controller('DashboardCtrl', ['$scope', "adminFactory", function ($scope, adminFactory) {
         //Declarative variables
         $scope.assortmentItems = {};
+        $scope.activeForms = {
+            resident: false,
+            assortment: false,
+            main: true
+
+        };
+
         var labels = [];
         var supply = [];
+
 
         //On load functions
         adminFactory.onLoadTransactions('error', 'assortmentItems', $scope, function () {
@@ -286,12 +294,7 @@
                 highlightStroke: 'rgb(76,76,76)'
             }]
         };
-        $scope.activeForms = {
-            resident: false,
-            assortment: false,
-            main: true
 
-        };
 
         $scope.showForm = function (formKey) {
             for (var prop in $scope.activeForms) {
