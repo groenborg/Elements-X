@@ -36,6 +36,9 @@
         }).when('/buy/:kitchenNumber/:residentId', {
             templateUrl: 'views/userShoppingPage.html',
             controller: 'UserShoppingCtrl'
+        }).when('/login',{
+            templateUrl:"views/login.html",
+            controller:""
         }).otherwise({
             templateUrl: 'views/userKitchenSelectionPage.html',
             controller: 'KitchenCtrl'

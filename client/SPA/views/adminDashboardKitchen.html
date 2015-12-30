@@ -19,7 +19,8 @@
                 <div class="col-md-4">
                     <form class="form-inline">
                         <div class="form-group">
-                            <input id="filterModel" type="text" class="form-control input-lg" placeholder="Search residents" ng-model="search">
+                            <input id="filterModel" type="text" class="form-control input-lg"
+                                   placeholder="Search residents" ng-model="search">
                         </div>
                     </form>
 
@@ -56,14 +57,18 @@
                             <td>
                                 <!-- Inline refill form -->
                                 <div class="row">
-                                    <div class="col-xs-8" style="padding-top: 9px">
-                                        <input type="number" class="form-control form-inline" placeholder="amount">
-                                    </div>
-                                    <button ng-click="" type="submit" class="btn btn-success">Deposit</button>
+                                    <form class="form-inline">
+                                        <input ng-model="resident.refillValue" type="number" class="form-control"
+                                               placeholder="Add to balance">
+                                        <button ng-click="deposit(resident)" type="submit"
+                                                class="btn btn-success">
+                                            Deposit
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
                             <td>
-                                <button ng-click="deposit(resident)" type="submit" class="btn btn-warning">Edit</button>
+                                <button type="submit" class="btn btn-warning">Edit</button>
                             </td>
                         </tr>
                     </table>

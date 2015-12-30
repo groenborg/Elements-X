@@ -306,23 +306,50 @@
 
     }]);
 
-    app.controller('DashBoardKitchenCtrl', ["$scope", "$routeParams", "storageFactory", "controllerFactory", function ($scope, $routeParams, storageFactory, controllerFactory) {
-        //Load in necessary data
+    app.controller('DashBoardKitchenCtrl', ["$scope", "$routeParams", "controllerFactory", "adminFactory", "notificationService", function ($scope, $routeParams, controllerFactory, adminFactory, notificationService) {
+        //Declarative variables
         $scope.kitchenNumber = $routeParams.kitchenNumber;
+        $scope.deposit = "";
 
-        //Controller from here
+
+        //On load functionality
         controllerFactory.onLoad($scope, $scope.kitchenNumber);
+        var msgService = notificationService;
 
 
         $scope.deposit = function (resident) {
-            console.log(resident);
+            var amount = parseFloat(resident.refillValue);
+
+
+            if (!isNaN(amount) && amount > 0) {
+                adminFactory.refillTransaction({
+                    resident_id: resident.resident_id,
+                    insert_amount: amount
+                }, function (err, data) {
+                    if (err) {
+                        msgService.notify('error in transaction', 'refill canceled', 'error');
+                        resident.refillValue = undefined;
+                    } else {
+                        //set customer balance
+                        resident.current_balance = data.data.current_balance;
+                        //empty balance from  model
+                        resident.refillValue = undefined;
+                        msgService.notify(resident.first_name + ' added ' + amount + ' to account', 'Transaction success', 'success')
+                    }
+                });
+            } else {
+                msgService.notify('not a valid refill value', 'refill canceled', 'warning');
+            }
         };
+
 
         $scope.summarizedBalance = function () {
             var sum = 0;
-            for (var i = 0; i < $scope.kitchenResidents.length; ++i)
-                sum += $scope.kitchenResidents[i].current_balance;
-            return sum.toFixed(2);
+            if ($scope.kitchenResidents) {
+                for (var i = 0; i < $scope.kitchenResidents.length; ++i)
+                    sum += $scope.kitchenResidents[i].current_balance;
+                return sum.toFixed(2);
+            }
         }
 
     }]);

@@ -1,10 +1,15 @@
 /* the footer will need a height if it fails to stick */
 body {
     background-color: rgb(242, 242, 242);
+    height: 100%;
+}
+
+html {
+    height: 100%;
 }
 
 .footer {
-    margin-top: 50px;
+
     border-top: 4px solid rgb(117, 176, 212);
     padding-top: 10px;
     background-color: rgb(60, 69, 80);
@@ -21,6 +26,24 @@ body {
 .footer-row > p > a:hover {
     text-decoration: underline;
     color: #fff;
+}
+
+* {
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -165px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.push {
+    height: 165px;
+}
+
+.footer {
+    height: 165px; /* .push must be the same height as .footer */
 }
 
 .kitchen-block {
@@ -73,6 +96,7 @@ body {
     margin-right: -15px;
     margin-bottom: 20px;
     margin-left: -15px;
+
 }
 
 .nav-sidebar > li > a {
@@ -88,7 +112,6 @@ body {
     background-color: rgb(130, 175, 209);
 }
 
-
 .nav-sidebar > .active > a {
     color: #fff;
     background-color: #428bca;
@@ -97,10 +120,6 @@ body {
 /*
  * Main content
  */
-
-
-
-
 
 .main {
 
