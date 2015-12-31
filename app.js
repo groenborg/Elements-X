@@ -12,6 +12,7 @@ var transactionRoute = require('./server/routes/transactionService');
 var assortmentRoute = require('./server/routes/assortmentService');
 var serverRoute = require('./server/routes/serverMaintenanceService');
 var residentAdminRoute = require('./server/routes/residentAdminService');
+var secureLoginRoute = require('./server/routes/secureLogin');
 
 //var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
 var connection = require('./server/model/connection');
@@ -41,6 +42,7 @@ app.use('/api', residentRoute);
 app.use('/api', transactionRoute);
 app.use('/api', assortmentRoute);
 app.use('/api', residentAdminRoute);
+app.use('/api', secureLoginRoute);
 app.use('/server', serverRoute);
 
 

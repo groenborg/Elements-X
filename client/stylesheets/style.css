@@ -9,7 +9,7 @@ html {
 }
 
 .footer {
-
+    margin-top:10px;
     border-top: 4px solid rgb(117, 176, 212);
     padding-top: 10px;
     background-color: rgb(60, 69, 80);
@@ -71,19 +71,8 @@ html {
 }
 
 /* Color for the kitchens */
-.kitchen-one {
-    /*  */
-    background-color: #70C1B3;
-}
-
-.kitchen-two {
-    /*  */
-    background-color: #247BA0;
-}
-
-.kitchen-three {
-    /*  */
-    background-color: #50514F;
+.kitchen-one, .kitchen-two, .kitchen-three {
+    background-color: #5bc0de;
 }
 
 .dashboard-body {

@@ -43,7 +43,7 @@ var resident = new mongoose.Schema({
     deposit: Number,                            // The deposited amount when you open an account
     phone: String,
     active: Boolean,
-    email: String,
+    email: {type: String, unique: true},
     access_level: Number,                           // Does the resident still live here - move resident to history
     password: String,
     achievements: [String],
