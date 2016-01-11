@@ -4,9 +4,7 @@
 
     var app = angular.module('EX.controllers', []);
 
-    app.controller('HomePageCtrl', function ($scope) {
-
-
+    app.controller('AppCtrl', function ($scope) {
     });
 
     app.controller('KitchenCtrl', function ($scope) {
@@ -247,7 +245,6 @@
         $scope.kitchenNumber = $routeParams.kitchenNumber;
 
         controllerFactory.onLoad($scope, $scope.kitchenNumber);
-
 
         $scope.changeView = function (kitchenNumber, residentId) {
             $rootScope.shopper = storageFactory.getResident(kitchenNumber, residentId);

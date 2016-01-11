@@ -14,16 +14,21 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#kitchen">Choose Kitchen</a></li>
-                <li><a href="#buy">Buy</a></li>
-                <li><a href="#residents">residents</a></li>
-                <li><a href="#dashboard">dashboard</a></li>
-                <li><a href="#picker">picker</a></li>
+                <li><a href="#">Kitchens</a></li>
+                <li ng-show="isVisible(1)"><a href="#bar">Bar</a></li>
+                <li ng-show="isVisible(2)"><a href="#dashboard">Dashboard</a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
-                <a href="#/login" class="btn btn-success form-control">Sign in</a>
+
+
+            <form class="navbar-form navbar-right">
+                <a ng-click="logOut()" class="btn btn-warning form-control" ng-show="isVisible(1)">Sign out</a>
+                <a href="#/login" class="btn btn-success form-control" ng-hide="isVisible(1)">Sign in</a>
             </form>
+            <ul class="nav navbar-nav navbar-right" ng-show="isVisible(1)">
+                <li><a href="">{{admin.first_name}}</a></li>
+                <li><a href="">{{admin.email}}</a></li>
+                <li><a href="">{{admin.access_level}}</a></li>
+            </ul>
         </div>
     </div>
 </nav>

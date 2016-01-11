@@ -13,7 +13,7 @@
                     if (err) {
                         return callback(err);
                     }
-                    for (var i = 0; i < 3; ++i) {
+                    for (var i = 0; i < data.data.length; ++i) {
                         var kitchenNumber = data.data[i]._id;
                         var residentList = data.data[i].residents;
                         storageFactory.storeKitchens(kitchenNumber, residentList);
@@ -160,6 +160,7 @@
                     method: 'GET',
                     url: '/api/getKitchenGroups'
                 }).then(function success(response) {
+                    console.log(response);
                     callback(undefined, response);
                 }, function error(response) {
                     callback(response);
@@ -208,9 +209,40 @@
                 }, function error(data) {
                     callback(data);
                 });
+            },
+            loginRequest: function (user, callback) {
+                $http({
+                    method: 'POST',
+                    url: 'api/authenticate',
+                    data: user
+                }).then(function success(data) {
+                    callback(undefined, data)
+                }, function error(data) {
+                    callback(data);
+                });
             }
         }
     }]);
+
+    app.factory('authInspector', function ($location, $window) {
+
+        return {
+            authBar: function () {
+                if ($window.sessionStorage.token == undefined) {
+                    $location.path('/login');
+                }
+            },
+            authAdmin: function () {
+                if ($window.sessionStorage.token == undefined) {
+                    $location.path('/login')
+                } else {
+                    if ($window.sessionStorage.al <= 1) {
+                        $location.path('/login');
+                    }
+                }
+            }
+        }
+    });
 
 })();
 

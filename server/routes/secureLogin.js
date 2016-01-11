@@ -12,18 +12,27 @@ router.post('/authenticate', function (request, response) {
 
         //add hashing and salting here
         if (err) {
-            response.statusCode = 401;
-            response.send({err: "user not found"})
+            response.statusCode = 501;
+            response.send({err: "internal error"});
+            return;
         }
 
-        if (user.password == requestedUser.password) {
+        if (!user) {
+            response.statusCode = 401;
+            response.send({err: "user not found"});
+            return;
+        }
 
+        if (user.password == requestedUser.password && user.access_level > 0) {
             var token = jwt.sign({
                 first_name: user.first_name,
                 email: user.email,
                 access_level: user.access_level
             }, secrets.secretTokenOne, {expiresIn: 60 * 10});
             response.send({token: token});
+        } else {
+            response.statusCode = 403;
+            response.send({err: "access denied"});
         }
     });
 

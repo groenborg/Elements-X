@@ -7,7 +7,8 @@
     app.directive('navigation', function () {
         return {
             restrict: 'A',
-            templateUrl: '../SPA/directives/navigation.html'
+            templateUrl: '../SPA/directives/navigation.html',
+            scope: false
         }
     });
 
