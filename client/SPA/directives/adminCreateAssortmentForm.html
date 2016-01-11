@@ -14,17 +14,25 @@
             <div class="form-group">
                 <div class="form-group form-group">
                     <label for="assortment-name">Name</label>
-                    <input id="assortment-name" type="text" class="form-control" placeholder="Assortment Name">
+                    <input ng-model="item.name" id="assortment-name" type="text" class="form-control"
+                           placeholder="Assortment Name">
                 </div>
                 <div class="form-group form-group">
                     <label for="supply">Supply</label>
-                    <input id="supply" type="number" class="form-control" placeholder="Crates in storage">
+                    <input ng-model="item.supply" id="supply" type="number" class="form-control"
+                           placeholder="Crates in storage">
                 </div>
                 <div class="form-group form-group">
-                    <label for="size">unit amount</label>
-                    <input id="size" type="number" class="form-control" placeholder="unit amount">
+                    <label for="item-size">item size</label>
+                    <input ng-model="item.item_size" id="item-size" type="number" class="form-control"
+                           placeholder="unit amount">
 
                     <p><span class="label label-info"> Info </span>units in a crate</p>
+                </div>
+                <div class="form-group form-group">
+                    <label for="desc">Description</label>
+                    <input ng-model="item.description" id="desc" type="text" class="form-control"
+                           placeholder="description">
                 </div>
             </div>
 
@@ -35,19 +43,23 @@
             <div class="form-group">
                 <div class="form-group form-group">
                     <label for="price-one">Kitchen 1 price</label>
-                    <input id="price-one" type="number" class="form-control" placeholder="kitchen 1 price">
+                    <input ng-model="item.one_price" id="price-one" type="number" class="form-control"
+                           placeholder="kitchen 1 price">
                 </div>
                 <div class="form-group form-group">
                     <label for="price-two">Kitchen 2 price</label>
-                    <input id="price-two" type="number" class="form-control" placeholder="kitchen 2 price">
+                    <input ng-model="item.two_price" id="price-two" type="number" class="form-control"
+                           placeholder="kitchen 2 price">
                 </div>
                 <div class="form-group form-group">
                     <label for="price-three">Kitchen 3 price</label>
-                    <input id="price-three" type="number" class="form-control" placeholder="kitchen 3 price">
+                    <input ng-model="item.three_price" id="price-three" type="number" class="form-control"
+                           placeholder="kitchen 3 price">
                 </div>
                 <div class="form-group form-group">
                     <label for="bar-price">Bar price</label>
-                    <input id="bar-price" type="number" class="form-control" placeholder="kitchen 3 price">
+                    <input ng-model="item.bar_price" id="bar-price" type="number" class="form-control"
+                           placeholder="bar">
                 </div>
 
             </div>
@@ -60,7 +72,9 @@
                     Items section
                 </div>
                 <div class="panel-body">
-
+                    <p ng-repeat="(key, val) in item">
+                        {{key}}: {{val}}
+                    </p>
                 </div>
             </div>
 
@@ -74,8 +88,8 @@
         <div class="col-md-4">
             <hr>
             <!-- Button section -->
-            <button type="button" class="btn btn-primary btn-lg">Add new Resident</button>
-            <button type="button" class="btn btn-warning btn-lg">Clear</button>
+            <button ng-click="createAssortmentItem()" type="button" class="btn btn-primary btn-lg">Add new Item</button>
+            <button ng-click="clearItemForm()" type="button" class="btn btn-warning btn-lg">Clear</button>
         </div>
     </div>
 

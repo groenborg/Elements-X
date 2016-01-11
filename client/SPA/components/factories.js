@@ -138,6 +138,9 @@
             },
             createResident: function (residentDTO, callback) {
                 webserviceFactory.createResidentRequest(residentDTO, callback);
+            },
+            createAssortmentItem: function (item, callback) {
+                webserviceFactory.createAssortmentRequest(item, callback);
             }
         }
     }]);
@@ -204,6 +207,17 @@
                     method: 'POST',
                     url: '/api/admin/createResident',
                     data: newResident
+                }).then(function success(data) {
+                    callback(undefined, data);
+                }, function error(data) {
+                    callback(data);
+                });
+            },
+            createAssortmentRequest: function (item, callback) {
+                $http({
+                    method: 'POST',
+                    url: '/admin/assortment/create',
+                    data: item
                 }).then(function success(data) {
                     callback(undefined, data);
                 }, function error(data) {

@@ -96,8 +96,50 @@
             restrict: 'EA',
             templateUrl: "../SPA/directives/adminCreateAssortmentForm.html",
             scope: false,
-            controller: function ($scope) {
+            controller: function ($scope, adminFactory, notificationService) {
+                //Declarative variables
+                $scope.item = {
+                    name: null,
+                    supply: 0,
+                    item_size: 0,
+                    description: null,
+                    one_price: 0,
+                    two_price: 0,
+                    three_price: 0,
+                    bar_price: 0
+                };
+                var msgService = notificationService;
 
+
+                $scope.createAssortmentItem = function () {
+                    if ($scope.item.name == null || $scope.item.supply == null || $scope.item.one_price == 0) {
+                        msgService.notifyClear("All fields must be valid", "Invalid action")
+                    } else {
+                        adminFactory.createAssortmentItem($scope.item, function (err, data) {
+                            if (err) {
+                                msgService.notify("Could not be created", "Error", "error")
+                            } else {
+                                msgService.notify("Item successfully created: " + data.data.name, "Success", "success");
+                                $scope.clearItemForm();
+                            }
+                        });
+                    }
+                };
+
+
+                $scope.clearItemForm = function () {
+                    $scope.item = {
+                        name: null,
+                        supply: 0,
+                        item_size: 0,
+                        description: null,
+                        one_price: 0,
+                        two_price: 0,
+                        three_price: 0,
+                        bar_price: 0
+                    };
+                    msgService.notifyClear("fields emptied", "Clear")
+                }
             },
             link: function ($scope, element, attributes) {
 
