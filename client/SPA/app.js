@@ -9,7 +9,6 @@
         'EX.directives',
         'EX.factories',
         'EX.services'
-
     ]);
 
     app.config(function ($routeProvider) {
@@ -65,6 +64,10 @@
         });
 
     });
+
+    app.config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptor');
+    }])
 
 })();
 

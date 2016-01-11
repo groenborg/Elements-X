@@ -24,14 +24,23 @@
     app.controller('AppCtrl', ['$scope', '$window', '$location', 'webserviceFactory', 'notificationService', function ($scope, $window, $location, webserviceFactory, notificationService) {
         //Declarative variables
         $scope.admin = {
-            email: "hello",
-            password: "",
+            first_name: "",
+            email: "",
             access_level: 0
         };
         $scope.signInObject = {};
 
         var msgService = notificationService;
 
+        ($scope.refresh = function () {
+            if ($window.sessionStorage.token) {
+                var encodedProfile = $window.sessionStorage.token.split('.')[1];
+                var profile = JSON.parse(base64Decode(encodedProfile));
+                $scope.admin.first_name = profile.first_name;
+                $scope.admin.email = profile.email;
+                $scope.admin.access_level = profile.access_level;
+            }
+        })();
 
         $scope.login = function () {
             webserviceFactory.loginRequest($scope.signInObject, function (err, data) {
@@ -39,10 +48,9 @@
                     msgService.notify('Error', err.data.err, 'error');
                     return;
                 }
-
-                $window.sessionStorage.token = data.data.token;
                 var encodedProfile = data.data.token.split('.')[1];
                 var profile = JSON.parse(base64Decode(encodedProfile));
+                $window.sessionStorage.token = data.data.token;
                 $window.sessionStorage.al = profile.access_level;
                 $scope.admin.first_name = profile.first_name;
                 $scope.admin.email = profile.email;
