@@ -1,4 +1,5 @@
 var transactionMapper = require('../../../server/source/transactionMapper.js');
+var collectionMapper = require('../../../server/source/collectionGetMapper');
 var connection = require('../../../server/model/connection.js');
 var fixture = require('./../fixture.js');
 var should = require('should');
@@ -14,15 +15,15 @@ describe('Transaction test suite', function () {
         connection.closeMongoDB(done);
     });
 
-    beforeEach('fill resident collection', function (done) {
-        fixture.fillDatabase(done);
+    beforeEach('fill resident collection', function () {
+        //fixture.fillDatabase(done);
     });
 
-    afterEach('empty resident collection', function (done) {
-        fixture.emptyDataBase(done);
+    afterEach('empty resident collection', function () {
+        //fixture.emptyDataBase(done);
     });
 
-    describe('resident Purchase test', function () {
+    xdescribe('resident Purchase test', function () {
 
         var residentId = 27;
 
@@ -37,6 +38,7 @@ describe('Transaction test suite', function () {
         it('purchase history should have a length of two', function (done) {
             transactionMapper.residentPurchaseTransaction(residentId, purchase, function (err, data) {
                 if (err) throw err;
+                console.log(data);
                 data.purchase_history.length.should.equal(2);
                 done();
             });
@@ -55,19 +57,33 @@ describe('Transaction test suite', function () {
      });
      *
      * */
-
     describe('resident Refill Balance test', function () {
 
+        var storageTransaction = {
+            resident_id: 14,
+            amount: 2,
+            total_price: 100,
+            assortment_id: "56964e75595474566e778b9f"
+        };
 
-        var balanceHistoryItem = {
-            insert_amount: 100,
+        it('should get all assortment items', function (done) {
+            collectionMapper.getAllElementsFromCollection("Assortment", function (err, data) {
+                if (data) {
+                    done();
+                }
+            });
+        });
 
 
-        }
+        it('should create transaction', function (done) {
+            transactionMapper.buyFromStorage(storageTransaction, function (err, data) {
+                data.resident_id.should.equal(storageTransaction.resident_id);
+                done();
+            });
+
+        });
 
 
     });
 
-
-})
-;
+});

@@ -51,13 +51,24 @@ var residentBalanceRefillTransaction = function (residentId, balanceRefillItem, 
  * total_price: Number,
  * amount: Number,
  * timestamp: {type: Date, default: Date.now()}
+ *
+ * update {amount, total_price, resident_id, assortment_id}
  * */
+var buyFromStorage = function (transactionData, callback) {
 
-var buyFromWarehouse = function () {
+    model.Assortment.findByIdAndUpdate(transactionData.assortment_id, {$inc: {supply: -transactionData.amount}}, {new: true}, function (err, aData) {
+        if (err)return callback(err);
+        if (!aData)return callback();
 
+        model.Transaction.create(transactionData, function (err, data) {
+            if (err)return callback(err);
+            if (!data)return callback();
+            return callback(undefined, data)
+        });
+    });
 };
 
 
-exports.buyFromWarehouse = buyFromWarehouse;
+exports.buyFromStorage = buyFromStorage;
 exports.residentBalanceRefillTransaction = residentBalanceRefillTransaction;
 exports.residentPurchaseTransaction = residentPurchaseTransaction;

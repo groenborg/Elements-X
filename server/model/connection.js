@@ -2,7 +2,7 @@ var db = require('mongoose');
 var app = require('express')();
 var model = require('./models.js');
 
-var localDataBase = "mongodb://localhost/elements";
+var localDataBase = "mongodb://simon:127simon@ds037283.mongolab.com:37283/xserve"; //"mongodb://localhost/elements";
 
 /////// VERY BAD CODE - NEVER HARDCODE CONNECTIONS INTO FILES
 var remoteDataBase = "mongodb://simon:127simon@ds037283.mongolab.com:37283/xserve";

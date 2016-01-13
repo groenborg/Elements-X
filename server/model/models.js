@@ -75,7 +75,7 @@ var transaction = new mongoose.Schema({
     assortment_id: {type: mongoose.Schema.Types.ObjectId, ref: "assortments"},
     total_price: Number,
     amount: Number,
-    timestamp: {type: Date, default: Date.now()}
+    timestamp: {type: Date, default: Date.now}
 });
 
 //sequence for unique ID generation

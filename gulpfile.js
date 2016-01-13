@@ -57,7 +57,10 @@ gulp.task('watch', function () {
     gulp.watch(['server/source/*.js', 'test/**/*.js', 'server/model/*.js'], ['mocha', 'lint']);
 });
 
-gulp.task('test', ['sourceTest']);
+
+gulp.task('test', function () {
+    gulp.watch(['server/source/*.js', 'test/**/*.js'], ['sourceTest']);
+});
 
 
 gulp.task('default', ['watch', 'mocha', 'data', 'lint']);
