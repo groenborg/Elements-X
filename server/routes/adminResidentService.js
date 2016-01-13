@@ -7,7 +7,7 @@ var router = express.Router();
  * request Handler
  * receives create request from client
  * */
-router.post('/admin/createResident', function (request, response) {
+router.post('/resident/create', function (request, response) {
     var newResident = request.body;
 
     facade.createResident(newResident, function (err, data) {

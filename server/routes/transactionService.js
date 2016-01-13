@@ -24,22 +24,4 @@ router.post('/user/purchase', function (request, response) {
     });
 });
 
-
-router.post('/user/refill', function (request, response) {
-    var refillObject = request.body;
-    var residentId = refillObject.resident_id;
-
-    transaction.residentBalanceRefillTransaction(residentId, refillObject, function (err, data) {
-        if (err) {
-            response.statusCode = 503;
-            response.statusMessage = "service unavailable";
-            response.send({message: "Could not refill account"});
-
-        } else {
-            response.send(data);
-        }
-    });
-});
-
-
 module.exports = router;

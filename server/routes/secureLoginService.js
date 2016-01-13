@@ -26,6 +26,7 @@ router.post('/authenticate', function (request, response) {
         if (user.password == requestedUser.password && user.access_level > 0) {
             var token = jwt.sign({
                 first_name: user.first_name,
+                resident_id: user.resident_id,
                 email: user.email,
                 access_level: user.access_level
             }, secrets.secretTokenOne, {expiresIn: 60 * 10});

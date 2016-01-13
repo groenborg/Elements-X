@@ -11,10 +11,11 @@ var singlePageRoute = require('./server/routes/index');
 var residentRoute = require('./server/routes/residentService');
 var transactionRoute = require('./server/routes/transactionService');
 var assortmentRoute = require('./server/routes/assortmentService');
-var adminAssortmentRoute = require('./server/routes/adminAssortmentService');
 var serverRoute = require('./server/routes/serverMaintenanceService');
-var residentAdminRoute = require('./server/routes/residentAdminService');
-var secureLoginRoute = require('./server/routes/secureLogin');
+var secureLoginRoute = require('./server/routes/secureLoginService');
+var adminTransactionRoute = require('./server/routes/adminTransactionService');
+var adminResidentRoute = require('./server/routes/adminResidentService');
+var adminAssortmentRoute = require('./server/routes/adminAssortService');
 
 
 //var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
@@ -42,8 +43,9 @@ app.use('/', singlePageRoute);
 app.use('/api', residentRoute);
 app.use('/api', transactionRoute);
 app.use('/api', assortmentRoute);
-app.use('/api', residentAdminRoute);
 app.use('/api', secureLoginRoute);
+app.use('/admin', adminTransactionRoute);
+app.use('/admin', adminResidentRoute);
 app.use('/admin', adminAssortmentRoute);
 app.use('/server', serverRoute);
 

@@ -169,6 +169,16 @@
                     callback(response);
                 });
             },
+            getAllAssortmentItems: function (callback) {
+                $http({
+                    method: 'GET',
+                    url: '/api/assortment/all'
+                }).then(function success(data) {
+                    callback(undefined, data)
+                }, function error(data) {
+                    callback(data)
+                });
+            },
             purchaseTransaction: function (purchase, callback) {
                 $http({
                     method: 'POST',
@@ -184,7 +194,7 @@
             refillTransaction: function (refill, callback) {
                 $http({
                     method: 'POST',
-                    url: '/api/user/refill',
+                    url: '/admin/resident/refill',
                     data: refill
                 }).then(function success(data) {
                     callback(undefined, data);
@@ -192,20 +202,10 @@
                     callback(data);
                 });
             },
-            getAllAssortmentItems: function (callback) {
-                $http({
-                    method: 'GET',
-                    url: '/api/assortment/all'
-                }).then(function success(data) {
-                    callback(undefined, data)
-                }, function error(data) {
-                    callback(data)
-                });
-            },
             createResidentRequest: function (newResident, callback) {
                 $http({
                     method: 'POST',
-                    url: '/api/admin/createResident',
+                    url: '/admin/resident/create',
                     data: newResident
                 }).then(function success(data) {
                     callback(undefined, data);
