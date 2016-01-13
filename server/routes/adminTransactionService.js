@@ -32,6 +32,21 @@ router.post('/transaction/purchase', function (request, response) {
     });
 });
 
+router.get('/transaction/get/:limit', function (request, response) {
+    var limit = request.params.limit;
 
+    limit = limit == 0 ? 10 : limit;
+
+    transaction.getAllTransactions(limit, function (err, data) {
+        if (err) {
+            response.statusCode = 404;
+            response.statusMessage = "not found";
+            response.send({message: "no transactions found"});
+        } else {
+            response.send(data);
+        }
+    })
+
+});
 
 module.exports = router;

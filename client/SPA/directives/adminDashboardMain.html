@@ -31,6 +31,7 @@
             </div>
         </div>
         <div class="col-md-3">
+            <!-- ACTION PANEL -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Actions
@@ -52,13 +53,36 @@
 
         <!-- User activity -->
         <div class="col-md-6">
+            <!-- TRANSACTION PANEL -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Latest activity</h3>
+                    <h3 class="panel-title">Purchase from storage</h3>
                 </div>
                 <div class="panel-body">
-                    <button class="btn btn-default" type="submit">Button</button>
-                    some activity
+                    <!-- SELECT ITEM -->
+                    <div class="form-group">
+                        <select ng-model="transactionPurchase.item" class="form-control" name="repeatSelect"
+                                id="repeatSelect">
+                            <option ng-repeat="data in assortmentItems" value="{{data}}">{{data.name}}</option>
+                        </select>
+                    </div>
+                    <!-- AMOUNT -->
+                    <div class="form-group">
+                        <label for="amount" class="control-label">Purchase Amount</label>
+                        <input ng-model="transactionPurchase.amount" type="number" class="form-control" id="amount"
+                               placeholder="Enter amount">
+                    </div>
+                    <hr>
+                    <!-- PRICE -->
+                    <div class="input-group">
+                        <div class="input-group-addon">Price</div>
+                        <input ng-value="transactionPurchase.item.one_price" type="text"
+                               class="form-control" id="exampleInputAmount" placeholder="Amount" readonly>
+                        <div class="input-group-addon">dkr,-</div>
+                    </div>
+                    <hr>
+                    <button ng-click="purchase()" class="btn btn-success" type="submit">Purchase</button>
+                    <button ng-click="clearTransaction()" class="btn btn-warning" type="submit">Clear</button>
                 </div>
             </div>
         </div>
@@ -66,20 +90,25 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Latest activity</h3>
+                    <h3 class="panel-title">Latest Transactions</h3>
                 </div>
                 <div class="panel-body">
-
-                    some activity
+                    <div class="list-group">
+                        <button type="button" class="list-group-item"
+                                ng-repeat="transaction in allTransactions.data">
+                            <span class="pull-left">id: {{transaction._id}}</span>
+                            <span class="pull-right">amount: {{transaction.amount}}</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- page visits -->
-        <div class="col-md-2">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Latest activity</h3>
+                    <h3 class="panel-title">Latest resident activity</h3>
                 </div>
                 <div class="panel-body">
 

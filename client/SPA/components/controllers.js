@@ -255,17 +255,24 @@
 
     app.controller('DashboardCtrl', ['$scope', "adminFactory", function ($scope, adminFactory) {
         //Declarative variables
-        $scope.assortmentItems = {};
+        $scope.assortmentItems = [];
         $scope.activeForms = {
             resident: false,
             assortment: false,
             main: true
-
         };
-
+        $scope.transactionPurchase = {
+            item: null,
+            total_price: null,
+            resident_id: null,
+            amount: null
+        };
+        $scope.allTransactions = {
+            err: false,
+            data: null
+        };
         var labels = [];
         var supply = [];
-
 
         //On load functions
         adminFactory.onLoadTransactions('error', 'assortmentItems', $scope, function () {
@@ -273,8 +280,18 @@
                 labels.push($scope.assortmentItems[i].name);
                 supply.push($scope.assortmentItems[i].supply);
             }
+            console.log($scope.assortmentItems);
         });
 
+        adminFactory.onLoadGetPurchase(function (err, data) {
+            console.log(data);
+            if (err) {
+                $scope.allTransactions.err = true;
+            } else {
+                $scope.allTransactions.data = data.data;
+            }
+
+        });
 
         $scope.storeChart = {
             labels: labels,
@@ -292,7 +309,6 @@
             }]
         };
 
-
         $scope.showForm = function (formKey) {
             for (var prop in $scope.activeForms) {
                 if ($scope.activeForms.hasOwnProperty(prop)) {
@@ -300,6 +316,7 @@
                 }
             }
         };
+
 
     }]);
 

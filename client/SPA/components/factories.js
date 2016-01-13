@@ -133,6 +133,9 @@
                     if (callback) return callback();
                 });
             },
+            onLoadGetPurchase: function (callback) {
+                webserviceFactory.getAllTransactions(callback);
+            },
             refillTransaction: function (refill, callback) {
                 webserviceFactory.refillTransaction(refill, callback);
             },
@@ -179,6 +182,16 @@
                     callback(data)
                 });
             },
+            getAllTransactions: function (callback) {
+                $http({
+                    method: 'GET',
+                    url: 'admin/transaction/get/10'
+                }).then(function success(data) {
+                    callback(undefined, data)
+                }, function error(data) {
+                    callback(data)
+                });
+            },
             purchaseTransaction: function (purchase, callback) {
                 $http({
                     method: 'POST',
@@ -190,7 +203,6 @@
                     callback(response);
                 });
             },
-
             refillTransaction: function (refill, callback) {
                 $http({
                     method: 'POST',

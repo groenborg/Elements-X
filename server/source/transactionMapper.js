@@ -69,6 +69,15 @@ var buyFromStorage = function (transactionData, callback) {
 };
 
 
+var getAllTransactions = function (limit, callback) {
+    model.Transaction.find().limit(limit).exec(function (err, data) {
+        if (err) return callback(err);
+        if (!data) return callback();
+        return callback(undefined, data);
+    });
+};
+
+exports.getAllTransactions = getAllTransactions;
 exports.buyFromStorage = buyFromStorage;
 exports.residentBalanceRefillTransaction = residentBalanceRefillTransaction;
 exports.residentPurchaseTransaction = residentPurchaseTransaction;
