@@ -2,43 +2,71 @@
   {
     "name": "Tuborg Guld",
     "supply": 233,
-    "one_price": 4.45,
-    "description": "A delicate drink"
+    "item_size": 24,
+    "description": "A delicate drink",
+    "one_price": 5,
+    "two_price": 5,
+    "three_price": 5,
+    "bar_price": 4
   },
   {
     "name": "Carlsberg Classic",
-    "supply": 120,
-    "one_price": 4.45,
-    "description": "A better drink"
-  },
-  {
-    "name": "Ice Tea",
-    "supply": 23,
-    "one_price": 4.45,
-    "description": "It makes my heart sing"
+    "supply": 233,
+    "item_size": 24,
+    "description": "A delicate drink",
+    "one_price": 5,
+    "two_price": 5,
+    "three_price": 5,
+    "bar_price": 4
   },
   {
     "name": "Coca Cola",
-    "supply": 82,
-    "one_price": 4.45,
-    "description": "This is the best"
+    "supply": 233,
+    "item_size": 24,
+    "description": "A delicate drink",
+    "one_price": 5,
+    "two_price": 5,
+    "three_price": 5,
+    "bar_price": 4
   },
   {
     "name": "Faxe Kondi",
-    "supply": 356,
-    "one_price": 4.45,
-    "description": "A delicate drink"
+    "supply": 233,
+    "item_size": 24,
+    "description": "A delicate drink",
+    "one_price": 5,
+    "two_price": 5,
+    "three_price": 5,
+    "bar_price": 4
   },
   {
-    "name": "Minto",
-    "supply": 10,
-    "one_price": 10,
-    "description": "toothpaste"
+    "name": "Tuborg Black",
+    "supply": 233,
+    "item_size": 24,
+    "description": "A delicate drink",
+    "one_price": 5,
+    "two_price": 5,
+    "three_price": 5,
+    "bar_price": 4
   },
   {
-    "name": "Shots",
-    "supply": 45,
-    "one_price": 4.45,
-    "description": "Something different"
+    "name": "Ice Tea",
+    "supply": 233,
+    "item_size": 24,
+    "description": "A delicate drink",
+    "one_price": 5,
+    "two_price": 5,
+    "three_price": 5,
+    "bar_price": 4
+  },
+  {
+    "name": "Squash",
+    "supply": 233,
+    "item_size": 24,
+    "description": "A delicate drink",
+    "one_price": 5,
+    "two_price": 5,
+    "three_price": 5,
+    "bar_price": 4
   }
 ]

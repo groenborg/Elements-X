@@ -74,14 +74,18 @@
                     </div>
                     <hr>
                     <!-- PRICE -->
-                    <div class="input-group">
-                        <div class="input-group-addon">Price</div>
-                        <input ng-value="transactionPurchase.item.one_price" type="text"
-                               class="form-control" id="exampleInputAmount" placeholder="Amount" readonly>
-                        <div class="input-group-addon">dkr,-</div>
-                    </div>
+                    <form class="form-inline">
+                        <button ng-click="calculatePrice()" type="submit" class="btn btn-default">Calculate Price</button>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">Price</div>
+                                <input ng-model="transactionPurchase.total_price" type="number" class="form-control"
+                                       placeholder="Amount" readonly>
+                            </div>
+                        </div>
+                    </form>
                     <hr>
-                    <button ng-click="purchase()" class="btn btn-success" type="submit">Purchase</button>
+                    <button ng-click="completeTransaction()" class="btn btn-success" type="submit">Purchase</button>
                     <button ng-click="clearTransaction()" class="btn btn-warning" type="submit">Clear</button>
                 </div>
             </div>

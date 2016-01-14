@@ -21,7 +21,7 @@
     }
 
 
-    app.controller('AppCtrl', ['$scope', '$window', '$location', 'webserviceFactory', 'notificationService', function ($scope, $window, $location, webserviceFactory, notificationService) {
+    app.controller('AppCtrl', ['$scope', '$rootScope', '$window', '$location', 'webserviceFactory', 'notificationService', function ($scope, $rootScope, $window, $location, webserviceFactory, notificationService) {
         //Declarative variables
         $scope.admin = {
             first_name: "",
@@ -29,7 +29,7 @@
             access_level: 0
         };
         $scope.signInObject = {};
-
+        $rootScope.admin = {};
         var msgService = notificationService;
 
         ($scope.refresh = function () {
@@ -39,6 +39,11 @@
                 $scope.admin.first_name = profile.first_name;
                 $scope.admin.email = profile.email;
                 $scope.admin.access_level = profile.access_level;
+                $scope.admin.resident_id = profile.resident_id;
+                $rootScope.admin.first_name = profile.first_name;
+                $rootScope.admin.email = profile.email;
+                $rootScope.admin.access_level = profile.access_level;
+                $rootScope.admin.resident_id = profile.resident_id;
             }
         })();
 
@@ -55,6 +60,11 @@
                 $scope.admin.first_name = profile.first_name;
                 $scope.admin.email = profile.email;
                 $scope.admin.access_level = profile.access_level;
+                $scope.admin.resident_id = profile.resident_id;
+                $rootScope.admin.first_name = profile.first_name;
+                $rootScope.admin.email = profile.email;
+                $rootScope.admin.access_level = profile.access_level;
+                $rootScope.admin.resident_id = profile.resident_id;
 
                 msgService.notify($scope.admin.first_name, 'Welcome', "success");
                 if ($scope.admin.access_level > 1) {
@@ -70,6 +80,11 @@
             $scope.admin.first_name = "";
             $scope.admin.email = "";
             $scope.admin.access_level = 0;
+            $scope.admin.resident_id = null;
+            $rootScope.admin.first_name = null;
+            $rootScope.admin.email = null;
+            $rootScope.admin.access_level = null;
+            $rootScope.admin.resident_id = null;
             delete $window.sessionStorage.token;
             delete $window.sessionStorage.al; // access_level
             msgService.notifySuccess("Logged Out");

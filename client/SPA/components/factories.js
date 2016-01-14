@@ -144,6 +144,9 @@
             },
             createAssortmentItem: function (item, callback) {
                 webserviceFactory.createAssortmentRequest(item, callback);
+            },
+            purchaseStorageTransaction: function (purchase, callback) {
+                webserviceFactory.purchaseStorageTransaction(purchase, callback);
             }
         }
     }]);
@@ -196,6 +199,17 @@
                 $http({
                     method: 'POST',
                     url: '/api/user/purchase',
+                    data: purchase
+                }).then(function success(response) {
+                    callback(undefined, response);
+                }, function error(response) {
+                    callback(response);
+                });
+            },
+            purchaseStorageTransaction: function (purchase, callback) {
+                $http({
+                    method: 'POST',
+                    url: '/admin/transaction/purchase',
                     data: purchase
                 }).then(function success(response) {
                     callback(undefined, response);

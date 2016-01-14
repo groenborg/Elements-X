@@ -253,7 +253,7 @@
 
     }]);
 
-    app.controller('DashboardCtrl', ['$scope', "adminFactory", function ($scope, adminFactory) {
+    app.controller('DashboardCtrl', ['$scope', '$rootScope', "adminFactory", "notificationService", function ($scope, $rootScope, adminFactory, notificationService) {
         //Declarative variables
         $scope.assortmentItems = [];
         $scope.activeForms = {
@@ -263,6 +263,7 @@
         };
         $scope.transactionPurchase = {
             item: null,
+            assortment_id: null,
             total_price: null,
             resident_id: null,
             amount: null
@@ -273,6 +274,8 @@
         };
         var labels = [];
         var supply = [];
+        var msgService = notificationService;
+
 
         //On load functions
         adminFactory.onLoadTransactions('error', 'assortmentItems', $scope, function () {
@@ -290,9 +293,61 @@
             } else {
                 $scope.allTransactions.data = data.data;
             }
-
         });
 
+        var clear = function () {
+            $scope.transactionPurchase.item = null;
+            $scope.transactionPurchase.assortment_id = null;
+            $scope.transactionPurchase.total_price = null;
+            $scope.transactionPurchase.resident_id = null;
+            $scope.transactionPurchase.amount = null;
+        };
+
+        //Functions
+        $scope.clearTransaction = function () {
+            clear();
+            msgService.notifyClear("transaction cleared", "Clear");
+        };
+
+        $scope.completeTransaction = function () {
+            if ($rootScope.admin.resident_id != null && $scope.transactionPurchase.total_price != null) {
+
+
+                $scope.transactionPurchase.resident_id = $rootScope.admin.resident_id;
+
+                console.log($scope.transactionPurchase);
+
+                adminFactory.purchaseStorageTransaction($scope.transactionPurchase, function (err, data) {
+                    if (err) {
+                        msgService.notify('Transaction could not be completed', 'error', 'error');
+                    } else {
+                        msgService.notify('Transaction complete', 'Success', 'success');
+
+                    }
+                });
+            } else {
+                msgService.notifyClear('you must calculate the price', 'Calculate price')
+            }
+
+        };
+
+        $scope.calculatePrice = function () {
+            var obj = JSON.parse($scope.transactionPurchase.item);
+            $scope.transactionPurchase.assortment_id = obj._id;
+            $scope.transactionPurchase.total_price = $scope.transactionPurchase.amount *
+                (obj.one_price * obj.item_size);
+        };
+
+        $scope.showForm = function (formKey) {
+            for (var prop in $scope.activeForms) {
+                if ($scope.activeForms.hasOwnProperty(prop)) {
+                    $scope.activeForms[prop] = prop == formKey;
+                }
+            }
+        };
+
+
+        //Charts
         $scope.storeChart = {
             labels: labels,
             data: [
@@ -308,15 +363,6 @@
                 highlightStroke: 'rgb(76,76,76)'
             }]
         };
-
-        $scope.showForm = function (formKey) {
-            for (var prop in $scope.activeForms) {
-                if ($scope.activeForms.hasOwnProperty(prop)) {
-                    $scope.activeForms[prop] = prop == formKey;
-                }
-            }
-        };
-
 
     }]);
 
