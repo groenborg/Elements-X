@@ -59,7 +59,7 @@ gulp.task('watch', function () {
 
 gulp.task('test', ['sourceTest']);
 
-gulp.task('test transaction', function () {
+gulp.task('testTransaction', function () {
     gulp.watch(['server/source/*.js', 'test/**/*.js'], ['sourceTest']);
 });
 

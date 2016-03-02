@@ -56,6 +56,23 @@ var getKitchenGroups = function (callback) {
 
 };
 
+
+var findTenDayPurchase = function (callback) {
+    var start = new Date();
+
+    model.Resident.find({
+        'purchase_history.timestamp': {
+            $gte: new Date(2016, 0, 30),
+            $lt: new Date(2016, 0, 1)
+        }
+    }, function (err, data) {
+        callback(err, data);
+
+    });
+
+};
+
+
 /* findOneAndUpdate({query},{update},callback);*/
 var updateResident = function (updatedResident, callback) {
 
@@ -108,7 +125,7 @@ var createResident = function (resident, callback) {
 
 
 module.exports = {
-
+    findTenDayPurchase: findTenDayPurchase,
     getAllResidents: getAllResidents,
     getOneResident: getOneResident,
     updateResident: updateResident,

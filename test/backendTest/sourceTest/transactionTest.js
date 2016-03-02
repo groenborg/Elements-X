@@ -1,5 +1,5 @@
 var transactionMapper = require('../../../server/source/transactionMapper.js');
-var collectionMapper = require('../../../server/source/collectionGetMapper');
+var residentMapper = require('../../../server/source/residentMapper');
 var connection = require('../../../server/model/connection.js');
 var fixture = require('./../fixture.js');
 var should = require('should');
@@ -57,7 +57,7 @@ describe('Transaction test suite', function () {
      });
      *
      * */
-    describe('resident Refill Balance test', function () {
+    xdescribe('resident Refill Balance test', function () {
 
         var storageTransaction = {
             resident_id: 14,
@@ -83,6 +83,24 @@ describe('Transaction test suite', function () {
 
         });
 
+
+    });
+
+
+    describe('find with date', function () {
+
+
+        it('should return history', function (done) {
+
+            residentMapper.findTenDayPurchase(function (err, data) {
+                console.log(err);
+                console.log(data);
+
+
+            });
+
+
+        });
 
     });
 
