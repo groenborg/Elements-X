@@ -1,23 +1,24 @@
 var mongoose = require('mongoose');
 
-/*
+/**
  * Purchase schema
  * Document model for a resident purchase
- * No ID - must be reinstated for cancel last purchase
+ * _id - Usage for cancel last transaction
  * */
 var purchaseSchema = new mongoose.Schema({
-    purchase_items: [String],
+    account_id: Number,
+    purchase_items: [{
+        product_id: Number,
+        amount: Number
+    }],
     total_price: Number,
-    items_count: Number,
     timestamp: {type: Date, default: Date.now}
-}, {
-    _id: false
 });
 
-/*
+/**
  * Balance Schema
  * Document model for a balance refill
- * With ID
+ * _id - to locate faulty inserts
  * */
 var balanceHistorySchema = new mongoose.Schema({
     balance_before: Number,
@@ -25,10 +26,10 @@ var balanceHistorySchema = new mongoose.Schema({
     timestamp: {type: Date, default: Date.now}
 });
 
-/*
+/**
  * Resident schema
  * Document model for a resident in the system
- * access_level: 0 = default
+ * access_level: 0 = user
  * access_level: 1 = bartender
  * access_level: 2 = admin
  * access_level: 3 = Super admin, access to logs and transactions
@@ -46,58 +47,117 @@ var resident = new mongoose.Schema({
     email: {type: String, unique: true},
     access_level: Number,                           // Does the resident still live here - move resident to history
     password: String,
-    achievements: [String],
     purchase_history: [purchaseSchema],
     balance_history: [balanceHistorySchema]
 });
 
-/*
- * Assortment Schema
- * Document model for purchase items in the bar
- * Supply: amount stored in warehouse
- * item size: units in a box e.g. 24 in a beer box
+/**
+ * Products Schema
+ * Document model for purchase items
+ * in_stock: amount stored in warehouse
+ *
  * */
-var assortment = new mongoose.Schema({
-    name: {type: String, unique: true, required: true},
-    supply: Number,
-    item_size: Number,
+var products = new mongoose.Schema({
+    product_id: {type: Number, unique: true, required: true},
+    name: {type: String, required: true},
     description: String,
-    one_price: Number,
-    two_price: Number,
-    three_price: Number,
-    bar_price: Number
+    in_stock: Number,
+    price: Number,
+    retail_price: [{
+        account_id: Number,
+        price: Number
+    }],
+    box: Boolean,
+    box_size: Number,
+    bottle: Boolean
 });
 
 
-// not nested for security reasons - for later review
-var transaction = new mongoose.Schema({
+/**
+ * Stock_purchase Schema
+ * Document model for buying from the stock
+ * resident_id to see which user made the purchase
+ * */
+var stock_purchase = new mongoose.Schema({
     resident_id: {type: Number, required: true},
-    assortment_id: {type: mongoose.Schema.Types.ObjectId, ref: "assortments"},
+    product_id: {type: Number}, // references product.product_id
     total_price: Number,
     amount: Number,
     timestamp: {type: Date, default: Date.now}
 });
 
-//sequence for unique ID generation
-var sequence = new mongoose.Schema({
+/**
+ * Account Schema
+ * Document model for the kitchens, bar and CBS
+ * balance: amount of money from the kitchens
+ * */
+var account = new mongoose.Schema({
+    account_id: Number,
+    account_name: {type: Number, required: true},
+    balance: Number,
+    available_products: [Number], //references products.product_id
+    stock_purchase: [stock_purchase]
+});
+
+
+/**
+ * Resident Sequence
+ * Generate unique id for residents
+ * */
+var resident_sequence = new mongoose.Schema({
     _id: String,
     resident_sequence_value: {type: Number, Default: 100}
 });
 
-// exposes findAndModify to the collection - atomic autoincrement added
-sequence.statics.findAndModify = function (query, sort, doc, options, callback) {
+
+/**
+ * Product Sequence
+ * Generating unique id for products
+ * */
+var product_sequence = new mongoose.Schema({
+    _id: String,
+    product_sequence_value: {type: Number, Default: 1}
+});
+
+/**
+ * Account Sequence
+ * Generating unique id for Accounts
+ * */
+var account_sequence = new mongoose.Schema({
+    _id: String,
+    account_sequence_value: {type: Number, Default: 1}
+});
+
+
+/**
+ * exposes findAndModify to the collection - atomic autoincrement added
+ * */
+resident_sequence.statics.findAndModify = function (query, sort, doc, options, callback) {
     return this.collection.findAndModify(query, sort, doc, options, callback);
 };
 
 
+product_sequence.statics.findAndModify = function (query, sort, doc, options, callback) {
+    return this.collection.findAndModify(query, sort, doc, options, callback);
+};
+
+account_sequence.statics.findAndModify = function (query, sort, doc, options, callback) {
+    return this.collection.findAndModify(query, sort, doc, options, callback);
+};
+///////////////////////////////////////////////////////////////////////////////////
+
+var Account = mongoose.model('accounts', account);
 var Resident = mongoose.model('residents', resident);
-var Sequence = mongoose.model('sequence', sequence);
-var Assortment = mongoose.model('assortments', assortment);
-var Transaction = mongoose.model('transactions', transaction);
+var ProductSequence = mongoose.model('sequence', product_sequence);
+var ResidentSequence = mongoose.model('sequence', resident_sequence);
+var AccountSequence = mongoose.model('sequence', account_sequence);
+var Product = mongoose.model('assortments', products);
 
 module.exports = {
     Resident: Resident,
-    Sequence: Sequence,
-    Assortment: Assortment,
-    Transaction: Transaction
+    Product: Product,
+    Account: Account,
+    ProductSequence: ProductSequence,
+    ResidentSequence: ResidentSequence,
+    AccountSequence: AccountSequence
 };
