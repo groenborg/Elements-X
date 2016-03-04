@@ -1,19 +1,28 @@
 var mongoose = require('mongoose');
-var residentData = require('./test-data.json');
-var assortmentData = require('./assortment-data.json');
+var residentData = require('./residents.json');
+var productData = require('./products.json');
+var accountData = require('./accounts.json');
 
-exports.fillDatabase = function (callback) {
+exports.fillResidents = function (callback) {
     mongoose.connection.collection('residents').insert(residentData, callback);
 };
 
-exports.emptyDataBase = function (callback) {
+exports.fillProducts = function (callback) {
+    mongoose.connection.collection('products').insert(productData, callback);
+};
+
+exports.fillAccounts = function (callback) {
+    mongoose.connection.collection('accounts').insert(accountData, callback);
+};
+
+exports.emptyProducts = function (callback) {
+    mongoose.connection.collection('products').remove({}, callback);
+};
+
+exports.emptyResidents = function (callback) {
     mongoose.connection.collection('residents').remove({}, callback);
 };
 
-exports.fillAssortment = function (callback) {
-    mongoose.connection.collection('assortments').insert(assortmentData, callback);
-};
-
-exports.emptyAssortment = function (callback) {
-    mongoose.connection.collection('assortments').remove({}, callback);
-};
+exports.emptyAccounts = function (callback) {
+    mongoose.connection.collection('accounts').remove({}, callback);
+}

@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "mocha test/backend-test/personRest-test.js",
-    "setup": "node ./scripts/setupDatabase.js"
+    "setup": "node ./scripts/setupDatabase.js",
+    "createcounter": "node ./scripts/createDatabaseCounters.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

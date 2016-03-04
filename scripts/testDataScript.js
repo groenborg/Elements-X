@@ -1,4 +1,4 @@
-var data = require('././test-data.json');
+var data = require('././residents.json');
 var fs = require('fs');
 
 function setIDAndDate() {
@@ -17,7 +17,7 @@ function setIDAndDate() {
     }
 
     var json = JSON.stringify(data);
-    fs.writeFile("test-data.json", json, function (err) {
+    fs.writeFile("residents.json", json, function (err) {
         if (err) {
             console.log(err);
             return;

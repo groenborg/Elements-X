@@ -1,0 +1,116 @@
+[
+  {
+    "resident_id": 1,
+    "first_name": "Asbjørn",
+    "last_name": null,
+    "room_number": 2061,
+    "kitchen_number": 2,
+    "current_balance": 100.22,
+    "deposit": 100,
+    "phone": "98765432",
+    "email": "asbjorn@doe.com",
+    "active": true,
+    "access_level": 0,
+    "password": "123",
+    "purchase_history": [
+      {
+        "account_id": 1,
+        "purchase_items": [
+          {
+            "product_id": 2,
+            "amount": 5
+          },
+          {
+            "product_id": 3,
+            "amount": 1
+          }
+        ],
+        "total_price": 35,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 2,
+    "first_name": "Simon",
+    "last_name": "Olsen",
+    "room_number": 3031,
+    "kitchen_number": 1,
+    "current_balance": 100.22,
+    "deposit": 100,
+    "phone": "98765432",
+    "email": "simon@doe.com",
+    "active": true,
+    "access_level": 0,
+    "password": "123",
+    "purchase_history": [
+      {
+        "account_id": 1,
+        "purchase_items": [
+          {
+            "product_id": 1,
+            "amount": 2
+          },
+          {
+            "product_id": 3,
+            "amount": 1
+          }
+        ],
+        "total_price": 35,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  },
+  {
+    "resident_id": 3,
+    "first_name": "Esben",
+    "last_name": null,
+    "room_number": 10101,
+    "kitchen_number": 1,
+    "current_balance": 100.22,
+    "deposit": 100,
+    "phone": "98765432",
+    "email": "esben@doe.com",
+    "active": true,
+    "access_level": 0,
+    "password": "123",
+    "purchase_history": [
+      {
+        "account_id": 1,
+        "purchase_items": [
+          {
+            "product_id": 2,
+            "amount": 5
+          },
+          {
+            "product_id": 3,
+            "amount": 1
+          }
+        ],
+        "total_price": 35,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ],
+    "balance_history": [
+      {
+        "balance_before": 23,
+        "insert_amount": 100,
+        "timestamp": "2015-09-24T19:39:25.490Z"
+      }
+    ]
+  }
+]

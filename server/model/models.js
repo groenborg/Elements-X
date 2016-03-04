@@ -39,14 +39,15 @@ var resident = new mongoose.Schema({
     first_name: String,
     last_name: String,
     room_number: Number,
-    kitchen_number: Number,
+    kitchen_number: {type: Number, required: true},
     current_balance: Number,
-    deposit: Number,                            // The deposited amount when you open an account
+    deposit: Number,                           // The deposited amount when you open an account
     phone: String,
-    active: Boolean,
     email: {type: String, unique: true},
+    active: Boolean,
     access_level: Number,                           // Does the resident still live here - move resident to history
     password: String,
+    quick_buy:Number,
     purchase_history: [purchaseSchema],
     balance_history: [balanceHistorySchema]
 });
@@ -62,7 +63,7 @@ var products = new mongoose.Schema({
     name: {type: String, required: true},
     description: String,
     in_stock: Number,
-    price: Number,
+    purchase_price: Number,
     retail_price: [{
         account_id: Number,
         price: Number
@@ -90,74 +91,46 @@ var stock_purchase = new mongoose.Schema({
  * Account Schema
  * Document model for the kitchens, bar and CBS
  * balance: amount of money from the kitchens
+ *
+ * user_visible - accounts with attached user (kitchen_number) must be user visible
  * */
 var account = new mongoose.Schema({
     account_id: Number,
     account_name: {type: Number, required: true},
     balance: Number,
+    user_visible: Boolean,
     available_products: [Number], //references products.product_id
     stock_purchase: [stock_purchase]
 });
 
 
 /**
- * Resident Sequence
- * Generate unique id for residents
- * */
-var resident_sequence = new mongoose.Schema({
-    _id: String,
-    resident_sequence_value: {type: Number, Default: 100}
-});
-
-
-/**
- * Product Sequence
- * Generating unique id for products
- * */
-var product_sequence = new mongoose.Schema({
-    _id: String,
-    product_sequence_value: {type: Number, Default: 1}
-});
-
-/**
  * Account Sequence
  * Generating unique id for Accounts
  * */
-var account_sequence = new mongoose.Schema({
+var sequence = new mongoose.Schema({
     _id: String,
-    account_sequence_value: {type: Number, Default: 1}
+    sequence_value: {type: Number, Default: 1}
 });
 
 
 /**
  * exposes findAndModify to the collection - atomic autoincrement added
  * */
-resident_sequence.statics.findAndModify = function (query, sort, doc, options, callback) {
+sequence.statics.findAndModify = function (query, sort, doc, options, callback) {
     return this.collection.findAndModify(query, sort, doc, options, callback);
 };
 
-
-product_sequence.statics.findAndModify = function (query, sort, doc, options, callback) {
-    return this.collection.findAndModify(query, sort, doc, options, callback);
-};
-
-account_sequence.statics.findAndModify = function (query, sort, doc, options, callback) {
-    return this.collection.findAndModify(query, sort, doc, options, callback);
-};
 ///////////////////////////////////////////////////////////////////////////////////
 
 var Account = mongoose.model('accounts', account);
 var Resident = mongoose.model('residents', resident);
-var ProductSequence = mongoose.model('sequence', product_sequence);
-var ResidentSequence = mongoose.model('sequence', resident_sequence);
-var AccountSequence = mongoose.model('sequence', account_sequence);
+var Sequence = mongoose.model('sequence', sequence);
 var Product = mongoose.model('assortments', products);
 
 module.exports = {
     Resident: Resident,
     Product: Product,
     Account: Account,
-    ProductSequence: ProductSequence,
-    ResidentSequence: ResidentSequence,
-    AccountSequence: AccountSequence
+    Sequence: Sequence
 };

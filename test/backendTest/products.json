@@ -1,0 +1,142 @@
+[
+  {
+    "product_id": 1,
+    "name": "Tuborg Guld",
+    "description": null,
+    "in_stock": 24,
+    "purchase_price": 100,
+    "retail_price": [
+      {
+        "account_id": 1,
+        "price": 5
+      },
+      {
+        "account_id": 2,
+        "price": 6
+      },
+      {
+        "account_id": 3,
+        "price": 7
+      },
+      {
+        "account_id": 4,
+        "price": 4
+      }
+    ],
+    "box": true,
+    "box_size": 24,
+    "bottle": false
+  },
+  {
+    "product_id": 2,
+    "name": "Ice Tea",
+    "description": null,
+    "in_stock": 70,
+    "purchase_price": 100,
+    "retail_price": [
+      {
+        "account_id": 1,
+        "price": 5
+      },
+      {
+        "account_id": 2,
+        "price": 6
+      },
+      {
+        "account_id": 3,
+        "price": 7
+      },
+      {
+        "account_id": 4,
+        "price": 4
+      }
+    ],
+    "box": true,
+    "box_size": 24,
+    "bottle": false
+  },
+  {
+    "product_id": 3,
+    "name": "Pepsi",
+    "description": null,
+    "in_stock": 24,
+    "purchase_price": 100,
+    "retail_price": [
+      {
+        "account_id": 1,
+        "price": 5
+      },
+      {
+        "account_id": 2,
+        "price": 6
+      },
+      {
+        "account_id": 3,
+        "price": 7
+      },
+      {
+        "account_id": 4,
+        "price": 4
+      }
+    ],
+    "box": true,
+    "box_size": 24,
+    "bottle": false
+  },
+  {
+    "product_id": 4,
+    "name": "Classic",
+    "description": null,
+    "in_stock": 24,
+    "purchase_price": 100,
+    "retail_price": [
+      {
+        "account_id": 1,
+        "price": 5
+      },
+      {
+        "account_id": 2,
+        "price": 6
+      },
+      {
+        "account_id": 3,
+        "price": 7
+      },
+      {
+        "account_id": 4,
+        "price": 4
+      }
+    ],
+    "box": true,
+    "box_size": 24,
+    "bottle": false
+  },
+  {
+    "product_id": 5,
+    "name": "Coca Cola",
+    "description": null,
+    "in_stock": 24,
+    "purchase_price": 100,
+    "retail_price": [
+      {
+        "account_id": 1,
+        "price": 5
+      },
+      {
+        "account_id": 2,
+        "price": 6
+      },
+      {
+        "account_id": 3,
+        "price": 7
+      },
+      {
+        "account_id": 4,
+        "price": 4
+      }
+    ],
+    "box": true,
+    "box_size": 24,
+    "bottle": false
+  }
+]
