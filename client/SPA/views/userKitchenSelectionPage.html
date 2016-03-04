@@ -4,34 +4,12 @@
     <hr/>
     <div class="row">
         <!-- Kitchen one -->
-        <div class="col-md-4">
+        <div class="col-md-4" ng-repeat="account in accounts | filter: accountVisibilityFilter">
             <div class="list-group">
-                <a ng-href="#/picker/1" class="list-group-item  kitchen-block kitchen-one">
-                    <p class="lead text-center">Kitchen</p>
+                <a ng-href="#/picker/{{account.account_id}}" class="list-group-item  kitchen-block kitchen-one">
+                    <p class="lead text-center">{{account.account_name}}</p>
 
-                    <h1 class="text-center">#1</h1>
-                </a>
-            </div>
-        </div>
-
-        <!-- Kitchen 2 -->
-        <div class="col-md-4">
-            <div class="list-group">
-                <a ng-href="#/picker/2" class="list-group-item  kitchen-block kitchen-two">
-                    <p class="lead text-center">Kitchen</p>
-
-                    <h1 class="text-center">#2</h1>
-                </a>
-            </div>
-        </div>
-
-        <!-- Kitchen 3 -->
-        <div class="col-md-4">
-            <div class="list-group">
-                <a ng-href="#/picker/3" class="list-group-item  kitchen-block kitchen-three">
-                    <p class="lead text-center">Kitchen</p>
-
-                    <h1 class="text-center">#3</h1>
+                    <h1 class="text-center"># {{account.account_id}}</h1>
                 </a>
             </div>
         </div>

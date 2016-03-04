@@ -7,10 +7,20 @@
     app.controller('AppCtrl', function ($scope) {
     });
 
-    app.controller('KitchenCtrl', function ($scope) {
+    app.controller('KitchenCtrl', ['$scope','accountFactory', function ($scope, accountFactory) {
 
 
-    });
+        accountFactory.getAccounts(function (err, data) {
+            $scope.accounts = data;
+        });
+
+
+        
+        $scope.accountVisibilityFilter = function (item) {
+            return item.user_visible;
+        }
+        
+    }]);
 
     app.controller('UserShoppingCtrl', function ($scope, $rootScope, $routeParams, webserviceFactory, notificationService, adminFactory) {
         //Declarative variables

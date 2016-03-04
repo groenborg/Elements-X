@@ -96,7 +96,7 @@ var stock_purchase = new mongoose.Schema({
  * */
 var account = new mongoose.Schema({
     account_id: Number,
-    account_name: {type: Number, required: true},
+    account_name: {type: String, required: true},
     balance: Number,
     user_visible: Boolean,
     available_products: [Number], //references products.product_id

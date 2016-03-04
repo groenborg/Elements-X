@@ -42,13 +42,13 @@
     "first_name": "Simon",
     "last_name": "Olsen",
     "room_number": 3031,
-    "kitchen_number": 1,
+    "kitchen_number": 3,
     "current_balance": 100.22,
     "deposit": 100,
     "phone": "98765432",
     "email": "simon@doe.com",
     "active": true,
-    "access_level": 0,
+    "access_level": 3,
     "password": "123",
     "purchase_history": [
       {

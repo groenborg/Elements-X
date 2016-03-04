@@ -151,6 +151,25 @@
         }
     }]);
 
+
+    app.factory('accountFactory', ['webserviceFactory', function (webserviceFactory) {
+
+
+        var accounts = [];
+
+        return {
+            getAccounts: function (callback) {
+                webserviceFactory.getAllAccounts(function (err, data) {
+                    if (err) {
+                        return err;
+                    } else {
+                        return callback(undefined,data);
+                    }
+                });
+            }
+        }
+    }]);
+
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
@@ -160,6 +179,16 @@
                     url: 'api/getResidents'
                 }).then(function success(response) {
                     callback(undefined, response);
+                }, function error(response) {
+                    callback(response);
+                });
+            },
+            getAllAccounts: function (callback) {
+                $http({
+                    method: 'GET',
+                    url: '/api/account/all'
+                }).then(function success(response) {
+                    callback(undefined, response.data);
                 }, function error(response) {
                     callback(response);
                 });
