@@ -4,18 +4,22 @@ var collectionMapper = require('../source/collectionGetMapper');
 
 var residentPurchaseTransaction = function (residentId, purchase, callback) {
 
-    var balance = purchase.current_balance;
     delete purchase.resident_id;
-    delete purchase.current_balance;
-
-
     model.Resident.findOneAndUpdate({resident_id: residentId}, {
-        current_balance: balance,
-        $push: {purchase_history: purchase}
-    }, {new: true}, function (err, data) {
+        $push: {purchase_history: purchase},
+        $inc: {current_balance: -purchase.total_price}
+
+    }, {new: true}, function (err, residentData) {
         if (err) return callback(err);
-        if (data == null) return callback();
-        return callback(undefined, data);
+        if (residentData == null) return callback();
+
+        model.Account.findOneAndUpdate({account_id: purchase.account_id}, {
+            $inc: {balance: purchase.total_price}
+        }, {new: true}, function (err, accountData) {
+            if (err) return callback(err);
+            if (accountData == null) return callback();
+            return callback(undefined, residentData);
+        });
     });
 };
 

@@ -250,7 +250,7 @@
                     callback(data)
                 });
             },
-            purchaseTransaction: function (purchase, callback) {
+            userPurchaseTransaction: function (purchase, callback) {
                 $http({
                     method: 'POST',
                     url: '/api/user/purchase',

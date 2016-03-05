@@ -20,7 +20,7 @@
                 return -1;
             };
 
-            this.summmarizePrice = function (price) {
+            this.summarizePrice = function (price) {
                 totalPrice += parseFloat(price);
                 totalPrice = parseFloat(totalPrice.toFixed(2));
             };
@@ -37,12 +37,13 @@
                         amount: 1
                     });
                 }
-                this.summmarizePrice(price);
+                this.summarizePrice(price);
             };
 
 
             this.clearBasket = function () {
                 basket.splice(0, basket.length);
+                totalPrice = 0;
             };
 
             this.getPrice = function () {
@@ -53,19 +54,19 @@
                 return basket.length == 0;
             };
 
-            this.buy = function (callback) {
-                purchaseObj.resident_id = resident.resident_id;
-                purchaseObj.current_balance = parseFloat((resident.current_balance - purchaseObj.total_price).toFixed(2));
-                console.log(purchaseObj);
-                webserviceFactory.purchaseTransaction(purchaseObj, function (err, transactionData) {
+            this.purchase = function (accountId, userId, callback) {
+                var purchase = {
+                    account_id: accountId,
+                    resident_id: userId,
+                    purchase_items: basket,
+                    total_price: totalPrice
+                };
+                webserviceFactory.userPurchaseTransaction(purchase, function (err, data) {
                     if (err) {
-                        return callback(err);
+                        callback(err);
+                    } else {
+                        callback(undefined, data);
                     }
-
-                    console.log(purchaseObj);
-                    //Update the customer with the real balance on purchase success
-                    resident.current_balance = purchaseObj.current_balance;
-                    return callback(undefined, transactionData);
                 });
             };
 
@@ -97,6 +98,13 @@
                 toastr.warning('Balance is too low!')
             };
 
+            this.basketIsEmpty = function () {
+                toastr.warning('Basket is empty')
+            };
+
+            this.transactionTerminated = function () {
+                toastr.error('transaction terminated', 'Transaction canceled');
+            };
 
             this.notifySuccess = function (message, title) {
                 if (title) {
@@ -118,9 +126,8 @@
                 toastr[type](message, title)
             };
 
-            this.notifyTransactionSuccess = function (itemCount, totalPrice, name) {
-                toastr.success("you bought " + itemCount +
-                    " item(s) for " + totalPrice + " dkr", "Purchase Successful " + name);
+            this.transactionApproved = function (name, price) {
+                toastr.success(name + " bought for " + price + " dkr ", "purchase success");
             }
         };
 

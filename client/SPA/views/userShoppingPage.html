@@ -35,7 +35,7 @@
                             <p ng-show="basket.purchase_items[0] == undefined"> Empty basket</p>
 
                             <p ng-repeat="item in basket track by $index">
-                                {{item.name}} - <span class="label label-default">{{item.amount}}</span>
+                                <span class="label label-default">{{item.amount}}</span> = {{item.name}}
                             </p>
                         </div>
                     </div>
