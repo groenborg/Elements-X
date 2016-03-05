@@ -126,7 +126,7 @@ sequence.statics.findAndModify = function (query, sort, doc, options, callback) 
 var Account = mongoose.model('accounts', account);
 var Resident = mongoose.model('residents', resident);
 var Sequence = mongoose.model('sequence', sequence);
-var Product = mongoose.model('assortments', products);
+var Product = mongoose.model('products', products);
 
 module.exports = {
     Resident: Resident,

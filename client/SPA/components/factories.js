@@ -154,20 +154,46 @@
 
     app.factory('accountFactory', ['webserviceFactory', function (webserviceFactory) {
 
-
         var accounts = [];
+
+        function update(callback) {
+            webserviceFactory.getAllAccounts(function (err, data) {
+                callback(err, data)
+            });
+        }
+
+        function getOne(id) {
+            for (var i = 0; i < accounts.length; ++i) {
+                if (accounts[i].account_id == id) {
+                    return accounts[i];
+                }
+            }
+        }
 
         return {
             getAccounts: function (callback) {
-                webserviceFactory.getAllAccounts(function (err, data) {
-                    if (err) {
-                        return err;
-                    } else {
-                        return callback(undefined,data);
-                    }
-                });
+                if (accounts.length == 0) {
+                    update(callback)
+                } else {
+                    callback(undefined, accounts);
+                }
+            },
+            getAccount: function (id, callback) {
+                if (accounts.length == 0) {
+                    update(function (err, data) {
+                        if (err) {
+                            return callback(err)
+                        } else {
+                            accounts = data;
+                            return callback(undefined, getOne(id));
+                        }
+                    })
+                } else {
+                    return callback(undefined, getOne(id));
+                }
             }
         }
+
     }]);
 
     app.factory('webserviceFactory', ['$http', function ($http) {
@@ -204,10 +230,10 @@
                     callback(response);
                 });
             },
-            getAllAssortmentItems: function (callback) {
+            getAllProducts: function (callback) {
                 $http({
                     method: 'GET',
-                    url: '/api/assortment/all'
+                    url: '/api/products/all'
                 }).then(function success(data) {
                     callback(undefined, data)
                 }, function error(data) {

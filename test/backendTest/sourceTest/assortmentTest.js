@@ -1,4 +1,4 @@
-var assortmentMapper = require('../../../server/source/assortmentMapper.js');
+var assortmentMapper = require('../../../server/source/productMapper.js');
 var connection = require('../../../server/model/connection.js');
 var fixture = require('./../fixture.js');
 var should = require('should');

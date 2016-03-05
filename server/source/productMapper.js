@@ -2,7 +2,7 @@ var model = require('../model/models.js');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 function createAssortment(assortmentItem, callback) {
-    model.Assortment.create(assortmentItem, function (err, data) {
+    model.Product.create(assortmentItem, function (err, data) {
         if (err) return callback(err);
         if (data == null) return callback();
         return callback(undefined, data);
@@ -13,7 +13,7 @@ function createAssortment(assortmentItem, callback) {
 
 function updateAssortmentItem(updatedItem, callback) {
 
-    model.Assortment.findOneAndUpdate({name: updatedItem.name}, {
+    model.Product.findOneAndUpdate({name: updatedItem.name}, {
 
         supply: updatedItem.supply,
         price: updatedItem.price,

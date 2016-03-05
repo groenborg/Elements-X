@@ -4,29 +4,54 @@
 
     app.service('purchaseService', ['webserviceFactory', function (webserviceFactory) {
 
-        return function PurchaseService(resident, purchaseObj) {
+        return function Basket(referencedBasket) {
 
-            purchaseObj.purchase_items = [];
-            purchaseObj.total_price = 0;
-            purchaseObj.items_count = 0;
-            purchaseObj.resident_id = undefined;
-            purchaseObj.current_balance = 0;
+            var basket = referencedBasket;
+            var totalPrice = 0;
+
+            this.contains = function (productId) {
+                if (productId != null) {
+                    for (var i = 0; i < basket.length; ++i) {
+                        if (basket[i].product_id == productId) {
+                            return i;
+                        }
+                    }
+                }
+                return -1;
+            };
+
+            this.summmarizePrice = function (price) {
+                totalPrice += parseFloat(price);
+                totalPrice = parseFloat(totalPrice.toFixed(2));
+            };
+
+            this.addToBasket = function (name, productId, price) {
+                var index = this.contains(productId);
+                if (index != -1) {
+                    basket[index].name = name;
+                    basket[index].amount += 1;
+                } else {
+                    basket.push({
+                        name: name,
+                        product_id: productId,
+                        amount: 1
+                    });
+                }
+                this.summmarizePrice(price);
+            };
 
 
             this.clearBasket = function () {
-                purchaseObj.purchase_items = [];
-                purchaseObj.total_price = 0;
-                purchaseObj.items_count = 0;
+                basket.splice(0, basket.length);
             };
 
-            this.addToBasket = function (item, price) {
-                purchaseObj.purchase_items.push(item);
-                purchaseObj.total_price += parseFloat(price);
-                purchaseObj.total_price = parseFloat(purchaseObj.total_price.toFixed(2));
-                purchaseObj.items_count = purchaseObj.purchase_items.length;
-                console.log(purchaseObj.total_price);
+            this.getPrice = function () {
+                return totalPrice;
             };
 
+            this.isEmpty = function () {
+                return basket.length == 0;
+            };
 
             this.buy = function (callback) {
                 purchaseObj.resident_id = resident.resident_id;
@@ -66,7 +91,13 @@
 
     app.service('notificationService', function (toastr) {
 
-        return new function NotificationChannel() {
+        return function NotificationChannel() {
+
+            this.balanceTooLow = function () {
+                toastr.warning('Balance is too low!')
+            };
+
+
             this.notifySuccess = function (message, title) {
                 if (title) {
                     toastr.success(message, title);

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var assortmentManager = require('../source/assortmentMapper');
+var assortmentManager = require('../source/productMapper');
 var collectionManager = require('../source/collectionGetMapper');
 
 

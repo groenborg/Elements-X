@@ -7,7 +7,7 @@
     app.controller('AppCtrl', function ($scope) {
     });
 
-    app.controller('KitchenCtrl', ['$scope','accountFactory', function ($scope, accountFactory) {
+    app.controller('KitchenCtrl', ['$scope', 'accountFactory', function ($scope, accountFactory) {
 
 
         accountFactory.getAccounts(function (err, data) {
@@ -15,34 +15,54 @@
         });
 
 
-        
         $scope.accountVisibilityFilter = function (item) {
             return item.user_visible;
         }
-        
+
     }]);
 
-    app.controller('UserShoppingCtrl', function ($scope, $rootScope, $routeParams, webserviceFactory, notificationService, adminFactory) {
+    app.controller('UserShoppingCtrl', function ($scope, $rootScope, $routeParams, webserviceFactory, notificationService, accountFactory, purchaseService) {
         //Declarative variables
-        $scope.assortmentItems = [];
-        $scope.basket = {
-            purchase_items: [],
-            total_price: 0,
-            items_count: 0
-        };
+        $scope.products = [];
         $scope.shopper = $rootScope.shopper;
+        $scope.basket = [];
+        $scope.totalPrice = 0;
 
         //On load functions
-        adminFactory.onLoadTransactions('error', 'assortmentItems', $scope);
-        var balance = $rootScope.shopper.current_balance;
-        var msgService = notificationService;
+        accountFactory.getAccount($scope.shopper.kitchen_number, function (err, account) {
+            if (err) {
+
+            } else {
+                $scope.products = account.available_products;
+            }
+        });
+
+        var basket = new purchaseService($scope.basket);
+        var message = new notificationService();
 
 
-        $scope.addToBasket = function (item, price) {
+        $scope.addToBasket = function (name, productId, price) {
+            if ($scope.shopper.current_balance <= 0 && basket.isEmpty()) {
+                message.balanceTooLow();
+            } else {
+                if ($scope.shopper.current_balance - basket.getPrice() < -80) {
+                    message.balanceTooLow();
+                } else {
+
+                    basket.addToBasket(name, productId, price);
+                    $scope.totalPrice = basket.getPrice();
+                }
+            }
+        };
+
+
+        $scope.add = function (name, productId, price) {
             if ($scope.shopper.current_balance < 0 && $scope.basket.purchase_items.length == 0) {
                 msgService.notify('', 'balance too low', 'warning');
                 return;
             }
+
+            $scope.basket.push({});
 
             if (($scope.shopper.current_balance - parseFloat(price)) > -100) {
                 $scope.basket.total_price += parseFloat(price);

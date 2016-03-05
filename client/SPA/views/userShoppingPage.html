@@ -8,16 +8,12 @@
             <div class="list-group">
                 <!-- beverage picker -->
                 <button type="button" class="list-group-item"
-                        ng-repeat="drink in assortmentItems"
-                        ng-click="addToBasket(drink.name, drink.one_price)">
-                    <span class="pull-left lead">{{drink.name}}</span>
+                        ng-repeat="product in products"
+                        ng-click="addToBasket(product.name, product.product_id, product.retail_price.price)">
+                    <span class="pull-left lead">{{product.name}}</span>
 
-                    <span ng-show="shopper.kitchen_number == 1"
-                          class="pull-right lead">{{drink.one_price + " dkr"}}</span>
-                    <span ng-show="shopper.kitchen_number == 2"
-                          class="pull-right lead">{{drink.two_price + " dkr"}}</span>
-                    <span ng-show="shopper.kitchen_number == 3"
-                          class="pull-right lead">{{drink.three_price + " dkr"}}</span>
+                    <span class="pull-right lead">{{product.retail_price.price + " dkr"}}</span>
+
                 </button>
             </div>
         </div>
@@ -27,11 +23,9 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p class="lead">Balance: {{shopper.current_balance}} dkr</p>
+                    <p class="lead">Balance: {{shopper.current_balance - totalPrice}} dkr</p>
 
-                    <p class="lead"> Total price: {{basket.total_price}} dkr</p>
-
-                    <p class="lead"> Total items: {{basket.purchase_items.length}}</p>
+                    <p class="lead"> Total price: {{totalPrice}} dkr</p>
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -40,8 +34,8 @@
                         <div class="panel-body">
                             <p ng-show="basket.purchase_items[0] == undefined"> Empty basket</p>
 
-                            <p ng-repeat="item in basket.purchase_items track by $index">
-                                {{item}}
+                            <p ng-repeat="item in basket track by $index">
+                                {{item.name}} - <span class="label label-default">{{item.amount}}</span>
                             </p>
                         </div>
                     </div>
