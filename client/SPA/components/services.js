@@ -61,6 +61,8 @@
                     purchase_items: basket,
                     total_price: totalPrice
                 };
+
+                console.log(purchase);
                 webserviceFactory.userPurchaseTransaction(purchase, function (err, data) {
                     if (err) {
                         callback(err);
@@ -71,19 +73,20 @@
             };
 
 
-            this.quickBuy = function (item, price, callback) {
-                this.addToBasket(item, price);
-
-                purchaseObj.resident_id = resident.resident_id;
-                purchaseObj.current_balance = parseFloat((resident.current_balance - purchaseObj.total_price).toFixed(2));
-
-                webserviceFactory.purchaseTransaction(purchaseObj, function (err, data) {
+            this.quickBuy = function (name, price, productId, accountId, userId, callback) {
+                this.addToBasket(name, productId, price);
+                var purchase = {
+                    account_id: accountId,
+                    resident_id: userId,
+                    purchase_items: basket,
+                    total_price: totalPrice
+                };
+                webserviceFactory.userPurchaseTransaction(purchase, function (err, data) {
                     if (err) {
-                        return callback(err);
+                        callback(err);
+                    } else {
+                        callback(undefined, data);
                     }
-                    //Update the customer with the real balance on purchase success
-                    resident.current_balance = purchaseObj.current_balance;
-                    return callback(undefined, data);
                 });
             };
         };
@@ -103,27 +106,14 @@
             };
 
             this.transactionTerminated = function () {
-                toastr.error('transaction terminated', 'Transaction canceled');
+                toastr.error('transaction terminated', 'Transaction Terminated');
             };
 
-            this.notifySuccess = function (message, title) {
-                if (title) {
-                    toastr.success(message, title);
-                    return;
-                }
-                toastr.success(message);
+            this.refillTerminated = function () {
+                toastr.error('refill not possible', 'Refill Terminated');
             };
-
-            this.notifyClear = function (message, title) {
-                if (title) {
-                    toastr.warning(message, title);
-                    return;
-                }
-                toastr.warning(message);
-            };
-
-            this.notify = function (message, title, type) {
-                toastr[type](message, title)
+            this.refillApproved = function (name, amount) {
+                toastr.success(name + " added " + amount + " to account", "Refill Successful");
             };
 
             this.transactionApproved = function (name, price) {

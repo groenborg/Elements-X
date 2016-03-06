@@ -24,11 +24,11 @@ function mergeAccountAndProducts(account, products) {
 
     for (var i = 0; i < account.length; ++i) {
         for (var j = 0; j < account[i].available_products.length; ++j) {
-            if (account[i].user_visible == true) {
+
                 var product = JSON.parse(JSON.stringify(getProduct(account[i].available_products[j])));
                 product = remove(product, account[i].account_id);
                 account[i].available_products[j] = product;
-            }
+
         }
     }
 

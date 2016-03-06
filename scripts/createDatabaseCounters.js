@@ -1,6 +1,8 @@
 var con = require('../server/model/connection');
+var config = require('../config');
 var sequence = require('../server/model/models');
 var async = require('async');
+
 
 function createSequence() {
 

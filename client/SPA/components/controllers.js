@@ -94,10 +94,11 @@
             two: [],
             three: []
         };
-
+        $scope.barAccount = {};
         $scope.currentBuyer = null;
-        $scope.currentTransactionBasket = {};
+        $scope.currentTransactionReferencedBasket = [];
         $scope.refillValue = "";
+        $scope.currentTransactionPrice = 0;
 
         var currentTransaction = null;
         var message = new notificationService();
@@ -110,54 +111,39 @@
             message: "No available data for residents - contact system administrator"
         };
 
-        accountFactory.getAccount(bar, function (err, data) {
-            console.log(data);
-        });
+        function merge(account, residents) {
+            for (var i = 0; i < residents.length; ++i) {
+                var resident = residents[i];
+                for (var j = 0; j < account.available_products.length; ++j) {
+                    if (resident.quick_buy == account.available_products[j].product_id) {
+                        resident.quick_buy = JSON.parse(JSON.stringify(account.available_products[j]))
+                    }
+                }
+            }
+        }
 
         //On Load data
         controllerFactory.onLoadKitchens("one", "two", "three", $scope.kitchens, function (err) {
             if (err) {
                 err.error = true;
             } else {
-                $scope.selectedKitchen = $scope.kitchens.one;
+                accountFactory.getAccount(bar, function (err, barAccount) {
+                    if (err) {
+
+                    } else {
+                        $scope.selectedKitchen = $scope.kitchens.one;
+                        $scope.products = barAccount.available_products;
+                        $scope.barAccount = barAccount;
+                        merge($scope.barAccount, $scope.kitchens.one);
+                        merge($scope.barAccount, $scope.kitchens.two);
+                        merge($scope.barAccount, $scope.kitchens.three);
+                    }
+                });
             }
         });
-        controllerFactory.onLoadProducts('products', $scope, function (err, data) {
-            if (err) {
-                $scope.err.aError = true;
-            }
-        });
+
 
         //Controller functions
-        $scope.addItem = function (item, price) {
-            if ($scope.currentBuyer.current_balance - ($scope.currentTransactionBasket.total_price + parseFloat(price)) < -100) {
-                msgService.notify('The balance is too low', 'Purchase not available', 'warning');
-                return;
-            }
-            currentTransaction.addToBasket(item, price);
-        };
-
-        $scope.buy = function () {
-
-
-            if ($scope.currentTransactionBasket.total_price == 0) {
-                msgService.notify('invalid action', 'Basket is empty', 'warning');
-                return;
-            }
-            currentTransaction.buy(function (err, data) {
-                if (err) {
-
-                    msgService.notify('error in transaction', 'purchase canceled', 'error');
-                } else {
-                    msgService.notifyTransactionSuccess($scope.currentTransactionBasket.purchase_items.length,
-                        $scope.currentTransactionBasket.total_price, $scope.currentBuyer.first_name);
-                    $scope.currentBuyer = null;
-                    $scope.currentTransactionBasket = {};
-                    currentTransaction = null;
-                }
-            });
-
-        };
 
         $scope.refill = function () {
             var amount = parseFloat($scope.refillValue);
@@ -167,67 +153,90 @@
                     insert_amount: amount
                 }, function (err, data) {
                     if (err) {
-                        msgService.notify('error in transaction', 'refill canceled', 'error');
+                        message.refillTerminated();
                         $scope.refillValue = "";
                     } else {
                         //set customer balance
                         $scope.currentBuyer.current_balance = data.data.current_balance;
                         //empty balance from  model
                         $scope.refillValue = "";
-                        msgService.notify($scope.currentBuyer.first_name + ' added ' + amount + ' to account', 'Transaction success', 'success')
+                        message.refillApproved($scope.currentBuyer.first_name, amount);
                     }
                 });
             } else {
-                msgService.notify('not a valid refill value', 'refill canceled', 'warning');
+                message.refillTerminated();
             }
         };
 
 
-        $scope.clearBasket = function () {
+        $scope.addItem = function (name, productId, price) {
+            if ($scope.currentBuyer.current_balance - (currentTransaction.getPrice() + parseFloat(price)) < -100) {
+                message.balanceTooLow();
+            } else {
+                currentTransaction.addToBasket(name, productId, price);
+                $scope.currentTransactionPrice += currentTransaction.getPrice();
+            }
+        };
 
-            if ($scope.currentTransactionBasket.purchase_items.length == 0) {
-                msgService.notify('', 'Basket already empty', 'warning');
+        $scope.buy = function () {
+            if (currentTransaction.isEmpty()) {
+                message.basketIsEmpty();
                 return;
             }
-            msgService.notify('', 'Basket cleared', 'info');
+            currentTransaction.purchase($scope.barAccount.account_id, $scope.currentBuyer.resident_id, function (err, data) {
+                if (err) {
+                    message.transactionTerminated();
+                } else {
+                    message.transactionApproved($scope.currentBuyer.first_name, currentTransaction.getPrice());
+                    $scope.currentBuyer.current_balance -= currentTransaction.getPrice();
+                    $scope.currentBuyer = null;
+                    $scope.currentTransactionReferencedBasket = [];
+                    currentTransaction = null;
+                    $scope.currentTransactionPrice = 0;
+                }
+            });
+
+        };
+
+        $scope.clearBasket = function () {
             currentTransaction.clearBasket();
+            $scope.currentTransactionPrice = 0;
         };
 
         $scope.quickBuy = function (resident) {
-            var item = $scope.assortmentItems[0].name;
-            var price = $scope.assortmentItems[0].one_price;
-
-            if (resident.current_balance - price < -100) {
-                msgService.notify('The balance is too low', 'Purchase not available', 'warning');
-                return;
-            }
-
-            if (resident.quickBuy === undefined) {
-                if (currentQuickBy == null) currentQuickBy = resident;
-
-                if (currentQuickBy.resident_id != resident.resident_id) {
-                    currentQuickBy.quickBuy = undefined;
-                    currentQuickBy = resident;
+            if (resident.quick_buy != null) {
+                if (resident.current_balance - resident.quick_buy.retail_price.price < -100) {
+                    message.balanceTooLow();
+                    return;
                 }
-                resident.quickBuy = {
-                    transaction: new purchaseService(resident, {}),
-                    authorize: true
-                };
-            } else {
-                resident.quickBuy.transaction.quickBuy(item, price, function (err, data) {
-                    if (err) {
-                        msgService.notify('error in transaction', 'purchase canceled', 'warning');
-                    } else {
-                        msgService.notifyTransactionSuccess(1, price, resident.first_name)
-                    }
-                    resident.quickBuy = undefined;
-                });
+                if (resident.activeQuickBuy == undefined) {
+                    if (currentQuickBy == null) currentQuickBy = resident;
 
+                    if (currentQuickBy.resident_id != resident.resident_id) {
+                        currentQuickBy.activeQuickBuy = undefined;
+                        currentQuickBy = resident;
+                    }
+                    resident.activeQuickBuy = {
+                        transaction: new purchaseService([]),
+                        authorize: true
+                    };
+                } else {
+                    var product = resident.quick_buy;
+                    resident.activeQuickBuy.transaction.quickBuy(product.name, product.retail_price.price,
+                        product.product_id, $scope.barAccount.account_id, resident.resident_id, function (err, data) {
+                            if (err) {
+                                message.transactionTerminated();
+                            } else {
+                                message.transactionApproved(resident.first_name, product.retail_price.price);
+                                resident.activeQuickBuy = undefined;
+                                resident.current_balance -= product.retail_price.price;
+                            }
+                        });
+                }
             }
         };
 
         $scope.setCurrentBuyer = function (resident) {
-
             if ($scope.currentBuyer == resident) {
                 $scope.currentBuyer = null;
                 $scope.currentTransactionBasket = {};
@@ -235,7 +244,7 @@
             } else {
                 //first click
                 $scope.currentBuyer = resident;
-                currentTransaction = new purchaseService(resident, $scope.currentTransactionBasket);
+                currentTransaction = new purchaseService($scope.currentTransactionReferencedBasket);
             }
         };
 

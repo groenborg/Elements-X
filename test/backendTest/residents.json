@@ -11,6 +11,7 @@
     "email": "asbjorn@doe.com",
     "active": true,
     "access_level": 0,
+    "quick_buy": 4,
     "password": "123",
     "purchase_history": [
       {
@@ -49,6 +50,7 @@
     "email": "simon@doe.com",
     "active": true,
     "access_level": 3,
+    "quick_buy": 4,
     "password": "123",
     "purchase_history": [
       {
@@ -87,6 +89,7 @@
     "email": "esben@doe.com",
     "active": true,
     "access_level": 0,
+    "quick_buy": 5,
     "password": "123",
     "purchase_history": [
       {

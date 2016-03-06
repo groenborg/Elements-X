@@ -43,7 +43,9 @@ var getKitchenGroups = function (callback) {
                             deposit: "$deposit",
                             phone: "$phone",
                             email: "$email",
-                            active: "$active"
+                            active: "$active",
+                            access_level:"$access_level",
+                            quick_buy:"$quick_buy"
                         }
                     }
                 }

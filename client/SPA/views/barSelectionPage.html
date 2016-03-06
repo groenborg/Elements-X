@@ -61,11 +61,14 @@
                             <td>
                                 <div class="row">
                                     <div class="col-xs-2">
-                                        <button ng-click="quickBuy(resident)" ng-hide="resident.quickBuy.authorize"
+                                        <button ng-click="quickBuy(resident)"
+                                                ng-hide="resident.activeQuickBuy.authorize"
                                                 ng-disabled="currentBuyer == resident"
-                                                type="submit" class="btn btn-warning">{{assortmentItems[0].name}} x1
+                                                type="submit" class="btn btn-warning"><em>1x</em>
+                                            {{resident.quick_buy.name}}
                                         </button>
-                                        <button ng-click="quickBuy(resident)" ng-show="resident.quickBuy.authorize"
+                                        <button ng-click="quickBuy(resident)"
+                                                ng-show="resident.activeQuickBuy.authorize"
                                                 ng-disabled="currentBuyer == resident"
                                                 type="submit" class="btn btn-success"> Confirm purchase ?
                                         </button>
@@ -94,26 +97,19 @@
 
                     <div ng-show="currentBuyer">
                         <p><b>Selected resident:</b> {{currentBuyer.first_name}}
-                            {{currentBuyer.last_name}} -
-                            {{currentBuyer.room_number}}</p>
+                            {{currentBuyer.last_name}}</p>
 
-                        <p><b>balance:</b> {{(currentBuyer.current_balance -
-                            currentTransactionBasket.total_price).toFixed(2)}}</p>
-
-                        <p>Total items: <span
-                                class="label label-default">{{currentTransactionBasket.items_count}}</span>
-                            Total price: <span
-                                    class="label label-default">{{currentTransactionBasket.total_price}}</span>
-                        </p>
+                        <p><b>balance:</b> {{(currentBuyer.current_balance).toFixed(2)}}</p>
+                        <p>Total price: <span class="label label-default">{{currentTransactionPrice}}</span></p>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="list-group">
-                                    <button ng-repeat="item in assortmentItems"
-                                            ng-click="addItem(item.name,item.one_price)"
+                                    <button ng-repeat="product in products"
+                                            ng-click="addItem(product.name, product.product_id, product.retail_price.price)"
                                             type="button" class="list-group-item">
-                                        <span class="pull-left">{{item.name}}</span>
-                                        <span class="pull-right">{{item.one_price + " dkr"}}</span>
+                                        <span class="pull-left">{{product.name}}</span>
+                                        <span class="pull-right">{{product.retail_price.price + " dkr"}}</span>
                                     </button>
                                 </div>
                             </div>
@@ -143,7 +139,8 @@
                     Basket
                 </div>
                 <div class="panel-body">
-                    <p ng-repeat="item in currentTransactionBasket.purchase_items track by $index">{{item}} </p>
+                    <p ng-repeat="product in currentTransactionReferencedBasket">{{product.amount}}
+                        {{product.name}} </p>
                 </div>
             </div>
         </div>

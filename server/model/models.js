@@ -45,7 +45,7 @@ var resident = new mongoose.Schema({
     phone: String,
     email: {type: String, unique: true},
     active: Boolean,
-    access_level: Number,                           // Does the resident still live here - move resident to history
+    access_level: Number,         // Does the resident still live here - move resident to history
     password: String,
     quick_buy:Number,
     purchase_history: [purchaseSchema],

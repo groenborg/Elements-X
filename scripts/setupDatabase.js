@@ -1,6 +1,7 @@
 var fixture = require('../test/backendTest/fixture');
 var databaseConnection = require('../server/model/connection');
 var async = require('async');
+var config = require('../config');
 
 (function () {
 
