@@ -87,7 +87,7 @@ describe('Transaction test suite', function () {
     });
 
 
-    describe('find with date', function () {
+    xdescribe('find with date', function () {
 
 
         it('should return history', function (done) {
