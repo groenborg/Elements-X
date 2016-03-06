@@ -6,6 +6,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
+var config = require('./config');
+
 
 var singlePageRoute = require('./server/routes/index');
 var residentRoute = require('./server/routes/residentService');
@@ -17,7 +19,6 @@ var secureLoginRoute = require('./server/routes/secureLoginService');
 var adminTransactionRoute = require('./server/routes/adminTransactionService');
 var adminResidentRoute = require('./server/routes/adminResidentService');
 var adminAssortmentRoute = require('./server/routes/adminAssortService');
-
 
 //var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
 var connection = require('./server/model/connection');

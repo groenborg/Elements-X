@@ -2,17 +2,10 @@ var db = require('mongoose');
 var app = require('express')();
 var model = require('./models.js');
 
-var localDataBase = "mongodb://localhost/elements"; //"mongodb://simon:127simon@ds037283.mongolab.com:37283/xserve"; //
-
-/////// VERY BAD CODE - NEVER HARDCODE CONNECTIONS INTO FILES
-var remoteDataBase = "mongodb://simon:127simon@ds037283.mongolab.com:37283/xserve";
-
-//var url = "mongodb://localhost:27017/test";
-
 
 function connectToMongoDB(callback) {
 
-    var uri = app.get('env') == "build" ? remoteDataBase : localDataBase;
+    var uri = app.get('env') == "build" ? process.env.MONGOLAB : process.env.MONGO;
 
     db.connect(uri, function (err) {
         if (err) console.log(err);
@@ -36,5 +29,4 @@ function closeMongoDB(callback) {
 module.exports = {
     connectToMongoDB: connectToMongoDB,
     closeMongoDB: closeMongoDB
-
 };
