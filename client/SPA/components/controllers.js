@@ -85,10 +85,10 @@
 
     });
 
-    app.controller('BarSelectionCtrl', ['$scope', 'adminFactory', 'controllerFactory', 'storageFactory', 'purchaseService', 'notificationService', function ($scope, adminFactory, controllerFactory, storageFactory, purchaseService, notificationService) {
+    app.controller('BarSelectionCtrl', ['$scope', 'adminFactory', 'controllerFactory', 'storageFactory', 'purchaseService', 'notificationService', 'accountFactory', 'bar', function ($scope, adminFactory, controllerFactory, storageFactory, purchaseService, notificationService, accountFactory, bar) {
         //Declarative object
         $scope.selectedKitchen = [];
-        $scope.assortmentItems = [];
+        $scope.products = [];
         $scope.kitchens = {
             one: [],
             two: [],
@@ -100,7 +100,7 @@
         $scope.refillValue = "";
 
         var currentTransaction = null;
-        var msgService = notificationService;
+        var message = new notificationService();
         var currentQuickBy = null;
 
         //Hides elements on error
@@ -110,6 +110,9 @@
             message: "No available data for residents - contact system administrator"
         };
 
+        accountFactory.getAccount(bar, function (err, data) {
+            console.log(data);
+        });
 
         //On Load data
         controllerFactory.onLoadKitchens("one", "two", "three", $scope.kitchens, function (err) {
@@ -119,7 +122,7 @@
                 $scope.selectedKitchen = $scope.kitchens.one;
             }
         });
-        controllerFactory.onLoadAssortment('assortmentItems', $scope, function (err, data) {
+        controllerFactory.onLoadProducts('products', $scope, function (err, data) {
             if (err) {
                 $scope.err.aError = true;
             }

@@ -30,7 +30,7 @@
         };
         $scope.signInObject = {};
         $rootScope.admin = {};
-        var msgService = notificationService;
+        var message = new notificationService();
 
         ($scope.refresh = function () {
             if ($window.sessionStorage.token) {
@@ -50,7 +50,7 @@
         $scope.login = function () {
             webserviceFactory.loginRequest($scope.signInObject, function (err, data) {
                 if (err) {
-                    msgService.notify('Error', err.data.err, 'error');
+                    message.notify('Error', err.data.err, 'error');
                     return;
                 }
                 var encodedProfile = data.data.token.split('.')[1];
@@ -66,7 +66,7 @@
                 $rootScope.admin.access_level = profile.access_level;
                 $rootScope.admin.resident_id = profile.resident_id;
 
-                msgService.notify($scope.admin.first_name, 'Welcome', "success");
+                message.notify($scope.admin.first_name, 'Welcome', "success");
                 if ($scope.admin.access_level > 1) {
                     $location.path("/dashboard");
                 } else if ($scope.admin.access_level == 1) {
@@ -87,7 +87,7 @@
             $rootScope.admin.resident_id = null;
             delete $window.sessionStorage.token;
             delete $window.sessionStorage.al; // access_level
-            msgService.notifySuccess("Logged Out");
+            message.notifySuccess("Logged Out");
             $location.path("/home");
         };
 

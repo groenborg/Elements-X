@@ -8,7 +8,8 @@
         'EX.security',
         'EX.directives',
         'EX.factories',
-        'EX.services'
+        'EX.services',
+        'EX.constants'
     ]);
 
     app.config(function ($routeProvider) {
