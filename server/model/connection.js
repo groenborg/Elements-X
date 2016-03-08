@@ -1,6 +1,6 @@
 var db = require('mongoose');
 var app = require('express')();
-var model = require('./models.js');
+var config = require('../../config');
 
 
 function connectToMongoDB(callback) {

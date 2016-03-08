@@ -33,8 +33,8 @@ gulp.task('sourceTest', function () {
         }));
 });
 
-gulp.task('serviceTest', function () {
-    return gulp.src(['test/**/serviceTest/*.js'], {read: true})
+gulp.task('testMappers', function () {
+    return gulp.src(['test/**/sourceTest/*.js'], {read: true})
         .pipe(mocha({
             reporter: 'spec',
             ignoreLeaks: false,
@@ -55,6 +55,10 @@ gulp.task('data', function () {
 
 gulp.task('watch', function () {
     gulp.watch(['server/source/*.js', 'test/**/*.js', 'server/model/*.js'], ['mocha', 'lint']);
+});
+
+gulp.task('watch-account', function () {
+    gulp.watch(['test/backendTest/sourceTest/*.js', 'server/source/accountMapper.js'], ['sourceTest']);
 });
 
 gulp.task('test', ['sourceTest']);

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var collectionManager = require('../source/collectionGetMapper');
+var accountManager = require('../source/accountMapper');
 
 
 function mergeAccountAndProducts(account, products) {
@@ -25,9 +26,9 @@ function mergeAccountAndProducts(account, products) {
     for (var i = 0; i < account.length; ++i) {
         for (var j = 0; j < account[i].available_products.length; ++j) {
 
-                var product = JSON.parse(JSON.stringify(getProduct(account[i].available_products[j])));
-                product = remove(product, account[i].account_id);
-                account[i].available_products[j] = product;
+            var product = JSON.parse(JSON.stringify(getProduct(account[i].available_products[j])));
+            product = remove(product, account[i].account_id);
+            account[i].available_products[j] = product;
 
         }
     }
@@ -55,6 +56,22 @@ router.get('/account/all', function (request, response) {
             });
         }
     });
+});
+
+
+router.get('/account/history/:accountId', function (request, response) {
+    var accountId = request.params.accountId;
+
+    accountManager.getAccountHistory(accountId, function (err, data) {
+        if (err) {
+            response.statusCode = 503;
+            response.message = "could not get";
+            response.send({message: response.message});
+        } else {
+            response.send(data);
+        }
+    });
+
 });
 
 

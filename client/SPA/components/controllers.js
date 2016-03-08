@@ -433,7 +433,7 @@
         $scope.accounts = [];
         $scope.products = [];
         $scope.loadProductsError = false;
-
+        $scope.currentHistory = null;
 
         //OnLoad
         accountFactory.getAccounts(function (err, data) {
@@ -441,9 +441,29 @@
             $scope.accounts = data;
         });
 
-        adminFactory.onLoadProducts('loadProductsError','products',$scope, function (err, data) {
+        adminFactory.onLoadProducts('loadProductsError', 'products', $scope, function (err, data) {
 
         });
+
+        $scope.sumPrice = function (array) {
+            var price = 0;
+            for (var i = 0; i < array.length; ++i) {
+                price += array[i].total_price;
+            }
+            return price;
+        };
+        $scope.getHistory = function (account) {
+            if (account.history == null) {
+                accountFactory.getAccountHistory(account.account_id, function (err, data) {
+                    if (err) {
+                    } else {
+                        account.history = data;
+                    }
+                });
+            } else {
+                account.history = null;
+            }
+        }
 
 
     }]);

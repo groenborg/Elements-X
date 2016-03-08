@@ -4,6 +4,7 @@ var accountMapper = require('../../../server/source/accountMapper');
 var connection = require('../../../server/model/connection.js');
 var fixture = require('./../fixture.js');
 var should = require('should');
+var util = require('util');
 
 describe('Account test suite', function () {
 
@@ -28,13 +29,18 @@ describe('Account test suite', function () {
 
 
         it('return account history from users', function (done) {
-            accountMapper.getAccountHistory(function (err, data) {
+            accountMapper.getAccountHistory(1,function (err, data) {
                 if (err) {
                     throw err;
+
+
                 } else {
                     console.log(data);
+                    console.log(util.inspect(data, false, null));
                     done();
+
                 }
+
             });
         });
 

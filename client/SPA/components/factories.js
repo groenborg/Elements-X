@@ -157,6 +157,7 @@
             });
         }
 
+
         function getOne(id) {
             for (var i = 0; i < accounts.length; ++i) {
                 if (accounts[i].account_id == id) {
@@ -186,6 +187,11 @@
                 } else {
                     return callback(undefined, getOne(id));
                 }
+            },
+            getAccountHistory: function (accountId, callback) {
+                webserviceFactory.getAccountHistory(accountId, function (err, data) {
+                    callback(err, data);
+                });
             }
         }
 
@@ -208,6 +214,16 @@
                 $http({
                     method: 'GET',
                     url: '/api/account/all'
+                }).then(function success(response) {
+                    callback(undefined, response.data);
+                }, function error(response) {
+                    callback(response);
+                });
+            },
+            getAccountHistory: function (accountId, callback) {
+                $http({
+                    method: 'GET',
+                    url: '/api/account/history/' + accountId
                 }).then(function success(response) {
                     callback(undefined, response.data);
                 }, function error(response) {

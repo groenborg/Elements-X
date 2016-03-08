@@ -14,27 +14,52 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4" ng-repeat="account in accounts">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <blockquote>{{account.account_name}}</blockquote>
+                <div class="col-md-8">
+                    <div class="col-md-6" ng-repeat="account in accounts">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <blockquote>{{account.account_name}}</blockquote>
 
-                            <p class="lead">Account id: {{account.account_id}}</p>
-                            <p class="lead">Balance: {{account.balance}}</p>
+                                <p class="lead">Account id: {{account.account_id}}</p>
+                                <p class="lead">Balance: {{account.balance}}</p>
 
-                            <div class="panel panel-warning">
-                                <div class="panel-heading">Available products</div>
-                                <div class="panel-body">
-                                    <p ng-repeat="aproduct in account.available_products">
-                                        {{aproduct.name}}
-                                    </p>
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">Available products</div>
+                                    <div class="panel-body">
+                                        <p ng-repeat="aproduct in account.available_products">
+                                            {{aproduct.name}}
+                                        </p>
+                                    </div>
                                 </div>
+
+                                <button ng-click="getHistory(account)" class="btn btn-info">
+                                    Show history
+                                </button>
                             </div>
                         </div>
                     </div>
-
+                </div>
+                <div class="col-md-4">
+                    <div ng-show="account.history">
+                        <hr>
+                        <ul class="list-group">
+                            <li class="list-group-item"
+                                ng-repeat="item in account.history">
+                                {{item.first_name}} price
+                                {{sumPrice(item.purchase_history)}}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#historyModal">
+                Launch demo modal
+            </button>
+
+            <!-- Modal -->
+
 
             <div class="row">
                 <div class="col-md-8">

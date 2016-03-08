@@ -1,22 +1,16 @@
 var model = require('../model/models');
 
-var getAccountHistory = function (callback) {
-    model.Resident.aggregate(
-        [
-            {
-                $group: {
-                    _id: '$purchase_history.account_id', accounts: {
-                        $push: {
-                            total_price: "$total_price"
-                        }
-                    }
-                }
-            }
-        ], function (err, data) {
-            if (err) return callback(err);
-            if (data == null) return callback();
-            return callback(undefined, data);
-        });
+var getAccountHistory = function (accountId, callback) {
+    model.Resident.find({
+        'purchase_history.account_id': {
+            $in: [accountId]
+        }
+
+    }, {'purchase_history.$': 1, first_name: 1}, function (err, data) {
+        if (err) return callback(err);
+        if (data == null) return callback();
+        return callback(undefined, data);
+    });
 };
 
 module.exports = {
