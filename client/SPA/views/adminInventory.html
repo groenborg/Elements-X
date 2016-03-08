@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="col-md-6" ng-repeat="account in accounts">
                         <div class="panel panel-default">
                             <div class="panel-body">
@@ -39,16 +39,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div ng-show="account.history">
-                        <hr>
-                        <ul class="list-group">
-                            <li class="list-group-item"
-                                ng-repeat="item in account.history">
-                                {{item.first_name}} price
-                                {{sumPrice(item.purchase_history)}}
-                            </li>
-                        </ul>
+                <div class="col-md-3">
+                    <div ng-hide="currentHistory" class="alert alert-danger" role="alert">
+                        Account History Not Loaded
+                    </div>
+                    <div ng-show="currentHistory">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">History</div>
+                            <div class="panel-body">
+                                <p class="lead">{{currentHistoryAccount.account_name}}</p>
+                                <hr>
+                                <ul class="list-group">
+                                    <li class="list-group-item"
+                                        ng-repeat="item in currentHistory">
+                                        {{item.first_name}} price
+                                        {{sumPrice(item.purchase_history)}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

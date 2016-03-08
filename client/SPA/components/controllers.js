@@ -434,6 +434,7 @@
         $scope.products = [];
         $scope.loadProductsError = false;
         $scope.currentHistory = null;
+        $scope.currentHistoryAccount = null;
 
         //OnLoad
         accountFactory.getAccounts(function (err, data) {
@@ -453,15 +454,18 @@
             return price;
         };
         $scope.getHistory = function (account) {
-            if (account.history == null) {
+            if ($scope.currentHistory == null || account != $scope.currentHistoryAccount) {
                 accountFactory.getAccountHistory(account.account_id, function (err, data) {
                     if (err) {
+
                     } else {
-                        account.history = data;
+                        $scope.currentHistory = data;
+                        $scope.currentHistoryAccount = account;
                     }
                 });
             } else {
-                account.history = null;
+                $scope.currentHistory = null;
+                $scope.currentHistoryAccount = null;
             }
         }
 
