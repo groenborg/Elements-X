@@ -157,6 +157,33 @@ describe('residentMapper test suite', function () {
         });
     });
 
+    xdescribe('resident Refill Balance test', function () {
+
+        var storageTransaction = {
+            resident_id: 14,
+            amount: 2,
+            total_price: 100,
+            assortment_id: "56964e75595474566e778b9f"
+        };
+
+        it('should get all assortment items', function (done) {
+            collectionMapper.getAllElementsFromCollection("Assortment", function (err, data) {
+                if (data) {
+                    done();
+                }
+            });
+        });
+
+
+        it('should create transaction', function (done) {
+            transactionMapper.buyFromStorage(storageTransaction, function (err, data) {
+                data.resident_id.should.equal(storageTransaction.resident_id);
+                done();
+            });
+
+        });
+    });
+
 });
 
 

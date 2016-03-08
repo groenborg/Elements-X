@@ -24,7 +24,7 @@ gulp.task('mocha', function () {
 });
 
 gulp.task('sourceTest', function () {
-    return gulp.src(['test/**/sourceTest/transactionTest.js'], {read: true})
+    return gulp.src(['test/**/sourceTest/accountTest.js'], {read: true})
         .pipe(mocha({
             reporter: 'spec',
             ignoreLeaks: false,
@@ -60,7 +60,7 @@ gulp.task('watch', function () {
 gulp.task('test', ['sourceTest']);
 
 gulp.task('testTransaction', function () {
-    gulp.watch(['server/source/*.js', 'test/**/*.js'], ['sourceTest']);
+    gulp.watch(['server/source/*.js', 'test/sourceTest/accountTest.js'], ['sourceTest']);
 });
 
 
