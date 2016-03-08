@@ -66,7 +66,7 @@
                 $rootScope.admin.access_level = profile.access_level;
                 $rootScope.admin.resident_id = profile.resident_id;
 
-                message.notify($scope.admin.first_name, 'Welcome', "success");
+                message.greetings($scope.admin.first_name);
                 if ($scope.admin.access_level > 1) {
                     $location.path("/dashboard");
                 } else if ($scope.admin.access_level == 1) {
@@ -77,6 +77,7 @@
 
 
         $scope.logOut = function () {
+            message.farewell($scope.admin.first_name);
             $scope.admin.first_name = "";
             $scope.admin.email = "";
             $scope.admin.access_level = 0;
@@ -87,7 +88,6 @@
             $rootScope.admin.resident_id = null;
             delete $window.sessionStorage.token;
             delete $window.sessionStorage.al; // access_level
-            message.notifySuccess("Logged Out");
             $location.path("/home");
         };
 

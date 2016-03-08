@@ -174,7 +174,7 @@
                 message.balanceTooLow();
             } else {
                 currentTransaction.addToBasket(name, productId, price);
-                $scope.currentTransactionPrice += currentTransaction.getPrice();
+                $scope.currentTransactionPrice = currentTransaction.getPrice();
             }
         };
 
@@ -270,7 +270,7 @@
 
     app.controller('DashboardCtrl', ['$scope', '$rootScope', "adminFactory", "notificationService", function ($scope, $rootScope, adminFactory, notificationService) {
         //Declarative variables
-        $scope.assortmentItems = [];
+        $scope.products = [];
         $scope.activeForms = {
             resident: false,
             assortment: false,
@@ -293,12 +293,11 @@
 
 
         //On load functions
-        adminFactory.onLoadTransactions('error', 'assortmentItems', $scope, function () {
-            for (var i = 0; i < $scope.assortmentItems.length; ++i) {
-                labels.push($scope.assortmentItems[i].name);
-                supply.push($scope.assortmentItems[i].supply);
+        adminFactory.onLoadProducts('error', 'products', $scope, function () {
+            for (var i = 0; i < $scope.products.length; ++i) {
+                labels.push($scope.products[i].name);
+                supply.push($scope.products[i].in_stock);
             }
-            console.log($scope.assortmentItems);
         });
 
         adminFactory.onLoadGetPurchase(function (err, data) {
@@ -372,10 +371,10 @@
                 scaleShowGridLines: false
             },
             colours: [{
-                fillColor: 'rgb(76,76,76)',
-                strokeColor: 'rgb(76,76,76)',
-                highlightFill: 'rgb(76,76,76)',
-                highlightStroke: 'rgb(76,76,76)'
+                fillColor: 'rgb(242,186,97)',
+                strokeColor: 'rgb(242,186,97)',
+                highlightFill: 'rgb(253,197,108)',
+                highlightStroke: 'rgb(242,186,97)'
             }]
         };
 
@@ -429,12 +428,22 @@
 
     }]);
 
-    app.controller('InventoryCtrl', ["$scope", "adminFactory", function ($scope, adminFactory) {
+    app.controller('InventoryCtrl', ["$scope", "adminFactory", 'accountFactory', function ($scope, adminFactory, accountFactory) {
         //Declarative literal initialization of assortment item
-        $scope.assortmentItems = {};
+        $scope.accounts = [];
+        $scope.products = [];
+        $scope.loadProductsError = false;
+
 
         //OnLoad
-        adminFactory.onLoadTransactions('error', 'assortmentItems', $scope);
+        accountFactory.getAccounts(function (err, data) {
+            console.log(data);
+            $scope.accounts = data;
+        });
+
+        adminFactory.onLoadProducts('loadProductsError','products',$scope, function (err, data) {
+
+        });
 
 
     }]);

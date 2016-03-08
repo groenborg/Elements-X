@@ -56,7 +56,6 @@
                     if (err) {
                         return callback(err);
                     }
-
                     scope[keyProperty] = data;
                     return callback(undefined, data)
                 });
@@ -120,15 +119,16 @@
     app.factory('adminFactory', ['webserviceFactory', 'storageFactory', function (webserviceFactory, storageFactory) {
         return {
 
-            onLoadTransactions: function (errorProperty, dataProperty, scope, callback) {
-                webserviceFactory.getAllAssortmentItems(function (err, data) {
+            onLoadProducts: function (errorProperty, dataProperty, scope, callback) {
+                webserviceFactory.getAllProducts(function (err, data) {
                     if (err) {
-                        return scope[errorProperty] = {error: "An error occured"};
+                        return scope[errorProperty] = {error: "An error occurred"};
                     }
-                    scope[dataProperty] = data.data;
+                    scope[dataProperty] = data;
                     if (callback) return callback();
                 });
             },
+
             onLoadGetPurchase: function (callback) {
                 webserviceFactory.getAllTransactions(callback);
             },

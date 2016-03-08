@@ -118,6 +118,14 @@
 
             this.transactionApproved = function (name, price) {
                 toastr.success(name + " bought for " + price + " dkr ", "purchase success");
+            };
+
+            this.farewell = function (name) {
+                toastr.info("you are now logged out", "goodbye " + name);
+            };
+
+            this.greetings = function (name) {
+                toastr.info("", "Welcome " + name);
             }
         };
 
