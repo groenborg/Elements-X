@@ -438,7 +438,6 @@
 
         //OnLoad
         accountFactory.getAccounts(function (err, data) {
-            console.log(data);
             $scope.accounts = data;
         });
 
@@ -454,11 +453,12 @@
             return price;
         };
         $scope.getHistory = function (account) {
-            if ($scope.currentHistory == null || account != $scope.currentHistoryAccount) {
+            if ($scope.currentHistory == null || account.account_id != $scope.currentHistoryAccount.account_id) {
                 accountFactory.getAccountHistory(account.account_id, function (err, data) {
                     if (err) {
-
+                        console.log(err);
                     } else {
+                        console.log(data);
                         $scope.currentHistory = data;
                         $scope.currentHistoryAccount = account;
                     }
