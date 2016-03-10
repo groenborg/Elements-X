@@ -32,10 +32,8 @@ describe('Account test suite', function () {
             accountMapper.getAccountHistory(1,function (err, data) {
                 if (err) {
                     throw err;
-
-
                 } else {
-                    console.log(data);
+
                     console.log(util.inspect(data, false, null));
                     done();
 

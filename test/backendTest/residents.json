@@ -13,23 +13,7 @@
     "access_level": 0,
     "quick_buy": 4,
     "password": "123",
-    "purchase_history": [
-      {
-        "account_id": 1,
-        "purchase_items": [
-          {
-            "product_id": 2,
-            "amount": 5
-          },
-          {
-            "product_id": 3,
-            "amount": 1
-          }
-        ],
-        "total_price": 35,
-        "timestamp": "2015-09-24T19:39:25.490Z"
-      }
-    ],
+    "purchase_history": [],
     "balance_history": [
       {
         "balance_before": 23,
@@ -52,23 +36,7 @@
     "access_level": 3,
     "quick_buy": 4,
     "password": "123",
-    "purchase_history": [
-      {
-        "account_id": 1,
-        "purchase_items": [
-          {
-            "product_id": 1,
-            "amount": 2
-          },
-          {
-            "product_id": 3,
-            "amount": 1
-          }
-        ],
-        "total_price": 35,
-        "timestamp": "2015-09-24T19:39:25.490Z"
-      }
-    ],
+    "purchase_history": [],
     "balance_history": [
       {
         "balance_before": 23,
@@ -91,23 +59,7 @@
     "access_level": 0,
     "quick_buy": 5,
     "password": "123",
-    "purchase_history": [
-      {
-        "account_id": 1,
-        "purchase_items": [
-          {
-            "product_id": 2,
-            "amount": 5
-          },
-          {
-            "product_id": 3,
-            "amount": 1
-          }
-        ],
-        "total_price": 35,
-        "timestamp": "2015-09-24T19:39:25.490Z"
-      }
-    ],
+    "purchase_history": [],
     "balance_history": [
       {
         "balance_before": 23,
