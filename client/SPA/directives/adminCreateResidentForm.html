@@ -46,19 +46,20 @@
         <!-- Second section -->
         <div class="col-md-4">
 
-            <div class="form-group form-group">
-                <label for="kitchen-number">kitchen number</label>
-                <input ng-model="resident.kitchen_number" id="kitchen-number" type="number" class="form-control"
-                       placeholder="e.g. 1"
-                       aria-describedby="kitchen-number">
+            <div class="form-group">
+                <label>Associated Kitchen and Billing account</label>
+                <select ng-model="resident.kitchen_number" class="form-control"
+                        ng-options="account.account_id as account.account_name for account in accountsForUserCreation | filter:accountVisibilityFilter">
+
+                </select>
             </div>
+
             <div class="form-group form-group">
                 <label>Room number</label>
                 <input ng-model="resident.room_number" id="room-number" type="number" class="form-control"
                        placeholder="format: 3032"
                        aria-describedby="room-number">
             </div>
-
             <div class="form-group form-group">
                 <label>Deposit</label>
                 <input ng-model="resident.deposit" id="deposit" type="number" class="form-control"
@@ -70,19 +71,22 @@
                 <input ng-model="resident.current_balance" id="start-balance" type="number" class="form-control"
                        aria-describedby="start-balance">
             </div>
-            <div class="form-group form-group">
-                <label for="start-balance">Access Level</label>
-                <br>
-                <label class="radio-inline">
-                    <input type="radio" name="level" id="inlineRadio1" ng-value="0" checked> 0
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="level" id="inlineRadio2" ng-value="1" disabled> 1
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="level" id="inlineRadio3" ng-value="2" disabled> 2
-                </label>
+            <div class="form-group">
+                <label>Choose quickbuy product</label>
+                <select ng-model="resident.quick_buy" class="form-control" name="repeatSelect"
+                        ng-options="product.product_id as product.name for product in products">
+                </select>
             </div>
+
+            <div class="form-group">
+                <label>Choose access level</label>
+                <select ng-model="resident.access_level"
+                        required ng-options="option for option in accessLevels" class="form-control">
+                </select>
+            </div>
+            <span class="label label-default">0 - Normal user</span>
+            <span class="label label-default">1 - Bartender</span>
+            <span class="label label-default">2 - Administrator</span>
         </div>
 
         <!-- Recently added items -->

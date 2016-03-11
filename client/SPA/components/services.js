@@ -97,6 +97,8 @@
 
         return function NotificationChannel() {
 
+            // Arnold Schwarzenegger was terminating here
+
             this.balanceTooLow = function () {
                 toastr.warning('Balance is too low!')
             };
@@ -126,7 +128,24 @@
 
             this.greetings = function (name) {
                 toastr.info("", "Welcome " + name);
+            };
+
+            this.invalidFields = function () {
+                toastr.error("Fields are invalid or missing", "Error");
+            };
+
+            this.userCreated = function (userId) {
+                toastr.success("user " + userId + " created", "User created");
+            };
+
+            this.creationTerminated = function () {
+                toastr.error("User could not be created", "Creation terminated");
+            };
+
+            this.clearFields = function () {
+                toastr.warning("fields cleared");
             }
+
         };
 
     });

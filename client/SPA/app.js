@@ -51,9 +51,9 @@
                     authInspector.authAdmin();
                 }
             }
-        }).when('/inventory', {
+        }).when('/accounts', {
             templateUrl: "views/adminInventory.html",
-            controller: "InventoryCtrl",
+            controller: "AccountCtrl",
             resolve: {
                 auth: function (authInspector) {
                     authInspector.authAdmin();

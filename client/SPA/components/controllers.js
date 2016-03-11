@@ -272,9 +272,9 @@
         //Declarative variables
         $scope.products = [];
         $scope.activeForms = {
-            resident: false,
+            resident: true,
             assortment: false,
-            main: true
+            main: false
         };
         $scope.transactionPurchase = {
             item: null,
@@ -428,7 +428,7 @@
 
     }]);
 
-    app.controller('InventoryCtrl', ["$scope", "adminFactory", 'accountFactory', function ($scope, adminFactory, accountFactory) {
+    app.controller('AccountCtrl', ["$scope", "adminFactory", 'accountFactory', function ($scope, adminFactory, accountFactory) {
         //Declarative literal initialization of assortment item
         $scope.accounts = [];
         $scope.products = [];

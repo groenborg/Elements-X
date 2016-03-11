@@ -32,38 +32,65 @@
             restrict: 'EA',
             templateUrl: "../SPA/directives/adminCreateResidentForm.html",
             scope: false,
-            controller: function ($scope, adminFactory, notificationService) {
-                //Two way binded model
+            controller: function ($scope, adminFactory, notificationService, accountFactory) {
+                $scope.accountsForUserCreation = [];
                 $scope.resident = {
-                    first_name: "",
+                    first_name: null,
                     last_name: "",
                     room_number: null,
                     kitchen_number: null,
                     current_balance: null,
                     deposit: 100,
-                    phone: "",
-                    email: "",
+                    phone: null,
+                    email: null,
                     access_level: 0,
-                    password: "",
-                    active: true
+                    password: null,
+                    active: true,
+                    quick_buy: null
                 };
+                $scope.accessLevels = [0, 1, 2];
 
-                var msgService = notificationService;
+                var message = new notificationService();
+
+                accountFactory.getAccounts(function (err, data) {
+                    if (err) {
+
+                    } else {
+                        $scope.accountsForUserCreation = data;
+                    }
+                });
+
 
                 $scope.createResident = function () {
-
-                    if ($scope.resident.room_number == null || $scope.resident.kitchen_number == null) {
-                        msgService.notify('', 'Fields are missing', 'warning')
+                    if (checkValues() == false) {
+                        message.invalidFields();
                     } else {
+
                         adminFactory.createResident($scope.resident, function (err, data) {
                             if (err) {
-                                msgService.notify('error in request', 'Canceled', 'error')
+                                message.creationTerminated();
                             }
-                            msgService.notify('resident successfully created: id = ' + data.data.resident_id, 'Created', 'success');
+                            message.userCreated(data.data.resident_id);
                         });
+
                     }
                 };
 
+
+                function checkValues() {
+                    for (var prop in $scope.resident) {
+                        if ($scope.resident.hasOwnProperty(prop)) {
+                            if ($scope.resident[prop] == null) {
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }
+
+                $scope.accountVisibilityFilter = function (item) {
+                    return item.user_visible;
+                };
 
                 $scope.clearForms = function () {
                     $scope.resident = {
@@ -79,7 +106,7 @@
                         password: "",
                         active: true
                     };
-                    msgService.notify('', 'Cleared', 'info');
+                    message.clearFields();
                 };
 
 
