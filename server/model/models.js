@@ -110,7 +110,7 @@ var account = new mongoose.Schema({
  * */
 var sequence = new mongoose.Schema({
     _id: String,
-    sequence_value: {type: Number, Default: 1}
+    sequence_value: {type: Number, default: 100}
 });
 
 

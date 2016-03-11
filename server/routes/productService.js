@@ -10,7 +10,6 @@ router.get('/product/all', function (request, response) {
             response.message = "products not found";
             response.send({message: response.message});
         } else {
-            console.log(productData);
             response.send(productData);
         }
     });

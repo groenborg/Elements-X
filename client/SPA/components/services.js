@@ -131,7 +131,7 @@
             };
 
             this.invalidFields = function () {
-                toastr.error("Fields are invalid or missing", "Error");
+                toastr.warning("Fields are invalid or missing", "Error");
             };
 
             this.userCreated = function (userId) {

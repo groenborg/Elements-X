@@ -14,7 +14,7 @@ router.post('/resident/create', function (request, response) {
         if (err) {
             response.statusCode = 503;
             response.statusMessage = "service unavailable";
-            response.send({message: "No residents found"});
+            response.send({message: "could not create"});
         } else {
             response.send(data);
         }

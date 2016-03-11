@@ -62,6 +62,7 @@
 
 
                 $scope.createResident = function () {
+                    console.log($scope.resident);
                     if (checkValues() == false) {
                         message.invalidFields();
                     } else {
@@ -69,8 +70,10 @@
                         adminFactory.createResident($scope.resident, function (err, data) {
                             if (err) {
                                 message.creationTerminated();
+                            }else{
+                                message.userCreated(data.resident_id);
                             }
-                            message.userCreated(data.data.resident_id);
+
                         });
 
                     }
@@ -94,17 +97,18 @@
 
                 $scope.clearForms = function () {
                     $scope.resident = {
-                        first_name: "",
+                        first_name: null,
                         last_name: "",
                         room_number: null,
                         kitchen_number: null,
                         current_balance: null,
                         deposit: 100,
-                        phone: "",
-                        email: "",
+                        phone: null,
+                        email: null,
                         access_level: 0,
-                        password: "",
-                        active: true
+                        password: null,
+                        active: true,
+                        quick_buy: null
                     };
                     message.clearFields();
                 };
