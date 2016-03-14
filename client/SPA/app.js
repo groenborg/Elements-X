@@ -52,7 +52,15 @@
                 }
             }
         }).when('/accounts', {
-            templateUrl: "views/adminInventory.html",
+            templateUrl: "views/adminAccounts.html",
+            controller: "AccountCtrl",
+            resolve: {
+                auth: function (authInspector) {
+                    authInspector.authAdmin();
+                }
+            }
+        }).when('/products', {
+            templateUrl: "views/adminProductView.html",
             controller: "AccountCtrl",
             resolve: {
                 auth: function (authInspector) {

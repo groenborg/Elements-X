@@ -274,8 +274,8 @@
         $scope.accountsForUserCreation = [];
         $scope.activeForms = {
             resident: false,
-            assortment: true,
-            main: false
+            product: false,
+            main: true
         };
         $scope.transactionPurchase = {
             item: null,

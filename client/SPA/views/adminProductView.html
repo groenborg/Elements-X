@@ -1,0 +1,45 @@
+<!-- Shares scope with DashboardCtrl -->
+<div class="container-fluid dashboard-body">
+    <div class="row">
+        <div dashboard-sidebar></div>
+        <!-- Used for sidebar -->
+
+        <div class="col-md-10 main">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="lead"> Product overview</p>
+                    <hr/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table-hover table-responsive">
+                                <tr>
+                                    <td>Product ID</td>
+                                    <td>Name</td>
+                                    <td>In Stock</td>
+                                    <td>Is Box</td>
+                                    <td>Description</td>
+                                </tr>
+                                <tr ng-repeat="product in products">
+                                    <td>{{product.product_id}}</td>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.in_stock}}</td>
+                                    <td>{{product.box}}</td>
+                                    <td>{{product.description}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/.container-->
+
+
+
