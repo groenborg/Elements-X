@@ -142,6 +142,14 @@
                 toastr.error("User could not be created", "Creation terminated");
             };
 
+            this.productCreationTerminated = function () {
+                toastr.error("Product could not be created", "Creation terminated");
+            };
+
+            this.productCreationApproved = function (name) {
+                toastr.success("Item successfully created: " + name, "Product Created");
+            };
+
             this.clearFields = function () {
                 toastr.warning("fields cleared");
             }

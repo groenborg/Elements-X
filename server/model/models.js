@@ -47,10 +47,17 @@ var resident = new mongoose.Schema({
     active: Boolean,
     access_level: Number,         // Does the resident still live here - move resident to history
     password: String,
-    quick_buy:Number,
+    quick_buy: Number,
     purchase_history: [purchaseSchema],
     balance_history: [balanceHistorySchema]
 });
+
+
+var priceSchema = new mongoose.Schema({
+    account_id: Number,
+    price: Number
+}, {_id: false});
+
 
 /**
  * Products Schema
@@ -64,15 +71,11 @@ var products = new mongoose.Schema({
     description: String,
     in_stock: Number,
     purchase_price: Number,
-    retail_price: [{
-        account_id: Number,
-        price: Number
-    }],
+    retail_price: [priceSchema],
     box: Boolean,
     box_size: Number,
     bottle: Boolean
 });
-
 
 /**
  * Stock_purchase Schema

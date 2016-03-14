@@ -66,16 +66,14 @@
                     if (checkValues() == false) {
                         message.invalidFields();
                     } else {
-
                         adminFactory.createResident($scope.resident, function (err, data) {
                             if (err) {
                                 message.creationTerminated();
-                            }else{
+                            } else {
+                                console.log(data);
                                 message.userCreated(data.resident_id);
                             }
-
                         });
-
                     }
                 };
 
@@ -125,32 +123,47 @@
     app.directive('createAssortmentForm', function () {
         return {
             restrict: 'EA',
-            templateUrl: "../SPA/directives/adminCreateAssortmentForm.html",
+            templateUrl: "../SPA/directives/adminCreateProductForm.html",
             scope: false,
             controller: function ($scope, adminFactory, notificationService) {
                 //Declarative variables
                 $scope.item = {
                     name: null,
-                    supply: 0,
-                    item_size: 0,
                     description: null,
-                    one_price: 0,
-                    two_price: 0,
-                    three_price: 0,
-                    bar_price: 0
+                    in_stock: null,
+                    purchase_price: null,
+                    retail_price: [],
+                    box: false,
+                    box_size: null,
+                    bottle: false
                 };
-                var msgService = notificationService;
+                $scope.products = [];
 
+                $scope.priceObject = {
+                    account_id: null,
+                    price: null
+                };
+                var message = new notificationService();
+
+                adminFactory.onLoadProducts('loadProductsError', 'products', $scope, function (err, data) {
+
+                });
+
+                $scope.pushToPrices = function () {
+                    $scope.item.retail_price.push(JSON.parse(JSON.stringify($scope.priceObject)));
+                    $scope.priceObject.account_id = null;
+                    $scope.priceObject.price = null;
+                };
 
                 $scope.createAssortmentItem = function () {
-                    if ($scope.item.name == null || $scope.item.supply == null || $scope.item.one_price == 0) {
-                        msgService.notifyClear("All fields must be valid", "Invalid action")
+                    if ($scope.item.name == null || $scope.item.in_stock == null || $scope.item.retail_price.length != 4) {
+                        message.invalidFields();
                     } else {
-                        adminFactory.createAssortmentItem($scope.item, function (err, data) {
+                        adminFactory.createProduct($scope.item, function (err, data) {
                             if (err) {
-                                msgService.notify("Could not be created", "Error", "error")
+                                message.productCreationTerminated();
                             } else {
-                                msgService.notify("Item successfully created: " + data.data.name, "Success", "success");
+                                message.productCreationApproved(data.data.name);
                                 $scope.clearItemForm();
                             }
                         });
@@ -158,18 +171,22 @@
                 };
 
 
+                $scope.cbsFilter = function (item) {
+                    return item.account_name != "CBS";
+                };
+
                 $scope.clearItemForm = function () {
                     $scope.item = {
                         name: null,
-                        supply: 0,
-                        item_size: 0,
                         description: null,
-                        one_price: 0,
-                        two_price: 0,
-                        three_price: 0,
-                        bar_price: 0
+                        in_stock: null,
+                        purchase_price: null,
+                        retail_price: [],
+                        box: false,
+                        box_size: null,
+                        bottle: false
                     };
-                    msgService.notifyClear("fields emptied", "Clear")
+                    message.clearFields();
                 }
             },
             link: function ($scope, element, attributes) {

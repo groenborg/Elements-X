@@ -1,19 +1,19 @@
 var express = require('express');
 var router = express.Router();
-var assortmentManager = require('../source/productMapper');
+var productManager = require('../source/productMapper');
 var collectionManager = require('../source/collectionGetMapper');
 
 
-router.post('/assortment/create', function (request, response) {
+router.post('/product/create', function (request, response) {
     var item = request.body;
 
-    assortmentManager.createAssortment(item, function (err, assortmentData) {
+    productManager.createProduct(item, function (err, productData) {
         if (err) {
             response.statusCode = 503;
-            response.message = "could not create";
+            response.message = "could not create product";
             response.send({message: response.message});
         } else {
-            response.send(assortmentData);
+            response.send(productData);
         }
     });
 });

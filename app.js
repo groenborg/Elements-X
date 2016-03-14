@@ -18,7 +18,7 @@ var serverRoute = require('./server/routes/serverMaintenanceService');
 var secureLoginRoute = require('./server/routes/secureLoginService');
 var adminTransactionRoute = require('./server/routes/adminTransactionService');
 var adminResidentRoute = require('./server/routes/adminResidentService');
-var adminAssortmentRoute = require('./server/routes/adminAssortService');
+var adminAssortmentRoute = require('./server/routes/adminProductService');
 
 //var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
 var connection = require('./server/model/connection');

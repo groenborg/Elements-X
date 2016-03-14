@@ -271,9 +271,10 @@
     app.controller('DashboardCtrl', ['$scope', '$rootScope', "adminFactory", "notificationService", function ($scope, $rootScope, adminFactory, notificationService) {
         //Declarative variables
         $scope.products = [];
+        $scope.accountsForUserCreation = [];
         $scope.activeForms = {
-            resident: true,
-            assortment: false,
+            resident: false,
+            assortment: true,
             main: false
         };
         $scope.transactionPurchase = {
@@ -388,31 +389,31 @@
 
         //On load functionality
         controllerFactory.onLoad($scope, $scope.kitchenNumber);
-        var msgService = notificationService;
+        var message = new notificationService();
 
 
         $scope.deposit = function (resident) {
             var amount = parseFloat(resident.refillValue);
 
 
-            if (!isNaN(amount) && amount > 0) {
+            if (!isNaN(amount)) {
                 adminFactory.refillTransaction({
                     resident_id: resident.resident_id,
                     insert_amount: amount
                 }, function (err, data) {
                     if (err) {
-                        msgService.notify('error in transaction', 'refill canceled', 'error');
+                        message.refillTerminated();
                         resident.refillValue = undefined;
                     } else {
                         //set customer balance
                         resident.current_balance = data.data.current_balance;
                         //empty balance from  model
                         resident.refillValue = undefined;
-                        msgService.notify(resident.first_name + ' added ' + amount + ' to account', 'Transaction success', 'success')
+                        message.refillApproved(resident.first_name, amount);
                     }
                 });
             } else {
-                msgService.notify('not a valid refill value', 'refill canceled', 'warning');
+                message.refillTerminated();
             }
         };
 

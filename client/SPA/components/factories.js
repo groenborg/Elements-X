@@ -138,8 +138,8 @@
             createResident: function (residentDTO, callback) {
                 webserviceFactory.createResidentRequest(residentDTO, callback);
             },
-            createAssortmentItem: function (item, callback) {
-                webserviceFactory.createAssortmentRequest(item, callback);
+            createProduct: function (item, callback) {
+                webserviceFactory.createProductRequest(item, callback);
             },
             purchaseStorageTransaction: function (purchase, callback) {
                 webserviceFactory.purchaseStorageTransaction(purchase, callback);
@@ -305,10 +305,10 @@
                     callback(data);
                 });
             },
-            createAssortmentRequest: function (item, callback) {
+            createProductRequest: function (item, callback) {
                 $http({
                     method: 'POST',
-                    url: '/admin/assortment/create',
+                    url: '/admin/product/create',
                     data: item
                 }).then(function success(data) {
                     callback(undefined, data);

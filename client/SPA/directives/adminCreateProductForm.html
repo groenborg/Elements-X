@@ -1,0 +1,119 @@
+<div class="col-md-10 main">
+
+    <div class="row">
+        <div class="col-md-12">
+            <p class="lead">
+                Create assortment item
+            </p>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="product-name">Name</label>
+                    <input ng-model="item.name" id="product-name" type="text" class="form-control"
+                           placeholder="Product Name">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <input ng-model="item.description" id="desc" type="text" class="form-control"
+                           placeholder="description">
+                </div>
+                <div class="form-group">
+                    <label for="in-stock">in stock</label>
+                    <input ng-model="item.in_stock" id="in-stock" type="number" class="form-control"
+                           placeholder="Items in stock">
+                </div>
+
+                <div class="form-group">
+                    <label for="purchase-price">purchase price</label>
+                    <input ng-model="item.purchase_price" id="purchase-price" type="number" class="form-control"
+                           placeholder="price for box">
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>Price for kitchen</label>
+                            <select ng-model="priceObject.account_id" class="form-control"
+                                    ng-options="account.account_id as account.account_name for account in accountsForUserCreation | filter:cbsFilter">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">price</label>
+                        <input ng-model="priceObject.price" id="price" type="number" class="form-control"
+                               placeholder="price for kitchen">
+                    </div>
+                    <button type="button" class="btn btn-info" ng-click="pushToPrices()">Add price</button>
+                </div>
+            </div>
+
+            <form class="form-inline">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="item.bottle" ng-disabled="item.box"> Is Bottle
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="item.box" ng-disabled="item.bottle"> Is Box
+                    </label>
+                </div>
+            </form>
+            <div class="form-group">
+                <div class="form-group">
+                    <input ng-model="item.box_size" id="box_size" type="number" class="form-control"
+                           placeholder="box size" ng-disabled="item.bottle">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    Items section
+                </div>
+                <div class="panel-body">
+                    <p ng-repeat="(key, val) in item">
+                        {{key}}: {{val}}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Current products
+                </div>
+                <div class="panel-body">
+                    <p ng-repeat="product in products">
+                        {{product.name}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <hr>
+            <button ng-click="showForm('main')" type="button" class="btn btn-danger btn-lg">Back</button>
+        </div>
+        <div class="col-md-4">
+            <hr>
+            <!-- Button section -->
+            <button ng-click="createAssortmentItem()" type="button" class="btn btn-primary btn-lg">Add new Item</button>
+            <button ng-click="clearItemForm()" type="button" class="btn btn-warning btn-lg">Clear</button>
+        </div>
+    </div>
+
+</div>
