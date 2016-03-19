@@ -5,7 +5,7 @@ var app = require('express')();
 function connectToMongoDB(callback) {
 
     if(app.get('env') == "build"){
-
+        console.log("ajdklsajdlkjsakdlsa");
     }
 
     var uri = app.get('env') == "build" ? process.env.MONGOLAB : process.env.MONGO;
