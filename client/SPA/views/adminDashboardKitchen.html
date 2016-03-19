@@ -48,7 +48,7 @@
                             <th></th>
                         </tr>
                         <tr ng-repeat="resident in kitchenResidents | filter:search">
-                            <td>{{resident.resident_id}}</td>
+                            <td ng-click="viewHistory(resident.resident_id)">{{resident.resident_id}}</td>
                             <td>{{resident.first_name}} {{resident.last_name}}</td>
                             <td>{{resident.room_number}}</td>
                             <td>{{resident.kitchen_number}}</td>

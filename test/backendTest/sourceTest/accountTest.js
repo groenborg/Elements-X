@@ -1,5 +1,3 @@
-var transactionMapper = require('../../../server/source/transactionMapper.js');
-var residentMapper = require('../../../server/source/residentMapper');
 var accountMapper = require('../../../server/source/accountMapper');
 var connection = require('../../../server/model/connection.js');
 var fixture = require('./../fixture.js');

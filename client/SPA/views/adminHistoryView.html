@@ -13,8 +13,28 @@
                     <hr/>
                 </div>
             </div>
-
-
+            <div class="row">
+                <div class="col-md-8">
+                    <div ng-hide="resident" class="alert alert-info" role="alert">No history loaded</div>
+                    <div ng-show="error" class="alert alert-danger" role="alert">Could not load history</div>
+                    <div ng-show="resident">
+                        <p class="lead">history for {{resident.first_name}}</p>
+                        <div ng-repeat="hist in resident.purchase_history" class="well">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    price: {{hist.total_price}}
+                                </div>
+                                <div class="col-md-6">
+                                    Time {{hist.timestamp}}
+                                </div>
+                                <div class="col-md-3">
+                                    Account {{hist.account_id}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div><!--/.container-->
 </div>

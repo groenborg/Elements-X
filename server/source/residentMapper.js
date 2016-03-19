@@ -25,6 +25,16 @@ function getOneResident(residentID, callback) {
     });
 }
 
+/**
+ * Retrieves history for specified resident
+ * @note: -100 makes the function return the last 100 items
+ * */
+function getResidentHistory(residentId, callback) {
+    model.Resident.findOne({resident_id: residentId}).select({"purchase_history": {"$slice": -100}}).exec(function (err, data) {
+        return callback(err, data);
+    });
+}
+
 
 /**
  * Retrieves all residents grouped by kitchen
@@ -115,6 +125,7 @@ function createResident(resident, callback) {
 
 
 module.exports = {
+    getResidentHistory: getResidentHistory,
     getAllResidents: getAllResidents,
     getOneResident: getOneResident,
     updateResident: updateResident,

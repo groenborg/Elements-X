@@ -14,12 +14,12 @@ describe('residentMapper test suite', function () {
         connection.closeMongoDB(done);
     });
 
-    beforeEach('fill resident collection', function (done) {
-        fixture.fillResidents(done);
+    beforeEach('fill resident collection', function () {
+
     });
 
-    afterEach('empty resident collection', function (done) {
-        fixture.fillResidents(done);
+    afterEach('empty resident collection', function () {
+
     });
 
     xdescribe('get all residents from database', function () {
@@ -49,22 +49,16 @@ describe('residentMapper test suite', function () {
 
     });
 
-    xdescribe('get one resident from the database', function () {
+    describe('get history', function () {
 
-        var residentID = 1;
+        var residentID = 2;
 
-        it('should return a resident without error', function (done) {
-            residentMapper.getOneResident(residentID, function (err, resident) {
-                if (err) throw err;
-                done();
-            });
-        });
+        it('should return history', function (done) {
+            residentMapper.getResidentHistory(residentID, function (err, resident) {
+                console.log(err);
+                console.log(resident);
 
-        it('should return a resident object', function (done) {
-            residentMapper.getOneResident(residentID, function (err, resident) {
-                if (err) throw err;
-                resident.first_name.should.be.ok();
-                done();
+
             });
         });
     });
@@ -117,7 +111,7 @@ describe('residentMapper test suite', function () {
     });
 
 
-    describe('create a new resident', function () {
+    xdescribe('create a new resident', function () {
 
         var newResident = {
             "resident_id": 0,
@@ -146,7 +140,7 @@ describe('residentMapper test suite', function () {
     });
 
 
-    describe('Get residents grouped by kitchens', function () {
+    xdescribe('Get residents grouped by kitchens', function () {
 
         it('should return three groups', function (done) {
             residentMapper.getKitchenGroups(function (err, data) {

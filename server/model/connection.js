@@ -4,14 +4,11 @@ var app = require('express')();
 
 function connectToMongoDB(callback) {
 
-    
+    if (app.get('env') == "build") {
 
-    if(app.get('env') == "build"){
-
-    }else{
-
+    } else {
+        require('../../config');
     }
-
     var uri = app.get('env') == "build" ? process.env.MONGOLAB : process.env.MONGO;
 
     db.connect(uri, function (err) {

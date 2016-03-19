@@ -35,9 +35,15 @@ router.put('/resident/update', function (request, response) {
 });
 
 router.get('/resident/history/:id', function (request, response) {
-    var limit = request.params.id;
-
-
+    residentManager.getResidentHistory(request.params.id, function (err, data) {
+        if (err) {
+            response.statusCode = 503;
+            response.statusMessage = "service unavailable";
+            response.send({message: "could not retrieve history"});
+        } else {
+            response.send(data);
+        }
+    });
 });
 
 

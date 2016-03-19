@@ -438,6 +438,10 @@
             $location.path("/dashboard/" + resident.resident_id);
         };
 
+        $scope.viewHistory = function (resident_id) {
+            $location.path('/history/' + resident_id);
+        }
+
     }]);
 
     app.controller('AccountCtrl', ["$scope", "adminFactory", 'accountFactory', function ($scope, adminFactory, accountFactory) {
@@ -538,12 +542,19 @@
 
     }]);
 
-    app.controller('historyCtrl', ["$scope", "adminFactory","$routeParams", function ($scope, adminFactory) {
-        $scope.resident = {};
+    app.controller('HistoryCtrl', ["$scope", "adminFactory", "$routeParams", function ($scope, adminFactory, $routeParams) {
+        $scope.resident = null;
+        $scope.error = false;
         //$routeParams.residentId
 
-        //adminFactory.
-
+        adminFactory.getResidentHistory($routeParams.residentId, function (err, data) {
+            if (err) {
+                $scope.error = true;
+            } else {
+                $scope.resident = data.data;
+                console.log($scope.resident.resident_id);
+            }
+        });
 
     }]);
 
