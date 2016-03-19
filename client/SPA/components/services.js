@@ -181,6 +181,15 @@
             this.restockApproved = function (amount) {
                 toastr.success("product was restocked with " + amount, "Restock approved");
             };
+
+            this.userUpdated = function (userId) {
+                toastr.success("user " + userId + " updated", "Update Approved");
+            };
+
+            this.updateTerminated = function () {
+                toastr.error("User could not be updated", "Update Terminated");
+            };
+
         };
 
     });

@@ -23,9 +23,10 @@ router.post('/resident/create', function (request, response) {
 
 
 router.put('/resident/update', function (request, response) {
-    residentManager.updateProduct(request.body, function (err, data) {
-        if (err != null) {
+    residentManager.updateResident(request.body, function (err, data) {
+        if (err) {
             response.statusCode = 503;
+            response.statusMessage = "service unavailable";
             response.send({message: "could not update resident"});
         } else {
             response.send(data);

@@ -89,8 +89,8 @@ var updateResident = function (updatedResident, callback) {
         access_level: updatedResident.access_level
 
         /* {new: true} - return the updated object instead of the old one*/
-    }, {new: true}, function (err, returnUpdatedResident) {
-        return callback(err, returnUpdatedResident);
+    }, {new: true}, function (err, updatedResident) {
+        return callback(err, updatedResident);
     });
 
 };

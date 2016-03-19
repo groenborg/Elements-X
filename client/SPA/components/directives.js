@@ -69,7 +69,6 @@
                             if (err) {
                                 message.creationTerminated();
                             } else {
-                                console.log(data);
                                 message.userCreated(data.resident_id);
                             }
                         });
@@ -77,7 +76,18 @@
                 };
 
                 $scope.updateResident = function () {
-                    
+                    if (checkValues() == false) {
+                        message.invalidFields();
+                    } else {
+                        adminFactory.updateResident($scope.resident, function (err, data) {
+                            if (err != null) {
+                                message.updateTerminated();
+                            } else {
+                                message.userUpdated(data.data.resident_id);
+                                $scope.clearForms();
+                            }
+                        });
+                    }
                 };
 
 
