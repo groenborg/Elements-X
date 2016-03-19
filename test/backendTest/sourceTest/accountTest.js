@@ -25,7 +25,7 @@ describe('Account test suite', function () {
         //fixture.emptyDataBase(done);
     });
 
-    describe('Account History Test', function () {
+    xdescribe('Account History Test', function () {
 
 
         it('return account history from users', function (done) {
