@@ -168,8 +168,19 @@
             this.productDeletionApproved = function () {
                 toastr.success("Product was deleted", "Deletion Approved");
                 toastr.info("please refresh page");
-            }
+            };
 
+            this.productNotChosen = function () {
+                toastr.warning("A product must be chosen");
+            };
+
+            this.restockTerminated = function () {
+                toastr.error("Product could not be restocked", "Restock transaction terminated");
+            };
+
+            this.restockApproved = function (amount) {
+                toastr.success("product was restocked with " + amount, "Restock approved");
+            };
         };
 
     });

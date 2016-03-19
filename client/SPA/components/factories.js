@@ -149,6 +149,9 @@
             },
             purchaseStorageTransaction: function (purchase, callback) {
                 webserviceFactory.purchaseStorageTransaction(purchase, callback);
+            },
+            restockProduct: function (item, callback) {
+                webserviceFactory.restockProduct(item, callback);
             }
         }
     }]);
@@ -206,6 +209,17 @@
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
+            restockProduct: function (item, callback) {
+                $http({
+                    method: "PUT",
+                    url: 'admin/product/restock',
+                    data: item
+                }).then(function success(res) {
+                    callback(undefined, res);
+                }, function error(res) {
+                    callback(undefined, res);
+                })
+            },
             getAllResidents: function (callback) {
                 $http({
                     method: 'GET',
@@ -339,7 +353,7 @@
                     method: 'DELETE',
                     url: '/admin/product/delete',
                     data: product,
-                    headers:{
+                    headers: {
                         "Content-Type": "application/json"
                     }
                 }).then(function success(data) {

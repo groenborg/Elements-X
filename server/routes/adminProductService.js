@@ -32,11 +32,25 @@ router.put('/product/update', function (request, response) {
     });
 });
 
+router.put('/product/restock', function (request, response) {
+    if (request.body.product_id != null && isNaN(request.body.value)) {
+        productManager.restockProduct(request.body, function (err, data) {
+            if (err != null) {
+                response.statusCode = 503;
+                response.send({message: "unable to restock product"});
+            } else {
+                response.send(data);
+            }
+        });
+    } else {
+        response.statusCode = 400; // bad request
+        response.send({message: "missing or invalid parameters"});
+    }
+
+});
+
 router.delete('/product/delete', function (request, response) {
     var product = request.body;
-
-    console.log(product);
-
     productManager.removeProduct(product, function (err, productData) {
         if (err) {
             response.statusCode = 503;

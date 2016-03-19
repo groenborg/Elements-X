@@ -30,14 +30,20 @@ function updateProduct(updatedProduct, callback) {
 
     }, {new: true}, function (err, item) {
 
-        console.log(err);
-
         if (err) return callback(err);
         if (item == null) return callback();
         return callback(undefined, item);
     });
 }
 
+
+function restockProduct(product, callback) {
+    model.Product.findOneAndUpdate({product_id: product.product_id}, {
+        $inc: {in_stock: product.amount}
+    }, {new: true}, function (err, data) {
+        return callback(err, data);
+    });
+}
 
 function removeProduct(product, callback) {
     model.Product.findOneAndRemove({product_id: product.product_id}, function (err, data) {
@@ -50,5 +56,6 @@ function removeProduct(product, callback) {
 module.exports = {
     createProduct: createProduct,
     updateProduct: updateProduct,
-    removeProduct: removeProduct
+    removeProduct: removeProduct,
+    restockProduct: restockProduct
 };

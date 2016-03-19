@@ -82,7 +82,7 @@ var products = new mongoose.Schema({
  * Document model for buying from the stock
  * resident_id to see which user made the purchase
  * */
-var stock_purchase = new mongoose.Schema({
+var stockPurchase = new mongoose.Schema({
     resident_id: {type: Number, required: true},
     product_id: {type: Number}, // references product.product_id
     total_price: Number,
@@ -102,8 +102,7 @@ var account = new mongoose.Schema({
     account_name: {type: String, required: true},
     balance: Number,
     user_visible: Boolean,
-    available_products: [Number], //references products.product_id
-    stock_purchase: [stock_purchase]
+    available_products: [Number] //references products.product_id
 });
 
 
@@ -130,10 +129,12 @@ var Account = mongoose.model('accounts', account);
 var Resident = mongoose.model('residents', resident);
 var Sequence = mongoose.model('sequence', sequence);
 var Product = mongoose.model('products', products);
+var StockPurchase = mongoose.model('stock_purchase', stockPurchase);
 
 module.exports = {
     Resident: Resident,
     Product: Product,
     Account: Account,
+    StockPurchase: StockPurchase,
     Sequence: Sequence
 };

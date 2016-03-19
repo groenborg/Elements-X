@@ -473,4 +473,58 @@
 
     }]);
 
+    app.controller('InventoryCtrl', ["$scope", "adminFactory", "notificationService", function ($scope, adminFactory, notificationService) {
+        //Declarative literal initialization of assortment item
+        $scope.products = [];
+        $scope.loadProductsError = false;
+        $scope.chosenProduct = null;
+        $scope.restockData = {
+            product_id: null,
+            amount: null
+        };
+
+        var message = new notificationService();
+        adminFactory.onLoadProducts('loadProductsError', 'products', $scope, function (err, data) {
+
+        });
+
+        $scope.setChosenProduct = function (product) {
+            if ($scope.chosenProduct == null) {
+                $scope.chosenProduct = product;
+            } else if ($scope.chosenProduct.product_id == product.product_id) {
+                $scope.chosenProduct = null;
+            } else {
+                $scope.chosenProduct = product;
+            }
+        };
+
+        $scope.restock = function () {
+            if ($scope.chosenProduct != null) {
+                $scope.restockData.product_id = $scope.chosenProduct.product_id;
+                adminFactory.restockProduct($scope.restockData, function (err, data) {
+                    if (err != null) {
+                        message.restockTerminated();
+                        $scope.clear();
+                    } else {
+                        message.restockApproved($scope.restockData.amount);
+                        $scope.chosenProduct.in_stock += $scope.restockData.amount;
+                        $scope.clear();
+                    }
+                });
+            } else {
+                message.productNotChosen();
+            }
+        };
+
+
+        $scope.clear = function () {
+            $scope.chosenProduct = null;
+            $scope.restockData = {
+                product_id: null,
+                amount: null
+            };
+        }
+
+    }]);
+
 })();
