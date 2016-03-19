@@ -82,15 +82,15 @@ var updateResident = function (updatedResident, callback) {
         last_name: updatedResident.last_name,
         room_number: updatedResident.room_number,
         kitchen_number: updatedResident.kitchen_number,
-        current_balance: updatedResident.current_balance
+        current_balance: updatedResident.current_balance,
+        quick_buy: updatedResident.quick_buy,
+        phone: updatedResident.phone,
+        email: updatedResident.email,
+        access_level: updatedResident.access_level
 
         /* {new: true} - return the updated object instead of the old one*/
     }, {new: true}, function (err, returnUpdatedResident) {
-
-        if (err) return callback(err);
-        if (returnUpdatedResident == null) return callback();
-        return callback(undefined, returnUpdatedResident);
-
+        return callback(err, returnUpdatedResident);
     });
 
 };

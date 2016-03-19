@@ -268,7 +268,7 @@
 
     }]);
 
-    app.controller('DashboardCtrl', ['$scope', '$rootScope', "adminFactory", "notificationService", function ($scope, $rootScope, adminFactory, notificationService) {
+    app.controller('DashboardCtrl', ['$scope', '$rootScope', "$routeParams", "adminFactory", "notificationService", function ($scope, $rootScope, $routeParams, adminFactory, notificationService) {
         //Declarative variables
         $scope.products = [];
         $scope.accountsForUserCreation = [];
@@ -288,12 +288,15 @@
             err: false,
             data: null
         };
+
         var labels = [];
         var supply = [];
         var msgService = notificationService;
 
 
         //On load functions
+
+
         adminFactory.onLoadProducts('error', 'products', $scope, function () {
             for (var i = 0; i < $scope.products.length; ++i) {
                 labels.push($scope.products[i].name);
@@ -301,14 +304,14 @@
             }
         });
 
-        adminFactory.onLoadGetPurchase(function (err, data) {
-            console.log(data);
-            if (err) {
-                $scope.allTransactions.err = true;
-            } else {
-                $scope.allTransactions.data = data.data;
-            }
-        });
+        // adminFactory.onLoadGetPurchase(function (err, data) {
+        //     console.log(data);
+        //     if (err) {
+        //         $scope.allTransactions.err = true;
+        //     } else {
+        //         $scope.allTransactions.data = data.data;
+        //     }
+        // });
 
         var clear = function () {
             $scope.transactionPurchase.item = null;
@@ -361,6 +364,11 @@
             }
         };
 
+        (function () {
+            if ($routeParams.resident) {
+                $scope.showForm('resident');
+            }
+        })();
 
         //Charts
         $scope.storeChart = {
@@ -381,16 +389,14 @@
 
     }]);
 
-    app.controller('DashBoardKitchenCtrl', ["$scope", "$routeParams", "controllerFactory", "adminFactory", "notificationService", function ($scope, $routeParams, controllerFactory, adminFactory, notificationService) {
+    app.controller('DashBoardKitchenCtrl', ["$scope", "$rootScope", "$routeParams", "$location", "controllerFactory", "adminFactory", "notificationService", function ($scope, $rootScope, $routeParams, $location, controllerFactory, adminFactory, notificationService) {
         //Declarative variables
         $scope.kitchenNumber = $routeParams.kitchenNumber;
         $scope.deposit = "";
 
-
         //On load functionality
         controllerFactory.onLoad($scope, $scope.kitchenNumber);
         var message = new notificationService();
-
 
         $scope.deposit = function (resident) {
             var amount = parseFloat(resident.refillValue);
@@ -425,7 +431,12 @@
                     sum += $scope.kitchenResidents[i].current_balance;
                 return sum.toFixed(2);
             }
-        }
+        };
+
+        $scope.changeView = function (resident) {
+            $rootScope.editResident = resident;
+            $location.path("/dashboard/" + resident.resident_id);
+        };
 
     }]);
 

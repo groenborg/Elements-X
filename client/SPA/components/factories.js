@@ -138,6 +138,9 @@
             createResident: function (residentDTO, callback) {
                 webserviceFactory.createResidentRequest(residentDTO, callback);
             },
+            updateResident: function (resident, callback) {
+                webserviceFactory.updateResident(resident, callback);
+            },
             createProduct: function (item, callback) {
                 webserviceFactory.createProductRequest(item, callback);
             },
@@ -209,6 +212,17 @@
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
+            updateResident: function (resident, callback) {
+                $http({
+                    method: "PUT",
+                    url: 'admin/resident/update',
+                    data: resident
+                }).then(function success(res) {
+                    callback(undefined, res);
+                }, function error(res) {
+                    callback(undefined, res);
+                })
+            },
             restockProduct: function (item, callback) {
                 $http({
                     method: "PUT",

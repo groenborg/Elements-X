@@ -32,7 +32,7 @@
             restrict: 'EA',
             templateUrl: "../SPA/directives/adminCreateResidentForm.html",
             scope: false,
-            controller: function ($scope, adminFactory, notificationService, accountFactory) {
+            controller: function ($scope, $rootScope, adminFactory, notificationService, accountFactory) {
                 $scope.accountsForUserCreation = [];
                 $scope.resident = {
                     first_name: null,
@@ -48,8 +48,8 @@
                     active: true,
                     quick_buy: null
                 };
+                $scope.editing = false;
                 $scope.accessLevels = [0, 1, 2];
-
                 var message = new notificationService();
 
                 accountFactory.getAccounts(function (err, data) {
@@ -62,7 +62,6 @@
 
 
                 $scope.createResident = function () {
-                    console.log($scope.resident);
                     if (checkValues() == false) {
                         message.invalidFields();
                     } else {
@@ -75,6 +74,10 @@
                             }
                         });
                     }
+                };
+
+                $scope.updateResident = function () {
+                    
                 };
 
 
@@ -108,9 +111,16 @@
                         active: true,
                         quick_buy: null
                     };
+                    $scope.editing = false;
                     message.clearFields();
                 };
 
+                (function () {
+                    if ($rootScope.editResident) {
+                        $scope.resident = $rootScope.editResident;
+                        $scope.editing = true;
+                    }
+                })();
 
             },
             link: function ($scope, element, attributes) {

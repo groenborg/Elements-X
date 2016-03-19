@@ -43,6 +43,14 @@
                     authInspector.authAdmin();
                 }
             }
+        }).when('/dashboard/:resident', {
+            templateUrl: 'views/adminDashboard.html',
+            controller: 'DashboardCtrl',
+            resolve: {
+                auth: function (authInspector) {
+                    authInspector.authAdmin();
+                }
+            }
         }).when('/dashboard/kitchen/:kitchenNumber', {
             templateUrl: "views/adminDashboardKitchen.html",
             controller: "DashBoardKitchenCtrl",
@@ -61,7 +69,7 @@
             }
         }).when('/products', {
             templateUrl: "views/adminProductView.html",
-            controller: "InventoryCtrl",
+            controller: "AccountCtrl",
             resolve: {
                 auth: function (authInspector) {
                     authInspector.authAdmin();

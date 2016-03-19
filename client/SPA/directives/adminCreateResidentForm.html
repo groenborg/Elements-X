@@ -113,7 +113,12 @@
         <!-- confirm button -->
         <div class="col-md-4">
             <hr>
-            <button ng-click="createResident()" type="button" class="btn btn-info btn-lg">Add new Resident</button>
+            <button ng-hide="editing" ng-click="createResident()" type="button" class="btn btn-info btn-lg">Add
+                Resident
+            </button>
+            <button ng-show="editing" ng-click="updateResident()" type="button" class="btn btn-info btn-lg">Update
+                Resident
+            </button>
             <button ng-click="clearForms()" type="button" class="btn btn-warning btn-lg">Clear</button>
         </div>
 
