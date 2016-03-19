@@ -34,4 +34,11 @@ router.put('/resident/update', function (request, response) {
     });
 });
 
+router.get('/resident/history/:id', function (request, response) {
+    var limit = request.params.id;
+
+
+});
+
+
 module.exports = router;

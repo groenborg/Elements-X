@@ -1,29 +1,34 @@
 var model = require('../model/models.js');
 var deprecate = require('deprecate');
 
-var getAllResidents = function (callback) {
-
+/**
+ * Retrieves all residents
+ * @params: callback
+ * */
+function getAllResidents(callback) {
     model.Resident.find({}, function (err, residents) {
         if (err) return callback(err);
         if (residents == null) return callback();
         return callback(undefined, residents)
-
     });
-};
+}
 
-
-var getOneResident = function (residentID, callback) {
+/**
+ * retrieves one resident
+ * @params: resident id, callback function
+ * */
+function getOneResident(residentID, callback) {
     model.Resident.findOne({resident_id: residentID}, function (err, resident) {
         if (err) return callback(err);
         if (resident == null) return callback();
         return callback(undefined, resident);
     });
-};
+}
 
 
-/*
- * function
+/**
  * Retrieves all residents grouped by kitchen
+ * @params: callback function
  * */
 var getKitchenGroups = function (callback) {
     model.Resident.aggregate(
@@ -53,31 +58,16 @@ var getKitchenGroups = function (callback) {
             if (data == null) return callback();
             return callback(undefined, data);
         });
-
 };
 
 
-var findTenDayPurchase = function (callback) {
-    var start = new Date();
-
-    model.Resident.find({
-        'purchase_history.timestamp': {
-            $gte: new Date(2016, 0, 30),
-            $lt: new Date(2016, 0, 1)
-        }
-    }, function (err, data) {
-        callback(err, data);
-
-    });
-
-};
-
-
-/* findOneAndUpdate({query},{update},callback);*/
-var updateResident = function (updatedResident, callback) {
-
+/**
+ * Update one resident
+ * @note: a resident id must exist in the updatedResident parameter
+ * @params: update object, callback function
+ * */
+function updateResident(updatedResident, callback) {
     model.Resident.findOneAndUpdate({resident_id: updatedResident.resident_id}, {
-
         first_name: updatedResident.first_name,
         last_name: updatedResident.last_name,
         room_number: updatedResident.room_number,
@@ -87,46 +77,44 @@ var updateResident = function (updatedResident, callback) {
         phone: updatedResident.phone,
         email: updatedResident.email,
         access_level: updatedResident.access_level
-
-        /* {new: true} - return the updated object instead of the old one*/
     }, {new: true}, function (err, updatedResident) {
         return callback(err, updatedResident);
     });
+}
 
-};
-
-var deleteResident = function (residentID, callback) {
+/**
+ * Delete a resident
+ * @params: resident id, callback function
+ **/
+function deleteResident(residentID, callback) {
     model.Resident.findOneAndRemove({resident_id: residentID}, function (err, data) {
-
         if (err) return callback(err);
         if (data == null) return callback();
         return callback(undefined, data);
-
     });
-};
+}
 
 
-// a special counter is created by a script for this to work
-var createResident = function (resident, callback) {
+/**
+ * Creates a new resident
+ * @note: users a counter which must be created by a script
+ * @params: resident object, callback function
+ * */
+function createResident(resident, callback) {
     model.Sequence.findAndModify({_id: 'resident_counter'}, [], {$inc: {sequence_value: 100}}, {}, function (err, next) {
-
         if (err) return callback(err);
         if (next == null) return callback();
-
-        // no error in returning the next value from the sequence
         resident.resident_id = next.value.sequence_value;
-
         model.Resident.create(resident, function (err, resident) {
             if (err) return callback(err);
             if (next == null) return callback();
             return callback(undefined, resident);
         });
     });
-};
+}
 
 
 module.exports = {
-    findTenDayPurchase: findTenDayPurchase,
     getAllResidents: getAllResidents,
     getOneResident: getOneResident,
     updateResident: updateResident,

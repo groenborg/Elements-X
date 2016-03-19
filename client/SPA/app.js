@@ -35,6 +35,14 @@
                     authInspector.authBar();
                 }
             }
+        }).when('/history/:residentId', {
+            templateUrl: 'views/adminHistoryView.html',
+            controller: 'HistoryCtrl',
+            resolve: {
+                auth: function (authInspector) {
+                    authInspector.authBar();
+                }
+            }
         }).when('/dashboard', {
             templateUrl: 'views/adminDashboard.html',
             controller: 'DashboardCtrl',

@@ -155,6 +155,9 @@
             },
             restockProduct: function (item, callback) {
                 webserviceFactory.restockProduct(item, callback);
+            },
+            getResidentHistory: function (residentId, callback) {
+                webserviceFactory.getResidentHistory(residentId, callback);
             }
         }
     }]);
@@ -212,6 +215,16 @@
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
+            getResidentHistory: function (residentId, callback) {
+                $http({
+                    method: "GET",
+                    url: 'admin/resident/history/' + residentId
+                }).then(function success(res) {
+                    callback(undefined, res);
+                }, function error(res) {
+                    callback(undefined, res);
+                })
+            },
             updateResident: function (resident, callback) {
                 $http({
                     method: "PUT",
@@ -285,31 +298,10 @@
                     callback(data)
                 });
             },
-            getAllTransactions: function (callback) {
-                $http({
-                    method: 'GET',
-                    url: 'admin/transaction/get/10'
-                }).then(function success(data) {
-                    callback(undefined, data)
-                }, function error(data) {
-                    callback(data)
-                });
-            },
             userPurchaseTransaction: function (purchase, callback) {
                 $http({
                     method: 'POST',
                     url: '/api/user/purchase',
-                    data: purchase
-                }).then(function success(response) {
-                    callback(undefined, response);
-                }, function error(response) {
-                    callback(response);
-                });
-            },
-            purchaseStorageTransaction: function (purchase, callback) {
-                $http({
-                    method: 'POST',
-                    url: '/admin/transaction/purchase',
                     data: purchase
                 }).then(function success(response) {
                     callback(undefined, response);

@@ -538,4 +538,13 @@
 
     }]);
 
+    app.controller('historyCtrl', ["$scope", "adminFactory","$routeParams", function ($scope, adminFactory) {
+        $scope.resident = {};
+        //$routeParams.residentId
+
+        //adminFactory.
+
+
+    }]);
+
 })();
