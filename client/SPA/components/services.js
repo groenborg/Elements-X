@@ -152,6 +152,22 @@
 
             this.clearFields = function () {
                 toastr.warning("fields cleared");
+            };
+
+            this.productUpdateTerminated = function () {
+                toastr.error("Product could not be updated", "Update terminated");
+            };
+
+            this.productUpdated = function () {
+                toastr.success("product was updated", "Update Accepted");
+            };
+            this.couldNotDeleteProduct = function () {
+                toastr.error("Product could not be deleted", "Deletion terminated");
+            };
+
+            this.productDeletionApproved = function () {
+                toastr.success("Product was deleted", "Deletion Approved");
+                toastr.info("please refresh page");
             }
 
         };

@@ -141,6 +141,12 @@
             createProduct: function (item, callback) {
                 webserviceFactory.createProductRequest(item, callback);
             },
+            updateProduct: function (item, callback) {
+                webserviceFactory.updateProductRequest(item, callback);
+            },
+            deleteProduct: function (item, callback) {
+                webserviceFactory.deleteProductRequest(item, callback);
+            },
             purchaseStorageTransaction: function (purchase, callback) {
                 webserviceFactory.purchaseStorageTransaction(purchase, callback);
             }
@@ -310,6 +316,32 @@
                     method: 'POST',
                     url: '/admin/product/create',
                     data: item
+                }).then(function success(data) {
+                    callback(undefined, data);
+                }, function error(data) {
+                    callback(data);
+                });
+            },
+            updateProductRequest: function (updatedProduct, callback) {
+                $http({
+                    method: 'PUT',
+                    url: '/admin/product/update',
+                    data: updatedProduct
+                }).then(function success(data) {
+                    callback(undefined, data);
+                }, function error(data) {
+                    callback(data);
+                });
+            },
+            deleteProductRequest: function (product, callback) {
+                console.log(product);
+                $http({
+                    method: 'DELETE',
+                    url: '/admin/product/delete',
+                    data: product,
+                    headers:{
+                        "Content-Type": "application/json"
+                    }
                 }).then(function success(data) {
                     callback(undefined, data);
                 }, function error(data) {

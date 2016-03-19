@@ -1,9 +1,12 @@
 var db = require('mongoose');
 var app = require('express')();
-var config = require('../../config');
 
 
 function connectToMongoDB(callback) {
+
+    if(app.get('env') == "build"){
+
+    }
 
     var uri = app.get('env') == "build" ? process.env.MONGOLAB : process.env.MONGO;
 

@@ -138,7 +138,7 @@
                     bottle: false
                 };
                 $scope.products = [];
-
+                $scope.isEditing = false;
                 $scope.priceObject = {
                     account_id: null,
                     price: null
@@ -150,6 +150,16 @@
                 });
 
                 $scope.pushToPrices = function () {
+                    var exists = null;
+                    $scope.item.retail_price.forEach(function (element, index) {
+                        if (element.account_id == $scope.priceObject.account_id) {
+                            exists = index;
+                        }
+                    });
+
+                    if (exists !== null) {
+                        $scope.item.retail_price.splice(exists, 1);
+                    }
                     $scope.item.retail_price.push(JSON.parse(JSON.stringify($scope.priceObject)));
                     $scope.priceObject.account_id = null;
                     $scope.priceObject.price = null;
@@ -171,6 +181,39 @@
                 };
 
 
+                $scope.updateProduct = function () {
+                    if ($scope.item.name == null || $scope.item.in_stock == null || $scope.item.retail_price.length != 4) {
+                        message.invalidFields();
+                    } else {
+                        adminFactory.updateProduct($scope.item, function (err, data) {
+                            if (err) {
+                                message.productUpdateTerminated();
+                            } else {
+                                message.productUpdated();
+                                $scope.clearItemForm();
+                            }
+                        });
+                    }
+                };
+
+
+                $scope.deleteProduct = function () {
+                    adminFactory.deleteProduct({product_id: $scope.item.product_id}, function (err, data) {
+                        if (err) {
+                            message.couldNotDeleteProduct();
+                        } else {
+                            message.productDeletionApproved();
+                        }
+                    })
+                };
+
+
+                $scope.editProduct = function (product) {
+                    $scope.isEditing = true;
+                    $scope.item = product;
+                };
+
+
                 $scope.cbsFilter = function (item) {
                     return item.account_name != "CBS";
                 };
@@ -186,6 +229,7 @@
                         box_size: null,
                         bottle: false
                     };
+                    $scope.isEditing = false;
                     message.clearFields();
                 }
             },

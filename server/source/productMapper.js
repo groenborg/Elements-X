@@ -17,25 +17,38 @@ function createProduct(product, callback) {
 }
 
 
-function updateProduct(updatedItem, callback) {
+function updateProduct(updatedProduct, callback) {
 
+    model.Product.findOneAndUpdate({product_id: updatedProduct.product_id}, {
 
-    model.Product.findOneAndUpdate({name: updatedItem.name}, {
-
-        supply: updatedItem.supply,
-        price: updatedItem.price,
-        description: updatedItem.description
+        name: updatedProduct.name,
+        description: updatedProduct.description,
+        in_stock: updatedProduct.in_stock,
+        purchase_price: updatedProduct.purchase_price,
+        retail_price: updatedProduct.retail_price,
+        box_size: updatedProduct.box_size
 
     }, {new: true}, function (err, item) {
+
+        console.log(err);
 
         if (err) return callback(err);
         if (item == null) return callback();
         return callback(undefined, item);
     });
+}
 
+
+function removeProduct(product, callback) {
+    model.Product.findOneAndRemove({product_id: product.product_id}, function (err, data) {
+        if (err) return callback(err);
+        if (data == null) return callback();
+        return callback(undefined, data);
+    });
 }
 
 module.exports = {
     createProduct: createProduct,
-    updateProduct: updateProduct
+    updateProduct: updateProduct,
+    removeProduct: removeProduct
 };

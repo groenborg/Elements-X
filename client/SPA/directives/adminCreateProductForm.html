@@ -75,11 +75,10 @@
 
 
         <div class="col-md-4">
-
+            <!-- product creation info -->
+            <p class="lead">Current brew</p>
+            <hr>
             <div class="panel panel-success">
-                <div class="panel-heading">
-                    Items section
-                </div>
                 <div class="panel-body">
                     <p ng-repeat="(key, val) in item">
                         {{key}}: {{val}}
@@ -90,17 +89,17 @@
         </div>
 
         <div class="col-md-4">
-
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    Current products
-                </div>
-                <div class="panel-body">
-                    <p ng-repeat="product in products">
-                        {{product.name}}
-                    </p>
-                </div>
+            <!-- PRODUCTS -->
+            <p class="lead"> Current products</p>
+            <hr>
+            <div class="list-group">
+                <!-- beverage picker -->
+                <button type="button" class="list-group-item" ng-repeat="product in products"
+                        ng-click="editProduct(product)">
+                    {{product.name}}
+                </button>
             </div>
+            <p><span class="label label-warning">Click to edit</span></p>
         </div>
     </div>
     <div class="row">
@@ -108,10 +107,18 @@
             <hr>
             <button ng-click="showForm('main')" type="button" class="btn btn-danger btn-lg">Back</button>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <hr>
             <!-- Button section -->
-            <button ng-click="createAssortmentItem()" type="button" class="btn btn-primary btn-lg">Add new Item</button>
+            <button ng-hide="isEditing" ng-click="createAssortmentItem()" type="button" class="btn btn-primary btn-lg">
+                Add Product
+            </button>
+            <button ng-show="isEditing" ng-click="updateProduct()" type="button" class="btn btn-primary btn-lg">
+                Update product
+            </button>
+            <button ng-show="isEditing" ng-click="deleteProduct()" type="button" class="btn btn-danger btn-lg">
+                Delete product
+            </button>
             <button ng-click="clearItemForm()" type="button" class="btn btn-warning btn-lg">Clear</button>
         </div>
     </div>
