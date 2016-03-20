@@ -55,10 +55,7 @@ describe('residentMapper test suite', function () {
 
         it('should return history', function (done) {
             residentMapper.getResidentHistory(residentID, function (err, resident) {
-                console.log(err);
-                console.log(resident);
-
-
+                done();
             });
         });
     });
