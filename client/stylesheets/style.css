@@ -12,7 +12,7 @@ html {
     margin-top: 10px;
     border-top: 4px solid #2d9ff3;
     padding-top: 10px;
-    background-color: #666;
+    background-color: #555;
 }
 
 .footer-row {
@@ -110,11 +110,22 @@ html {
 .nav-sidebar > li > a {
     padding-right: 20px;
     padding-left: 20px;
-    color: #475B5A;
+    color: #70777b;
     text-decoration: none;
-
 }
 
+.navbar-default .navbar-form {
+    border-color: #318ce7;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #ebf6ff;
+    background-color: transparent;
+}
 .nav-sidebar > li > a:hover, a:focus {
     color: #fff;
     background-color: rgb(86,144,236);
