@@ -18,16 +18,17 @@ var config = require('../config');
         two: fixture.emptyAccounts,
         three: fixture.emptyProducts,
         four: fixture.emptyResidents,
-        five: databaseConnection.closeMongoDB
+        five: fixture.emptyStock,
+        six: databaseConnection.closeMongoDB
     };
 
     async.series(process.argv[2] == "d" ? tear : create, function (err, data) {
         if (err) {
             console.log(err);
         }
-        if(process.argv[2] == "d"){
+        if (process.argv[2] == "d") {
             console.log("collections dropped");
-        }else{
+        } else {
             console.log("Collections created");
         }
     })

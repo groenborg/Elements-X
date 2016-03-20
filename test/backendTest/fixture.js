@@ -25,4 +25,8 @@ exports.emptyResidents = function (callback) {
 
 exports.emptyAccounts = function (callback) {
     mongoose.connection.collection('accounts').remove({}, callback);
-}
+};
+
+exports.emptyStock = function (callback) {
+    mongoose.connection.collection('stock_purchases').remove({}, callback);
+};
