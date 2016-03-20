@@ -84,6 +84,7 @@ var products = new mongoose.Schema({
  * */
 var stockPurchase = new mongoose.Schema({
     resident_id: {type: Number, required: true},
+	account_id:{type:Number, required: true},
     product_id: {type: Number}, // references product.product_id
     total_price: Number,
     amount: Number,

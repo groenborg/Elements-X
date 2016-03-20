@@ -77,7 +77,7 @@
             }
         }).when('/products', {
             templateUrl: "views/adminProductView.html",
-            controller: "AccountCtrl",
+            controller: "InventoryCtrl",
             resolve: {
                 auth: function (authInspector) {
                     authInspector.authAdmin();

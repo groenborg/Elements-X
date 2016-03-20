@@ -554,10 +554,10 @@
 
         var message = new notificationService();
         adminFactory.onLoadProducts('loadProductsError', 'products', $scope, function (err, data) {
-
         });
 
         $scope.setChosenProduct = function (product) {
+
             if ($scope.chosenProduct == null) {
                 $scope.chosenProduct = product;
             } else if ($scope.chosenProduct.product_id == product.product_id) {
