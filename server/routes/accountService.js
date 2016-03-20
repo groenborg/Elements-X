@@ -32,7 +32,6 @@ function mergeAccountAndProducts(account, products) {
 
         }
     }
-
     return account;
 }
 
@@ -61,7 +60,6 @@ router.get('/account/all', function (request, response) {
 
 router.get('/account/history/:accountId', function (request, response) {
     var accountId = request.params.accountId;
-
     accountManager.getAccountHistory(accountId, function (err, data) {
         if (err) {
             response.statusCode = 503;

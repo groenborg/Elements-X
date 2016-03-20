@@ -19,7 +19,6 @@ var getAllElementsFromCollection = function (collection, callback) {
 
 
 var getOneElementFromCollection = function (collection, searchObject, callback) {
-
     try {
         model[collection].findOne(searchObject, function (err, data) {
             return dataHandler(err, data, callback);

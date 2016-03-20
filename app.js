@@ -16,7 +16,7 @@ var productRoute = require('./server/routes/productService');
 var accountRoute = require('./server/routes/accountService');
 var serverRoute = require('./server/routes/serverMaintenanceService');
 var secureLoginRoute = require('./server/routes/secureLoginService');
-var adminTransactionRoute = require('./server/routes/adminTransactionService');
+var adminTransactionRoute = require('./server/routes/adminAccountService');
 var adminResidentRoute = require('./server/routes/adminResidentService');
 var adminAssortmentRoute = require('./server/routes/adminProductService');
 

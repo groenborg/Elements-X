@@ -190,6 +190,14 @@
                 toastr.error("User could not be updated", "Update Terminated");
             };
 
+            this.accountAvailableUpdated = function () {
+                toastr.success("available products was updated", "Update Approved");
+            };
+
+            this.accountAvailableTerminated = function () {
+                toastr.error("available products could not be updated", "Update Terminated");
+            };
+
         };
 
     });

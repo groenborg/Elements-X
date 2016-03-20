@@ -1,7 +1,11 @@
 var express = require('express');
 var transaction = require('../source/transactionMapper');
+var accountManager = require('../source/accountMapper');
 var router = express.Router();
 
+/**
+ * refill the residents balance
+ * */
 router.post('/resident/refill', function (request, response) {
     var refillObject = request.body;
     var residentId = refillObject.resident_id;
@@ -11,7 +15,6 @@ router.post('/resident/refill', function (request, response) {
             response.statusCode = 503;
             response.statusMessage = "service unavailable";
             response.send({message: "Could not refill account"});
-
         } else {
             response.send(data);
         }
@@ -19,6 +22,27 @@ router.post('/resident/refill', function (request, response) {
 });
 
 
+/**
+ * Updates the available products in a account
+ * */
+router.put('/account/upavail', function (request, response) {
+    var data = request.body;
+
+    accountManager.updateAvailableProducts(data, function (err, data) {
+        if (err) {
+            response.statusCode = 503;
+            response.statusMessage = "service unavailable";
+            response.send({message: "Could not refill account"});
+        } else {
+            response.send(data);
+        }
+    });
+});
+
+
+/**
+ * DEPRECATED
+ * */
 router.post('/transaction/purchase', function (request, response) {
     var transactionDTO = request.body;
     transaction.buyFromStorage(transactionDTO, function (err, data) {
@@ -32,6 +56,10 @@ router.post('/transaction/purchase', function (request, response) {
     });
 });
 
+
+/**
+ * DEPRECATED
+ * */
 router.get('/transaction/get/:limit', function (request, response) {
     var limit = request.params.limit;
 

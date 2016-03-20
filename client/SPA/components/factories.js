@@ -158,6 +158,9 @@
             },
             getResidentHistory: function (residentId, callback) {
                 webserviceFactory.getResidentHistory(residentId, callback);
+            },
+            updateAvailableProducts: function (dto, callback) {
+                webserviceFactory.updateAvailableProducts(dto, callback);
             }
         }
     }]);
@@ -215,6 +218,17 @@
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
+            updateAvailableProducts: function (dto, callback) {
+                $http({
+                    method: "PUT",
+                    url: 'admin/account/upavail',
+                    data: dto
+                }).then(function success(res) {
+                    callback(undefined, res);
+                }, function error(res) {
+                    callback(undefined, res);
+                })
+            },
             getResidentHistory: function (residentId, callback) {
                 $http({
                     method: "GET",

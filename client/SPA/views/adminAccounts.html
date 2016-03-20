@@ -24,7 +24,9 @@
                                 <p class="lead">Balance: {{account.balance}}</p>
 
                                 <div class="panel panel-info">
-                                    <div class="panel-heading">Available products</div>
+                                    <div class="panel-heading">
+                                        Available products
+                                    </div>
                                     <div class="panel-body">
                                         <p ng-repeat="aproduct in account.available_products">
                                             {{aproduct.name}}
@@ -32,30 +34,44 @@
                                     </div>
                                 </div>
 
-                                <button ng-click="getHistory(account)" class="btn btn-info">
+                                <button ng-click="" class="btn btn-info">
                                     Show history
+                                </button>
+                                <button ng-click="selectAccount(account)" class="btn btn-default" type="submit">
+                                    Edit available products
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div ng-hide="currentHistory" class="alert alert-danger" role="alert">
-                        Account History Not Loaded
-                    </div>
-                    <div ng-show="currentHistory">
-                        <div class="panel panel-default">
+
+                    <div>
+                        <div ng-hide="chosenAccount" class="alert alert-info" role="alert">
+                            No account chosen yet!
+                        </div>
+                        <div ng-show="chosenAccount" class="panel panel-default">
                             <div class="panel-heading">History</div>
                             <div class="panel-body">
-                                <p class="lead">{{currentHistoryAccount.account_name}}</p>
+                                <div class="list-group" ng-disabled="true">
+                                    <button type="button" class="list-group-item"
+                                            ng-repeat="product in products"
+                                            ng-click="addToChosenAccount(product)">
+                                        {{product.name}}
+                                    </button>
+                                </div>
+                                <button ng-click="updateAvailableProducts()" class="btn btn-success" type="submit">
+                                    Update
+                                </button>
+                                <button ng-click="clearAccount()" class="btn btn-success" type="submit">
+                                    Clear selection
+                                </button>
                                 <hr>
-                                <ul class="list-group">
-                                    <li class="list-group-item"
-                                        ng-repeat="item in currentHistory">
-                                        {{item.first_name}} price
-                                        {{sumPrice(item.purchase_history)}}
-                                    </li>
-                                </ul>
+                                <p class="lead">{{chosenAccount.account_name}}</p>
+                                <p><strong>current available</strong></p>
+                                <p ng-repeat="product in chosenAccount.available_products">
+                                    {{product.name}}
+                                </p>
                             </div>
                         </div>
                     </div>

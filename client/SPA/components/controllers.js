@@ -452,15 +452,15 @@
 
     }]);
 
-    app.controller('AccountCtrl', ["$scope", "adminFactory", 'accountFactory', function ($scope, adminFactory, accountFactory) {
+    app.controller('AccountCtrl', ["$scope", "adminFactory", 'accountFactory', 'notificationService', function ($scope, adminFactory, accountFactory, notificationService) {
         //Declarative literal initialization of assortment item
         $scope.accounts = [];
         $scope.products = [];
         $scope.loadProductsError = false;
-        $scope.currentHistory = null;
-        $scope.currentHistoryAccount = null;
-
+        $scope.chosenAccount = null;
         //OnLoad
+
+        var message = new notificationService();
         accountFactory.getAccounts(function (err, data) {
             $scope.accounts = data;
         });
@@ -469,30 +469,76 @@
 
         });
 
-        $scope.sumPrice = function (array) {
-            var price = 0;
-            for (var i = 0; i < array.length; ++i) {
-                price += array[i].total_price;
-            }
-            return price;
-        };
-        $scope.getHistory = function (account) {
-            if ($scope.currentHistory == null || account.account_id != $scope.currentHistoryAccount.account_id) {
-                accountFactory.getAccountHistory(account.account_id, function (err, data) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        console.log(data);
-                        $scope.currentHistory = data;
-                        $scope.currentHistoryAccount = account;
-                    }
-                });
+        $scope.addToChosenAccount = function (item) {
+            var localIndex = -1;
+            $scope.chosenAccount.available_products.forEach(function (element, index, array) {
+                if (element.product_id == item.product_id) {
+                    localIndex = index;
+                }
+            });
+            if (localIndex != -1) {
+                $scope.chosenAccount.available_products.splice(localIndex, 1);
             } else {
-                $scope.currentHistory = null;
-                $scope.currentHistoryAccount = null;
+                $scope.chosenAccount.available_products.push(item);
             }
-        }
+        };
 
+        $scope.selectAccount = function (account) {
+            if ($scope.chosenAccount == null) {
+                $scope.chosenAccount = account;
+            } else if ($scope.chosenAccount.account_id == account.account_id) {
+                $scope.chosenAccount = null;
+            } else {
+                $scope.chosenAccount = account;
+            }
+        };
+
+        $scope.clearAccount = function () {
+            $scope.chosenAccount = null;
+        };
+
+        $scope.updateAvailableProducts = function () {
+            var dto = {
+                account_id: $scope.chosenAccount.account_id,
+                available_products: []
+            };
+            $scope.chosenAccount.available_products.forEach(function (element, index, array) {
+                dto.available_products.push(element.product_id);
+            });
+
+            adminFactory.updateAvailableProducts(dto, function (err, data) {
+                if (err) {
+                    message.accountAvailableTerminated();
+                } else {
+                    message.accountAvailableUpdated();
+                    $scope.chosenAccount = null;
+                }
+            });
+
+
+        };
+
+        // $scope.getHistory = function (account) {
+        //    if ($scope.currentHistory == null || account.account_id != $scope.currentHistoryAccount.account_id) {
+        //        accountFactory.getAccountHistory(account.account_id, function (err, data) {
+        //            if (err) {
+        //            } else {
+        //                $scope.currentHistory = data;
+        //                $scope.currentHistoryAccount = account;
+        //            }
+        //        });
+        //    } else {
+        //        $scope.currentHistory = null;
+        //        $scope.currentHistoryAccount = null;
+        //    }
+        //}
+        ///$scope.sumPrice = function (array) {
+        ///    var price = 0;
+        ///    for (var i = 0; i < array.length; ++i) {
+        ///        price += array[i].total_price;
+        ///    }
+        ///    return price;
+        ///};
 
     }]);
 
