@@ -15,25 +15,20 @@ function updateAvailableProducts(account, callback) {
     });
 }
 
-
 /**
- * % DEPRECATED %
+ * Withdraws or subtracts from the CBS account
+ * @note: CBS has account_id: ( 5 )
+ * @params: amount object {amount: Number}, callback function
  * */
-function getAccountHistory(accountId, callback) {
-    deprecate('getAccountHistory() is deprecated');
-    model.Resident.find({
-        'purchase_history.account_id': {
-            $in: [accountId]
-        }
-
-    }, {'purchase_history.$': 1, first_name: 1}, function (err, data) {
-        if (err) return callback(err);
-        if (data == null) return callback();
-        return callback(undefined, data);
+function withdrawFromCBS(dto, callback) {
+    model.Account.findOneAndUpdate({account_id: 5}, {
+        $inc: {balance: -dto.amount}
+    }, {new: true}, function (err, data) {
+        return callback(err, data);
     });
 }
 
 module.exports = {
-    getAccountHistory: getAccountHistory,
+    withdrawFromCBS: withdrawFromCBS,
     updateAvailableProducts: updateAvailableProducts
 };

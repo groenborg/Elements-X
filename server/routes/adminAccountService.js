@@ -45,8 +45,6 @@ router.put('/account/upavail', function (request, response) {
  * */
 router.put('/account/purchase', function (request, response) {
     var stockPurchaseDTO = request.body;
-
-    console.log(stockPurchaseDTO);
     transactionManager.purchaseFromStock(stockPurchaseDTO, function (err, data) {
         if (err) {
             response.statusCode = 503;
@@ -57,5 +55,31 @@ router.put('/account/purchase', function (request, response) {
         }
     });
 });
+
+router.put('/cbs/withdraw', function (request, response) {
+    var withdrawDTO = request.body;
+    accountManager.withdrawFromCBS(withdrawDTO, function (err, data) {
+        if (err) {
+            response.statusCode = 503;
+            response.statusMessage = "could not withdraw";
+            response.send({message: "Could not withdraw from cbs"});
+        } else {
+            response.send(data);
+        }
+    });
+});
+
+router.get('/account/latest', function (request, response) {
+    transactionManager.getLatestStockPurchases(function (err, data) {
+        if (err) {
+            response.statusCode = 503;
+            response.statusMessage = "no stock purchases";
+            response.send({message: "could not find stock purchases"});
+        } else {
+            response.send(data);
+        }
+    });
+});
+
 
 module.exports = router;

@@ -67,27 +67,28 @@ function purchaseFromStock(stockPurchaseDTO, callback) {
         model.Account.findOneAndUpdate({account_id: 5}, {
             $inc: {balance: stockPurchaseDTO.total_price}
         }, {new: true}, function (error, data) {
-            return callback(error, data);
+            if (err) return callback(error);
+            model.StockPurchase.create(stockPurchaseDTO, function (er, stock) {
+                return callback(er, stock);
+            });
         });
     });
 }
 
 
 /**
- * DEPRECATED - must remove
+ * Get latest 10 stock purchases
  * */
-var getAllTransactions = function (limit, callback) {
-    model.Transaction.find().limit(limit).exec(function (err, data) {
-        if (err) return callback(err);
-        if (!data) return callback();
-        return callback(undefined, data);
+function getLatestStockPurchases(callback) {
+    model.StockPurchase.find().limit(10).exec(function (err, data) {
+        return callback(err, data);
     });
-};
+}
 
 
 module.exports = {
     purchaseFromStock: purchaseFromStock,
-    getAllTransactions: getAllTransactions,
+    getLatestStockPurchases: getLatestStockPurchases,
     residentBalanceRefillTransaction: residentBalanceRefillTransaction,
     residentPurchaseTransaction: residentPurchaseTransaction
 };

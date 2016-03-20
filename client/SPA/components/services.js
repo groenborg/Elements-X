@@ -203,6 +203,13 @@
                 toastr.error("error in purchase", "Purchase Terminated");
             };
 
+            this.withdrawApproved = function (amount) {
+                toastr.success(amount + " was withdrawn from CBS", "Withdraw Approved");
+            };
+
+            this.withdrawTerminated = function () {
+                toastr.error("could not withdraw", "withdraw Terminated");
+            };
         };
 
     });

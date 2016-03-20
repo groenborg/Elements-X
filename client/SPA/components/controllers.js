@@ -285,13 +285,13 @@
             product: false,
             main: true
         };
-
         $scope.stockPurchase = {
             resident_id: $rootScope.admin.resident_id,
             account_id: null,
             purchase: [],
             total_price: 0
         };
+        $scope.withdrawAmount = 0;
 
         var labels = [];
         var supply = [];
@@ -299,13 +299,26 @@
 
 
         adminFactory.onLoadProducts('error', 'products', $scope, function () {
-            console.log($scope.products);
             for (var i = 0; i < $scope.products.length; ++i) {
                 labels.push($scope.products[i].name);
                 supply.push($scope.products[i].in_stock);
             }
         });
 
+
+        $scope.withDraw = function () {
+            if ($scope.withdrawAmount != 0) {
+                adminFactory.withdrawFromCBS({amount: $scope.withdrawAmount}, function (err, data) {
+                    if (err) {
+                        message.withdrawTerminated();
+                    } else {
+                        message.withdrawApproved($scope.withdrawAmount);
+                    }
+                });
+            } else {
+                message.invalidFields();
+            }
+        };
 
         $scope.addToBasket = function (item) {
             var productIndex = -1;

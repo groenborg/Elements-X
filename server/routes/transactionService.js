@@ -11,7 +11,6 @@ router.post('/user/purchase', function (request, response) {
     if (purchase.timestamp != null) {
         purchase.timestamp = Date.now();
     }
-
     transaction.residentPurchaseTransaction(residentId, purchase, function (err, data) {
         if (err) {
             response.statusCode = 503;

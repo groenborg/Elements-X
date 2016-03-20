@@ -117,7 +117,24 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Latest Transactions</h3>
+                    <h3 class="panel-title">Withdraw or add to CBS</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="product-name">Amount</label>
+                        <input ng-model="withdrawAmount" id="product-name" type="text" class="form-control"
+                               placeholder="">
+                    </div>
+                    <button ng-click="withDraw()" class="btn btn-success" type="submit">withdraw</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- page visits -->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Latest purchases from kitchens</h3>
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
@@ -127,19 +144,6 @@
                             <span class="pull-right">amount: {{transaction.amount}}</span>
                         </button>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- page visits -->
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Latest resident activity</h3>
-                </div>
-                <div class="panel-body">
-
-                    some activity
                 </div>
             </div>
         </div>

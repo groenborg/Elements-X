@@ -164,6 +164,9 @@
             },
             purchaseFromStock: function (dto, callback) {
                 webserviceFactory.purchaseFromStock(dto, callback);
+            },
+            withdrawFromCBS: function (dto, callback) {
+                webserviceFactory.withdrawFromCBS(dto, callback);
             }
         }
     }]);
@@ -221,6 +224,17 @@
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
+            withdrawFromCBS: function (dto, callback) {
+                $http({
+                    method: "PUT",
+                    url: '/admin/cbs/withdraw',
+                    data: dto
+                }).then(function success(res) {
+                    callback(undefined, res);
+                }, function error(res) {
+                    callback(undefined, res);
+                });
+            },
             purchaseFromStock: function (dto, callback) {
                 $http({
                     method: "PUT",
