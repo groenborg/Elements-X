@@ -166,7 +166,7 @@ describe('residentMapper test suite', function () {
         });
 
 
-        it('should create transaction', function (done) {
+        it('should create transactionManager', function (done) {
             transactionMapper.buyFromStorage(storageTransaction, function (err, data) {
                 data.resident_id.should.equal(storageTransaction.resident_id);
                 done();

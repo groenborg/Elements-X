@@ -2,8 +2,11 @@ var model = require('../model/models.js');
 var collectionMapper = require('../source/collectionGetMapper');
 
 
-var residentPurchaseTransaction = function (residentId, purchase, callback) {
-
+/**
+ * Purchase made by a resident
+ * adds money to an associated account, and subtract it from the resident
+ * */
+function residentPurchaseTransaction(residentId, purchase, callback) {
     delete purchase.resident_id;
     model.Resident.findOneAndUpdate({resident_id: residentId}, {
         $push: {purchase_history: purchase},
@@ -21,10 +24,13 @@ var residentPurchaseTransaction = function (residentId, purchase, callback) {
             return callback(undefined, residentData);
         });
     });
-};
+}
 
-
-var residentBalanceRefillTransaction = function (residentId, balanceRefillItem, callback) {
+/**
+ * Refill a balance from a specific resident
+ * @params: resident id, a refill object, callback function
+ * */
+function residentBalanceRefillTransaction(residentId, balanceRefillItem, callback) {
     collectionMapper.getOneElementFromCollection('Resident', {resident_id: residentId}, function (err, data) {
         if (err) return callback(err);
         if (!data.current_balance) return callback();
@@ -46,33 +52,30 @@ var residentBalanceRefillTransaction = function (residentId, balanceRefillItem, 
             return callback(undefined, data);
         });
     });
-};
+}
 
-/*
- *
- * resident_id: {type: Number, required: true},
- * assortment_id: {type: mongoose.Schema.Types.ObjectId, ref: "assortments"},
- * total_price: Number,
- * amount: Number,
- * timestamp: {type: Date, default: Date.now()}
- *
- * update {amount, total_price, resident_id, assortment_id}
+/**
+ * Purchase boxes from stock
+ * @note: price will be added to CBS with account_id: ( 5 )
+ * @params: purchase DTO, callback function
  * */
-var buyFromStorage = function (transactionData, callback) {
-
-    model.Assortment.findByIdAndUpdate(transactionData.assortment_id, {$inc: {supply: -transactionData.amount}}, {new: true}, function (err, aData) {
-        if (err)return callback(err);
-        if (!aData)return callback();
-
-        model.Transaction.create(transactionData, function (err, data) {
-            if (err)return callback(err);
-            if (!data)return callback();
-            return callback(undefined, data)
+function purchaseFromStock(stockPurchaseDTO, callback) {
+    model.Account.findOneAndUpdate({account_id: stockPurchaseDTO.account_id}, {
+        $inc: {balance: -stockPurchaseDTO.total_price}
+    }, {new: true}, function (err, data) {
+        if (err) return callback(err);
+        model.Account.findOneAndUpdate({account_id: 5}, {
+            $inc: {balance: stockPurchaseDTO.total_price}
+        }, {new: true}, function (error, data) {
+            return callback(error, data);
         });
     });
-};
+}
 
 
+/**
+ * DEPRECATED - must remove
+ * */
 var getAllTransactions = function (limit, callback) {
     model.Transaction.find().limit(limit).exec(function (err, data) {
         if (err) return callback(err);
@@ -81,7 +84,10 @@ var getAllTransactions = function (limit, callback) {
     });
 };
 
-exports.getAllTransactions = getAllTransactions;
-exports.buyFromStorage = buyFromStorage;
-exports.residentBalanceRefillTransaction = residentBalanceRefillTransaction;
-exports.residentPurchaseTransaction = residentPurchaseTransaction;
+
+module.exports = {
+    purchaseFromStock: purchaseFromStock,
+    getAllTransactions: getAllTransactions,
+    residentBalanceRefillTransaction: residentBalanceRefillTransaction,
+    residentPurchaseTransaction: residentPurchaseTransaction
+};

@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 /**
  * Purchase schema
  * Document model for a resident purchase
- * _id - Usage for cancel last transaction
+ * _id - Usage for cancel last transactionManager
  * */
 var purchaseSchema = new mongoose.Schema({
     account_id: Number,

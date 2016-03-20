@@ -328,9 +328,21 @@
                 $scope.stockPurchase.purchase[productIndex].amount += 1;
                 $scope.stockPurchase.total_price += item.purchase_price;
             }
-
         };
 
+        $scope.purchaseStock = function () {
+            if ($scope.stockPurchase.account_id == null || $scope.stockPurchase.purchase.length == 0) {
+                message.invalidFields();
+            } else {
+                adminFactory.purchaseFromStock($scope.stockPurchase, function (err, data) {
+                    if (err) {
+                        message.accountPurchaseTerminated();
+                    } else {
+                        message.accountPurchaseApproved($scope.stockPurchase.account_id, $scope.stockPurchase.total_price);
+                    }
+                });
+            }
+        };
 
         $scope.clearBasket = function () {
             $scope.stockPurchase.purchase = [];

@@ -16,7 +16,6 @@ function updateAvailableProducts(account, callback) {
 }
 
 
-
 /**
  * % DEPRECATED %
  * */

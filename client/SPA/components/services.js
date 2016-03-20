@@ -61,8 +61,6 @@
                     purchase_items: basket,
                     total_price: totalPrice
                 };
-
-                console.log(purchase);
                 webserviceFactory.userPurchaseTransaction(purchase, function (err, data) {
                     if (err) {
                         callback(err);
@@ -108,7 +106,7 @@
             };
 
             this.transactionTerminated = function () {
-                toastr.error('transaction terminated', 'Transaction Terminated');
+                toastr.error('transactionManager terminated', 'Transaction Terminated');
             };
 
             this.refillTerminated = function () {
@@ -175,7 +173,7 @@
             };
 
             this.restockTerminated = function () {
-                toastr.error("Product could not be restocked", "Restock transaction terminated");
+                toastr.error("Product could not be restocked", "Restock transactionManager terminated");
             };
 
             this.restockApproved = function (amount) {
@@ -196,6 +194,13 @@
 
             this.accountAvailableTerminated = function () {
                 toastr.error("available products could not be updated", "Update Terminated");
+            };
+            this.accountPurchaseApproved = function (account, price) {
+                toastr.success(account + " purchased for " + price, "Purchase Approved");
+            };
+
+            this.accountPurchaseTerminated = function () {
+                toastr.error("error in purchase", "Purchase Terminated");
             };
 
         };

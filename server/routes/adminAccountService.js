@@ -1,5 +1,5 @@
 var express = require('express');
-var transaction = require('../source/transactionMapper');
+var transactionManager = require('../source/transactionMapper');
 var accountManager = require('../source/accountMapper');
 var router = express.Router();
 
@@ -10,7 +10,7 @@ router.post('/resident/refill', function (request, response) {
     var refillObject = request.body;
     var residentId = refillObject.resident_id;
 
-    transaction.residentBalanceRefillTransaction(residentId, refillObject, function (err, data) {
+    transactionManager.residentBalanceRefillTransaction(residentId, refillObject, function (err, data) {
         if (err) {
             response.statusCode = 503;
             response.statusMessage = "service unavailable";
@@ -41,40 +41,21 @@ router.put('/account/upavail', function (request, response) {
 
 
 /**
- * DEPRECATED
+ * purchase an item from storage
  * */
-router.post('/transaction/purchase', function (request, response) {
-    var transactionDTO = request.body;
-    transaction.buyFromStorage(transactionDTO, function (err, data) {
+router.put('/account/purchase', function (request, response) {
+    var stockPurchaseDTO = request.body;
+
+    console.log(stockPurchaseDTO);
+    transactionManager.purchaseFromStock(stockPurchaseDTO, function (err, data) {
         if (err) {
             response.statusCode = 503;
-            response.statusMessage = "could not be created";
-            response.send({message: "Could not purchase from storage"});
+            response.statusMessage = "could not purchase";
+            response.send({message: "Could not purchase from stock"});
         } else {
             response.send(data);
         }
     });
-});
-
-
-/**
- * DEPRECATED
- * */
-router.get('/transaction/get/:limit', function (request, response) {
-    var limit = request.params.limit;
-
-    limit = limit == 0 ? 10 : limit;
-
-    transaction.getAllTransactions(limit, function (err, data) {
-        if (err) {
-            response.statusCode = 404;
-            response.statusMessage = "not found";
-            response.send({message: "no transactions found"});
-        } else {
-            response.send(data);
-        }
-    })
-
 });
 
 module.exports = router;

@@ -161,6 +161,9 @@
             },
             updateAvailableProducts: function (dto, callback) {
                 webserviceFactory.updateAvailableProducts(dto, callback);
+            },
+            purchaseFromStock: function (dto, callback) {
+                webserviceFactory.purchaseFromStock(dto, callback);
             }
         }
     }]);
@@ -218,6 +221,17 @@
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
+            purchaseFromStock: function (dto, callback) {
+                $http({
+                    method: "PUT",
+                    url: 'admin/account/purchase',
+                    data: dto
+                }).then(function success(res) {
+                    callback(undefined, res);
+                }, function error(res) {
+                    callback(undefined, res);
+                });
+            },
             updateAvailableProducts: function (dto, callback) {
                 $http({
                     method: "PUT",
@@ -227,7 +241,7 @@
                     callback(undefined, res);
                 }, function error(res) {
                     callback(undefined, res);
-                })
+                });
             },
             getResidentHistory: function (residentId, callback) {
                 $http({
@@ -237,7 +251,7 @@
                     callback(undefined, res);
                 }, function error(res) {
                     callback(undefined, res);
-                })
+                });
             },
             updateResident: function (resident, callback) {
                 $http({
@@ -248,7 +262,7 @@
                     callback(undefined, res);
                 }, function error(res) {
                     callback(undefined, res);
-                })
+                });
             },
             restockProduct: function (item, callback) {
                 $http({
@@ -259,7 +273,7 @@
                     callback(undefined, res);
                 }, function error(res) {
                     callback(undefined, res);
-                })
+                });
             },
             getAllResidents: function (callback) {
                 $http({
@@ -368,7 +382,6 @@
                 });
             },
             deleteProductRequest: function (product, callback) {
-                console.log(product);
                 $http({
                     method: 'DELETE',
                     url: '/admin/product/delete',
