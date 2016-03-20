@@ -292,7 +292,7 @@
             total_price: 0
         };
         $scope.withdrawAmount = 0;
-
+        $scope.latestHistory = null;
         var labels = [];
         var supply = [];
         var message = new notificationService();
@@ -305,6 +305,12 @@
             }
         });
 
+        adminFactory.getLatestStockHistory(function (err, data) {
+            if (!err) {
+                $scope.latestHistory = data;
+                console.log(data);
+            }
+        });
 
         $scope.withDraw = function () {
             if ($scope.withdrawAmount != 0) {

@@ -167,6 +167,9 @@
             },
             withdrawFromCBS: function (dto, callback) {
                 webserviceFactory.withdrawFromCBS(dto, callback);
+            },
+            getLatestStockHistory: function (callback) {
+                webserviceFactory.getLatestStockHistory(callback);
             }
         }
     }]);
@@ -224,6 +227,16 @@
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
+            getLatestStockHistory: function (callback) {
+                $http({
+                    method: "GET",
+                    url: '/admin/account/latest'
+                }).then(function success(res) {
+                    callback(undefined, res);
+                }, function error(res) {
+                    callback(undefined, res);
+                });
+            },
             withdrawFromCBS: function (dto, callback) {
                 $http({
                     method: "PUT",

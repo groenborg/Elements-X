@@ -139,9 +139,13 @@
                 <div class="panel-body">
                     <div class="list-group">
                         <button type="button" class="list-group-item"
-                                ng-repeat="transaction in allTransactions.data">
-                            <span class="pull-left">id: {{transaction._id}}</span>
-                            <span class="pull-right">amount: {{transaction.amount}}</span>
+                                ng-repeat="data in latestHistory.data">
+                            <span class="pull-left">account: {{data.account_id}} - resident: {{data.resident_id}} - price: {{data.total_price}}</span>
+                            <span class="pull-right">
+                                <p ng-repeat="item in data.purchase">
+                                    product: {{item.product_id}} amount: {{item.amount}}
+                                </p>
+                            </span>
                         </button>
                     </div>
                 </div>
