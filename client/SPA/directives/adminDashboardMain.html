@@ -59,34 +59,57 @@
                     <h3 class="panel-title">Purchase from storage</h3>
                 </div>
                 <div class="panel-body">
-                    <!-- SELECT ITEM -->
-                    <div class="form-group">
-                        <select ng-model="transactionPurchase.item" class="form-control" name="repeatSelect"
-                                id="repeatSelect">
-                            <option ng-repeat="data in assortmentItems" value="{{data}}">{{data.name}}</option>
-                        </select>
+                    <!-- SELECT ACCOUNT -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>All purchases from this section goes to the <strong>CBS</strong> account</p>
+                            <div class="form-group">
+                                <label>Choose kitchen or bar</label>
+                                <select ng-model="stockPurchase.account_id" class="form-control"
+                                        ng-options="account.account_id as account.account_name for account in accountsForUserCreation">
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <!-- AMOUNT -->
-                    <div class="form-group">
-                        <label for="amount" class="control-label">Purchase Amount</label>
-                        <input ng-model="transactionPurchase.amount" type="number" class="form-control" id="amount"
-                               placeholder="Enter amount">
+                    <hr>
+                    <div class="row">
+                        <!-- PRODUCT SECTION -->
+                        <div class="col-md-6">
+                            <p>All products are boxes or bottles</p>
+                            <div class="list-group">
+                                <button type="button" class="list-group-item"
+                                        ng-repeat="product in products"
+                                        ng-click="addToBasket(product)">
+                                    <strong>dkr {{product.purchase_price}}</strong> - {{product.name}}
+                                </button>
+                            </div>
+                        </div>
+                        <!-- BASKET SECTION -->
+                        <div class="col-md-6">
+                            <p><strong>Basket</strong></p>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <p ng-repeat="item in stockPurchase.purchase">
+                                        {{item.amount}} = {{item.name}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <!-- PRICE -->
                     <form class="form-inline">
-                        <button ng-click="calculatePrice()" type="submit" class="btn btn-default">Calculate Price</button>
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon">Price</div>
-                                <input ng-model="transactionPurchase.total_price" type="number" class="form-control"
-                                       placeholder="Amount" readonly>
+                                <input ng-model="stockPurchase.total_price" type="number" class="form-control"
+                                       placeholder="" readonly>
                             </div>
                         </div>
                     </form>
                     <hr>
                     <button ng-click="completeTransaction()" class="btn btn-success" type="submit">Purchase</button>
-                    <button ng-click="clearTransaction()" class="btn btn-warning" type="submit">Clear</button>
+                    <button ng-click="clearBasket()" class="btn btn-warning" type="submit">Clear</button>
                 </div>
             </div>
         </div>

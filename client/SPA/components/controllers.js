@@ -285,83 +285,56 @@
             product: false,
             main: true
         };
-        $scope.transactionPurchase = {
-            item: null,
-            assortment_id: null,
-            total_price: null,
-            resident_id: null,
-            amount: null
-        };
-        $scope.allTransactions = {
-            err: false,
-            data: null
+
+        $scope.stockPurchase = {
+            resident_id: $rootScope.admin.resident_id,
+            account_id: null,
+            purchase: [],
+            total_price: 0
         };
 
         var labels = [];
         var supply = [];
-        var msgService = notificationService;
-
-
-        //On load functions
+        var message = new notificationService();
 
 
         adminFactory.onLoadProducts('error', 'products', $scope, function () {
+            console.log($scope.products);
             for (var i = 0; i < $scope.products.length; ++i) {
                 labels.push($scope.products[i].name);
                 supply.push($scope.products[i].in_stock);
             }
         });
 
-        // adminFactory.onLoadGetPurchase(function (err, data) {
-        //     console.log(data);
-        //     if (err) {
-        //         $scope.allTransactions.err = true;
-        //     } else {
-        //         $scope.allTransactions.data = data.data;
-        //     }
-        // });
 
-        var clear = function () {
-            $scope.transactionPurchase.item = null;
-            $scope.transactionPurchase.assortment_id = null;
-            $scope.transactionPurchase.total_price = null;
-            $scope.transactionPurchase.resident_id = null;
-            $scope.transactionPurchase.amount = null;
-        };
+        $scope.addToBasket = function (item) {
+            var productIndex = -1;
+            $scope.stockPurchase.purchase.forEach(function (element, index) {
+                if (element.product_id == item.product_id) {
+                    productIndex = index;
+                }
+            });
 
-        //Functions
-        $scope.clearTransaction = function () {
-            clear();
-            msgService.notifyClear("transaction cleared", "Clear");
-        };
+            var product = {
+                product_id: item.product_id,
+                name: item.name,
+                amount: 1
+            };
 
-        $scope.completeTransaction = function () {
-            if ($rootScope.admin.resident_id != null && $scope.transactionPurchase.total_price != null) {
-
-
-                $scope.transactionPurchase.resident_id = $rootScope.admin.resident_id;
-
-                console.log($scope.transactionPurchase);
-
-                adminFactory.purchaseStorageTransaction($scope.transactionPurchase, function (err, data) {
-                    if (err) {
-                        msgService.notify('Transaction could not be completed', 'error', 'error');
-                    } else {
-                        msgService.notify('Transaction complete', 'Success', 'success');
-
-                    }
-                });
+            if (productIndex == -1) {
+                $scope.stockPurchase.purchase.push(product);
+                $scope.stockPurchase.total_price += item.purchase_price;
             } else {
-                msgService.notifyClear('you must calculate the price', 'Calculate price')
+                $scope.stockPurchase.purchase[productIndex].amount += 1;
+                $scope.stockPurchase.total_price += item.purchase_price;
             }
 
         };
 
-        $scope.calculatePrice = function () {
-            var obj = JSON.parse($scope.transactionPurchase.item);
-            $scope.transactionPurchase.assortment_id = obj._id;
-            $scope.transactionPurchase.total_price = $scope.transactionPurchase.amount *
-                (obj.one_price * obj.item_size);
+
+        $scope.clearBasket = function () {
+            $scope.stockPurchase.purchase = [];
+            $scope.stockPurchase.total_price = 0;
         };
 
         $scope.showForm = function (formKey) {
@@ -378,7 +351,6 @@
             }
         })();
 
-        //Charts
         $scope.storeChart = {
             labels: labels,
             data: [
