@@ -1,5 +1,6 @@
 var model = require('../model/models.js');
 var collectionMapper = require('../source/collectionGetMapper');
+var productManager = require('../source/productMapper');
 
 
 /**
@@ -69,6 +70,14 @@ function purchaseFromStock(stockPurchaseDTO, callback) {
         }, {new: true}, function (error, data) {
             if (err) return callback(error);
             model.StockPurchase.create(stockPurchaseDTO, function (er, stock) {
+                for (var i = 0; i < stockPurchaseDTO.purchase.length; ++i) {
+                    productManager.restockProduct({
+                        product_id: stockPurchaseDTO.purchase[i].product_id,
+                        amount: -stockPurchaseDTO.purchase[i].amount
+                    }, function (err) {
+                        if (err) return callback(err)
+                    });
+                }
                 return callback(er, stock);
             });
         });
