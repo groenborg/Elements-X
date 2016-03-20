@@ -1,6 +1,6 @@
 /* the footer will need a height if it fails to stick */
 body {
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(255, 255, 255);
     height: 100%;
 }
 
@@ -9,10 +9,10 @@ html {
 }
 
 .footer {
-    margin-top:10px;
-    border-top: 4px solid rgb(117, 176, 212);
+    margin-top: 10px;
+    border-top: 4px solid #2d9ff3;
     padding-top: 10px;
-    background-color: rgb(60, 69, 80);
+    background-color: #666;
 }
 
 .footer-row {
@@ -76,16 +76,35 @@ html {
 }
 
 .dashboard-body {
-    background-color: rgb(242, 242, 242);
-    padding-top: -20px;
+    background-color: rgb(255, 255, 255);
+    padding-top: -40px;
+}
+
+.sidebar {
+    top: -20px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgb(247,249,250);
+    border-right: 1px solid #eee;
+}
+
+.fill {
+    min-height: 100%;
+    height: 100%;
+    padding-bottom: 100%;
 }
 
 /* Sidebar navigation */
-.nav-sidebar {
-    margin-right: -15px;
-    margin-bottom: 20px;
-    margin-left: -15px;
 
+.nav-sidebar {
+    margin-right: -21px;
+    margin-bottom: 20px;
+    margin-left: -20px;
 }
 
 .nav-sidebar > li > a {
@@ -98,14 +117,25 @@ html {
 
 .nav-sidebar > li > a:hover, a:focus {
     color: #fff;
-    background-color: rgb(130, 175, 209);
+    background-color: rgb(86,144,236);
 }
 
 .nav-sidebar > .active > a {
     color: #fff;
-    background-color: #428bca;
+    background-color: #2071c5;
+}
+.navbar-default {
+    background-color: #2071c5;
+    border-color: #2071c5;
 }
 
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-brand {
+    color: #ffffff;
+}
 /*
  * Main content
  */

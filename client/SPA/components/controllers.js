@@ -21,7 +21,7 @@
 
     }]);
 
-    app.controller('UserShoppingCtrl', function ($scope, $rootScope, $routeParams, webserviceFactory, notificationService, accountFactory, purchaseService) {
+    app.controller('UserShoppingCtrl', ["$scope", "$rootScope", "$location", "$routeParams", "webserviceFactory", "notificationService", "accountFactory", "purchaseService", function ($scope, $rootScope, $location, $routeParams, webserviceFactory, notificationService, accountFactory, purchaseService) {
         //Declarative variables
         $scope.products = [];
         $scope.shopper = $rootScope.shopper;
@@ -32,15 +32,23 @@
         var basket = new purchaseService($scope.basket);
         var message = new notificationService();
 
-        //On load functions
-        accountFactory.getAccount($scope.shopper.kitchen_number, function (err, account) {
-            if (err) {
-
+        (function () {
+            if ($scope.shopper == undefined) {
+                $location.path('picker/' + $routeParams.kitchenNumber);
             } else {
-                $scope.products = account.available_products;
-                $scope.account = account;
+                accountFactory.getAccount($scope.shopper.kitchen_number, function (err, account) {
+                    if (err) {
+
+                    } else {
+                        $scope.products = account.available_products;
+                        $scope.account = account;
+                    }
+                });
             }
-        });
+        })();
+
+        //On load functions
+
 
         $scope.addToBasket = function (name, productId, price) {
             if ($scope.shopper.current_balance <= 0 && basket.isEmpty()) {
@@ -83,7 +91,7 @@
             return false;
         }
 
-    });
+    }]);
 
     app.controller('BarSelectionCtrl', ['$scope', 'adminFactory', 'controllerFactory', 'storageFactory', 'purchaseService', 'notificationService', 'accountFactory', 'bar', function ($scope, adminFactory, controllerFactory, storageFactory, purchaseService, notificationService, accountFactory, bar) {
         //Declarative object
