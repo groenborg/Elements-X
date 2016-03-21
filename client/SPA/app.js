@@ -43,6 +43,14 @@
                     authInspector.authBar();
                 }
             }
+        }).when('/accountHistory/:accountId', {
+            templateUrl: 'views/adminAccountHistoryView.html',
+            controller: 'HistoryCtrl',
+            resolve: {
+                auth: function (authInspector) {
+                    authInspector.authBar();
+                }
+            }
         }).when('/dashboard', {
             templateUrl: 'views/adminDashboard.html',
             controller: 'DashboardCtrl',

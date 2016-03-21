@@ -81,5 +81,17 @@ router.get('/account/latest', function (request, response) {
     });
 });
 
+router.get('/account/history/:id', function (request, response) {
+    transactionManager.getStockPurchaseHistory(request.params.id, function (err, data) {
+        if (err) {
+            response.statusCode = 503;
+            response.statusMessage = "no stock purchases";
+            response.send({message: "could not find stock purchases"});
+        } else {
+            response.send(data);
+        }
+    });
+});
+
 
 module.exports = router;

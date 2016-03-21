@@ -129,9 +129,6 @@
                 });
             },
 
-            onLoadGetPurchase: function (callback) {
-                webserviceFactory.getAllTransactions(callback);
-            },
             refillTransaction: function (refill, callback) {
                 webserviceFactory.refillTransaction(refill, callback);
             },
@@ -170,6 +167,9 @@
             },
             getLatestStockHistory: function (callback) {
                 webserviceFactory.getLatestStockHistory(callback);
+            },
+            getAccountHistory: function (id, callback) {
+                webserviceFactory.getAccountHistory(id, callback);
             }
         }
     }]);
@@ -227,6 +227,16 @@
     app.factory('webserviceFactory', ['$http', function ($http) {
 
         return {
+            getAccountHistory: function (id, callback) {
+                $http({
+                    method: "GET",
+                    url: '/admin/account/history/' + id
+                }).then(function success(res) {
+                    callback(undefined, res);
+                }, function error(res) {
+                    callback(undefined, res);
+                });
+            },
             getLatestStockHistory: function (callback) {
                 $http({
                     method: "GET",
@@ -316,16 +326,6 @@
                 $http({
                     method: 'GET',
                     url: '/api/account/all'
-                }).then(function success(response) {
-                    callback(undefined, response.data);
-                }, function error(response) {
-                    callback(response);
-                });
-            },
-            getAccountHistory: function (accountId, callback) {
-                $http({
-                    method: 'GET',
-                    url: '/api/account/history/' + accountId
                 }).then(function success(response) {
                     callback(undefined, response.data);
                 }, function error(response) {

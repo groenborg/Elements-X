@@ -85,6 +85,13 @@ function purchaseFromStock(stockPurchaseDTO, callback) {
 }
 
 
+function getStockPurchaseHistory(accountId, callback) {
+    model.StockPurchase.find({account_id: accountId}).limit(100).exec(function (err, data) {
+        return callback(err, data);
+    });
+}
+
+
 /**
  * Get latest 10 stock purchases
  * */
@@ -96,6 +103,7 @@ function getLatestStockPurchases(callback) {
 
 
 module.exports = {
+    getStockPurchaseHistory: getStockPurchaseHistory,
     purchaseFromStock: purchaseFromStock,
     getLatestStockPurchases: getLatestStockPurchases,
     residentBalanceRefillTransaction: residentBalanceRefillTransaction,

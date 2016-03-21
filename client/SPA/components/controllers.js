@@ -455,7 +455,7 @@
 
     }]);
 
-    app.controller('AccountCtrl', ["$scope", "adminFactory", 'accountFactory', 'notificationService', function ($scope, adminFactory, accountFactory, notificationService) {
+    app.controller('AccountCtrl', ["$scope", "$location", "adminFactory", 'accountFactory', 'notificationService', function ($scope, $location, adminFactory, accountFactory, notificationService) {
         //Declarative literal initialization of assortment item
         $scope.accounts = [];
         $scope.products = [];
@@ -517,31 +517,11 @@
                     $scope.chosenAccount = null;
                 }
             });
-
-
         };
 
-        // $scope.getHistory = function (account) {
-        //    if ($scope.currentHistory == null || account.account_id != $scope.currentHistoryAccount.account_id) {
-        //        accountFactory.getAccountHistory(account.account_id, function (err, data) {
-        //            if (err) {
-        //            } else {
-        //                $scope.currentHistory = data;
-        //                $scope.currentHistoryAccount = account;
-        //            }
-        //        });
-        //    } else {
-        //        $scope.currentHistory = null;
-        //        $scope.currentHistoryAccount = null;
-        //    }
-        //}
-        ///$scope.sumPrice = function (array) {
-        ///    var price = 0;
-        ///    for (var i = 0; i < array.length; ++i) {
-        ///        price += array[i].total_price;
-        ///    }
-        ///    return price;
-        ///};
+        $scope.getHistory = function (accountId) {
+            $location.path("/accountHistory/" + accountId);
+        }
 
     }]);
 
@@ -602,16 +582,34 @@
     app.controller('HistoryCtrl', ["$scope", "adminFactory", "$routeParams", function ($scope, adminFactory, $routeParams) {
         $scope.resident = null;
         $scope.error = false;
-        //$routeParams.residentId
+        $scope.accountHistory = null;
+        $scope.account = $routeParams.accountId;
 
-        adminFactory.getResidentHistory($routeParams.residentId, function (err, data) {
-            if (err) {
-                $scope.error = true;
-            } else {
-                $scope.resident = data.data;
-                console.log($scope.resident.resident_id);
+        var residentId = $routeParams.residentId;
+        //$routeParams.residentId
+        ///accountHistory/:accountId
+
+        (function () {
+            if (residentId != undefined) {
+                adminFactory.getResidentHistory(residentId, function (err, data) {
+                    if (err) {
+                        $scope.error = true;
+                    } else {
+                        $scope.resident = data.data;
+                    }
+                });
             }
-        });
+        })();
+
+        (function () {
+            if ($scope.account != undefined) {
+                adminFactory.getAccountHistory($scope.account, function (err, data) {
+                    $scope.accountHistory = data.data;
+                    console.log(data);
+                });
+            }
+        })();
+
 
     }]);
 
