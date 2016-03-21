@@ -196,9 +196,9 @@
         return {
             getAccounts: function (callback) {
                 if (accounts.length == 0) {
-                    update(callback)
+                    update(callback);
                 } else {
-                    callback(undefined, accounts);
+                    update(callback);
                 }
             },
             getAccount: function (id, callback) {

@@ -308,7 +308,6 @@
         adminFactory.getLatestStockHistory(function (err, data) {
             if (!err) {
                 $scope.latestHistory = data;
-                console.log(data);
             }
         });
 
@@ -464,6 +463,7 @@
         //OnLoad
 
         var message = new notificationService();
+
         accountFactory.getAccounts(function (err, data) {
             $scope.accounts = data;
         });
