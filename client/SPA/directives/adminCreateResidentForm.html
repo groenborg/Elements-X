@@ -15,22 +15,22 @@
 
             <!-- Create resident form elements -->
             <div class="form-group form-group">
-                <label>First Name</label>
+                <label>First Name*</label>
                 <input ng-model="resident.first_name" type="text" class="form-control" placeholder="First Name">
             </div>
             <div class="form-group form-group">
-                <label>Last Name</label>
+                <label>Last Name*</label>
                 <input ng-model="resident.last_name" type="text" class="form-control" placeholder="Last Name">
             </div>
 
             <div class="form-group form-group">
-                <label>Phone Number</label>
+                <label>Phone Number*</label>
                 <input ng-model="resident.phone" type="text" class="form-control" placeholder="12345678"
                        aria-describedby="tpl">
             </div>
 
             <div class="form-group form-group">
-                <label for="email">email</label>
+                <label for="email">email*</label>
                 <input ng-model="resident.email" id="email" type="email" class="form-control"
                        placeholder="vkr@awesome.dk"
                        aria-describedby="email">
@@ -41,13 +41,14 @@
                        placeholder="********"
                        aria-describedby="password">
             </div>
+            * Field that will be updated when editing a resident
         </div>
 
         <!-- Second section -->
         <div class="col-md-4">
 
             <div class="form-group">
-                <label>Associated Kitchen and Billing account</label>
+                <label>Associated Kitchen and Billing account*</label>
                 <select ng-model="resident.kitchen_number" class="form-control"
                         ng-options="account.account_id as account.account_name for account in accountsForUserCreation | filter:accountVisibilityFilter">
 
@@ -55,7 +56,7 @@
             </div>
 
             <div class="form-group form-group">
-                <label>Room number</label>
+                <label>Room number*</label>
                 <input ng-model="resident.room_number" id="room-number" type="number" class="form-control"
                        placeholder="format: 3032"
                        aria-describedby="room-number">
@@ -72,14 +73,14 @@
                        aria-describedby="start-balance">
             </div>
             <div class="form-group">
-                <label>Choose quickbuy product</label>
+                <label>Choose quickbuy product*</label>
                 <select ng-model="resident.quick_buy" class="form-control" name="repeatSelect"
                         ng-options="product.product_id as product.name for product in products">
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Choose access level</label>
+                <label>Choose access level*</label>
                 <select ng-model="resident.access_level"
                         required ng-options="option for option in accessLevels" class="form-control">
                 </select>
