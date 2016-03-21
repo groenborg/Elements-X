@@ -21,7 +21,9 @@
                                 <blockquote>{{account.account_name}}</blockquote>
 
                                 <p class="lead">Account id: {{account.account_id}}</p>
-                                <p class="lead">Balance: {{account.balance}}</p>
+                                <p class="lead"
+                                   ng-class="{'bg-danger':account.balance < 0, 'bg-success':account.balance > 0}">
+                                    Balance: {{account.balance}}</p>
 
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
