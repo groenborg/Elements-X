@@ -1,7 +1,6 @@
 var express = require('express');
 var facade = require('../source/collectionGetMapper');
 var security = require('../security/securityService');
-var tokens = require('../../config').tokens;
 var jwt = require('jsonwebtoken');
 var router = express.Router();
 
@@ -35,7 +34,7 @@ router.post('/authenticate', function (request, response) {
                 resident_id: user.resident_id,
                 email: user.email,
                 access_level: user.access_level
-            }, tokens.secretTokenOne, {expiresIn: 60 * 10});
+            }, process.env.SECRETTOKENONE, {expiresIn: 60 * 20});
             response.send({token: token});
         } else {
             response.statusCode = 403;

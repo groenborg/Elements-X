@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('./config');
 
-
 var singlePageRoute = require('./server/routes/index');
 var residentRoute = require('./server/routes/residentService');
 var transactionRoute = require('./server/routes/transactionService');
@@ -27,10 +26,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-// this should be changed
 connection.connectToMongoDB(function (err, data) {
 });
 
@@ -40,7 +37,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(express.static(path.join(__dirname, 'client/SPA')));
-
 
 app.use('/', singlePageRoute);
 app.use('/api', residentRoute);

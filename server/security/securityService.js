@@ -1,13 +1,12 @@
 /**
  * Created by Simon on 21/03/2016.
  */
-
 var crypto = require('crypto');
-var secureConfig = require('../../config').security;
-
 
 function generatePasswordHash(password) {
-    return crypto.createHmac('sha256', secureConfig.secretHashKey).update(password + secureConfig.salt).digest('base64');
+    var secretHashKey = process.env.SECRETHASHKEY;
+    var salt = process.env.SALT;
+    return crypto.createHmac('sha256', secretHashKey).update(password + salt).digest('base64');
 }
 
 
