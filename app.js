@@ -41,12 +41,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(express.static(path.join(__dirname, 'client/SPA')));
 
+
 app.use('/', singlePageRoute);
 app.use('/api', residentRoute);
 app.use('/api', transactionRoute);
 app.use('/api', productRoute);
 app.use('/api', secureLoginRoute);
-app.use('/api',accountRoute);
+app.use('/api', accountRoute);
+app.use('/admin', expressJwt({secret: config.tokens.secretTokenOne}));
 app.use('/admin', adminTransactionRoute);
 app.use('/admin', adminResidentRoute);
 app.use('/admin', adminAssortmentRoute);

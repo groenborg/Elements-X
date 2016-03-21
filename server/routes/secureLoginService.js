@@ -16,13 +16,13 @@ router.post('/authenticate', function (request, response) {
 
         if (err) {
             response.statusCode = 501;
-            response.send({err: "internal error"});
+            response.send({err: "Authentication failed, error"});
             return;
         }
 
         if (!user) {
             response.statusCode = 401;
-            response.send({err: "user not found"});
+            response.send({err: "Authentication failed, user not found"});
             return;
         }
 

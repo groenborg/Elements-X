@@ -70,6 +70,7 @@
                                 message.creationTerminated();
                             } else {
                                 message.userCreated(data.resident_id);
+                                $scope.clearForms();
                             }
                         });
                     }
