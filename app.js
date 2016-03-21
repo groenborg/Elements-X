@@ -19,7 +19,7 @@ var adminTransactionRoute = require('./server/routes/adminAccountService');
 var adminResidentRoute = require('./server/routes/adminResidentService');
 var adminAssortmentRoute = require('./server/routes/adminProductService');
 
-//var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
+var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
 var connection = require('./server/model/connection');
 var app = express();
 
