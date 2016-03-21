@@ -1,5 +1,5 @@
 var model = require('../model/models.js');
-var deprecate = require('deprecate');
+var security = require('../security/securityService');
 
 /**
  * Retrieves all residents
@@ -115,6 +115,10 @@ function createResident(resident, callback) {
         if (err) return callback(err);
         if (next == null) return callback();
         resident.resident_id = next.value.sequence_value;
+
+        var password = resident.password;
+        resident.password = security.generatePasswordHash(password);
+
         model.Resident.create(resident, function (err, resident) {
             if (err) return callback(err);
             if (next == null) return callback();

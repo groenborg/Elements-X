@@ -9,7 +9,6 @@ var router = express.Router();
  * */
 router.post('/resident/create', function (request, response) {
     var newResident = request.body;
-
     residentManager.createResident(newResident, function (err, data) {
         if (err) {
             response.statusCode = 503;
