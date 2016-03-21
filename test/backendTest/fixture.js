@@ -30,3 +30,7 @@ exports.emptyAccounts = function (callback) {
 exports.emptyStock = function (callback) {
     mongoose.connection.collection('stock_purchases').remove({}, callback);
 };
+
+exports.emptyCounters = function (callback) {
+    mongoose.connection.collection('sequences').remove({}, callback);
+};
