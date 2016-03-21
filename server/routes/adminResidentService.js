@@ -3,9 +3,8 @@ var express = require('express');
 var router = express.Router();
 
 
-/*
- * request Handler
- * receives create request from client
+/**
+ * Creates a resident
  * */
 router.post('/resident/create', function (request, response) {
     var newResident = request.body;
@@ -20,7 +19,10 @@ router.post('/resident/create', function (request, response) {
     });
 });
 
-
+/**
+ * Updates a resident
+ * @note: only specific field are available for updates
+ * */
 router.put('/resident/update', function (request, response) {
     residentManager.updateResident(request.body, function (err, data) {
         if (err) {
@@ -33,6 +35,9 @@ router.put('/resident/update', function (request, response) {
     });
 });
 
+/**
+ * Gets history for a resident
+ * */
 router.get('/resident/history/:id', function (request, response) {
     residentManager.getResidentHistory(request.params.id, function (err, data) {
         if (err) {

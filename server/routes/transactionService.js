@@ -2,12 +2,13 @@ var express = require('express');
 var transaction = require('../source/transactionMapper');
 var router = express.Router();
 
-
+/**
+ * User purchase from the kitchen purchase section
+ * */
 router.post('/user/purchase', function (request, response) {
     var purchase = request.body;
     var residentId = purchase.resident_id;
-
-    //Adds a timestamp in none is set
+    
     if (purchase.timestamp != null) {
         purchase.timestamp = Date.now();
     }

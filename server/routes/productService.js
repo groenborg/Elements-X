@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var productManager = require('../source/productMapper');
 var collectionManager = require('../source/collectionGetMapper');
 
+/**
+ * @OPEN
+ * Retrieves all products
+ * */
 router.get('/product/all', function (request, response) {
     collectionManager.getAllElementsFromCollection('Product', function (err, productData) {
         if (err) {

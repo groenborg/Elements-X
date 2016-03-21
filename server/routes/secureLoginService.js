@@ -3,10 +3,13 @@ var facade = require('../source/collectionGetMapper');
 var security = require('../security/securityService');
 var tokens = require('../../config').tokens;
 var jwt = require('jsonwebtoken');
-
-
 var router = express.Router();
 
+
+/**
+ * Authentication service
+ * Authenticates a user for all admin services
+ * */
 router.post('/authenticate', function (request, response) {
 
     var requestedUser = request.body;

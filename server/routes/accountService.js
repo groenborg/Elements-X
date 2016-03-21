@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var collectionManager = require('../source/collectionGetMapper');
-var accountManager = require('../source/accountMapper');
 
-
+/**
+ * Merge function
+ * @note: REVISIT for mongodb solution
+ * */
 function mergeAccountAndProducts(account, products) {
 
     function getProduct(id) {
@@ -35,6 +37,11 @@ function mergeAccountAndProducts(account, products) {
     return account;
 }
 
+
+/**
+ * retrieves all account with merged products
+ * @usage: used to get kitchens and their product for resident purchase
+ * */
 router.get('/account/all', function (request, response) {
     collectionManager.getAllElementsFromCollection('Account', function (err, accountData) {
         if (err) {
@@ -55,21 +62,6 @@ router.get('/account/all', function (request, response) {
             });
         }
     });
-});
-
-
-router.get('/account/history/:accountId', function (request, response) {
-    var accountId = request.params.accountId;
-    accountManager.getAccountHistory(accountId, function (err, data) {
-        if (err) {
-            response.statusCode = 503;
-            response.message = "could not get";
-            response.send({message: response.message});
-        } else {
-            response.send(data);
-        }
-    });
-
 });
 
 

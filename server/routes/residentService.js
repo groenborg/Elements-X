@@ -2,6 +2,10 @@ var facade = require('../source/residentMapper');
 var express = require('express');
 var router = express.Router();
 
+/**
+ * @OPEN
+ * retrieves all residents
+ * */
 router.get('/getResidents', function (request, response) {
     facade.getAllResidents(function (err, data) {
         if (err) {
@@ -10,12 +14,14 @@ router.get('/getResidents', function (request, response) {
             response.send({message: "No residents found"});
             return;
         }
-
         response.send(data);
     })
 });
 
-
+/**
+ * @OPEN
+ * get kitchen groups
+ * */
 router.get('/getKitchenGroups', function (request, response) {
     facade.getKitchenGroups(function (err, data) {
         if (err) {

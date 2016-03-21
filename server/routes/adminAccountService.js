@@ -41,7 +41,7 @@ router.put('/account/upavail', function (request, response) {
 
 
 /**
- * purchase an item from storage
+ * purchase an products from storage with an account
  * */
 router.put('/account/purchase', function (request, response) {
     var stockPurchaseDTO = request.body;
@@ -56,6 +56,10 @@ router.put('/account/purchase', function (request, response) {
     });
 });
 
+
+/**
+ * Withdraws money from the cbs account
+ * */
 router.put('/cbs/withdraw', function (request, response) {
     var withdrawDTO = request.body;
     accountManager.withdrawFromCBS(withdrawDTO, function (err, data) {
@@ -69,6 +73,9 @@ router.put('/cbs/withdraw', function (request, response) {
     });
 });
 
+/**
+ * Get the latest 10 entries in the cbs purchase
+ * */
 router.get('/account/latest', function (request, response) {
     transactionManager.getLatestStockPurchases(function (err, data) {
         if (err) {
@@ -81,6 +88,9 @@ router.get('/account/latest', function (request, response) {
     });
 });
 
+/**
+ * Get the latest 100 entries for any account
+ * */
 router.get('/account/history/:id', function (request, response) {
     transactionManager.getStockPurchaseHistory(request.params.id, function (err, data) {
         if (err) {

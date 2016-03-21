@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var productManager = require('../source/productMapper');
 
+/**
+ * Creates a product
+ * */
 router.post('/product/create', function (request, response) {
     var item = request.body;
 
@@ -16,6 +19,9 @@ router.post('/product/create', function (request, response) {
     });
 });
 
+/**
+ * Updates a product
+ * */
 router.put('/product/update', function (request, response) {
     var item = request.body;
 
@@ -30,6 +36,9 @@ router.put('/product/update', function (request, response) {
     });
 });
 
+/**
+ * Restock a product - an update
+ * */
 router.put('/product/restock', function (request, response) {
     if (request.body.product_id != null && isNaN(request.body.value)) {
         productManager.restockProduct(request.body, function (err, data) {
@@ -44,9 +53,12 @@ router.put('/product/restock', function (request, response) {
         response.statusCode = 400; // bad request
         response.send({message: "missing or invalid parameters"});
     }
-
 });
 
+/**
+ * Deletes a product
+ * @note: should not be used ( product should stay in history )
+ * */
 router.delete('/product/delete', function (request, response) {
     var product = request.body;
     productManager.removeProduct(product, function (err, productData) {
