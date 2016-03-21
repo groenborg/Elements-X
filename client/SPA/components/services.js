@@ -128,6 +128,10 @@
                 toastr.info("", "Welcome " + name);
             };
 
+            this.notAuthorized = function () {
+                toastr.warning("username or password are invalid", "Not Authorized");
+            };
+
             this.invalidFields = function () {
                 toastr.warning("Fields are invalid or missing", "Error");
             };

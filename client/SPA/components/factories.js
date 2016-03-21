@@ -467,6 +467,8 @@
             },
             responseError: function (rejection) {
                 if (rejection.status === 401) {
+
+                    console.log("JSKLAJDSKLAJDKLSAJDKLJS");
                     // handle the case where the user is not authenticated
                 }
                 return $q.reject(rejection);

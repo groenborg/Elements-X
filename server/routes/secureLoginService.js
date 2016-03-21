@@ -34,7 +34,7 @@ router.post('/authenticate', function (request, response) {
                 resident_id: user.resident_id,
                 email: user.email,
                 access_level: user.access_level
-            }, process.env.SECRETTOKENONE, {expiresIn: 60 * 20});
+            }, process.env.SECRETTOKENONE, {expiresIn: 60 * 66 * 24});
             response.send({token: token});
         } else {
             response.statusCode = 403;

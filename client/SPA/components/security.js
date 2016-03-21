@@ -50,7 +50,7 @@
         $scope.login = function () {
             webserviceFactory.loginRequest($scope.signInObject, function (err, data) {
                 if (err) {
-                    message.notify('Error', err.data.err, 'error');
+                    message.notAuthorized();
                     return;
                 }
                 var encodedProfile = data.data.token.split('.')[1];

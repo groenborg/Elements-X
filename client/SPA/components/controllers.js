@@ -357,6 +357,7 @@
                         message.accountPurchaseTerminated();
                     } else {
                         message.accountPurchaseApproved($scope.stockPurchase.account_id, $scope.stockPurchase.total_price);
+                        $scope.clearBasket();
                     }
                 });
             }
