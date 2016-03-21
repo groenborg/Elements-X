@@ -553,6 +553,12 @@
 
         $scope.restock = function () {
             if ($scope.chosenProduct != null) {
+
+                if (isNaN($scope.restockData.amount) && $scope.restockData.amount != "e") {
+                    message.invalidFields();
+                    return;
+                }
+
                 $scope.restockData.product_id = $scope.chosenProduct.product_id;
                 adminFactory.restockProduct($scope.restockData, function (err, data) {
                     if (err != null) {
