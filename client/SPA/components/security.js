@@ -28,6 +28,7 @@
             email: "",
             access_level: 0
         };
+        $scope.loading = false;
         $scope.signInObject = {};
         $rootScope.admin = {};
         var message = new notificationService();
@@ -48,6 +49,7 @@
         })();
 
         $scope.login = function () {
+            $scope.loading = true;
             webserviceFactory.loginRequest($scope.signInObject, function (err, data) {
                 if (err) {
                     message.notAuthorized();
@@ -65,7 +67,7 @@
                 $rootScope.admin.email = profile.email;
                 $rootScope.admin.access_level = profile.access_level;
                 $rootScope.admin.resident_id = profile.resident_id;
-
+                $scope.loading = false;
                 message.greetings($scope.admin.first_name);
                 if ($scope.admin.access_level > 1) {
                     $location.path("/dashboard");
