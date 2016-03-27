@@ -338,7 +338,6 @@
                     method: 'GET',
                     url: '/api/getKitchenGroups'
                 }).then(function success(response) {
-                    console.log(response);
                     callback(undefined, response);
                 }, function error(response) {
                     callback(response);
