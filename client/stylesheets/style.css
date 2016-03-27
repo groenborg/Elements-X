@@ -67,7 +67,7 @@ html {
 }
 
 .footer {
-    height: 165px; /* .push must be the same height as .footer */
+    min-height: 165px; /* .push must be the same height as .footer */
 }
 
 .kitchen-block {

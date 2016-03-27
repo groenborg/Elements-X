@@ -180,7 +180,8 @@
 
         function update(callback) {
             webserviceFactory.getAllAccounts(function (err, data) {
-                callback(err, data)
+                accounts = data;
+                callback(err, accounts);
             });
         }
 
@@ -198,7 +199,7 @@
                 if (accounts.length == 0) {
                     update(callback);
                 } else {
-                    update(callback);
+                    callback(undefined, accounts);
                 }
             },
             getAccount: function (id, callback) {

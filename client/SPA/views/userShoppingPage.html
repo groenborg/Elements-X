@@ -44,7 +44,7 @@
                         <!-- buy items -->
                         <div class="btn-group">
                             <button class=" btn btn-success btn-lg btn-group-justified" ng-click="buyItems()"
-                                    ng-disabled="balanceOk()">
+                                    ng-disabled="balanceOk() || buyPressed">
                                 Buy <i class="fa fa-credit-card"></i>
                             </button>
                         </div>

@@ -8,8 +8,7 @@
     });
 
     app.controller('KitchenCtrl', ['$scope', 'accountFactory', function ($scope, accountFactory) {
-
-
+        
         accountFactory.getAccounts(function (err, data) {
             $scope.accounts = data;
         });
@@ -28,6 +27,7 @@
         $scope.basket = [];
         $scope.account = {};
         $scope.totalPrice = 0;
+        $scope.buyPressed = false;
 
         var basket = new purchaseService($scope.basket);
         var message = new notificationService();
@@ -70,6 +70,7 @@
         };
 
         $scope.buyItems = function () {
+            $scope.buyPressed = true;
             if (basket.isEmpty()) {
                 message.basketIsEmpty();
                 return;
@@ -84,6 +85,7 @@
                     basket.clearBasket();
                     $scope.totalPrice = basket.getPrice();
                 }
+                $scope.buyPressed = false;
             });
         };
 
