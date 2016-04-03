@@ -93,6 +93,7 @@
                     message.transactionApproved($scope.shopper.first_name, basket.getPrice());
                     basket.clearBasket();
                     $scope.totalPrice = basket.getPrice();
+                    $location.path('picker/' + $routeParams.kitchenNumber);
                 }
                 $scope.buyPressed = false;
             });

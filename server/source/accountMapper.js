@@ -22,7 +22,7 @@ function updateAvailableProducts(account, callback) {
  * */
 function withdrawFromCBS(dto, callback) {
     model.Account.findOneAndUpdate({account_id: 5}, {
-        $inc: {balance: -dto.amount}
+        $inc: {balance: dto.amount}
     }, {new: true}, function (err, data) {
         return callback(err, data);
     });
