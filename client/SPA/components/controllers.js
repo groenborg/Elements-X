@@ -8,7 +8,7 @@
     });
 
     app.controller('KitchenCtrl', ['$scope', 'accountFactory', function ($scope, accountFactory) {
-        
+
         accountFactory.getAccounts(function (err, data) {
             $scope.accounts = data;
         });
@@ -28,6 +28,8 @@
         $scope.account = {};
         $scope.totalPrice = 0;
         $scope.buyPressed = false;
+        $scope.currentAccount = null;
+
 
         var basket = new purchaseService($scope.basket);
         var message = new notificationService();
@@ -42,14 +44,13 @@
                     } else {
                         $scope.products = account.available_products;
                         $scope.account = account;
+                        $scope.currentAccount = account.account_id;
                     }
                 });
             }
         })();
 
         //On load functions
-
-
         $scope.addToBasket = function (name, productId, price) {
             if ($scope.shopper.current_balance <= 0 && basket.isEmpty()) {
                 message.balanceTooLow();
@@ -64,6 +65,14 @@
             }
         };
 
+        $scope.isAccountActive = function (accountId) {
+            return $scope.currentAccount == accountId;
+        };
+
+        $scope.changeAccount = function (accountId) {
+            $scope.currentAccount = parseInt(accountId);
+        };
+
         $scope.clearBasket = function () {
             basket.clearBasket();
             $scope.totalPrice = basket.getPrice();
@@ -76,7 +85,7 @@
                 return;
             }
 
-            basket.purchase($scope.account.account_id, $scope.shopper.resident_id, function (err, data) {
+            basket.purchase($scope.currentAccount, $scope.shopper.resident_id, function (err, data) {
                 if (err) {
                     message.transactionTerminated();
                 } else {

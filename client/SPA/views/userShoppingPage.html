@@ -1,8 +1,11 @@
 <div class="container">
 
     <div class="row">
-        <h1>Currently Shopping: {{shopper.first_name}} {{shopper.last_name}}</h1>
-        <hr/>
+
+        <div class="col-md-12">
+            <h3>Currently Shopping: {{shopper.first_name}} {{shopper.last_name}}</h3>
+            <hr/>
+        </div>
         <!-- Beverage section -->
         <div class="col-md-8">
             <div class="list-group">
@@ -20,6 +23,20 @@
 
         <!-- Basket section -->
         <div class="col-md-4">
+
+            <p class="lead">Which kitchen are you in</p>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group btn-group-lg" role="group">
+                    <button ng-click="changeAccount(1)" ng-class="{'active': isAccountActive(1)}" type="button" class="btn btn-default">kk 1</button>
+                </div>
+                <div class="btn-group btn-group-lg"  role="group">
+                    <button ng-click="changeAccount(2)" ng-class="{'active': isAccountActive(2)}" type="button" class="btn btn-default">kk 2</button>
+                </div>
+                <div class="btn-group btn-group-lg" role="group">
+                    <button ng-click="changeAccount(3)" ng-class="{'active': isAccountActive(3)}" type="button" class="btn btn-default">kk 3</button>
+                </div>
+            </div>
+            <hr>
 
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -73,5 +90,4 @@
 
     </div>
 
-</div>
 </div>
