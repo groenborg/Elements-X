@@ -20,12 +20,11 @@
                 </div>
 
                 <!-- Kitchen selection -->
-                <div class="col-md-6">
+                <div class="col-sm-8 col-md-6">
                     <div class="btn-group btn-group-lg" role="group" aria-label="">
-                        <button ng-click="changeKitchen('one')" type="button" class="btn btn-info">Kitchen 1</button>
-                        <button ng-click="changeKitchen('two')" type="button" class="btn btn-info">Kitchen 2</button>
-                        <button ng-click="changeKitchen('three')" type="button" class="btn btn-info">Kitchen 3
-                        </button>
+                        <button ng-click="changeKitchen('one')" type="button" class="btn btn-info">kk 1</button>
+                        <button ng-click="changeKitchen('two')" type="button" class="btn btn-info">kk 2</button>
+                        <button ng-click="changeKitchen('three')" type="button" class="btn btn-info">kk 3</button>
                     </div>
                 </div>
             </div>
@@ -122,14 +121,17 @@
                             Clear
                         </button>
                         <hr>
-                        <form class="form-inline">
+
+                        <div class="form-group">
                             <label for="">Refill</label>
                             <input ng-model="refillValue" type="number" class="form-control"
                                    placeholder="Add to balance">
-                            <button ng-click="refill()" type="submit" class="btn btn-success">
+                        </div>
+                        <div class="form-group">
+                            <button ng-click="refill()" type="submit" class="btn btn-success btn-block">
                                 Deposit
                             </button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

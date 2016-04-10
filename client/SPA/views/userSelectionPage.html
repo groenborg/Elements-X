@@ -13,7 +13,7 @@
                     <a href ng-click="changeView(resident.kitchen_number,resident.resident_id)" class="list-group-item">
 
                         <blockquote>{{resident.first_name}}</blockquote>
-                        <p class="lead text-center"> {{resident.current_balance}}kr</p>
+                        <p class="lead text-center"> {{(resident.current_balance).toFixed(2)}}kr</p>
                         <hr/>
                         <div class="row">
                             <div class="col-md-6">

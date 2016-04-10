@@ -40,7 +40,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p class="lead">Balance: {{shopper.current_balance - totalPrice}} dkr</p>
+                    <p class="lead">Balance: {{(shopper.current_balance - totalPrice).toFixed(2)}} dkr</p>
 
                     <p class="lead"> Total price: {{totalPrice}} dkr</p>
 

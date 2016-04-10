@@ -36,10 +36,10 @@
                                     </div>
                                 </div>
 
-                                <button ng-click="getHistory(account.account_id)" class="btn btn-info">
+                                <button ng-click="getHistory(account.account_id)" class="btn btn-info btn-block" type="button">
                                     Show history
                                 </button>
-                                <button ng-click="selectAccount(account)" class="btn btn-default" type="submit">
+                                <button ng-click="selectAccount(account)" class="btn btn-default btn-block" type="button">
                                     Edit available products
                                 </button>
                             </div>
@@ -62,10 +62,10 @@
                                         {{product.name}}
                                     </button>
                                 </div>
-                                <button ng-click="updateAvailableProducts()" class="btn btn-success" type="submit">
+                                <button ng-click="updateAvailableProducts()" class="btn btn-success btn-block" type="submit">
                                     Update
                                 </button>
-                                <button ng-click="clearAccount()" class="btn btn-success" type="submit">
+                                <button ng-click="clearAccount()" class="btn btn-warning btn-block" type="submit">
                                     Clear selection
                                 </button>
                                 <hr>

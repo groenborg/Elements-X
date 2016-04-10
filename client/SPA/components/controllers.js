@@ -58,7 +58,6 @@
                 if ($scope.shopper.current_balance - basket.getPrice() < -80) {
                     message.balanceTooLow();
                 } else {
-
                     basket.addToBasket(name, productId, price);
                     $scope.totalPrice = basket.getPrice();
                 }
