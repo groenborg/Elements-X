@@ -53,6 +53,7 @@
             webserviceFactory.loginRequest($scope.signInObject, function (err, data) {
                 if (err) {
                     message.notAuthorized();
+                    $scope.loading = false;
                     return;
                 }
                 var encodedProfile = data.data.token.split('.')[1];
