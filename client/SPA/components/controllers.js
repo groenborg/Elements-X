@@ -81,6 +81,7 @@
             $scope.buyPressed = true;
             if (basket.isEmpty()) {
                 message.basketIsEmpty();
+                $scope.buyPressed = false;
                 return;
             }
 
