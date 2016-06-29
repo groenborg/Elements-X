@@ -7,6 +7,26 @@ var nodemon = require('gulp-nodemon');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
 var gutil = require('gulp-util');
+var sass = require('gulp-sass');
+var cssmin = require('gulp-cssmin');
+var rename = require('gulp-rename');
+var sourcemaps = require('gulp-sourcemaps');
+
+
+gulp.task('sass', function () {
+    return gulp.src('./public/scss/app.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({style: "compressed"}).on('error', sass.logError))
+        .pipe(cssmin())
+        .pipe(rename({
+            suffix: '.min',
+            basename: 'bootstrap'
+        }))
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('./client/stylesheets'))
+
+});
+
 
 gulp.task('mocha', function () {
     return gulp.src(['test/**/**/*.js'], {read: true})
@@ -17,10 +37,6 @@ gulp.task('mocha', function () {
             timeout: 10000               // timeout for test cases
         }))
         .on('error', gutil.log);
-    //.on('close', gutil.log)
-    //.on('end', gutil.log)
-    //.on('data', gutil.log);
-
 });
 
 gulp.task('sourceTest', function () {
@@ -49,6 +65,25 @@ gulp.task('lint', function () {
         .pipe(jshint.reporter(stylish));
 });
 
+
+
+/**
+ * Build Project task
+ * compile sass, compress js - moves to client folder
+ * */
+
+
+/**
+ * SASS compile task
+ * */
+
+gulp.task('compile-sass',function () {
+   gulp.watch(['./public/scss/**'],['sass'])
+});
+
+/**
+ * OLD tasks
+ * */
 gulp.task('data', function () {
     return gulp.src('server/model/connection.js')
 });
