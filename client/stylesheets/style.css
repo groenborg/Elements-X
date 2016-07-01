@@ -36,7 +36,7 @@ html {
     margin-top: 10px;
     border-top: 1px solid #CFD2CD;
     padding-top: 10px;
-    background-color: #E5E6E4 ;
+    background-color: #ebf1eb ;
 }
 
 .footer-row {
@@ -117,7 +117,7 @@ a.kitchen-block:hover {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: rgb(247,249,250);
+    background-color: #ebf1eb;
     border-right: 1px solid #eee;
 }
 
@@ -138,7 +138,7 @@ a.kitchen-block:hover {
 .nav-sidebar > li > a {
     padding-right: 20px;
     padding-left: 20px;
-    color: #70777b;
+    color: #5c6b73;
     text-decoration: none;
 }
 
@@ -156,12 +156,12 @@ a.kitchen-block:hover {
 }
 .nav-sidebar > li > a:hover, a:focus {
     color: #fff;
-    background-color: rgb(86,144,236);
+    background-color: #ef476f;
 }
 
 .nav-sidebar > .active > a {
     color: #fff;
-    background-color: #2071c5;
+    background-color: #ef476f;
 }
 .navbar-default {
 
