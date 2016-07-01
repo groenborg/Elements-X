@@ -15,11 +15,19 @@ $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
-$brand-success:         #5cb85c !default;
-$brand-info:            #5bc0de !default;
-$brand-warning:         #f0ad4e !default;
-$brand-danger:          #d9534f !default;
+$brand-primary:         #073b4c !default; // #337ab7
+$brand-success:         #06d6a0 !default;
+$brand-info:            #118ab2 !default;
+$brand-warning:         #ffd166 !default;
+$brand-danger:          #ef476f !default;
+
+/* Coolors Exported Palette - coolors.co/ef476f-ffd166-06d6a0-118ab2-073b4c */
+
+$cred: #ef476f; //rgba(239, 71, 111, 100)
+$cyellow: #ffd166; //rgba(255, 209, 102, 100)
+$cgreen: #06d6a0; //rgba(6, 214, 160, 100)
+$cblue: #118ab2; //rgba(17, 138, 178, 100)
+$cdark: #073b4c; //rgba(7, 59, 76, 100)
 
 
 //== Scaffolding
@@ -149,13 +157,13 @@ $table-border-color:            #ddd !default;
 
 $btn-font-weight:                normal !default;
 
-$btn-default-color:              #333 !default;
+$btn-default-color:              $cdark !default;
 $btn-default-bg:                 #fff !default;
 $btn-default-border:             #ccc !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
+$btn-primary-border:             darken($btn-primary-color, 5%) !default;
 
 $btn-success-color:              #fff !default;
 $btn-success-bg:                 $brand-success !default;
@@ -370,11 +378,11 @@ $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2
 $navbar-collapse-max-height:       340px !default;
 
 $navbar-default-color:             #777 !default;
-$navbar-default-bg:                #f8f8f8 !default;
+$navbar-default-bg:                $cgreen !default;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
-$navbar-default-link-color:                #777 !default;
+$navbar-default-link-color:                #fff !default;
 $navbar-default-link-hover-color:          #333 !default;
 $navbar-default-link-hover-bg:             transparent !default;
 $navbar-default-link-active-color:         #555 !default;
@@ -426,6 +434,7 @@ $navbar-inverse-toggle-border-color:        #333 !default;
 //=== Shared nav styles
 $nav-link-padding:                          10px 15px !default;
 $nav-link-hover-bg:                         $gray-lighter !default;
+$nav-link-hover-primary-bg:                 lighten($brand-primary, 6.5%) !default
 
 $nav-disabled-link-color:                   $gray-light !default;
 $nav-disabled-link-hover-color:             $gray-light !default;
@@ -676,7 +685,7 @@ $progress-bar-info-bg:        $brand-info !default;
 //** Background color on `.list-group-item`
 $list-group-bg:                 #fff !default;
 //** `.list-group-item` border color
-$list-group-border:             #ddd !default;
+$list-group-border:             $brand-success !default;
 //** List group border radius
 $list-group-border-radius:      $border-radius-base !default;
 

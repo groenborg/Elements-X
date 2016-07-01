@@ -1,6 +1,6 @@
 /* the footer will need a height if it fails to stick */
 body {
-    background-color: rgb(255, 255, 255);
+
     height: 100%;
 }
 
@@ -34,9 +34,9 @@ html {
 
 .footer {
     margin-top: 10px;
-    border-top: 4px solid #2d9ff3;
+    border-top: 1px solid #CFD2CD;
     padding-top: 10px;
-    background-color: #555;
+    background-color: #E5E6E4 ;
 }
 
 .footer-row {
@@ -44,12 +44,12 @@ html {
 }
 
 .footer-row > p, a {
-    color: #fff;
+    color: #073b4c;
 }
 
 .footer-row > p > a:hover {
     text-decoration: underline;
-    color: #fff;
+    color: #5c6b73;
 }
 
 * {
@@ -96,7 +96,11 @@ html {
 
 /* Color for the kitchens */
 .kitchen-one, .kitchen-two, .kitchen-three {
-    background-color: #5bc0de;
+    background-color: #9db4c0;
+}
+
+a.kitchen-block:hover {
+    background-color: #5c6b73;
 }
 
 .dashboard-body {
@@ -160,16 +164,15 @@ html {
     background-color: #2071c5;
 }
 .navbar-default {
-    background-color: #2071c5;
-    border-color: #2071c5;
+
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #ffffff;
+
 }
 
 .navbar-default .navbar-brand {
-    color: #ffffff;
+
 }
 /*
  * Main content
