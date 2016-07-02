@@ -141,7 +141,8 @@
                     Basket
                 </div>
                 <div class="panel-body">
-                    <p ng-repeat="product in currentTransactionReferencedBasket">{{product.amount}}
+                    <p ng-repeat="product in currentTransactionReferencedBasket">
+                        <span class="label label-default">{{product.amount}}</span> =
                         {{product.name}} </p>
                 </div>
             </div>

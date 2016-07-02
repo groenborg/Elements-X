@@ -170,7 +170,8 @@
             if (!isNaN(amount) && amount > 0) {
                 adminFactory.refillTransaction({
                     resident_id: $scope.currentBuyer.resident_id,
-                    insert_amount: amount
+                    insert_amount: amount,
+                    bar: true
                 }, function (err, data) {
                     if (err) {
                         message.refillTerminated();

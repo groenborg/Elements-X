@@ -43,15 +43,29 @@ function residentBalanceRefillTransaction(residentId, balanceRefillItem, callbac
             timestamp: Date.now()
         };
 
-        model.Resident.findOneAndUpdate({resident_id: residentId}, {
-            current_balance: newCurrentBalance,
-            $push: {balance_history: newBalance}
 
-        }, {new: true}, function (err, data) {
-            if (err) return callback(err);
-            if (data == null) return callback();
-            return callback(undefined, data);
-        });
+        if(balanceRefillItem.bar === true){
+            console.log("REFILL FROM BAR");
+            model.Account.findOneAndUpdate({account_id: 4},{
+                $inc:{balance: -balanceRefillItem.insert_amount}
+            },{new: true},function (err, data) {
+                updateUser();
+            });
+        }else {
+            updateUser();
+        }
+
+        function updateUser() {
+            model.Resident.findOneAndUpdate({resident_id: residentId}, {
+                current_balance: newCurrentBalance,
+                $push: {balance_history: newBalance}
+
+            }, {new: true}, function (err, data) {
+                if (err) return callback(err);
+                if (data == null) return callback();
+                return callback(undefined, data);
+            });
+        }
     });
 }
 
