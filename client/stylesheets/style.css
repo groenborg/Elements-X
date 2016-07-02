@@ -36,7 +36,7 @@ html {
     margin-top: 10px;
     border-top: 1px solid #CFD2CD;
     padding-top: 10px;
-    background-color: #ebf1eb ;
+    background-color: #253237 ;
 }
 
 .footer-row {
@@ -44,7 +44,7 @@ html {
 }
 
 .footer-row > p, a {
-    color: #073b4c;
+    color: #e0fbfc;
 }
 
 .footer-row > p > a:hover {
@@ -163,23 +163,6 @@ a.kitchen-block:hover {
     color: #fff;
     background-color: #ef476f;
 }
-.navbar-default {
 
-}
-
-.navbar-default .navbar-nav > li > a {
-
-}
-
-.navbar-default .navbar-brand {
-
-}
-/*
- * Main content
- */
-
-.main {
-
-}
 
 

@@ -17,7 +17,7 @@ $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
 $brand-primary:         #073b4c !default; // #337ab7
 $brand-success:         #06d6a0 !default;
-$brand-info:            #118ab2 !default;
+$brand-info:            #33A1FD !default;
 $brand-warning:         #ffd166 !default;
 $brand-danger:          #ef476f !default;
 
@@ -26,7 +26,7 @@ $brand-danger:          #ef476f !default;
 $cred: #ef476f; //rgba(239, 71, 111, 100)
 $cyellow: #ffd166; //rgba(255, 209, 102, 100)
 $cgreen: #06d6a0; //rgba(6, 214, 160, 100)
-$cblue: #118ab2; //rgba(17, 138, 178, 100)
+$cblue: #33A1FD; //rgba(17, 138, 178, 100)
 $cdark: #073b4c; //rgba(7, 59, 76, 100)
 
 
@@ -685,7 +685,7 @@ $progress-bar-info-bg:        $brand-info !default;
 //** Background color on `.list-group-item`
 $list-group-bg:                 #fff !default;
 //** `.list-group-item` border color
-$list-group-border:             $brand-success !default;
+$list-group-border:             $brand-info !default;
 //** List group border radius
 $list-group-border-radius:      $border-radius-base !default;
 
