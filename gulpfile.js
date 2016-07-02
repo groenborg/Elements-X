@@ -14,7 +14,7 @@ var sourcemaps = require('gulp-sourcemaps');
 
 
 gulp.task('sass', function () {
-    return gulp.src('./public/scss/app.scss')
+    return gulp.src('./assets/scss/app.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({style: "compressed"}).on('error', sass.logError))
         .pipe(cssmin())
