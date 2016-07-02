@@ -306,6 +306,7 @@
         };
         $scope.withdrawAmount = 0;
         $scope.latestHistory = null;
+        $scope.transactionAccountId = 0;
         var labels = [];
         var supply = [];
         var message = new notificationService();
@@ -326,7 +327,8 @@
 
         $scope.withDraw = function () {
             if ($scope.withdrawAmount != 0) {
-                adminFactory.withdrawFromCBS({amount: $scope.withdrawAmount}, function (err, data) {
+                alert($scope.transactionAccountId);
+                adminFactory.withdrawFromCBS({account_id: $scope.transactionAccountId, amount: $scope.withdrawAmount}, function (err, data) {
                     if (err) {
                         message.withdrawTerminated();
                     } else {

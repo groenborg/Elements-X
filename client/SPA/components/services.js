@@ -208,7 +208,7 @@
             };
 
             this.withdrawApproved = function (amount) {
-                toastr.success(amount + " was withdrawn from CBS", "Withdraw Approved");
+                toastr.success(amount + " was withdrawn from account", "Withdraw Approved");
             };
 
             this.withdrawTerminated = function () {

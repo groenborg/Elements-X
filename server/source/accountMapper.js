@@ -21,7 +21,7 @@ function updateAvailableProducts(account, callback) {
  * @params: amount object {amount: Number}, callback function
  * */
 function withdrawFromCBS(dto, callback) {
-    model.Account.findOneAndUpdate({account_id: 5}, {
+    model.Account.findOneAndUpdate({account_id: dto.account_id}, {
         $inc: {balance: dto.amount}
     }, {new: true}, function (err, data) {
         return callback(err, data);
