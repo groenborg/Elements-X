@@ -85,7 +85,7 @@ function updateResident(updatedResident, callback) {
         current_balance: updatedResident.current_balance,
         quick_buy: updatedResident.quick_buy,
         phone: updatedResident.phone,
-        email: updatedResident.email,
+        email: updatedResident.email.toLowerCase(),
         access_level: updatedResident.access_level
     }, {new: true}, function (err, updatedResident) {
         return callback(err, updatedResident);
@@ -118,6 +118,7 @@ function createResident(resident, callback) {
 
         var password = resident.password;
         resident.password = security.generatePasswordHash(password);
+        resident.email = resident.email.toLowerCase();
 
         model.Resident.create(resident, function (err, resident) {
             if (err) return callback(err);

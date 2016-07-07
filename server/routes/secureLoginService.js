@@ -27,7 +27,7 @@ router.post('/authenticate', function (request, response) {
             response.send({err: "Authentication failed, user not found"});
             return;
         }
-
+        
         if (user.password == password && user.access_level > 0) {
             var token = jwt.sign({
                 first_name: user.first_name,
