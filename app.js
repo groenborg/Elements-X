@@ -31,7 +31,7 @@ app.set('view engine', 'jade');
 connection.connectToMongoDB(function (err, data) {
 });
 
-app.use(logger('common', {stream: accessLogStream}));
+app.use(logger('common'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());

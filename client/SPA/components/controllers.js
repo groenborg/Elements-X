@@ -7,12 +7,16 @@
     app.controller('AppCtrl', function ($scope) {
     });
 
-    app.controller('KitchenCtrl', ['$scope', 'accountFactory', function ($scope, accountFactory) {
+    app.controller('KitchenCtrl', ['$scope', '$window', 'accountFactory', function ($scope, $window, accountFactory) {
 
         accountFactory.getAccounts(function (err, data) {
             $scope.accounts = data;
         });
 
+
+        $scope.reloadPage = function () {
+            $window.location.reload();
+        };
 
         $scope.accountVisibilityFilter = function (item) {
             return item.user_visible;
@@ -328,7 +332,7 @@
         $scope.withDraw = function () {
             if ($scope.withdrawAmount != 0) {
                 alert($scope.transactionAccountId);
-                adminFactory.withdrawFromCBS({account_id: $scope.transactionAccountId, amount: $scope.withdrawAmount}, function (err, data) {
+                adminFactory.withdrawFromCBS({ account_id: $scope.transactionAccountId, amount: $scope.withdrawAmount }, function (err, data) {
                     if (err) {
                         message.withdrawTerminated();
                     } else {
