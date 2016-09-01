@@ -1,0 +1,20 @@
+version: '2'
+services:
+    mongo:
+        image: mongo:3.3
+        ports:
+            - "27017:27017"
+        volumes: 
+            - ~/.docker-volumes/hydrogen/mongo/data:/data/db
+    application:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: hydrogen/app
+        ports: 
+            - "3000:3000"
+        links:
+           - mongo
+        environment: 
+           - MONGO_URL=mongodb://mongo/elements 
+        command: bash -c "npm start"

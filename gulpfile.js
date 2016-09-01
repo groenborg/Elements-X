@@ -50,7 +50,7 @@ gulp.task('sourceTest', function () {
 });
 
 gulp.task('testMappers', function () {
-    return gulp.src(['test/**/sourceTest/*.js'], {read: true})
+    return gulp.src(['test/**/sourceTest/analyticsTest.js'], {read: true})
         .pipe(mocha({
             reporter: 'spec',
             ignoreLeaks: false,
@@ -98,8 +98,8 @@ gulp.task('watch-account', function () {
 
 gulp.task('test', ['sourceTest']);
 
-gulp.task('testTransaction', function () {
-    gulp.watch(['server/source/*.js', 'test/sourceTest/accountTest.js'], ['sourceTest']);
+gulp.task('test-analytics', function () {
+    gulp.watch(['server/source/*.js', 'test/**/sourceTest/analyticsTest.js'], ['testMappers']);
 });
 
 
