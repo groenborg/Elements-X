@@ -8,7 +8,7 @@
     <hr/>
     <div class="row">
         <div class="col-md-10">
-            <div class="col-md-3" ng-repeat="resident in kitchenResidents"> <!-- ng-repeat here -->
+            <div class="col-md-3" ng-repeat="resident in kitchenResidents | orderBy:'room_number'"> <!-- ng-repeat here -->
                 <div class="list-group">
                     <a href ng-click="changeView(resident.kitchen_number,resident.resident_id)" class="list-group-item">
 
