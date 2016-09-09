@@ -15,16 +15,16 @@
                 <div class="col-md-6">
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon" id="basic-addon1">Filter</span>
-                        <input class="form-control" type="text" ng-model="searchText" placeholder="search residents"/>
+                        <input class="form-control" type="text" ng-model="searchText" placeholder="Search residents"/>
                     </div>
                 </div>
 
                 <!-- Kitchen selection -->
                 <div class="col-sm-8 col-md-6">
                     <div class="btn-group btn-group-lg" role="group" aria-label="">
-                        <button ng-click="changeKitchen('one')" type="button" class="btn btn-info">kk 1</button>
-                        <button ng-click="changeKitchen('two')" type="button" class="btn btn-info">kk 2</button>
-                        <button ng-click="changeKitchen('three')" type="button" class="btn btn-info">kk 3</button>
+                        <button ng-click="changeKitchen('one')" type="button" class="btn btn-info">Kk 1</button>
+                        <button ng-click="changeKitchen('two')" type="button" class="btn btn-info">Kk 2</button>
+                        <button ng-click="changeKitchen('three')" type="button" class="btn btn-info">k 3</button>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                         <p><b>Selected resident:</b> {{currentBuyer.first_name}}
                             {{currentBuyer.last_name}}</p>
 
-                        <p><b>balance:</b> {{(currentBuyer.current_balance).toFixed(2)}}</p>
+                        <p><b>Balance:</b> {{(currentBuyer.current_balance).toFixed(2)}}</p>
                         <p>Total price: <span class="label label-default">{{currentTransactionPrice}}</span></p>
 
                         <div class="row">

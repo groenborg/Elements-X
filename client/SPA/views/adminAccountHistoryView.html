@@ -16,18 +16,18 @@
             <div class="row">
                 <div class="col-md-8">
                     <div>
-                        <p class="lead">history for {{account}}</p>
+                        <p class="lead">History for {{account}}</p>
                         <div ng-repeat="hist in accountHistory" class="well">
                             <div class="row">
                                 <div class="col-md-3">
-                                    price: {{hist.total_price}}
+                                    Price: {{hist.total_price}}
                                 </div>
                                 <div class="col-md-6">
                                     Time {{hist.timestamp}}
                                 </div>
                                 <div class="col-md-3">
                                     <p ng-repeat="item in hist.purchase">
-                                        product: {{item.product_id}} amount: {{item.amount}}
+                                        Product: {{item.product_id}} Amount: {{item.amount}}
                                     </p>
                                 </div>
                             </div>
