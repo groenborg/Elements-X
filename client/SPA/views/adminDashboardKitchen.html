@@ -47,7 +47,7 @@
                             <th class="col-md-3"></th>
                             <th></th>
                         </tr>
-                        <tr ng-repeat="resident in kitchenResidents | orderBy:resident.room_number | filter:search">
+                        <tr ng-repeat="resident in kitchenResidents | orderBy:'room_number' | filter:search">
                             <td ng-click="viewHistory(resident.resident_id)">{{resident.resident_id}}</td>
                             <td>{{resident.first_name}} {{resident.last_name}}</td>
                             <td>{{resident.room_number}}</td>
