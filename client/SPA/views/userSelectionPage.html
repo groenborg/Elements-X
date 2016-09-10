@@ -10,7 +10,7 @@
         <div class="col-md-10">
             <div class="col-md-3" ng-repeat="resident in kitchenResidents | orderBy:'room_number'"> <!-- ng-repeat here -->
                 <div class="list-group">
-                    <a href ng-click="changeView(resident.kitchen_number,resident.resident_id)" class="list-group-item">
+                    <a href ng-click="changeView(resident.kitchen_number,resident.resident_id)" class="list-group-item" style="min-height:220px">
 
                         <blockquote>{{resident.first_name}} {{resident.last_name}}</blockquote>
                         <p class="lead text-center"> {{(resident.current_balance).toFixed(2)}}kr</p>
