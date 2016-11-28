@@ -6,7 +6,7 @@ var security = require('../security/securityService');
  * @params: callback
  * */
 function getAllResidents(callback) {
-    model.Resident.find({}, function (err, residents) {
+    model.Resident.find({active: true}, function (err, residents) {
         if (err) return callback(err);
         if (residents == null) return callback();
         return callback(undefined, residents)
@@ -86,11 +86,14 @@ function updateResident(updatedResident, callback) {
         quick_buy: updatedResident.quick_buy,
         phone: updatedResident.phone,
         email: updatedResident.email.toLowerCase(),
-        access_level: updatedResident.access_level
+        access_level: updatedResident.access_level,
+        active: updatedResident.active,
+        password: security.generatePasswordHash(updatedResident.password)
     }, {new: true}, function (err, updatedResident) {
         return callback(err, updatedResident);
     });
 }
+
 
 /**
  * Delete a resident
