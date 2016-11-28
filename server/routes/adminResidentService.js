@@ -35,6 +35,19 @@ router.put('/resident/update', function (request, response) {
     });
 });
 
+router.put("/resident/disable", function (request, response) {
+    residentManager.disableResident(request.body, function (err, data) {
+        if (err) {
+            response.statusCode = 503;
+            response.statusMessage = "service unavailable";
+            response.send({message: "could not update resident"});
+        } else {
+            response.send(data);
+        }
+    });
+});
+
+
 /**
  * Gets history for a resident
  * */

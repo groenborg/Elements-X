@@ -91,6 +91,22 @@
                     }
                 };
 
+                $scope.disableResident = function () {
+                    console.log($scope.resident);
+                    if ($scope.resident.resident_id == undefined) {
+                        message.invalidFields();
+                    } else {
+                        adminFactory.disableResident($scope.resident, function (err, data) {
+                            if (err) {
+
+                            } else {
+                                $scope.clearForms();
+                                message.userDisabled();
+                            }
+                        });
+                    }
+                };
+
 
                 function checkValues() {
                     for (var prop in $scope.resident) {

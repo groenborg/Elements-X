@@ -97,6 +97,10 @@
 
             // Arnold Schwarzenegger was terminating here
 
+            this.userDisabled = function () {
+                toastr.info("User was disabled")
+            };
+
             this.balanceTooLow = function () {
                 toastr.warning('Balance is too low!')
             };

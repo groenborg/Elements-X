@@ -135,6 +135,13 @@
             createResident: function (residentDTO, callback) {
                 webserviceFactory.createResidentRequest(residentDTO, callback);
             },
+            disableResident: function (resident, callback) {
+                var fac = webserviceFactory;
+                fac.request({
+                    method: fac.REQUEST_TYPE.put,
+                    url: "/admin/resident/disable"
+                }, resident, callback)
+            },
             updateResident: function (resident, callback) {
                 webserviceFactory.updateResident(resident, callback);
             },
@@ -227,7 +234,27 @@
 
     app.factory('webserviceFactory', ['$http', function ($http) {
 
+        var config = {
+            get: "GET",
+            post: "POST",
+            put: "PUT",
+            delete: "DELETE"
+        };
+
+
         return {
+            REQUEST_TYPE: config,
+            request: function (config, data, callback) {
+                $http({
+                    method: config.method,
+                    url: config.url,
+                    data: data
+                }).then(function success(res) {
+                    callback(undefined, res)
+                }, function fail(res) {
+                    callback(res);
+                })
+            },
             getAccountHistory: function (id, callback) {
                 $http({
                     method: "GET",

@@ -44,6 +44,11 @@ var getKitchenGroups = function (callback) {
     model.Resident.aggregate(
         [
             {
+                $match: {
+                    active: true
+                }
+            },
+            {
                 $group: {
                     _id: '$kitchen_number', residents: {
                         $push: {
@@ -70,6 +75,14 @@ var getKitchenGroups = function (callback) {
         });
 };
 
+
+function disableResident(resident, callback) {
+    model.Resident.findOneAndUpdate({resident_id: resident.resident_id}, {
+        active: false
+    }, {new: true}, function (err, disabledResident) {
+        return callback(err, disabledResident);
+    });
+}
 
 /**
  * Update one resident
@@ -133,6 +146,7 @@ function createResident(resident, callback) {
 
 
 module.exports = {
+    disableResident: disableResident,
     getResidentHistory: getResidentHistory,
     getAllResidents: getAllResidents,
     getOneResident: getOneResident,
