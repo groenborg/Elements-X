@@ -286,6 +286,8 @@
 
         controllerFactory.onLoad($scope, $scope.kitchenNumber);
 
+
+
         $scope.changeView = function (kitchenNumber, residentId) {
             $rootScope.shopper = storageFactory.getResident(kitchenNumber, residentId);
             $location.path("/buy/" + kitchenNumber + "/" + residentId);
