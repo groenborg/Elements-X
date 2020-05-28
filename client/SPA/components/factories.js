@@ -467,18 +467,18 @@
 
         return {
             authBar: function () {
-                if ($window.sessionStorage.token == undefined) {
-                    $location.path('/login');
-                }
+               // if ($window.sessionStorage.token == undefined) {
+               //     $location.path('/login');
+               // }
             },
             authAdmin: function () {
-                if ($window.sessionStorage.token == undefined) {
-                    $location.path('/login')
-                } else {
-                    if ($window.sessionStorage.al <= 1) {
-                        $location.path('/login');
-                    }
-                }
+               // if ($window.sessionStorage.token == undefined) {
+               //     $location.path('/login')
+               // } else {
+               //     if ($window.sessionStorage.al <= 1) {
+               //         $location.path('/login');
+               //     }
+               // }
             }
         }
     });

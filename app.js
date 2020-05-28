@@ -44,7 +44,7 @@ app.use('/api', transactionRoute);
 app.use('/api', productRoute);
 app.use('/api', secureLoginRoute);
 app.use('/api', accountRoute);
-app.use('/admin', expressJwt({secret: config.tokens.secretTokenOne}));
+//app.use('/admin', expressJwt({secret: config.tokens.secretTokenOne}));
 app.use('/admin', adminTransactionRoute);
 app.use('/admin', adminResidentRoute);
 app.use('/admin', adminAssortmentRoute);
